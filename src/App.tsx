@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import './i18n';
+
+import React, { Suspense } from 'react';
+
+import Description from './components/Description';
+import FashionGrid from './components/FashionGrid';
+import Features from './components/Features';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import MainFeature from './components/MainFeature';
+import SubscriptionBig from './components/SubscriptionBig';
+import SubscriptionSmall from './components/SubscriptionSmall';
+import Title from './components/Title';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Suspense fallback={null}>
+        <Header />
+        <Title />
+        <SubscriptionSmall />
+        <Features />
+        <Description />
+        <MainFeature />
+        <FashionGrid />
+        <SubscriptionBig />
+        <Footer />
+      </Suspense>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,91 @@
+{
+  "company": {
+    "name": "FASHIONBAR",
+    "postfix": ".online"
+  },
+  "tableOfContents": {
+    "collection": "Collection",
+    "social": "Social",
+    "about": "About",
+    "contacts": "Contacts"
+  },
+  "title": {
+    "brends": [
+      "Brend1",
+      "Brend2",
+      "Brend3",
+      "Brend4",
+      "Brend5",
+      "Brend6",
+      "Brend7",
+      "Brend8"
+    ],
+    "feature": "Original things by subscription from 120 euro/month"
+  },
+  "subscriptionSmall": { "label": "Enter you email address" },
+  "features": [
+    {
+      "prefix": "Buy ",
+      "postfix": " subscription",
+      "includeCompanyName": true
+    },
+    {
+      "prefix": "Choose any thing from ",
+      "postfix": " catalog",
+      "includeCompanyName": true
+    },
+    {
+      "prefix": "Get your order in 1-3 days",
+      "postfix": "",
+      "includeCompanyName": false
+    },
+    {
+      "prefix": "Change your thing anytime you want to from ",
+      "postfix": " collection",
+      "includeCompanyName": true
+    }
+  ],
+  "description": [
+    [
+      {
+        "prefix": "We are startup from Germany.",
+        "postfix": "",
+        "includeCompanyName": false
+      }
+    ],
+    [
+      {
+        "prefix": "We've collected the best things.",
+        "postfix": "",
+        "includeCompanyName": false
+      }
+    ],
+    [
+      {
+        "prefix": "Out collection is open for every club member. Now ",
+        "postfix": " is just a closed club. You can become a member only by an invitation.",
+        "includeCompanyName": true
+      },
+      {
+        "prefix": "But in future we want to make ",
+        "postfix": " opened club.",
+        "includeCompanyName": true
+      }
+    ],
+    [
+      {
+        "prefix": "Members of ",
+        "postfix": " can take things from our collection anytime they want to.",
+        "includeCompanyName": true
+      }
+    ]
+  ],
+  "mainFeature": {
+    "prefix": "Use our collection ",
+    "postfix": " switch your things whenevery you want to just 120 euro/month",
+    "includeCompanyName": true
+  },
+  "fashionGrid": {
+    "booking": "Booking"
+  }
+}

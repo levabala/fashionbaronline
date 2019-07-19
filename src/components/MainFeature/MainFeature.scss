@@ -1,0 +1,22 @@
+@import "../../variables.scss";
+
+.mainFeature {
+  margin: 0 auto;
+  margin-top: $gap-description-mainFeature;
+
+  text-align: center;
+  width: 80%;
+
+  .funnyImage {
+    margin: 0 auto;
+
+    width: $funnyImage-size;
+    height: $funnyImage-size;
+
+    border: solid black 1px;
+  }
+
+  // .feature {
+  //   //
+  // }
+}

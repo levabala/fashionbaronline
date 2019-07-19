@@ -1,0 +1,17 @@
+@import "../../variables.scss";
+
+.subscriptionSmall {
+  margin-top: $gap-title-subscriptionSmall;
+
+  // .label {
+  //   //
+  // }
+
+  .email {
+    display: block;
+  }
+
+  .send {
+    display: block;
+  }
+}

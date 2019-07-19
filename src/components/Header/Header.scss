@@ -1,0 +1,28 @@
+@import "../../variables.scss";
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .tableOfContents {
+    .tag + .tag {
+      margin-left: $tableOfContents-space-between;
+    }
+
+    // .tag {
+    //   //
+    // }
+  }
+
+  .languageSelector {
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

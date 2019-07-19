@@ -1,0 +1,12 @@
+{
+  "company": {
+    "name": "FASHIONBAR",
+    "postfix": ".online"
+  },
+  "tableOfContents": {
+    "collection": "採集",
+    "social": "社會",
+    "about": "關於",
+    "contacts": "往來"
+  }
+}
