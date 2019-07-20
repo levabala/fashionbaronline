@@ -2,4 +2,17 @@
 
 .features {
   margin-top: $gap-subscriptionSmall-features;
+  font-size: 20px;
+
+  ol {
+    li + li {
+      margin-top: $ordered-list-gap-between-lines;
+    }
+
+    li::before {
+      content: "";
+      width: $ordered-list-gap-between-number-and-text;
+      display: inline-block;
+    }
+  }
 }

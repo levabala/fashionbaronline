@@ -10,19 +10,58 @@
 
   background: white;
 
+  span + span {
+    margin-left: $span-gap;
+  }
+
+  .subTitle {
+    .main {
+      font-size: 27px;
+    }
+
+    .secondary {
+      font-size: 19px;
+    }
+  }
+
   .variants {
     display: flex;
     justify-content: space-between;
 
     padding: $subscriptionBig-costs-padding 0;
 
-    // .costContainer {
-    //   display: inline-block;
-    // }
+    .separator {
+      display: flex;
+      justify-content: space-around;
 
-    // .target {
-    //   display: inline-block;
-    // }
+      font-size: 40px;
+
+      flex-direction: column;
+    }
+
+    .costContainer {
+      .amount,
+      .unit {
+        font-size: 40px;
+      }
+
+      .unit {
+        font-size: 40px;
+      }
+
+      .slash {
+        font-size: 30px;
+      }
+
+      .period {
+        font-size: 25px;
+      }
+    }
+
+    .target {
+      font-size: 25px;
+      text-align: center;
+    }
   }
 
   .sendBox {
@@ -35,5 +74,12 @@
     button {
       margin-top: $gap-between-inputs;
     }
+  }
+
+  .smallText {
+    font-size: 14px;
+    text-align: center;
+
+    margin-top: $subscriptionBig-smallText-margin-top;
   }
 }

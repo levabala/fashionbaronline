@@ -56,7 +56,8 @@
     },
     "sendBox": {
       "send": "Send"
-    }
+    },
+    "smallText": "*Your data is private"
   },
   "footer": {
     "contacts": {

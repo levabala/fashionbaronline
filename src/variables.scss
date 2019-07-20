@@ -1,20 +1,24 @@
 $app-padding: 2em;
-
+$span-gap: 0.2em;
 $blockHeader-margin-bottom: 2em;
+$maxContainersWidth: 1360px;
 
 $tableOfContents-space-between: 1em;
 
 $subscriptionSmall-label-gap: 1em;
 $gap-between-inputs: 1.3em;
+$ordered-list-gap-between-number-and-text: 1em;
+$ordered-list-gap-between-lines: 1em;
 
 $funnyImage-size: 3em;
 
-$fashionElem-size-min: 10em;
+$fashionElem-size-min: 15em;
 $fashionElem-size-max: 20em;
 $fashionElem-placeholder-padding: 1em;
 
 $subscriptionBig-padding: 2em;
-$subscriptionBig-costs-padding: 1.5em;
+$subscriptionBig-costs-padding: 3.5em;
+$subscriptionBig-smallText-margin-top: 1em;
 
 $footer-column-gap: 6em;
 $footer-contacts-column-gap: 1em;

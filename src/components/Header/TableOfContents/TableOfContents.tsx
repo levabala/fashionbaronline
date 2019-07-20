@@ -12,11 +12,13 @@ const TableOfContents = () => {
 
   return (
     <div className="tableOfContents">
-      {table.map(name => (
-        <span key={name} className="tag">
-          <a href={`#${name}`}>{t(`tableOfContents.${name}`)}</a>
-        </span>
-      ))}
+      <div className="text">
+        {table.map(name => (
+          <span key={name} className="tag">
+            <a href={`#${name}`}>{t(`tableOfContents.${name}`)}</a>
+          </span>
+        ))}
+      </div>
     </div>
   );
 };

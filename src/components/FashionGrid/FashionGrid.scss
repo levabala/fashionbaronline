@@ -73,13 +73,19 @@
 
         .name {
           color: white;
+          font-family: "Open Sans", sans-serif;
+          font-size: 30px;
+          font-weight: bold;
+
+          text-transform: uppercase;
         }
 
         .bookWrapper {
           text-align: center;
-          // .book {
-          //   //
-          // }
+
+          .book {
+            font-size: 17px;
+          }
         }
       }
     }

@@ -1,23 +1,29 @@
 .tableOfContents {
-  .tag {
-    a:link {
-      text-decoration: none;
-      color: inherit;
-    }
+  font-size: 15px;
+  display: flex;
+  flex-direction: column-reverse;
 
-    a:visited {
-      text-decoration: none;
-      color: inherit;
-    }
+  .text {
+    .tag {
+      a:link {
+        text-decoration: none;
+        color: inherit;
+      }
 
-    a:hover {
-      text-decoration: none;
-      color: inherit;
-    }
+      a:visited {
+        text-decoration: none;
+        color: inherit;
+      }
 
-    a:active {
-      text-decoration: none;
-      color: inherit;
+      a:hover {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      a:active {
+        text-decoration: none;
+        color: inherit;
+      }
     }
   }
 }

@@ -1,0 +1,6 @@
+@import "../../variables.scss";
+
+.horizontalLimiter {
+  max-width: $maxContainersWidth;
+  margin: 0 auto;
+}
