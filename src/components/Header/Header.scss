@@ -1,9 +1,11 @@
 @import "../../variables.scss";
 
 .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 0.87fr 1fr;
 
   .tableOfContents {
     .tag + .tag {

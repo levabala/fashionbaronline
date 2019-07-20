@@ -7,7 +7,7 @@
   margin-top: $gap-subscriptionBig-footer;
 
   display: grid;
-  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1.25fr;
   grid-auto-flow: column;
   grid-column-gap: $footer-column-gap;
 

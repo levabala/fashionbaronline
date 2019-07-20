@@ -3,13 +3,13 @@
 .fashionGrid {
   display: grid;
 
-  margin-top: $gap-mainFeature-fashionGrid;
-
   grid-template-columns: repeat(
     auto-fill,
     minmax(#{$fashionElem-size-min}, 1fr)
   );
   grid-auto-rows: 1fr;
+  margin: 0px -#{$horizontalLimiter-padding};
+  margin-top: $gap-mainFeature-fashionGrid;
 
   &::before {
     content: "";

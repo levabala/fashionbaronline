@@ -1,34 +1,41 @@
-$app-padding: 2em;
+$app-padding: 55px 114px;
 $span-gap: 0.2em;
 $blockHeader-margin-bottom: 2em;
 $maxContainersWidth: 1360px;
+$horizontalLimiter-padding: 73px;
 
 $tableOfContents-space-between: 1em;
 
-$subscriptionSmall-label-gap: 1em;
-$gap-between-inputs: 1.3em;
+$features-margin-left: 15px;
+
+$subscriptionSmall-label-gap: 54px;
+$gap-between-inputs: 22px;
 $ordered-list-gap-between-number-and-text: 1em;
-$ordered-list-gap-between-lines: 1em;
+$ordered-list-gap-between-lines: 56px;
 
-$funnyImage-size: 3em;
+$funnyImage-size: 105px;
 
-$fashionElem-size-min: 15em;
+$mainFeature-margin-top: 94px;
+
+$fashionElem-size-min: 230px;
 $fashionElem-size-max: 20em;
 $fashionElem-placeholder-padding: 1em;
 
 $subscriptionBig-padding: 3em;
-$subscriptionBig-costs-padding: 3.5em;
-$subscriptionBig-smallText-margin-top: 1em;
+$subscriptionBig-subTitle-gap: 20px;
+$subscriptionBig-costs-padding: 111px 88px;
+$subscriptionBig-sendBox-margin-top: 33px;
+$subscriptionBig-smallText-margin-top: 30px;
 
 $footer-column-gap: 6em;
-$footer-contacts-column-gap: 1em;
-$footer-contacts-social-gap: 3em;
+$footer-contacts-column-gap: 10px;
+$footer-contacts-social-gap: 77px;
 
-$gap-header-title: 5em;
-$gap-title-subscriptionSmall: 2.5em;
-$gap-subscriptionSmall-features: 10em;
-$gap-features-description: 12em;
-$gap-description-mainFeature: 6em;
-$gap-mainFeature-fashionGrid: 6em;
-$gap-fashionGrid-subscriptionBig: 6em;
-$gap-subscriptionBig-footer: 6em;
+$gap-header-title: 152px;
+$gap-title-subscriptionSmall: 70px;
+$gap-subscriptionSmall-features: 328px;
+$gap-features-description: 430px;
+$gap-description-mainFeature: 312px;
+$gap-mainFeature-fashionGrid: 295px;
+$gap-fashionGrid-subscriptionBig: 264px;
+$gap-subscriptionBig-footer: 239px;

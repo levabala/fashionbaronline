@@ -1,7 +1,7 @@
 @import "../../variables.scss";
 
 .subscriptionBig {
-  width: 80%;
+  width: 67%;
   margin: 0 auto;
   margin-top: $gap-fashionGrid-subscriptionBig;
 
@@ -20,6 +20,7 @@
     }
 
     .secondary {
+      margin-top: $subscriptionBig-subTitle-gap;
       font-size: 19px;
     }
   }
@@ -28,7 +29,7 @@
     display: flex;
     justify-content: space-between;
 
-    padding: $subscriptionBig-costs-padding 0;
+    padding: $subscriptionBig-costs-padding;
 
     .separator {
       display: flex;
@@ -68,8 +69,9 @@
     display: flex;
     flex-direction: column;
 
-    width: 100%;
+    width: 94%;
     margin: 0 auto;
+    margin-top: $subscriptionBig-sendBox-margin-top;
 
     button {
       margin-top: $gap-between-inputs;

@@ -3,4 +3,6 @@
 .horizontalLimiter {
   max-width: $maxContainersWidth;
   margin: 0 auto;
+
+  padding: 0px #{$horizontalLimiter-padding};
 }
