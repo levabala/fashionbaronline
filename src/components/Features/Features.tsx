@@ -3,7 +3,6 @@ import './Features.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import StringWithCompanyName from '../../types/StringWithCompanyName';
 import TagEnum from '../../types/TagEnum';
 import TextWithCompanyName from '../TextWithCompanyName';
 
@@ -13,7 +12,7 @@ const LiWrapper = ({ children }: { children: React.ReactNode }) => (
 
 const Features = () => {
   const { t } = useTranslation();
-  const features: StringWithCompanyName[] = t("features", {
+  const features: string[] = t("features", {
     returnObjects: true
   });
 

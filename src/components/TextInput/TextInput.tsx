@@ -8,7 +8,7 @@ const TextInput = (
     HTMLInputElement
   >
 ) => {
-  return <input className="textImport" {...props} />;
+  return <input {...props} />;
 };
 
 export default TextInput;

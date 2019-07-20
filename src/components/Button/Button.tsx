@@ -8,7 +8,7 @@ const Button = (
     HTMLButtonElement
   >
 ) => {
-  return <button className="button" {...props} />;
+  return <button {...props} />;
 };
 
 export default Button;

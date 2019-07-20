@@ -2,16 +2,20 @@
 
 .subscriptionSmall {
   margin-top: $gap-title-subscriptionSmall;
+  width: 33%;
 
-  // .label {
-  //   //
-  // }
+  .label {
+    margin-bottom: $subscriptionSmall-label-gap;
+  }
 
   .email {
     display: block;
+    width: 100%;
+    margin-bottom: $gap-between-inputs;
   }
 
   .send {
     display: block;
+    width: 100%;
   }
 }

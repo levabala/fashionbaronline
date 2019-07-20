@@ -10,9 +10,11 @@
       margin-left: $tableOfContents-space-between;
     }
 
-    // .tag {
-    //   //
-    // }
+    .tag {
+      a:active {
+        font-weight: bold;
+      }
+    }
   }
 
   .languageSelector {

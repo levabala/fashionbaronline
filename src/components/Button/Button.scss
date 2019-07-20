@@ -1,8 +1,13 @@
-.button {
-  background: transparent;
-  border-radius: 10px;
-  border: solid black 1px;
-  padding: 5px;
+button {
+  display: inline-block;
+  box-sizing: content-box;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-align: center;
+  background: #5b02d8;
+  color: white;
+
   outline: none;
-  // outline: none;
+  box-shadow: none;
+  border: none;
 }

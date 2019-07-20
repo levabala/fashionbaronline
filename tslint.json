@@ -32,7 +32,15 @@
     // "no-mixed-interface": [true, { "ignore-prefix": ["on "] }],
     "no-expression-statement": [
       true,
-      { "ignore-prefix": ["console.", "process.exit", "i18n"] }
+      {
+        "ignore-prefix": [
+          "console.",
+          "process.exit",
+          "i18n",
+          "ReactDOM.render",
+          "serviceWorker."
+        ]
+      }
     ],
     "no-if-statement": true,
     /* end tslint-immutable rules */

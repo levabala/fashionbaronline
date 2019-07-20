@@ -1,6 +1,5 @@
 import React from 'react';
 
-import StringWithCompanyName from '../../types/StringWithCompanyName';
 import CompanyName from '../CompanyName';
 
 const SpanWrapper = ({ children }: { children: React.ReactNode }) => (
@@ -8,18 +7,20 @@ const SpanWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 const TextWithCompanyName = (
-  chunks: StringWithCompanyName[],
+  strings: string[],
   Wrapper = SpanWrapper,
   divider: string = ""
 ) => {
-  return chunks.map(({ prefix, includeCompanyName, postfix }, i) => (
-    <Wrapper key={i}>
-      {prefix}
-      {includeCompanyName ? <CompanyName /> : null}
-      {postfix}
-      {divider}
-    </Wrapper>
-  ));
+  return strings.map((str, i) => {
+    const arr = str.split("<COMPANYNAME>");
+    return (
+      <Wrapper key={i}>
+        {arr.length > 1
+          ? [arr[0], <CompanyName key="companyName" />, arr[1]]
+          : arr[0]}
+      </Wrapper>
+    );
+  });
 };
 
 export default TextWithCompanyName;

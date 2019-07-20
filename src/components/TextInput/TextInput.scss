@@ -1,5 +1,10 @@
-.textImport {
-  border-radius: 10px;
-  padding: 5px;
-  // outline: none;
+input {
+  display: inline-block;
+  box-sizing: content-box;
+  padding: 10px 20px;
+  border: 1px solid #b7b7b7;
+  border-radius: 50px;
+  text-align: center;
+
+  outline: none;
 }

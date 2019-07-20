@@ -1,6 +1,11 @@
 $app-padding: 2em;
 
+$blockHeader-margin-bottom: 2em;
+
 $tableOfContents-space-between: 1em;
+
+$subscriptionSmall-label-gap: 1em;
+$gap-between-inputs: 1.3em;
 
 $funnyImage-size: 3em;
 
@@ -10,7 +15,10 @@ $fashionElem-placeholder-padding: 1em;
 
 $subscriptionBig-padding: 2em;
 $subscriptionBig-costs-padding: 1.5em;
-$subscriptionBig-gap-between-inputs: 0.5em;
+
+$footer-column-gap: 6em;
+$footer-contacts-column-gap: 1em;
+$footer-contacts-social-gap: 3em;
 
 $gap-header-title: 5em;
 $gap-title-subscriptionSmall: 2.5em;
@@ -19,3 +27,4 @@ $gap-features-description: 12em;
 $gap-description-mainFeature: 6em;
 $gap-mainFeature-fashionGrid: 6em;
 $gap-fashionGrid-subscriptionBig: 6em;
+$gap-subscriptionBig-footer: 6em;

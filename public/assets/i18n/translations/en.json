@@ -22,69 +22,25 @@
     ],
     "feature": "Original things by subscription from 120 euro/month"
   },
-  "subscriptionSmall": { "label": "Enter you email address" },
+  "subscriptionSmall": { "label": "Enter you email address", "save": "Save" },
   "features": [
-    {
-      "prefix": "Buy ",
-      "postfix": " subscription",
-      "includeCompanyName": true
-    },
-    {
-      "prefix": "Choose any thing from ",
-      "postfix": " catalog",
-      "includeCompanyName": true
-    },
-    {
-      "prefix": "Get your order in 1-3 days",
-      "postfix": "",
-      "includeCompanyName": false
-    },
-    {
-      "prefix": "Change your thing anytime you want to from ",
-      "postfix": " collection",
-      "includeCompanyName": true
-    }
+    "Buy <COMPANYNAME> subscription",
+    "Choose any thing from <COMPANYNAME> catalog",
+    "Get your order in 1-3 days",
+    "Change your thing anytime you want to from <COMPANYNAME> collection"
   ],
   "description": [
+    ["We are startup from Germany."],
+    ["We've collected the best things."],
     [
-      {
-        "prefix": "We are startup from Germany.",
-        "postfix": "",
-        "includeCompanyName": false
-      }
+      "Out collection is open for every club member. Now <COMPANYNAME> is just a closed club. You can become a member only by an invitation.",
+      "But in future we want to make <COMPANYNAME> opened club."
     ],
     [
-      {
-        "prefix": "We've collected the best things.",
-        "postfix": "",
-        "includeCompanyName": false
-      }
-    ],
-    [
-      {
-        "prefix": "Out collection is open for every club member. Now ",
-        "postfix": " is just a closed club. You can become a member only by an invitation.",
-        "includeCompanyName": true
-      },
-      {
-        "prefix": "But in future we want to make ",
-        "postfix": " opened club.",
-        "includeCompanyName": true
-      }
-    ],
-    [
-      {
-        "prefix": "Members of ",
-        "postfix": " can take things from our collection anytime they want to.",
-        "includeCompanyName": true
-      }
+      "Members of <COMPANYNAME> can take things from our collection anytime they want to."
     ]
   ],
-  "mainFeature": {
-    "prefix": "Use our collection ",
-    "postfix": " switch your things whenevery you want to just 120 euro/month",
-    "includeCompanyName": true
-  },
+  "mainFeature": "Use our collection <COMPANYNAME> switch your things whenevery you want to just 120 euro/month",
   "fashionGrid": {
     "booking": "Booking"
   },
@@ -100,6 +56,16 @@
     },
     "sendBox": {
       "send": "Send"
+    }
+  },
+  "footer": {
+    "contacts": {
+      "lable": "Contacts",
+      "mail": "Mail:",
+      "address": "Address:"
+    },
+    "social": {
+      "lable": "Social"
     }
   }
 }
