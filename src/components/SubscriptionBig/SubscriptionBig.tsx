@@ -16,6 +16,7 @@ const Variant = ({ cost, target }: { cost: number; target: string }) => {
         <span className="unit">e</span>/
         <span className="period">{t("subscriptionBig.variants.period")}</span>
       </div>
+      <div className="target">{target}</div>
     </span>
   );
 };
@@ -29,7 +30,7 @@ const SubscriptionBig = () => {
 
   return (
     <div className="subscriptionBig">
-      <div className="title">
+      <div className="subTitle">
         <div className="main">{t("subscriptionBig.title.main")}</div>
         <div className="secondary">{t("subscriptionBig.title.secondary")}</div>
       </div>
@@ -40,10 +41,9 @@ const SubscriptionBig = () => {
       </div>
       <div className="sendBox">
         <TextInput placeholder="example@fashionbar.online" />
-        <Button
-          onClick={clickHandler}
-          value={t("subscriptionBig.sendBox.send") as string}
-        />
+        <Button onClick={clickHandler}>
+          {t("subscriptionBig.sendBox.send")}
+        </Button>
       </div>
     </div>
   );

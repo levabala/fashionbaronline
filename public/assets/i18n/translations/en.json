@@ -87,5 +87,19 @@
   },
   "fashionGrid": {
     "booking": "Booking"
+  },
+  "subscriptionBig": {
+    "title": {
+      "main": "Left you data here please",
+      "secondary": "Preferable option"
+    },
+    "variants": {
+      "first": "One thing",
+      "second": "Two things",
+      "period": "month"
+    },
+    "sendBox": {
+      "send": "Send"
+    }
   }
 }

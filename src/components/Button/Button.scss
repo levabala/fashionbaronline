@@ -1,5 +1,8 @@
 .button {
-  background: "transparent";
-  border-radius: 10%;
+  background: transparent;
+  border-radius: 10px;
+  border: solid black 1px;
+  padding: 5px;
+  outline: none;
   // outline: none;
 }

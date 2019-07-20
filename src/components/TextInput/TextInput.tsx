@@ -1,4 +1,4 @@
-import './TextImport.scss';
+import './TextInput.scss';
 
 import React from 'react';
 

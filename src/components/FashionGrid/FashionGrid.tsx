@@ -3,6 +3,8 @@ import './FashionGrid.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Button from '../Button';
+
 const FashionGrid = () => {
   const { t } = useTranslation();
   const bookingLabel = t("fashionGrid.booking");
@@ -16,7 +18,7 @@ const FashionGrid = () => {
             <div className="container">
               <div className="name">Chanel</div>
               <div className="bookWrapper">
-                <input type="button" className="book" value={bookingLabel} />
+                <Button className="book">{bookingLabel}</Button>
               </div>
             </div>
           </div>

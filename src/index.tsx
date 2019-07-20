@@ -8,4 +8,6 @@ import * as serviceWorker from './serviceWorker';
 
 // tslint:disable:no-expression-statement
 ReactDOM.render(<App />, document.getElementById("root"));
-serviceWorker.register();
+
+// TODO: make it registered
+serviceWorker.unregister();
