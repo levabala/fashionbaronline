@@ -11,4 +11,8 @@ input {
   color: #1f1f1f;
 
   outline: none;
+
+  &:focus::placeholder {
+    color: transparent;
+  }
 }

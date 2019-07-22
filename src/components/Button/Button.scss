@@ -12,4 +12,8 @@ button {
   outline: none;
   box-shadow: none;
   border: none;
+
+  &:active {
+    background: #0000dd;
+  }
 }
