@@ -1,4 +1,10 @@
-$app-padding: 55px 114px;
+$parallax-perspective: 1px;
+$parallax-translateZ: -1px;
+$parallax-scale-factor: 1 + ($parallax-translateZ * -1) / $parallax-perspective;
+
+$app-padding-horizontal: 55px;
+$app-padding-vertical: 114px;
+$app-padding: $app-padding-horizontal $app-padding-vertical;
 $span-gap: 0.2em;
 $blockHeader-margin-bottom: 2em;
 $maxContainersWidth: 1360px;
