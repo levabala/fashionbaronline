@@ -13,14 +13,22 @@ import MainFeature from './components/MainFeature';
 import SubscriptionBig from './components/SubscriptionBig';
 import SubscriptionSmall from './components/SubscriptionSmall';
 import Title from './components/Title';
-import logo from './logo.svg';
 
 const App: React.FC = () => {
   return (
     <div className="App  parallax">
       <div className="mainContainer">
         <div className="parallaxLayerBack">
-          <img src={logo} alt="hz" style={{ filter: "blur(4px)" }} />
+          <img
+            src={"/assets/images/rectRightRedBlur.png"}
+            alt="hz"
+            style={{ position: "absolute", top: "900px", left: 0 }}
+          />
+          <img
+            src={"/assets/images/rectRightPurpleBlur.png"}
+            alt="hz"
+            style={{ position: "absolute", top: "1900px", left: 0 }}
+          />
         </div>
         <div className="parallaxLayerBase">
           <Suspense fallback={null}>

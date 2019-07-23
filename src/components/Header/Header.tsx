@@ -9,6 +9,7 @@ import TableOfContents from './TableOfContents';
 const Header = () => {
   return (
     <div className="header">
+      <img src="/assets/images/woman1.png" className="woman1" alt="womanOne" />
       <CompanyName />
       <TableOfContents />
       <LanguageSelector />

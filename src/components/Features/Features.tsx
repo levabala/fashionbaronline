@@ -19,6 +19,7 @@ const Features = () => {
   return (
     <div className="features" id={TagEnum.Social}>
       <ol>{TextWithCompanyName(features, LiWrapper)}</ol>
+      <img src="/assets/images/woman2.png" className="woman" alt="womanTwo" />
     </div>
   );
 };

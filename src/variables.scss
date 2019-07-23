@@ -2,6 +2,8 @@ $parallax-perspective: 1px;
 $parallax-translateZ: -1px;
 $parallax-scale-factor: 1 + ($parallax-translateZ * -1) / $parallax-perspective;
 
+$woman-2-width: 648px;
+
 $app-padding-horizontal: 55px;
 $app-padding-vertical: 114px;
 $app-padding: $app-padding-horizontal $app-padding-vertical;
@@ -13,6 +15,7 @@ $horizontalLimiter-padding: 73px;
 $tableOfContents-space-between: 1em;
 
 $features-margin-left: 15px;
+$title-margin-right: 400px;
 
 $subscriptionSmall-label-gap: 32px;
 $gap-between-inputs: 22px;

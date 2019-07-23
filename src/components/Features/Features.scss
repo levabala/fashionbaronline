@@ -5,6 +5,9 @@
   margin-left: $features-margin-left;
   font-size: 20px;
 
+  display: grid;
+  grid-template-columns: 1fr $woman-2-width;
+
   ol {
     li + li {
       margin-top: $ordered-list-gap-between-lines;
@@ -15,5 +18,10 @@
       width: $ordered-list-gap-between-number-and-text;
       display: inline-block;
     }
+  }
+
+  .woman {
+    position: absolute;
+    right: 0;
   }
 }

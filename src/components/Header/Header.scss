@@ -18,4 +18,12 @@
       }
     }
   }
+
+  .woman1 {
+    position: absolute;
+    right: 0;
+    top: -$app-padding-vertical / 2;
+
+    z-index: -1;
+  }
 }

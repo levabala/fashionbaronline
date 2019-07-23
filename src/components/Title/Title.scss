@@ -2,13 +2,33 @@
 
 .title {
   margin-top: $gap-header-title;
+  margin-right: $title-margin-right;
 
   .brends {
+    &:before {
+      content: "";
+      float: right;
+      width: 50%;
+      height: 0.1em;
+    }
+
     font-size: 30px;
     font-weight: bold;
+
+    span + span {
+      margin-left: $span-gap;
+    }
   }
 
   .feature {
     font-size: 20px;
   }
+}
+
+#textTest {
+  position: absolute;
+  visibility: hidden;
+  height: auto;
+  width: auto;
+  white-space: nowrap;
 }

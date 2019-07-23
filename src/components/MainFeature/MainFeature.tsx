@@ -9,7 +9,7 @@ const MainFeature = () => {
   const { t } = useTranslation();
   return (
     <div className="mainFeature">
-      <img className="funnyImage" src="/assets/images/happy.png" />
+      <img className="funnyImage" src="/assets/images/happy.png" alt="funny" />
       <p className="feature">
         {TextWithCompanyName([t("mainFeature", { returnObjects: true })])[0]}
       </p>
