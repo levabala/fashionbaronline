@@ -18,4 +18,12 @@ input {
   &:focus::placeholder {
     color: transparent;
   }
+
+  // &:valid {
+  //   background: green;
+  // }
+
+  // &:invalid {
+  //   background: red;
+  // }
 }

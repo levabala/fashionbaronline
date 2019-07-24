@@ -9,6 +9,15 @@
   padding: $subscriptionBig-padding;
 
   background: white;
+  position: relative;
+
+  .decorationImage {
+    position: absolute;
+
+    right: -73px;
+    top: -113px;
+    z-index: -1;
+  }
 
   span + span {
     margin-left: $span-gap;

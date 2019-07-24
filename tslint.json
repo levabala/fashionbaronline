@@ -21,7 +21,7 @@
     // "readonly-keyword": true,
     // "readonly-array": true,
     "no-array-mutation": [true, "ignore-new-array"],
-    "no-let": true,
+    "no-let": false,
     "no-object-mutation": [true, { "ignore-postfix": ["Elem"] }],
     "no-delete": true,
     "no-method-signature": true,
@@ -31,11 +31,12 @@
     "no-class": true,
     // "no-mixed-interface": [true, { "ignore-prefix": ["on "] }],
     "no-expression-statement": false,
-    "no-if-statement": true,
+    "no-if-statement": false,
     /* end tslint-immutable rules */
 
     "no-console": false,
-    "jsx-boolean-value": false
+    "jsx-boolean-value": false,
+    "curly": [true, "as-needed"]
     // "no-var-requires": false,
     // "no-unused-expression": false
   }

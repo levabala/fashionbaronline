@@ -31,6 +31,11 @@ const SubscriptionBig = () => {
 
   return (
     <div className="subscriptionBig">
+      <img
+        src="/assets/images/rectFullRedThin.png"
+        className="decorationImage"
+        alt="justRect"
+      />
       <div className="subTitle">
         <div className="main">{t("subscriptionBig.title.main")}</div>
         <div className="secondary">{t("subscriptionBig.title.secondary")}</div>
