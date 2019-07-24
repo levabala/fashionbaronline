@@ -2,12 +2,14 @@ button {
   font-size: 18px;
 
   display: inline-block;
-  box-sizing: content-box;
+  box-sizing: border-box;
   padding: 12px 20px;
   border-radius: 50px;
   text-align: center;
   background: #0000ff;
   color: white;
+
+  font-family: inherit;
 
   outline: none;
   box-shadow: none;

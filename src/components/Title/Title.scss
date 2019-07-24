@@ -18,6 +18,10 @@
     span + span {
       margin-left: $span-gap;
     }
+
+    span {
+      white-space: nowrap;
+    }
   }
 
   .feature {

@@ -2,11 +2,12 @@
 
 .subscriptionSmall {
   margin-top: $gap-title-subscriptionSmall;
-  width: 30.9%;
+  width: 36.3%;
 
   .label {
     margin-bottom: $subscriptionSmall-label-gap;
     font-size: 17px;
+    width: 100%;
   }
 
   .email {

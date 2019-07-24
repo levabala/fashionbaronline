@@ -11,18 +11,22 @@
   },
   "title": {
     "brends": [
-      "Brend1",
-      "Brend2",
-      "Brend3",
-      "Brend4",
-      "Brend5",
-      "Brend6",
-      "Brend7",
-      "Brend8"
+      "Gucci",
+      "Prada",
+      "Chanel",
+      "Dior",
+      "Lousi Vuitton",
+      "Dolche & Gabbana",
+      "Hermes",
+      "Loro Piano",
+      "Valentino"
     ],
     "feature": "Original things by subscription from 120 euro/month"
   },
-  "subscriptionSmall": { "label": "Enter you email address", "save": "Save" },
+  "subscriptionSmall": {
+    "label": "Enter you email address and you will be the first who will be notified about the service's start.",
+    "save": "Save"
+  },
   "features": [
     "Buy <COMPANYNAME> subscription",
     "Choose any thing from <COMPANYNAME> catalog",

@@ -9,6 +9,8 @@
   grid-template-columns: 1fr $woman-2-width;
 
   ol {
+    margin-left: 1em;
+
     li + li {
       margin-top: $ordered-list-gap-between-lines;
     }
@@ -18,10 +20,17 @@
       width: $ordered-list-gap-between-number-and-text;
       display: inline-block;
     }
+
+    li {
+      list-style-position: inside;
+      text-indent: -2em;
+    }
   }
 
   .woman {
     position: absolute;
     right: 0;
+
+    margin-top: -47px;
   }
 }

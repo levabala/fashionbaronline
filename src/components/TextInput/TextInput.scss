@@ -2,11 +2,14 @@ input {
   font-size: 18px;
 
   display: inline-block;
-  box-sizing: content-box;
+  box-sizing: border-box;
   padding: 12px 20px;
   border: 1px solid #c5c5c5;
   border-radius: 50px;
   text-align: center;
+
+  background: transparent;
+  font-family: inherit;
 
   color: #1f1f1f;
 

@@ -8,7 +8,7 @@
     minmax(#{$fashionElem-size-min}, 1fr)
   );
   grid-auto-rows: 1fr;
-  margin: 0px -#{$horizontalLimiter-padding};
+  // margin: 0px -#{$horizontalLimiter-padding};
   margin-top: $gap-mainFeature-fashionGrid;
 
   &::before {

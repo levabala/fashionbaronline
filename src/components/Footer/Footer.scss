@@ -5,34 +5,23 @@
 
   margin: 0 auto;
   margin-top: $gap-subscriptionBig-footer;
+  margin-bottom: 10em;
 
-  display: grid;
-  grid-template-columns: 1fr 1.25fr;
-  grid-auto-flow: column;
-  grid-column-gap: $footer-column-gap;
+  display: flex;
+  justify-content: space-around;
 
-  .column {
-    // max-width: 50%;
+  .contacts {
+    margin-bottom: $footer-contacts-social-gap;
 
-    .description {
-      text-align: unset;
-      margin: 0 0;
-      width: 100%;
-    }
+    // .label {
+    //   //
+    // }
 
-    .contacts {
-      margin-bottom: $footer-contacts-social-gap;
+    .info {
+      display: grid;
 
-      // .label {
-      //   //
-      // }
-
-      .info {
-        display: grid;
-
-        grid-template-columns: repeat(2, min-content);
-        grid-column-gap: $footer-contacts-column-gap;
-      }
+      grid-template-columns: repeat(2, min-content);
+      grid-column-gap: $footer-contacts-column-gap;
     }
   }
 }
