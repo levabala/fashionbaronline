@@ -36,6 +36,7 @@
 
   @media screen and (max-width: $mobile-version-max-width) {
     text-align: center;
+    margin-left: 0;
     grid-template-columns: 1fr;
 
     .woman {
@@ -43,6 +44,7 @@
     }
 
     ol {
+      padding-left: 0;
       margin-left: 0;
       text-align: center;
       list-style-position: inside;
