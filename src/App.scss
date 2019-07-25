@@ -58,11 +58,13 @@
       scale($parallax-scale-factor);
 
     .parallaxImage1 {
-      top: 800px;
+      // top: 800px;
+      display: none;
     }
 
     .parallaxImage2 {
-      top: 2100px;
+      // top: 2100px;
+      display: none;
     }
   }
 }
