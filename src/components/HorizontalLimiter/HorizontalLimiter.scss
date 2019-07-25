@@ -4,5 +4,9 @@
   max-width: $maxContainersWidth;
   margin: 0 auto;
 
-  padding: 0px #{$horizontalLimiter-padding};
+  padding: 0px #{$app-padding-horizontal};
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    padding: 0px #{$app-padding-horizontal-mobile};
+  }
 }

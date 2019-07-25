@@ -1,7 +1,13 @@
+@import "../../../variables.scss";
+
 .tableOfContents {
   font-size: 17px;
   display: flex;
   flex-direction: column-reverse;
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    display: none;
+  }
 
   .text {
     .tag {

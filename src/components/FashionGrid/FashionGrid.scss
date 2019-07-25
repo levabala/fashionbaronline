@@ -8,7 +8,7 @@
     minmax(#{$fashionElem-size-min}, 1fr)
   );
   grid-auto-rows: 1fr;
-  // margin: 0px -#{$horizontalLimiter-padding};
+  // margin: 0px -#{$app-padding-horizontal};
   margin-top: $gap-mainFeature-fashionGrid;
 
   &::before {
@@ -93,5 +93,15 @@
         }
       }
     }
+  }
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(#{$fashionElem-size-min-mobile}, 1fr)
+    );
+
+    margin-left: -$app-padding-horizontal-mobile;
+    margin-right: -$app-padding-horizontal-mobile;
   }
 }

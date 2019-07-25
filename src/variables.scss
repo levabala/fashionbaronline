@@ -1,16 +1,23 @@
+$mobile-version-max-width: 1200px;
+
 $parallax-perspective: 1px;
 $parallax-translateZ: -1px;
 $parallax-scale-factor: 1 + ($parallax-translateZ * -1) / $parallax-perspective;
 
 $woman-2-width: 648px;
 
-$app-padding-horizontal: 55px;
+$app-padding-horizontal: 73px;
 $app-padding-vertical: 114px;
 $app-padding: $app-padding-horizontal $app-padding-vertical;
+
+$app-padding-horizontal-mobile: 35px;
+$app-padding-vertical-mobile: 54px;
+$app-padding-mobile: $app-padding-horizontal-mobile $app-padding-vertical-mobile;
+
 $span-gap: 0.2em;
 $blockHeader-margin-bottom: 2em;
 $maxContainersWidth: 1360px;
-$horizontalLimiter-padding: 73px;
+$horizontalLimiter-padding: 55px;
 
 $tableOfContents-space-between: 1em;
 
@@ -20,19 +27,23 @@ $title-margin-right: 320px;
 $subscriptionSmall-label-gap: 32px;
 $gap-between-inputs: 22px;
 $ordered-list-gap-between-number-and-text: 1em;
+$ordered-list-gap-between-number-and-text-mobile: 0.2em;
 $ordered-list-gap-between-lines: 56px;
+$ordered-list-gap-between-lines-mobile: 30px;
 
 $funnyImage-size: 105px;
 
 $mainFeature-margin-top: 94px;
 
 $fashionElem-size-min: 230px;
+$fashionElem-size-min-mobile: 130px;
 $fashionElem-size-max: 20em;
 $fashionElem-placeholder-padding: 1em;
 
 $subscriptionBig-padding: 2.5em;
 $subscriptionBig-subTitle-gap: 20px;
-$subscriptionBig-costs-padding: 111px 88px;
+$subscriptionBig-costs-padding: 73px 88px;
+$subscriptionBig-costs-padding-mobile: 40px 0px;
 $subscriptionBig-sendBox-margin-top: 33px;
 $subscriptionBig-smallText-margin-top: 30px;
 
@@ -48,3 +59,7 @@ $gap-description-mainFeature: 312px;
 $gap-mainFeature-fashionGrid: 295px;
 $gap-fashionGrid-subscriptionBig: 264px;
 $gap-subscriptionBig-footer: 239px;
+
+:export {
+  mobileVersionMaxWidth: $mobile-version-max-width;
+}

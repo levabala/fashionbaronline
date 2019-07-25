@@ -88,9 +88,62 @@
   }
 
   .smallText {
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
 
     margin-top: $subscriptionBig-smallText-margin-top;
+  }
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    padding: 0;
+    width: 100%;
+
+    background: none;
+    box-shadow: none;
+
+    .subTitle {
+      .secondary {
+        display: none;
+      }
+    }
+
+    .variants {
+      padding: $subscriptionBig-costs-padding-mobile;
+
+      .costContainer {
+        .amount,
+        .unit {
+          font-size: 30px;
+        }
+
+        .unit {
+          font-size: 30px;
+        }
+
+        .slash {
+          font-size: 20px;
+        }
+
+        .period {
+          font-size: 15px;
+        }
+      }
+
+      .target {
+        font-size: 15px;
+      }
+
+      .separator {
+        font-size: 25px;
+      }
+    }
+
+    .decorationImage {
+      display: none;
+    }
+
+    .sendBox {
+      width: 100%;
+    }
   }
 }

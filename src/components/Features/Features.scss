@@ -33,4 +33,34 @@
 
     margin-top: -47px;
   }
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    text-align: center;
+    grid-template-columns: 1fr;
+
+    .woman {
+      display: none;
+    }
+
+    ol {
+      margin-left: 0;
+      text-align: center;
+      list-style-position: inside;
+
+      li + li {
+        margin-top: $ordered-list-gap-between-lines-mobile;
+      }
+
+      li {
+        list-style-position: inside;
+        text-indent: 0;
+      }
+
+      li::before {
+        content: "";
+        width: $ordered-list-gap-between-number-and-text-mobile;
+        display: inline-block;
+      }
+    }
+  }
 }

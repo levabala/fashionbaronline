@@ -22,12 +22,12 @@ const App: React.FC = () => {
           <img
             src={"/assets/images/rectRightRedBlur.png"}
             alt="hz"
-            style={{ position: "absolute", top: "900px", left: 0 }}
+            className="parallaxImage1"
           />
           <img
             src={"/assets/images/rectRightPurpleBlur.png"}
             alt="hz"
-            style={{ position: "absolute", top: "1900px", left: 0 }}
+            className="parallaxImage2"
           />
         </div>
         <div className="parallaxLayerBase">

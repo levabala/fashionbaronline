@@ -24,4 +24,8 @@
       grid-column-gap: $footer-contacts-column-gap;
     }
   }
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    flex-direction: column;
+  }
 }

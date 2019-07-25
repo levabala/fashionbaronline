@@ -3,5 +3,48 @@
 
   display: flex;
   flex-direction: column-reverse;
-  text-align: right;
+  text-align: left;
+
+  // .currentLanguage {
+  //   //
+  // }
+
+  .wrapper {
+    button {
+      background: none;
+      border: none;
+      padding: 0px;
+      color: black;
+    }
+
+    .dropdownWrapper {
+      position: relative;
+      display: none;
+
+      &.visible {
+        display: block;
+      }
+
+      .languageOptions {
+        position: absolute;
+        top: 0;
+
+        button {
+          padding: 5px 0px;
+          font-size: 15px;
+          border-radius: 0;
+
+          text-align: left;
+
+          &.selected {
+            text-shadow: 0px 0px 1px black;
+          }
+        }
+
+        // button + button {
+        //   border-top: solid black 1px;
+        // }
+      }
+    }
+  }
 }

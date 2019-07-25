@@ -26,10 +26,43 @@
 .parallaxLayerBase {
   @extend .parallaxLayer;
   transform: translate3d(0px, $app-padding-vertical / 2, 0px);
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    transform: translate3d(0px, $app-padding-vertical-mobile / 2, 0px);
+  }
 }
 
 .parallaxLayerBack {
   @extend .parallaxLayer;
   transform: translate3d(0, $app-padding-vertical / 2, $parallax-translateZ)
     scale($parallax-scale-factor);
+
+  .parallaxImage1 {
+    position: absolute;
+    top: 900px;
+    left: 0;
+  }
+
+  .parallaxImage2 {
+    position: absolute;
+    top: 1900px;
+    left: 0;
+  }
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    transform: translate3d(
+        0,
+        $app-padding-vertical-mobile / 2,
+        $parallax-translateZ
+      )
+      scale($parallax-scale-factor);
+
+    .parallaxImage1 {
+      top: 800px;
+    }
+
+    .parallaxImage2 {
+      top: 1200px;
+    }
+  }
 }

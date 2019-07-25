@@ -3,7 +3,10 @@ import './Title.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Variables from '../../../src/variables.scss';
 import getTextWidth from '../../assemblies/measureText';
+
+const mobileVersionMaxWidth = parseFloat(Variables.mobileVersionMaxWidth);
 
 function splitToFillLastLine(
   chunks: string[],
@@ -15,7 +18,7 @@ function splitToFillLastLine(
     (acc: string[][], chunk) => {
       const lastLine = acc[acc.length - 1];
       const lastLineNew = [...lastLine, chunk];
-      const { width } = getTextWidth(lastLineNew.join(","), font);
+      const { width } = getTextWidth(lastLineNew.join(" "), font);
 
       return width < maxWidth
         ? [...acc.slice(0, -1), lastLineNew]
@@ -27,20 +30,24 @@ function splitToFillLastLine(
   return lines
     .slice()
     .reverse()
-    .map(line => line.slice().reverse())
-    .map((line, i, arr) =>
-      i === arr.length - 1
-        ? line
-        : line.map((chunk, i2, arr2) =>
-            i2 === arr2.length - 1 ? chunk + "," : chunk
-          )
-    );
+    .map(line => line.slice().reverse());
 }
 
 function generateBrends(brendsArr: string[], offsetWidth: number): string {
-  return splitToFillLastLine(brendsArr, offsetWidth)
-    .map(line => `<div>${line.map(chunk => `<span>${chunk}</span>`)}</div>`)
-    .join(" ");
+  console.log(brendsArr);
+  const brendsWithComma = brendsArr.map((chunk, i2, arr2) =>
+    i2 === arr2.length - 1 ? chunk : chunk + ","
+  );
+  console.log(brendsWithComma);
+
+  return window.innerWidth < mobileVersionMaxWidth
+    ? brendsWithComma.map(chunk => `<span>${chunk}</span>`).join(" ")
+    : splitToFillLastLine(brendsWithComma, offsetWidth)
+        .map(
+          line =>
+            `<div>${line.map(chunk => `<span>${chunk}</span>`).join("")}</div>`
+        )
+        .join(" ");
 }
 
 const Title = () => {
