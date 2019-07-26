@@ -22,7 +22,10 @@
     // "readonly-array": true,
     "no-array-mutation": [true, "ignore-new-array"],
     "no-let": false,
-    "no-object-mutation": [true, { "ignore-postfix": ["Elem"] }],
+    "no-object-mutation": [
+      true,
+      { "ignore-postfix": ["Elem"], "ignore-prefix": ["window."] }
+    ],
     "no-delete": true,
     "no-method-signature": true,
 

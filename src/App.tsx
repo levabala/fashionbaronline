@@ -3,6 +3,7 @@ import './i18n';
 
 import React, { Suspense } from 'react';
 
+import ContentBlock from './components/ContentBlock';
 import Description from './components/Description';
 import FashionGrid from './components/FashionGrid';
 import Features from './components/Features';
@@ -13,6 +14,7 @@ import MainFeature from './components/MainFeature';
 import SubscriptionBig from './components/SubscriptionBig';
 import SubscriptionSmall from './components/SubscriptionSmall';
 import Title from './components/Title';
+import ViewBlock from './components/ViewBlock';
 
 const App: React.FC = () => {
   return (
@@ -33,16 +35,34 @@ const App: React.FC = () => {
         <div className="parallaxLayerBase">
           <Suspense fallback={null}>
             <HorizontalLimiter>
-              <Header />
+              <ViewBlock>
+                <ContentBlock>
+                  <Header />
+                  <Title />
+                </ContentBlock>
+                <ContentBlock>
+                  <SubscriptionSmall />
+                </ContentBlock>
+              </ViewBlock>
 
-              <Title />
-              <SubscriptionSmall />
-              <Features />
+              <ViewBlock forced around>
+                <Features />
+              </ViewBlock>
 
-              <Description />
-              <MainFeature />
+              <ViewBlock forced around>
+                <Description />
+              </ViewBlock>
+
+              <ViewBlock forced around>
+                <MainFeature />
+              </ViewBlock>
+
               <FashionGrid />
-              <SubscriptionBig />
+
+              <ViewBlock forced around>
+                <SubscriptionBig />
+              </ViewBlock>
+
               <Footer />
             </HorizontalLimiter>
           </Suspense>

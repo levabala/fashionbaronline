@@ -9,6 +9,15 @@ const FashionGrid = () => {
   const { t } = useTranslation();
   const bookingLabel = t("fashionGrid.booking");
 
+  const goToBooking = () => {
+    (window.document.getElementById(
+      "emailSubscriptionBox"
+    ) as HTMLDivElement).scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  };
+
   return (
     <div className="fashionGrid">
       {new Array(15).fill(null).map((_, i) => (
@@ -18,7 +27,9 @@ const FashionGrid = () => {
             <div className="container">
               <div className="name">Chanel</div>
               <div className="bookWrapper">
-                <Button className="book">{bookingLabel}</Button>
+                <Button className="book" onClick={goToBooking}>
+                  {bookingLabel}
+                </Button>
               </div>
             </div>
           </div>

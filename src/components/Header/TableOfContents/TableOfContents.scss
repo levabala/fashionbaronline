@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column-reverse;
 
-  @media screen and (max-width: $mobile-version-max-width) {
+  @media screen and (max-width: $mobile-hide-table-of-content-max-width) {
     display: none;
   }
 

@@ -34,11 +34,9 @@ function splitToFillLastLine(
 }
 
 function generateBrends(brendsArr: string[], offsetWidth: number): string {
-  console.log(brendsArr);
   const brendsWithComma = brendsArr.map((chunk, i2, arr2) =>
     i2 === arr2.length - 1 ? chunk : chunk + ","
   );
-  console.log(brendsWithComma);
 
   return window.innerWidth < mobileVersionMaxWidth
     ? brendsWithComma.map(chunk => `<span>${chunk}</span>`).join(" ")

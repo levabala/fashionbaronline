@@ -1,0 +1,25 @@
+@import "../../variables.scss";
+
+.viewBlock {
+  @media screen and (max-width: $mobile-version-max-width) {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    height: calc(
+      100vh - #{$app-padding-vertical / 2}
+    ); // Fallback for browsers that do not support Custom Properties
+
+    height: calc(var(--vh, 1vh) * 100 - #{$app-padding-vertical / 2});
+
+    &.around {
+      justify-content: space-around;
+    }
+  }
+
+  // @media screen and (max-width: $mobile-fit-content-max-width) {
+  //   &:not(.forced) {
+  //     max-height: fit-content;
+  //   }
+  // }
+}

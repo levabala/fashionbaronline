@@ -4,11 +4,6 @@
   margin-top: $gap-title-subscriptionSmall;
   width: 36.3%;
 
-  @media screen and (max-width: $mobile-version-max-width) {
-    width: 100%;
-    text-align: center;
-  }
-
   .label {
     margin-bottom: $subscriptionSmall-label-gap;
     font-size: 17px;
@@ -24,5 +19,10 @@
   .send {
     display: block;
     width: 100%;
+  }
+  @media screen and (max-width: $mobile-version-max-width) {
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
   }
 }

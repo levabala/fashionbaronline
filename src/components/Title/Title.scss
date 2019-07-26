@@ -4,25 +4,6 @@
   margin-top: $gap-header-title;
   margin-right: $title-margin-right;
 
-  @media screen and (max-width: $mobile-version-max-width) {
-    margin-right: auto;
-    margin-left: auto;
-
-    width: 100%;
-
-    text-align: center;
-
-    .brends {
-      &::before {
-        display: none;
-      }
-    }
-
-    .feature {
-      margin-top: 20px;
-    }
-  }
-
   .brends {
     &:before {
       content: "";
@@ -31,7 +12,7 @@
       height: 0.1em;
     }
 
-    font-size: 30px;
+    font-size: 27px;
     font-weight: bold;
 
     span + span {
@@ -45,6 +26,30 @@
 
   .feature {
     font-size: 20px;
+  }
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1em;
+
+    width: 100%;
+
+    text-align: center;
+
+    .brends {
+      &::before {
+        display: none;
+      }
+
+      width: 90%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .feature {
+      margin-top: 20px;
+    }
   }
 }
 

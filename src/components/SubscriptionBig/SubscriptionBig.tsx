@@ -30,7 +30,7 @@ const SubscriptionBig = () => {
   };
 
   return (
-    <div className="subscriptionBig">
+    <div className="subscriptionBig" id="emailSubscriptionBox">
       <img
         src="/assets/images/rectFullRedThin.png"
         className="decorationImage"
