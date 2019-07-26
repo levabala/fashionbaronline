@@ -10,6 +10,13 @@ const Header = () => {
   return (
     <div className="header">
       <img src="/assets/images/woman1.png" className="woman1" alt="womanOne" />
+      {/* <div
+        className="woman1"
+        style={{
+          background: "url(/assets/images/woman1Corrected.png) no-repeat 0 100%"
+        }}
+      /> */}
+
       <CompanyName />
       <TableOfContents />
       <LanguageSelector />

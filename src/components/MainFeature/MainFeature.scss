@@ -23,4 +23,8 @@
   .feature {
     margin-top: $mainFeature-margin-top;
   }
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    margin-top: $mobile-block-gap;
+  }
 }

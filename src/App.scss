@@ -6,6 +6,11 @@
 .mainContainer {
   position: relative;
   padding: $app-padding;
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    overflow: hidden;
+    height: 100vh;
+  }
 }
 
 .parallax {
@@ -13,6 +18,10 @@
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    overflow-y: hidden;
+  }
 }
 
 .parallaxLayer {
@@ -25,11 +34,11 @@
 
 .parallaxLayerBase {
   @extend .parallaxLayer;
-  transform: translate3d(0px, $app-padding-vertical / 2, 0px);
+  // transform: translate3d(0px, $app-padding-vertical / 2, 0px);
 
-  @media screen and (max-width: $mobile-version-max-width) {
-    transform: translate3d(0px, $app-padding-vertical-mobile / 2, 0px);
-  }
+  // @media screen and (max-width: $mobile-version-max-width) {
+  //   transform: translate3d(0px, $app-padding-vertical-mobile / 2, 0px);
+  // }
 }
 
 .parallaxLayerBack {

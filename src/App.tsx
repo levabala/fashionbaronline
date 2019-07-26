@@ -57,13 +57,17 @@ const App: React.FC = () => {
                 <MainFeature />
               </ViewBlock>
 
-              <FashionGrid />
+              <ViewBlock forced around>
+                <FashionGrid />
+              </ViewBlock>
 
               <ViewBlock forced around>
                 <SubscriptionBig />
               </ViewBlock>
 
-              <Footer />
+              <ViewBlock forced around>
+                <Footer />
+              </ViewBlock>
             </HorizontalLimiter>
           </Suspense>
         </div>

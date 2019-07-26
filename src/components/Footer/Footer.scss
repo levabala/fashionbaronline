@@ -27,5 +27,6 @@
 
   @media screen and (max-width: $mobile-version-max-width) {
     flex-direction: column;
+    margin-top: $mobile-block-gap;
   }
 }

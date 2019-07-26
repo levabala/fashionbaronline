@@ -8,5 +8,12 @@
 
   @media screen and (max-width: $mobile-version-max-width) {
     padding: 0px #{$app-padding-horizontal-mobile};
+
+    scroll-snap-type: y mandatory;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    height: 100vh;
   }
 }

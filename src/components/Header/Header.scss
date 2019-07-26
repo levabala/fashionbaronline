@@ -1,15 +1,19 @@
 @import "../../variables.scss";
 
 .header {
+  position: relative;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   // display: grid;
   // grid-template-columns: 1fr 0.87fr 1fr;
 
-  // @media screen and (max-width: $mobile-version-max-width) {
-  //   display: none;
-  // }
+  padding-top: $app-padding-vertical / 2;
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    padding-top: $app-padding-vertical-mobile / 2;
+  }
 
   .tableOfContents {
     .tag + .tag {
@@ -25,13 +29,18 @@
 
   .woman1 {
     position: absolute;
-    right: 0;
-    top: -$app-padding-vertical / 2;
+    right: -$app-padding-horizontal / 2;
+    // top: -$app-padding-vertical / 2;
+
+    // width: 648px;
+    // height: 713px;
 
     @media screen and (max-width: $mobile-version-max-width) {
       top: -10px;
       right: -340px;
       transform: scale(0.8);
+
+      display: none;
     }
 
     @media screen and (max-width: $mobile-extra-version-max-width) {
