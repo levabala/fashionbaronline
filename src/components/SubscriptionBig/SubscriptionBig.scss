@@ -16,7 +16,7 @@
 
     right: -73px;
     top: -113px;
-    z-index: -1;
+    z-index: 0;
   }
 
   span + span {
@@ -100,7 +100,7 @@
 
     background: none;
     box-shadow: none;
-    margin-top: $mobile-block-gap;
+    margin-top: 0;
 
     .subTitle {
       .secondary {

@@ -5,17 +5,19 @@ import React from 'react';
 const ViewBlock = ({
   children,
   forced,
-  around
+  around,
+  fitContent
 }: {
   children: React.ReactChild[] | React.ReactChild;
   forced?: boolean;
   around?: boolean;
+  fitContent?: boolean;
 }) => {
   return (
     <div
       className={`viewBlock ${forced ? "forced" : ""} ${
-        around ? "around" : ""
-      }`}
+        fitContent ? "fitContent" : ""
+      } ${around ? "around" : ""}`}
     >
       {children}
     </div>

@@ -7,16 +7,20 @@
     flex-direction: column;
 
     scroll-snap-align: start;
+    scroll-snap-stop: always;
 
-    height: calc(
-      100vh - #{$app-padding-vertical / 2}
-    ); // Fallback for browsers that do not support Custom Properties
-
-    height: calc(var(--vh, 1vh) * 100 - #{$app-padding-vertical / 2});
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
 
     &.around {
       justify-content: space-around;
     }
+
+    &.fitContent {
+      height: auto;
+    }
+
+    -webkit-overflow-scrolling: touch;
   }
 
   // @media screen and (max-width: $mobile-fit-content-max-width) {

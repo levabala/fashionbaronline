@@ -23,7 +23,8 @@ input {
   //   background: green;
   // }
 
-  // &:invalid {
-  //   background: red;
-  // }
+  &:invalid {
+    border-color: #ff0000;
+    background: #ffeeee;
+  }
 }

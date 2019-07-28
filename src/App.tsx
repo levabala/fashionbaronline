@@ -57,7 +57,7 @@ const App: React.FC = () => {
                 <MainFeature />
               </ViewBlock>
 
-              <ViewBlock forced around>
+              <ViewBlock fitContent>
                 <FashionGrid />
               </ViewBlock>
 
