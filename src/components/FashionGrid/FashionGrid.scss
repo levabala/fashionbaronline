@@ -56,8 +56,15 @@
       background: black;
       opacity: 0;
 
-      &:hover {
+      &:hover,
+      &:active {
         opacity: 0.6;
+      }
+
+      &.clickable {
+        & > .container > .bookWrapper > .book {
+          pointer-events: initial;
+        }
       }
 
       transition: opacity 0.5s ease-in-out;
@@ -89,6 +96,8 @@
             background: transparent;
             width: 90%;
             box-sizing: border-box;
+
+            pointer-events: none;
           }
         }
       }

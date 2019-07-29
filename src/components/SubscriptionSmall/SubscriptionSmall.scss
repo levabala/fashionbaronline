@@ -10,21 +10,14 @@
     width: 100%;
   }
 
-  .email {
-    display: block;
-    width: 100%;
-    margin-bottom: $gap-between-inputs;
-  }
-
-  .send {
-    display: block;
-    width: 100%;
-  }
-
   @media screen and (max-width: $mobile-version-max-width) {
     width: 100%;
     text-align: center;
     margin-top: 0;
     padding-bottom: $app-padding-vertical-mobile / 2;
+
+    .label {
+      display: none;
+    }
   }
 }

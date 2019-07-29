@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 button {
   font-size: 18px;
 
@@ -17,5 +19,9 @@ button {
 
   &:active {
     background: #0000dd;
+  }
+
+  @media screen and (max-width: $mobile-extra-version-max-width) {
+    font-size: 16px;
   }
 }

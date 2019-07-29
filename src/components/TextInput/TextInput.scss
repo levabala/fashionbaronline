@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 input {
   font-size: 18px;
 
@@ -26,5 +28,9 @@ input {
   &:invalid {
     border-color: #ff0000;
     background: #ffeeee;
+  }
+
+  @media screen and (max-width: $mobile-extra-version-max-width) {
+    font-size: 16px;
   }
 }

@@ -3,10 +3,7 @@ import './Title.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Variables from '../../../src/variables.scss';
 import getTextWidth from '../../assemblies/measureText';
-
-const mobileVersionMaxWidth = parseFloat(Variables.mobileVersionMaxWidth);
 
 function splitToFillLastLine(
   chunks: string[],
@@ -38,14 +35,17 @@ function generateBrends(brendsArr: string[], offsetWidth: number): string {
     i2 === arr2.length - 1 ? chunk : chunk + ","
   );
 
-  return window.innerWidth < mobileVersionMaxWidth
-    ? brendsWithComma.map(chunk => `<span>${chunk}</span>`).join(" ")
-    : splitToFillLastLine(brendsWithComma, offsetWidth)
-        .map(
-          line =>
-            `<div>${line.map(chunk => `<span>${chunk}</span>`).join("")}</div>`
-        )
-        .join(" ");
+  return splitToFillLastLine(brendsWithComma, offsetWidth)
+    .map(
+      line =>
+        `<div>${line
+          .map(
+            chunk =>
+              `<span class="${line.length === 1 ? "alone" : 0}">${chunk}</span>`
+          )
+          .join("")}</div>`
+    )
+    .join(" ");
 }
 
 const Title = () => {

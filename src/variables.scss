@@ -1,7 +1,7 @@
 $mobile-hide-table-of-content-max-width: 1200px;
 $mobile-version-max-width: 1020px;
 $mobile-fit-content-max-width: 550px;
-$mobile-extra-version-max-width: 365px;
+$mobile-extra-version-max-width: 325px;
 $mobile-block-gap: 5em;
 
 $parallax-perspective: 1px;
@@ -40,7 +40,7 @@ $funnyImage-size: 105px;
 $mainFeature-margin-top: 94px;
 
 $fashionElem-size-min: 230px;
-$fashionElem-size-min-mobile: 130px;
+$fashionElem-size-min-mobile: 140px;
 $fashionElem-size-max: 20em;
 $fashionElem-placeholder-padding: 1em;
 
@@ -66,4 +66,6 @@ $gap-subscriptionBig-footer: 239px;
 
 :export {
   mobileVersionMaxWidth: $mobile-version-max-width;
+  fashionElemSizeMinMobile: $fashionElem-size-min-mobile;
+  appPaddingVertical: $app-padding-vertical;
 }

@@ -24,8 +24,8 @@
     "feature": "Original things by subscription from 120 euro/month"
   },
   "subscriptionSmall": {
-    "label": "Enter you email address and you will be the first who will be notified about the service's start.",
-    "save": "Save"
+    "label": "Enter your email address and you will be the first who will be notified about the service's start.",
+    "save": "Subscribe"
   },
   "features": [
     "Buy <COMPANYNAME> subscription",

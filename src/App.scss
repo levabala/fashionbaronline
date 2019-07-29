@@ -43,6 +43,8 @@
 
 .parallaxLayerBack {
   @extend .parallaxLayer;
+  z-index: -1;
+
   transform: translate3d(0, $app-padding-vertical / 2, $parallax-translateZ)
     scale($parallax-scale-factor);
 

@@ -3,8 +3,7 @@ import './SubscriptionBig.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Button from '../Button';
-import TextInput from '../TextInput';
+import SubscriptionBlock from '../SubscriptionBlock';
 
 const Variant = ({ cost, target }: { cost: number; target: string }) => {
   const { t } = useTranslation();
@@ -25,10 +24,6 @@ const Variant = ({ cost, target }: { cost: number; target: string }) => {
 const SubscriptionBig = () => {
   const { t } = useTranslation();
 
-  const clickHandler = () => {
-    console.log("click");
-  };
-
   return (
     <div className="subscriptionBig" id="emailSubscriptionBox">
       <img
@@ -47,12 +42,7 @@ const SubscriptionBig = () => {
         </span>
         <Variant cost={250} target={t("subscriptionBig.variants.second")} />
       </div>
-      <div className="sendBox">
-        <TextInput placeholder="example@fashionbar.online" />
-        <Button onClick={clickHandler}>
-          {t("subscriptionBig.sendBox.send")}
-        </Button>
-      </div>
+      <SubscriptionBlock />
       <div className="smallText">{t("subscriptionBig.smallText")}</div>
     </div>
   );

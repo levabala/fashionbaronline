@@ -1,0 +1,14 @@
+@import "../../variables.scss";
+
+.subscriptionBlock {
+  .email {
+    display: block;
+    width: 100%;
+    margin-bottom: $gap-between-inputs;
+  }
+
+  .send {
+    display: block;
+    width: 100%;
+  }
+}

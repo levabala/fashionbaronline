@@ -17,11 +17,11 @@ const LanguageSelector = () => {
   const options: Array<{ code: string; value: string }> = [
     {
       code: "en",
-      value: "English"
+      value: "eng."
     },
     {
       code: "zh",
-      value: "Chinese"
+      value: "chin."
     }
   ];
 
