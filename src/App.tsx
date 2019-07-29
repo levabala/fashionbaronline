@@ -1,7 +1,7 @@
 import './App.scss';
 import './i18n';
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useLayoutEffect, useRef } from 'react';
 
 import ContentBlock from './components/ContentBlock';
 import Description from './components/Description';
@@ -17,6 +17,20 @@ import Title from './components/Title';
 import ViewBlock from './components/ViewBlock';
 
 const App: React.FC = () => {
+  const horizontalContainerRef: React.MutableRefObject<HTMLDivElement> = useRef(
+    <div />
+  );
+
+  useLayoutEffect(() => {
+    const intersectionObserver = new IntersectionObserver(() => {}, {
+      root: horizontalContainerRef.current
+    });
+
+    return () => {
+      cleanup;
+    };
+  }, [input]);
+
   return (
     <div className="App  parallax">
       <div className="mainContainer">
@@ -32,7 +46,7 @@ const App: React.FC = () => {
             className="parallaxImage2"
           />
         </div>
-        <div className="parallaxLayerBase">
+        <div className="parallaxLayerBase" ref={horizontalContainerRef}>
           <Suspense fallback={null}>
             <HorizontalLimiter>
               <ViewBlock>
