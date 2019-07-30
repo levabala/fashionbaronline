@@ -7,6 +7,7 @@
     "@types/node": "12.6.8",
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
+    "classnames": "^2.2.6",
     "csv-generate": "^3.2.3",
     "csv-parse": "^4.4.3",
     "i18next": "^17.0.6",
@@ -43,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.9",
     "@types/line-reader": "^0.0.28",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",

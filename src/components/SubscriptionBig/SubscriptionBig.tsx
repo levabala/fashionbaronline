@@ -42,8 +42,10 @@ const SubscriptionBig = () => {
         </span>
         <Variant cost={250} target={t("subscriptionBig.variants.second")} />
       </div>
-      <SubscriptionBlock />
-      <div className="smallText">{t("subscriptionBig.smallText")}</div>
+      <div className="bottomBlock">
+        <SubscriptionBlock />
+        <div className="smallText">{t("subscriptionBig.smallText")}</div>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import './App.scss';
 import './i18n';
 
-import React, { Suspense, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { Suspense, useEffect, useRef } from 'react';
 
 import ContentBlock from './components/ContentBlock';
 import Description from './components/Description';
@@ -17,19 +17,37 @@ import Title from './components/Title';
 import ViewBlock from './components/ViewBlock';
 
 const App: React.FC = () => {
-  const horizontalContainerRef: React.MutableRefObject<HTMLDivElement> = useRef(
-    <div />
-  );
+  const horizontalContainerRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    const intersectionObserver = new IntersectionObserver(() => {}, {
-      root: horizontalContainerRef.current
+  useEffect(() => {
+    setTimeout(() => {
+      if (!horizontalContainerRef.current) return;
+
+      const horizontalContainer = horizontalContainerRef.current;
+      const viewBlocks = Array.from(
+        horizontalContainer.querySelectorAll(".viewBlock")
+      );
+      let previous: Element;
+      const intersectionObserver = new IntersectionObserver(
+        ([intersection]) => {
+          previous = intersection.isIntersecting
+            ? intersection.target
+            : previous;
+          if (!intersection.isIntersecting && previous)
+            previous.classList.add("activated");
+
+          // console.log(intersection.isIntersecting);
+        },
+        {
+          root: horizontalContainerRef.current,
+          threshold: 0.3
+        }
+      );
+
+      // console.log(viewBlocks);
+      viewBlocks.forEach(block => intersectionObserver.observe(block));
     });
-
-    return () => {
-      cleanup;
-    };
-  }, [input]);
+  });
 
   return (
     <div className="App  parallax">
@@ -46,10 +64,10 @@ const App: React.FC = () => {
             className="parallaxImage2"
           />
         </div>
-        <div className="parallaxLayerBase" ref={horizontalContainerRef}>
+        <div className="parallaxLayerBase">
           <Suspense fallback={null}>
-            <HorizontalLimiter>
-              <ViewBlock>
+            <HorizontalLimiter ref={horizontalContainerRef}>
+              <ViewBlock first>
                 <ContentBlock>
                   <Header />
                   <Title />

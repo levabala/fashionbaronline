@@ -7,6 +7,11 @@ const LanguageSelector = () => {
   const { i18n } = useTranslation();
   const [dropDownVisible, setDropDownVisibility] = useState(false);
 
+  const onClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    makeInvisible();
+    changeLanguage(event);
+  };
+
   const changeLanguage = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -17,11 +22,11 @@ const LanguageSelector = () => {
   const options: Array<{ code: string; value: string }> = [
     {
       code: "en",
-      value: "eng."
+      value: "eng"
     },
     {
       code: "zh",
-      value: "chin."
+      value: "chin"
     }
   ];
 
@@ -44,16 +49,18 @@ const LanguageSelector = () => {
         </div>
         <div className={`dropdownWrapper ${dropDownVisible ? "visible" : ""}`}>
           <div className="languageOptions" onMouseLeave={makeInvisible}>
-            {options.map(({ code, value }) => (
-              <button
-                key={value}
-                data-code={code}
-                onClick={changeLanguage}
-                className={`${i18n.language === code ? "selected" : ""}`}
-              >
-                {value}
-              </button>
-            ))}
+            {options
+              .filter(({ code }) => code !== i18n.language)
+              .map(({ code, value }) => (
+                <button
+                  key={value}
+                  data-code={code}
+                  onClick={onClick}
+                  className={`${i18n.language === code ? "selected" : ""}`}
+                >
+                  {value}
+                </button>
+              ))}
           </div>
         </div>
       </div>

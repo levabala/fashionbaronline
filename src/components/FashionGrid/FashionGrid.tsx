@@ -21,18 +21,11 @@ const containerSize = {
 const imagesPerBlockHorizontal = Math.floor(
   containerSize.width / fashionElemSizeMinMobile
 );
-const imageSize = containerSize.width / imagesPerBlockHorizontal;
-
-const imagesPerBlockVertical = Math.floor(containerSize.height / imageSize);
+const imagesPerBlockVertical = Math.floor(
+  containerSize.height / fashionElemSizeMinMobile
+);
 
 const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
-
-console.log(
-  imageSize,
-  imagesPerBlockHorizontal,
-  imagesPerBlockVertical,
-  imagesPerBlockTotal
-);
 
 const FashionGrid = () => {
   const { t } = useTranslation();
@@ -81,7 +74,7 @@ const FashionGrid = () => {
           [[]]
         )
         .map((group, i) => (
-          <ViewBlock key={`group_${i}`} around>
+          <ViewBlock key={`group_${i}`} around disabled={i !== 0}>
             <div className="fashionGrid">{group}</div>
           </ViewBlock>
         ))}

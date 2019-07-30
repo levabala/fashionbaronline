@@ -1,9 +1,18 @@
 import './HorizontalLimiter.scss';
 
-import React from 'react';
+import React, { forwardRef, Ref } from 'react';
 
-const HorizontalLimiter = ({ children }: { children: React.ReactChild[] }) => {
-  return <div className="horizontalLimiter">{children}</div>;
-};
+const HorizontalLimiter = forwardRef(
+  (
+    { children }: { children: React.ReactChild[] },
+    ref: Ref<HTMLDivElement>
+  ) => {
+    return (
+      <div className="horizontalLimiter" ref={ref}>
+        {children}
+      </div>
+    );
+  }
+);
 
 export default HorizontalLimiter;

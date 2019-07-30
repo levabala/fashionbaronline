@@ -6,12 +6,16 @@ import { useTranslation } from 'react-i18next';
 import Button from '../Button';
 import TextInput from '../TextInput';
 
+const EMAIL_POST_PATH = "http://localhost:3000/subscribe";
+
 const SubscriptionBlock = () => {
   const { t } = useTranslation();
 
   let emptyInputReport = false;
 
   const onSend = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     const inputElem = event.currentTarget.querySelector(
       ".email"
     ) as HTMLInputElement | null;
@@ -23,6 +27,21 @@ const SubscriptionBlock = () => {
 
       emptyInputReport = true;
     } else emptyInputReport = false;
+
+    sendEmail("example@ya.ru");
+  };
+
+  const sendEmail = (emailAddress: string) => {
+    fetch(EMAIL_POST_PATH, {
+      body: JSON.stringify({
+        email: emailAddress
+      }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    });
   };
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -51,7 +70,7 @@ const SubscriptionBlock = () => {
         onKeyDown={onKeyDown}
         // required
       />
-      <Button className="send" type="submit" key="button">
+      <Button className="send" key="button">
         {t("subscriptionSmall.save")}
       </Button>
     </form>

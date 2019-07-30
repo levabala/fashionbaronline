@@ -1,26 +1,62 @@
 @import "../../variables.scss";
 
 .viewBlock {
-  @media screen and (max-width: $mobile-version-max-width) {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+  .animationContainer {
+    height: 100%;
+  }
 
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+  @media screen and (max-width: $mobile-version-max-width) {
+    .animationContainer {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+
+    // outline: solid black 1px;
 
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
 
     &.around {
-      justify-content: space-around;
+      .animationContainer {
+        justify-content: space-around;
+      }
     }
 
     &.fitContent {
-      height: auto;
+      .animationContainer {
+        height: auto;
+      }
     }
 
     -webkit-overflow-scrolling: touch;
+
+    &:not(.first):not(.disabled) {
+      .animationContainer {
+        opacity: 0;
+      }
+
+      &.activated .animationContainer {
+        animation-name: fadeInUp;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          transform: translate3d(0, 40px, 0);
+        }
+
+        to {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+      }
+    }
   }
 
   // @media screen and (max-width: $mobile-fit-content-max-width) {

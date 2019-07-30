@@ -1,6 +1,5 @@
 import fs from 'fs';
 import http from 'http';
-import lineReader from 'line-reader';
 import path from 'path';
 
 const buildPath = "../../build";
@@ -11,7 +10,7 @@ initDataStore();
 
 http
   .createServer((request, response) => {
-    console.log("request starting...");
+    console.log(request.url);
 
     const filePathAbs = request.url || "/";
     const filePath = filePathAbs === "/" ? "/index.html" : filePathAbs;
@@ -61,7 +60,7 @@ function initDataStore(): void {
   fs.existsSync(dataPath) || fs.mkdirSync(dataPath);
   fs.existsSync(emailsStoreFile) || initCSV();
 
-  lineReader.eachLine(emailsStoreFile, line => {
-    console.log(line);
-  });
+  // lineReader.eachLine(emailsStoreFile, line => {
+  //   console.log(line);
+  // });
 }
