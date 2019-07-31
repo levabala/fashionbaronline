@@ -2,6 +2,7 @@ import './ViewBlock.scss';
 
 import classnames from 'classnames';
 import React from 'react';
+import Div100vh from 'react-div-100vh';
 
 const ViewBlock = ({
   children,
@@ -19,7 +20,7 @@ const ViewBlock = ({
   disabled?: boolean;
 }) => {
   return (
-    <div
+    <Div100vh
       className={classnames(
         "viewBlock",
         forced ? "forced" : "",
@@ -30,7 +31,19 @@ const ViewBlock = ({
       )}
     >
       <div className="animationContainer">{children}</div>
-    </div>
+    </Div100vh>
+    // <div
+    //   className={classnames(
+    //     "viewBlock",
+    //     forced ? "forced" : "",
+    //     fitContent ? "fitContent" : "",
+    //     around ? "around" : "",
+    //     first ? "first" : "",
+    //     disabled ? "disabled" : ""
+    //   )}
+    // >
+    //   <div className="animationContainer">{children}</div>
+    // </div>
   );
 };
 

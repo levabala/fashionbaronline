@@ -1,6 +1,6 @@
 import './FashionGrid.scss';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import StyleVariables from '../../variables.scss';
@@ -27,7 +27,7 @@ const imagesPerBlockVertical = Math.floor(
 
 const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
 
-const FashionGrid = () => {
+const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   const { t } = useTranslation();
   const bookingLabel = t("fashionGrid.booking");
 
@@ -45,6 +45,10 @@ const FashionGrid = () => {
       event.currentTarget.classList.add("clickable");
     else event.currentTarget.classList.remove("clickable");
   };
+
+  useEffect(() => {
+    renderCallback();
+  });
 
   const elements = new Array(imagesCount).fill(null).map((_, i) => (
     <div key={i} className="elem">

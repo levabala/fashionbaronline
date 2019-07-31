@@ -19,35 +19,32 @@ import ViewBlock from './components/ViewBlock';
 const App: React.FC = () => {
   const horizontalContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (!horizontalContainerRef.current) return;
+  const onFashionGridRendered = () => {
+    if (!horizontalContainerRef.current) return;
 
-      const horizontalContainer = horizontalContainerRef.current;
-      const viewBlocks = Array.from(
-        horizontalContainer.querySelectorAll(".viewBlock")
-      );
-      let previous: Element;
-      const intersectionObserver = new IntersectionObserver(
-        ([intersection]) => {
-          previous = intersection.isIntersecting
-            ? intersection.target
-            : previous;
-          if (!intersection.isIntersecting && previous)
-            previous.classList.add("activated");
+    const horizontalContainer = horizontalContainerRef.current;
+    const viewBlocks = Array.from(
+      horizontalContainer.querySelectorAll(".viewBlock")
+    );
+    let previous: Element;
+    const intersectionObserver = new IntersectionObserver(
+      ([intersection]) => {
+        previous = intersection.isIntersecting ? intersection.target : previous;
+        if (!intersection.isIntersecting && previous)
+          previous.classList.add("activated");
 
-          // console.log(intersection.isIntersecting);
-        },
-        {
-          root: horizontalContainerRef.current,
-          threshold: 0.3
-        }
-      );
+        // console.log(intersection.isIntersecting);
+      },
+      {
+        root: horizontalContainerRef.current,
+        threshold: 0.3
+      }
+    );
 
-      // console.log(viewBlocks);
-      viewBlocks.forEach(block => intersectionObserver.observe(block));
-    });
-  });
+    // console.log(viewBlocks);
+    // viewBlocks.forEach(block => block.classList.add("registered"));
+    viewBlocks.forEach(block => intersectionObserver.observe(block));
+  };
 
   return (
     <div className="App  parallax">
@@ -89,7 +86,7 @@ const App: React.FC = () => {
                 <MainFeature />
               </ViewBlock>
 
-              <FashionGrid />
+              <FashionGrid renderCallback={onFashionGridRendered} />
 
               <ViewBlock forced around>
                 <SubscriptionBig />

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Button from '../Button';
 import TextInput from '../TextInput';
 
-const EMAIL_POST_PATH = "http://localhost:3000/subscribe";
+const EMAIL_POST_PATH = "http://localhost:8125/subscribe";
 
 const SubscriptionBlock = () => {
   const { t } = useTranslation();
@@ -28,7 +28,8 @@ const SubscriptionBlock = () => {
       emptyInputReport = true;
     } else emptyInputReport = false;
 
-    sendEmail("example@ya.ru");
+    if (inputElem.validity.valid) sendEmail(inputElem.value);
+    // else console.warn("input is invalid!");
   };
 
   const sendEmail = (emailAddress: string) => {
@@ -40,7 +41,8 @@ const SubscriptionBlock = () => {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      method: "POST"
+      method: "POST",
+      mode: "no-cors"
     });
   };
 
@@ -49,7 +51,6 @@ const SubscriptionBlock = () => {
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log(event.key);
     if (event.key === "Escape") event.currentTarget.checkValidity();
 
     if (emptyInputReport) {

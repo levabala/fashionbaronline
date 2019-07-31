@@ -21,7 +21,7 @@
     // "readonly-keyword": true,
     // "readonly-array": true,
     "no-array-mutation": [true, "ignore-new-array"],
-    "no-let": true,
+    "no-let": false,
     "no-object-mutation": true,
     "no-delete": true,
     "no-method-signature": true,
@@ -37,6 +37,7 @@
     "no-console": false,
     "jsx-boolean-value": false,
     "no-var-requires": false,
-    "no-unused-expression": false
+    "no-unused-expression": false,
+    "curly": [true, "as-needed"]
   }
 }
