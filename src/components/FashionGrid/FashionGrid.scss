@@ -11,6 +11,8 @@
   // margin: 0px -#{$app-padding-horizontal};
   margin-top: $gap-mainFeature-fashionGrid;
 
+  transform: translate3d(0px, 0px, 0px);
+
   &::before {
     content: "";
     width: 0;

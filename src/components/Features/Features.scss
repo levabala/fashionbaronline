@@ -34,6 +34,15 @@
     margin-top: -47px;
   }
 
+  @media screen and (max-width: $mobile-hide-table-of-content-max-width) {
+    $mobile-woman-width: 40%;
+
+    grid-template-columns: 1fr $mobile-woman-width;
+    .woman {
+      width: $mobile-woman-width;
+    }
+  }
+
   @media screen and (max-width: $mobile-version-max-width) {
     text-align: center;
     margin-left: 0;

@@ -1,7 +1,7 @@
 import './App.scss';
 import './i18n';
 
-import React, { Suspense, useEffect, useRef } from 'react';
+import React, { Suspense, useRef } from 'react';
 
 import ContentBlock from './components/ContentBlock';
 import Description from './components/Description';

@@ -7,12 +7,14 @@ import StyleVariables from '../../variables.scss';
 import Button from '../Button';
 import ViewBlock from '../ViewBlock';
 
-// const appPaddingVertical = parseFloat(StyleVariables.appPaddingVertical);
+const fashionElemHeightMinMobile = parseFloat(
+  StyleVariables.fashionElemHeightMinMobile
+);
 const fashionElemSizeMinMobile = parseFloat(
   StyleVariables.fashionElemSizeMinMobile
 );
 
-const imagesCount = 25;
+const imagesCount = 15;
 const containerSize = {
   height: window.innerHeight,
   width: window.innerWidth
@@ -22,7 +24,7 @@ const imagesPerBlockHorizontal = Math.floor(
   containerSize.width / fashionElemSizeMinMobile
 );
 const imagesPerBlockVertical = Math.floor(
-  containerSize.height / fashionElemSizeMinMobile
+  containerSize.height / fashionElemHeightMinMobile
 );
 
 const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
@@ -77,6 +79,7 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
           },
           [[]]
         )
+        .filter(block => block.length === imagesPerBlockTotal)
         .map((group, i) => (
           <ViewBlock key={`group_${i}`} around disabled={i !== 0}>
             <div className="fashionGrid">{group}</div>
