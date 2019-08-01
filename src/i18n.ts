@@ -10,7 +10,7 @@ i18n
       /* translation file path */
       loadPath: "/assets/i18n/{{ns}}/{{lng}}.json"
     },
-    debug: true,
+    debug: false,
     defaultNS: "translations",
     fallbackLng: "en",
     interpolation: {

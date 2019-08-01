@@ -1,14 +1,17 @@
 import './TextInput.scss';
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-const TextInput = (
-  props: React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  >
-) => {
-  return <input {...props} />;
-};
+const TextInput = forwardRef(
+  (
+    props: React.DetailedHTMLProps<
+      React.InputHTMLAttributes<HTMLInputElement>,
+      HTMLInputElement
+    >,
+    ref: React.Ref<HTMLInputElement>
+  ) => {
+    return <input ref={ref} {...props} />;
+  }
+);
 
 export default TextInput;

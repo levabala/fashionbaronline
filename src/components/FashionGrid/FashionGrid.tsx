@@ -1,12 +1,14 @@
 import './FashionGrid.scss';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import StyleVariables from '../../variables.scss';
 import Button from '../Button';
 import ViewBlock from '../ViewBlock';
 
+const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 const fashionElemHeightMinMobile = parseFloat(
   StyleVariables.fashionElemHeightMinMobile
 );
@@ -31,6 +33,8 @@ const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
 
 const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   const { t } = useTranslation();
+  const [bags, setBags] = useState<string[]>([]);
+
   const bookingLabel = t("fashionGrid.booking");
 
   const goToBooking = () => {
@@ -49,12 +53,33 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   };
 
   useEffect(() => {
+    console.log("effect");
     renderCallback();
-  });
+
+    const fetchData = async () => {
+      try {
+        const bagsToLoad: Array<{
+          name: string;
+          image: string;
+        }> = await (await fetch(`/bags?count=${imagesCount}`)).json();
+        console.log(bagsToLoad);
+
+        setBags(
+          bagsToLoad.map(({ image, name }) => `data/bagsPhotos/${image}`)
+        );
+      } catch (e) {
+        console.warn(e);
+      }
+    };
+
+    fetchData();
+  }, [renderCallback]);
 
   const elements = new Array(imagesCount).fill(null).map((_, i) => (
     <div key={i} className="elem">
-      <div className="img" />
+      <div className={`img ${bags[i] ? "withImage" : ""}`}>
+        {bags[i] ? <LazyLoadImage src={bags[i]} /> : null}
+      </div>
       <div className="placeholder" onTransitionEnd={onTransitionEnd}>
         <div className="container">
           <div className="name">Chanel</div>
@@ -79,7 +104,11 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
           },
           [[]]
         )
-        .filter(block => block.length === imagesPerBlockTotal)
+        .filter(
+          block =>
+            window.innerWidth > mobileVersionMaxWidth ||
+            block.length === imagesPerBlockTotal
+        )
         .map((group, i) => (
           <ViewBlock key={`group_${i}`} around disabled={i !== 0}>
             <div className="fashionGrid">{group}</div>
