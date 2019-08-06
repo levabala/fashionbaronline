@@ -33,7 +33,7 @@ const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
 
 const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   const { t } = useTranslation();
-  const [bags, setBags] = useState<string[]>([]);
+  const [bags, setBags] = useState<Array<{ name: string; image: string }>>([]);
 
   const bookingLabel = t("fashionGrid.booking");
 
@@ -64,9 +64,7 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
         }> = await (await fetch(`/bags?count=${imagesCount}`)).json();
         console.log(bagsToLoad);
 
-        setBags(
-          bagsToLoad.map(({ image, name }) => `data/bagsPhotos/${image}`)
-        );
+        setBags(bagsToLoad);
       } catch (e) {
         console.warn(e);
       }
@@ -78,11 +76,12 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   const elements = new Array(imagesCount).fill(null).map((_, i) => (
     <div key={i} className="elem">
       <div className={`img ${bags[i] ? "withImage" : ""}`}>
-        {bags[i] ? <LazyLoadImage src={bags[i]} /> : null}
+        {bags[i] ? <LazyLoadImage src={bags[i].image} /> : null}
       </div>
       <div className="placeholder" onTransitionEnd={onTransitionEnd}>
+        <div className="black" />
         <div className="container">
-          <div className="name">Chanel</div>
+          <div className="name">{bags[i] ? bags[i].name : ""}</div>
           <div className="bookWrapper">
             <Button className="book" onClick={goToBooking}>
               {bookingLabel}

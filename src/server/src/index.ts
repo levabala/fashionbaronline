@@ -6,9 +6,13 @@ import url from 'url';
 
 // tslint:disable:no-if-statement
 const buildPath = "../../build";
-const bagsPath = "../../public/data/bags.json";
+const bagsFolderPath = "../../public/data/bags";
+const brendPhotoPrefix = "Depositphotos_";
 const dataPath = "./build/data";
+const bagsClientPath = "data/bags";
 const emailsStoreFile = dataPath + "/emails.csv";
+
+const bagsMapJSON = loadBrendsData(bagsFolderPath);
 
 initDataStore();
 
@@ -46,27 +50,30 @@ http
           return;
         }
 
-        fs.readFile(bagsPath, (error, content) => {
-          if (!error) {
-            const bags: Array<
-              [string, { name: string; image: string }]
-            > = Object.entries(JSON.parse(content.toString()));
-            shuffleArray(bags);
+        const allBags = Object.entries(bagsMapJSON).reduce(
+          (acc: Array<{ name: string; image: string }>, [brend, photos]) => [
+            ...acc,
+            ...photos.map(ph => ({
+              image: `${bagsClientPath}/${brend}/${ph}`,
+              name: brend
+            }))
+          ],
+          []
+        );
+        console.log(allBags);
+        shuffleArray(allBags);
 
-            const countToTake = Math.min(
-              bags.length,
-              parseInt(count as string, 10)
-            );
-            const bagsToTake = bags
-              .slice(0, countToTake)
-              .map(([key, val]) => val);
-            const json = JSON.stringify(bagsToTake);
+        const countToTake = Math.min(
+          allBags.length,
+          parseInt(count as string, 10)
+        );
+        const bagsToTake = allBags.slice(0, countToTake);
+        const json = JSON.stringify(bagsToTake);
 
-            response.writeHead(200, { "Content-Type": "application/json" });
-            response.end(json, "utf-8");
-            return;
-          }
-        });
+        response.writeHead(200, { "Content-Type": "application/json" });
+        response.end(json, "utf-8");
+        return;
+
         break;
       case "/subscribe":
         let body = "";
@@ -108,8 +115,9 @@ http
       default:
         const filePathAbs = request.url || "/";
         const filePath = filePathAbs === "/" ? "/index.html" : filePathAbs;
+        const filePathDecoded = decodeURIComponent(filePath);
 
-        const extname = path.extname(filePath);
+        const extname = path.extname(filePathDecoded);
         const map: Record<string, string> = {
           ".css": "text/css",
           ".jpg": "image/jpg",
@@ -119,7 +127,7 @@ http
         };
         const contentType = map[extname] || "text/html";
 
-        fs.readFile(buildPath + filePath, (error, content) => {
+        fs.readFile(buildPath + filePathDecoded, (error, content) => {
           if (error)
             if (error.code === "ENOENT") {
               console.warn("no such file error");
@@ -211,4 +219,25 @@ function writeData(data: DataType): void {
     if (err) console.warn("Error writing data");
     else console.log(`${data.email} user is written down`);
   });
+}
+
+function loadBrendsData(folder: string): Record<string, string[]> {
+  const brends = fs
+    .readdirSync(folder, { withFileTypes: true })
+    .filter(entity => entity.isDirectory())
+    .map(dir => dir.name);
+
+  const bags: Array<[string, string[]]> = brends.map(brendFolderName => {
+    const photos = fs
+      .readdirSync(`${folder}/${brendFolderName}`, { withFileTypes: true })
+      .filter(entity => entity.name.startsWith(brendPhotoPrefix))
+      .map(ph => ph.name);
+    return [brendFolderName, photos];
+  });
+
+  const bagsMap: Record<string, string[]> = bags.reduce(
+    (acc, [brend, photos]) => ({ ...acc, [brend]: photos }),
+    {}
+  );
+  return bagsMap;
 }

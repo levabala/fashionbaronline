@@ -21,6 +21,12 @@ input {
     color: transparent;
   }
 
+  &.done {
+    border-color: lightgreen;
+  }
+
+  transition: border-color 1s ease-in-out;
+
   // &:valid {
   //   background: green;
   // }

@@ -50,25 +50,43 @@
 
       &.withImage {
         background: none;
+        overflow: hidden;
+        position: relative;
       }
 
       img {
-        height: auto;
-        min-width: 100%;
+        position: absolute;
+        top: -9999px;
+        bottom: -9999px;
+        left: -9999px;
+        right: -9999px;
+        margin: auto;
+        zoom: 0.6;
       }
     }
 
     .placeholder {
-      width: 100%;
-      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
 
-      background: black;
+      // width: 100%;
+      // height: 100%;
+
       opacity: 0;
 
       &:hover,
       &:active {
-        opacity: 0.6;
+        & > .black {
+          opacity: 0.6;
+        }
+
+        opacity: 1;
       }
+
+      transition: opacity 0.5s ease-in-out;
 
       &.clickable {
         & > .container > .bookWrapper > .book {
@@ -76,14 +94,30 @@
         }
       }
 
-      transition: opacity 0.5s ease-in-out;
+      .black {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        background: black;
+        opacity: 0;
+
+        transition: opacity 0.5s ease-in-out;
+      }
 
       .container {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
 
-        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
         padding: $fashionElem-placeholder-padding;
         box-sizing: border-box;
 

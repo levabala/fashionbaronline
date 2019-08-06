@@ -24,7 +24,10 @@
     "no-let": false,
     "no-object-mutation": [
       true,
-      { "ignore-postfix": ["Elem"], "ignore-prefix": ["window."] }
+      {
+        "ignore-postfix": ["Elem"],
+        "ignore-prefix": ["window.", "(window as any)"]
+      }
     ],
     "no-delete": true,
     "no-method-signature": true,

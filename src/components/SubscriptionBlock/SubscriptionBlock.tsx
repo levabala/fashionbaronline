@@ -1,5 +1,6 @@
 import './SubscriptionBlock.scss';
 
+import classNames from 'classnames';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -52,7 +53,7 @@ const SubscriptionBlock = () => {
       },
       method: "POST",
       mode: "no-cors"
-    });
+    }).then(() => ((window as any).emailSent = true));
   };
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -69,29 +70,12 @@ const SubscriptionBlock = () => {
     }
   };
 
-  // const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-  //   // const inputElement = inputBoxRef.current as HTMLInputElement;
-  //   // const blurer = (me: MouseEvent) => {
-  //   //   const clickedElement = me.target as Element;
-  //   //   console.log(
-  //   //     inputElement.id,
-  //   //     clickedElement.id,
-  //   //     clickedElement.id === inputElement.id
-  //   //   );
-  //   //   if (clickedElement.id !== inputElement.id) {
-  //   //     inputElement.blur();
-  //   //     document.removeEventListener("click", blurer);
-  //   //   }
-  //   // };
-  //   // document.addEventListener("click", blurer);
-  // };
-
   return (
     <form className="subscriptionBlock" onSubmit={onSend} action="#">
       <TextInput
         placeholder="example@fashionbar.online"
         key="input"
-        className="email"
+        className={classNames("email", (window as any).emailSent ? "done" : "")}
         type="email"
         onBlur={onBlur}
         onKeyDown={onKeyDown}
