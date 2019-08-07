@@ -12,6 +12,8 @@ const dataPath = "./build/data";
 const bagsClientPath = "data/bags";
 const emailsStoreFile = dataPath + "/emails.csv";
 
+const PORT = 80;
+
 const foldersToCreate = ["./build", "./build/data"];
 
 const bagsMapJSON = loadBrendsData(bagsFolderPath);
@@ -156,8 +158,8 @@ http
         break;
     }
   })
-  .listen(8125);
-console.log("Server running at http://127.0.0.1:8125/");
+  .listen(PORT);
+console.log(`Server running at http://127.0.0.1:${PORT}/`);
 
 function initDataStore(): void {
   function initCSV(): void {
