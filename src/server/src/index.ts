@@ -12,6 +12,8 @@ const dataPath = "./build/data";
 const bagsClientPath = "data/bags";
 const emailsStoreFile = dataPath + "/emails.csv";
 
+const foldersToCreate = ["./build", "./build/data"];
+
 const bagsMapJSON = loadBrendsData(bagsFolderPath);
 
 initDataStore();
@@ -162,7 +164,9 @@ function initDataStore(): void {
     fs.writeFileSync(emailsStoreFile, "");
   }
 
-  fs.existsSync(dataPath) || fs.mkdirSync(dataPath);
+  foldersToCreate.forEach(
+    folder => fs.existsSync(folder) || fs.mkdirSync(folder)
+  );
   fs.existsSync(emailsStoreFile) || initCSV();
 
   // lineReader.eachLine(emailsStoreFile, line => {
