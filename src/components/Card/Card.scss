@@ -1,0 +1,7 @@
+@import "../../variables.scss";
+
+.card {
+  box-shadow: 16px 16px 15px 0px rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: $card-padding;
+}

@@ -1,0 +1,55 @@
+@import "../../variables.scss";
+
+.subscriptionWrapper {
+  display: none;
+  position: absolute;
+
+  left: 5px;
+  top: 5px;
+  bottom: 5px;
+  right: 5px;
+
+  &.visible {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+  .subscriptionDone {
+    position: relative;
+
+    height: 80%;
+    width: 60%;
+    margin: 0 auto;
+
+    .header {
+      padding: 15px 0px;
+      font-size: 30px;
+    }
+
+    .message {
+      font-size: 18px;
+    }
+
+    .closeIcon {
+      position: absolute;
+      top: $card-padding;
+      right: $card-padding;
+
+      width: 25px;
+      height: 25px;
+
+      border-radius: 50%;
+      padding: 5px;
+
+      &:hover {
+        background: #0000000a;
+      }
+    }
+
+    @media screen and (max-width: $mobile-version-max-width) {
+      height: initial;
+      width: initial;
+    }
+  }
+}

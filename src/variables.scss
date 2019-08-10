@@ -4,6 +4,10 @@ $mobile-fit-content-max-width: 950px;
 $mobile-extra-version-max-width: 325px;
 $mobile-block-gap: 5em;
 
+$card-padding: 2.5em;
+
+$subscriptionDone-margin: 35px;
+
 $parallax-perspective: 1px;
 $parallax-translateZ: -1px;
 $parallax-scale-factor: 1 + ($parallax-translateZ * -1) / $parallax-perspective;
@@ -45,7 +49,6 @@ $fashionElem-height-min-mobile: 200px;
 $fashionElem-size-max: 20em;
 $fashionElem-placeholder-padding: 1em;
 
-$subscriptionBig-padding: 2.5em;
 $subscriptionBig-subTitle-gap: 20px;
 $subscriptionBig-costs-padding: 73px 88px;
 $subscriptionBig-costs-padding-mobile: 40px 0px;

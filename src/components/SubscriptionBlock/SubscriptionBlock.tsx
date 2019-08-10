@@ -1,17 +1,18 @@
 import './SubscriptionBlock.scss';
 
 import classNames from 'classnames';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Button from '../Button';
+import SubscriptionDone from '../SubscriptionDone';
 import TextInput from '../TextInput';
 
 const EMAIL_POST_PATH = "http://localhost:8125/subscribe";
 
 const SubscriptionBlock = () => {
   const { t } = useTranslation();
-  // const inputBoxRef = useRef<HTMLInputElement>(null);
+  const [emailSent, setEmailSent] = useState(false);
 
   let emptyInputReport = false;
 
@@ -53,7 +54,11 @@ const SubscriptionBlock = () => {
       },
       method: "POST",
       mode: "no-cors"
-    }).then(() => ((window as any).emailSent = true));
+    }).then(() => {
+      (window as any).emailSent = true;
+    });
+
+    setEmailSent(true);
   };
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -68,6 +73,10 @@ const SubscriptionBlock = () => {
       event.currentTarget.reportValidity();
       emptyInputReport = false;
     }
+  };
+
+  const closeSubscriptionDone = () => {
+    setEmailSent(false);
   };
 
   return (
@@ -87,6 +96,10 @@ const SubscriptionBlock = () => {
       <Button className="send" key="button">
         {t("subscriptionSmall.save")}
       </Button>
+      <SubscriptionDone
+        visible={emailSent}
+        closeCallback={closeSubscriptionDone}
+      />
     </form>
   );
 };
