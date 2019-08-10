@@ -7,7 +7,7 @@
   text-align: left;
 
   .currentLanguage * {
-    text-transform: lowercase;
+    text-transform: capitalize;
   }
 
   .wrapper {
@@ -32,11 +32,11 @@
 
         button {
           padding: 5px 0px;
-          font-size: 15px;
+          // font-size: 15px;
           border-radius: 0;
 
           text-align: left;
-          text-transform: lowercase;
+          text-transform: capitalize;
 
           &.selected {
             text-shadow: 0px 0px 1px black;

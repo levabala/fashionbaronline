@@ -32,4 +32,14 @@
       }
     }
   }
+
+  .tag + .tag {
+    margin-left: $tableOfContents-space-between;
+  }
+
+  .tag {
+    a:hover {
+      text-shadow: 0px 0px 1px black;
+    }
+  }
 }

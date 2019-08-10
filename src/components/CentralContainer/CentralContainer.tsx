@@ -1,18 +1,18 @@
-import './HorizontalLimiter.scss';
+import './CentralContainer.scss';
 
 import React, { forwardRef, Ref } from 'react';
 
-const HorizontalLimiter = forwardRef(
+const CentralContainer = forwardRef(
   (
     { children }: { children: React.ReactChild[] },
     ref: Ref<HTMLDivElement>
   ) => {
     return (
-      <div className="horizontalLimiter" ref={ref}>
+      <div className="centralContainer" ref={ref}>
         {children}
       </div>
     );
   }
 );
 
-export default HorizontalLimiter;
+export default CentralContainer;

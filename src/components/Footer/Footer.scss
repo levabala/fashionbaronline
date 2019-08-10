@@ -5,7 +5,6 @@
 
   margin: 0 auto;
   margin-top: $gap-subscriptionBig-footer;
-  margin-bottom: 10em;
 
   display: flex;
   justify-content: space-around;
@@ -22,6 +21,7 @@
 
       grid-template-columns: repeat(2, min-content);
       grid-column-gap: $footer-contacts-column-gap;
+      grid-row-gap: 5px;
     }
   }
 

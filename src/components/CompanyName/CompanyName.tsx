@@ -8,7 +8,7 @@ const CompanyName = () => {
   return (
     <span className="companyName">
       <span className="name">{t("company.name")}</span>
-      {/* <span className="postfix">{t("company.postfix")}</span> */}
+      <span className="postfix">{t("company.postfix")}</span>
     </span>
   );
 };

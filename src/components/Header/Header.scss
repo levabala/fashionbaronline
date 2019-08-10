@@ -16,18 +16,6 @@
     padding-bottom: $app-padding-vertical-mobile / 4;
   }
 
-  .tableOfContents {
-    .tag + .tag {
-      margin-left: $tableOfContents-space-between;
-    }
-
-    .tag {
-      a:active {
-        text-shadow: 0px 0px 1px black;
-      }
-    }
-  }
-
   .woman1 {
     position: absolute;
     right: -$app-padding-horizontal / 2;
