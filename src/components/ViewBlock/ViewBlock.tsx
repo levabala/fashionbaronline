@@ -23,7 +23,7 @@ const ViewBlock = ({
   first?: boolean;
   disabled?: boolean;
 }) => {
-  return window.innerWidth <= mobileVersionMaxWidth ? (
+  return (
     <Div100vh
       className={classnames(
         "viewBlock",
@@ -36,20 +36,34 @@ const ViewBlock = ({
     >
       <div className="animationContainer">{children}</div>
     </Div100vh>
-  ) : (
-    <div
-      className={classnames(
-        "viewBlock",
-        forced ? "forced" : "",
-        fitContent ? "fitContent" : "",
-        around ? "around" : "",
-        first ? "first" : "",
-        disabled ? "disabled" : ""
-      )}
-    >
-      <div className="animationContainer">{children}</div>
-    </div>
   );
+  // return window.innerWidth <= mobileVersionMaxWidth ? (
+  //   <Div100vh
+  //     className={classnames(
+  //       "viewBlock",
+  //       forced ? "forced" : "",
+  //       fitContent ? "fitContent" : "",
+  //       around ? "around" : "",
+  //       first ? "first" : "",
+  //       disabled ? "disabled" : ""
+  //     )}
+  //   >
+  //     <div className="animationContainer">{children}</div>
+  //   </Div100vh>
+  // ) : (
+  //   <div
+  //     className={classnames(
+  //       "viewBlock",
+  //       forced ? "forced" : "",
+  //       fitContent ? "fitContent" : "",
+  //       around ? "around" : "",
+  //       first ? "first" : "",
+  //       disabled ? "disabled" : ""
+  //     )}
+  //   >
+  //     <div className="animationContainer">{children}</div>
+  //   </div>
+  // );
 };
 
 export default ViewBlock;

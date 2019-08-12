@@ -6,6 +6,11 @@
 
   padding: 0px #{$app-padding-horizontal};
 
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  height: 100vh;
+
   @media screen and (max-width: $mobile-version-max-width) {
     transform: translate3d(0px, 0px, 0px);
 
@@ -13,10 +18,5 @@
 
     scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
-
-    overflow-y: scroll;
-    overflow-x: hidden;
-
-    height: 100vh;
   }
 }

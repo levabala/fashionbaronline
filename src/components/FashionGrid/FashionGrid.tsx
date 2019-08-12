@@ -9,6 +9,9 @@ import Button from '../Button';
 import ViewBlock from '../ViewBlock';
 
 const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
+const fashionElemHeightMin = parseFloat(StyleVariables.fashionElemHeightMin);
+const fashionElemSizeMin = parseFloat(StyleVariables.fashionElemSizeMin);
+
 const fashionElemHeightMinMobile = parseFloat(
   StyleVariables.fashionElemHeightMinMobile
 );
@@ -16,20 +19,29 @@ const fashionElemSizeMinMobile = parseFloat(
   StyleVariables.fashionElemSizeMinMobile
 );
 
-const imagesCount = 15;
 const containerSize = {
   height: window.innerHeight,
   width: window.innerWidth
 };
 
+const mobile = window.innerWidth < mobileVersionMaxWidth;
 const imagesPerBlockHorizontal = Math.floor(
-  containerSize.width / fashionElemSizeMinMobile
+  containerSize.width / (mobile ? fashionElemSizeMinMobile : fashionElemSizeMin)
 );
 const imagesPerBlockVertical = Math.floor(
-  containerSize.height / fashionElemHeightMinMobile
+  containerSize.height /
+    (mobile ? fashionElemHeightMinMobile : fashionElemHeightMin)
 );
 
 const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
+const imagesCount = imagesPerBlockTotal;
+
+console.log(
+  `${mobile ? fashionElemSizeMinMobile : fashionElemSizeMin}x${
+    mobile ? fashionElemHeightMinMobile : fashionElemHeightMin
+  }`
+);
+console.log(`${imagesPerBlockHorizontal}x${imagesPerBlockVertical}`);
 
 const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   const { t } = useTranslation();
@@ -53,7 +65,6 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   };
 
   useEffect(() => {
-    console.log("effect");
     renderCallback();
 
     const fetchData = async () => {
@@ -92,6 +103,11 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
     </div>
   ));
 
+  const cssVariables = {
+    "--columns-count": imagesPerBlockVertical,
+    "--rows-count": imagesPerBlockHorizontal
+  } as React.CSSProperties;
+
   return (
     <>
       {elements
@@ -103,14 +119,12 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
           },
           [[]]
         )
-        .filter(
-          block =>
-            window.innerWidth > mobileVersionMaxWidth ||
-            block.length === imagesPerBlockTotal
-        )
+        .filter(block => block.length === imagesPerBlockTotal)
         .map((group, i) => (
           <ViewBlock key={`group_${i}`} around disabled={i !== 0}>
-            <div className="fashionGrid">{group}</div>
+            <div className="fashionGrid" style={cssVariables}>
+              {group}
+            </div>
           </ViewBlock>
         ))}
     </>

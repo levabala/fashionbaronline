@@ -9,57 +9,61 @@
     margin-bottom: 10em;
   }
 
-  @media screen and (max-width: $mobile-version-max-width) {
+  // @media screen and (max-width: $mobile-version-max-width) {
+  .animationContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    animation-duration: 1s;
+    animation-fill-mode: both;
+
+    & > div {
+      margin-top: 0;
+    }
+  }
+
+  // outline: solid black 1px;
+
+  // height: 100vh;
+  // height: calc(var(--vh, 1vh) * 100);
+
+  &.around {
     .animationContainer {
-      display: flex;
-      justify-content: space-between;
-      flex-direction: column;
+      justify-content: space-around;
+    }
+  }
 
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
+  &.fitContent {
+    .animationContainer {
+      height: auto;
+    }
+  }
 
-      animation-duration: 1s;
-      animation-fill-mode: both;
+  -webkit-overflow-scrolling: touch;
+
+  &:not(.first):not(.disabled) {
+    .animationContainer {
+      opacity: 0;
     }
 
-    // outline: solid black 1px;
-
-    // height: 100vh;
-    // height: calc(var(--vh, 1vh) * 100);
-
-    &.around {
-      .animationContainer {
-        justify-content: space-around;
-      }
+    &.activated .animationContainer {
+      animation-name: fadeInUp;
     }
 
-    &.fitContent {
-      .animationContainer {
-        height: auto;
-      }
-    }
-
-    -webkit-overflow-scrolling: touch;
-
-    &:not(.first):not(.disabled) {
-      .animationContainer {
-        opacity: 0;
+    @keyframes fadeInUp {
+      from {
+        transform: translate3d(0, 40px, 0);
       }
 
-      &.activated .animationContainer {
-        animation-name: fadeInUp;
+      to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
       }
-
-      @keyframes fadeInUp {
-        from {
-          transform: translate3d(0, 40px, 0);
-        }
-
-        to {
-          transform: translate3d(0, 0, 0);
-          opacity: 1;
-        }
-      }
+      // }
     }
   }
 
