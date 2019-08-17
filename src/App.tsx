@@ -133,6 +133,8 @@ const App: React.FC = () => {
     //   ({ touches }) => (lastTouchPosition = touches[0].clientY)
     // );
 
+
+    if (window.innerWidth > mobileVersionMaxWidth)
     disableBodyScroll(document.body);
     // disableBodyScroll(centralContainer);
   };
@@ -140,7 +142,7 @@ const App: React.FC = () => {
   window.addEventListener("scroll", waitForScrollEnd);
 
   return (
-    <div className="App  parallax">
+    <div className="App">
       <Suspense fallback={null}>
         <CentralContainer ref={centralContainerRef}>
           <ViewBlock

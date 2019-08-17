@@ -18,5 +18,7 @@
 
     scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
+
+    overflow-y: scroll;
   }
 }

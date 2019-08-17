@@ -1,14 +1,2 @@
 @import "variables.scss";
 
-// .App {
-// }
-
-.mainContainer {
-  position: relative;
-  padding: $app-padding;
-
-  @media screen and (max-width: $mobile-version-max-width) {
-    overflow: hidden;
-    height: 100vh;
-  }
-}

@@ -4,9 +4,9 @@ import classnames from 'classnames';
 import React from 'react';
 import Div100vh from 'react-div-100vh';
 
-import StyleVariables from '../../variables.scss';
+// import StyleVariables from '../../variables.scss';
 
-const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
+// const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 
 const ViewBlock = ({
   children,
