@@ -1,22 +1,22 @@
-import './App.scss';
-import './i18n';
+import "./App.scss";
+import "./i18n";
 
-import { disableBodyScroll } from 'body-scroll-lock';
-import React, { Suspense, useRef } from 'react';
+import { disableBodyScroll } from "body-scroll-lock";
+import React, { Suspense, useRef } from "react";
 
-import CentralContainer from './components/CentralContainer';
-import ContentBlock from './components/ContentBlock';
-import Description from './components/Description';
-import FashionGrid from './components/FashionGrid';
-import Features from './components/Features';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import MainFeature from './components/MainFeature';
-import SubscriptionBig from './components/SubscriptionBig';
-import SubscriptionSmall from './components/SubscriptionSmall';
-import Title from './components/Title';
-import ViewBlock from './components/ViewBlock';
-import StyleVariables from './variables.scss';
+import CentralContainer from "./components/CentralContainer";
+import ContentBlock from "./components/ContentBlock";
+import Description from "./components/Description";
+import FashionGrid from "./components/FashionGrid";
+import Features from "./components/Features";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import MainFeature from "./components/MainFeature";
+import SubscriptionBig from "./components/SubscriptionBig";
+import SubscriptionSmall from "./components/SubscriptionSmall";
+import Title from "./components/Title";
+import ViewBlock from "./components/ViewBlock";
+import StyleVariables from "./variables.scss";
 
 const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 
@@ -58,6 +58,10 @@ const App: React.FC = () => {
     const centralContainer = centralContainerRef.current;
     if (!centralContainer) return;
 
+    // const previousBlock = centralContainer.children[currentBlockIndex];
+    // previousBlock.classList.add("disactivated");
+    // console.log(previousBlock);
+
     currentBlockIndex = Math.min(
       Math.max(currentBlockIndex + delta, 0),
       centralContainer.children.length - 1
@@ -93,8 +97,18 @@ const App: React.FC = () => {
     let previous: Element;
     const intersectionObserver = new IntersectionObserver(
       ([intersection]) => {
+        // const preprevious = previous;
         previous = intersection.isIntersecting ? intersection.target : previous;
-        // console.log(previous);
+        // console.log(preprevious, previous);
+
+        // console.log(previous !== preprevious);
+        // if (previous !== preprevious && preprevious)
+        //   preprevious.classList.add("disactivated");
+
+        // if (!intersection.isIntersecting && previous) {
+        //   previous.classList.add("activated");
+        //   previous.classList.remove("disactivated");
+        // }
 
         if (!intersection.isIntersecting && previous)
           previous.classList.add("activated");
@@ -120,21 +134,20 @@ const App: React.FC = () => {
       // console.log(scrollAccumulator);
     };
 
-    // let lastTouchPosition = 0;
+    let lastTouchPosition = 0;
     document.body.addEventListener("wheel", ({ deltaY }) =>
       scrollHandler(deltaY)
     );
-    // document.body.addEventListener("touchmove", ({ touches }) => {
-    //   scrollHandler(lastTouchPosition - touches[0].clientY);
-    //   lastTouchPosition = touches[0].clientY;
-    // });
-    // document.body.addEventListener(
-    //   "touchstart",
-    //   ({ touches }) => (lastTouchPosition = touches[0].clientY)
-    // );
+    document.body.addEventListener("touchmove", ({ touches }) => {
+      scrollHandler(lastTouchPosition - touches[0].clientY);
+      lastTouchPosition = touches[0].clientY;
+    });
+    document.body.addEventListener(
+      "touchstart",
+      ({ touches }) => (lastTouchPosition = touches[0].clientY)
+    );
 
-
-    if (window.innerWidth > mobileVersionMaxWidth)
+    // if (window.innerWidth > mobileVersionMaxWidth)
     disableBodyScroll(document.body);
     // disableBodyScroll(centralContainer);
   };

@@ -21,6 +21,8 @@
     animation-duration: 1s;
     animation-fill-mode: both;
 
+    transition: opacity 1s ease-in-out;
+
     & > div {
       margin-top: 0;
     }
@@ -52,6 +54,12 @@
 
     &.activated .animationContainer {
       animation-name: fadeInUp;
+      opacity: 1;
+    }
+
+    &.disactivated .animationContainer {
+      animation-name: fadeOutDown;
+      opacity: 0;
     }
 
     @keyframes fadeInUp {
@@ -61,7 +69,17 @@
 
       to {
         transform: translate3d(0, 0, 0);
-        opacity: 1;
+      }
+      // }
+    }
+
+    @keyframes fadeOutUp {
+      from {
+        transform: translate3d(0, 40px, 0);
+      }
+
+      to {
+        transform: translate3d(0, 0, 0);
       }
       // }
     }

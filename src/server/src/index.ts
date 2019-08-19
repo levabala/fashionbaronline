@@ -1,8 +1,8 @@
-import fs from 'fs';
-import http from 'http';
-import lineReader, { eachLine } from 'line-reader';
-import path from 'path';
-import url from 'url';
+import fs from "fs";
+import http from "http";
+import lineReader, { eachLine } from "line-reader";
+import path from "path";
+import url from "url";
 
 // tslint:disable:no-if-statement
 const buildPath = "../../build";
@@ -12,7 +12,7 @@ const dataPath = "./build/data";
 const bagsClientPath = "data/bags";
 const emailsStoreFile = dataPath + "/emails.csv";
 
-const PORT = 80;
+const PORT = 3000;
 
 const foldersToCreate = ["./build", "./build/data"];
 
@@ -134,7 +134,7 @@ http
         fs.readFile(buildPath + filePathDecoded, (error, content) => {
           if (error)
             if (error.code === "ENOENT") {
-              console.warn("no such file error");
+              console.warn("no such file error", filePathDecoded);
               fs.readFile("./404.html", (err, errContent) => {
                 response.writeHead(200, { "Content-Type": contentType });
                 response.end(errContent, "utf-8");
