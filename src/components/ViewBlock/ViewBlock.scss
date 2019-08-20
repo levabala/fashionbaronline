@@ -114,10 +114,8 @@
   }
 
   @media screen and (max-width: $mobile-version-max-width) {
-    position: fixed;
+    position: absolute;
     left: $app-padding-horizontal-mobile;
-    top: $app-padding-vertical-mobile / 2;
     right: $app-padding-horizontal-mobile;
-    bottom: $app-padding-vertical-mobile / 2;
   }
 }

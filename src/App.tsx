@@ -21,12 +21,19 @@ import StyleVariables from './variables.scss';
 const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 const fadeAnimationDuration = parseFloat(StyleVariables.fadeAnimationDuration);
 
+// tslint:disable
+function toggleFullScreen() {
+  if (window.innerWidth <= mobileVersionMaxWidth) window.scrollTo(0, 1);
+}
+// tslint:enable
+
 const App: React.FC = () => {
   const centralContainerRef = useRef<HTMLDivElement>(null);
 
   const triggerScrollValue =
     window.innerWidth > mobileVersionMaxWidth ? 200 : 50;
-  const afterScrollBlindTime = 300;
+  const afterScrollBlindTime =
+    window.innerWidth > mobileVersionMaxWidth ? 600 : 300;
   let blindTime = false;
   let scrollAccumulator = 0;
 
@@ -40,6 +47,9 @@ const App: React.FC = () => {
 
   let scrollTimeout: NodeJS.Timeout;
   const waitForScrollEnd = () => {
+    // document.webkitExitFullscreen();
+    // if (isFull) document.exitFullscreen();
+
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
       isScrolling = false;
@@ -61,10 +71,14 @@ const App: React.FC = () => {
     if (!centralContainer) return;
 
     const previousBlock = centralContainer.children[currentBlockIndex];
+    const previousIndex = currentBlockIndex;
     currentBlockIndex = Math.min(
       Math.max(currentBlockIndex + delta, 0),
       centralContainer.children.length - 1
     );
+
+    if (currentBlockIndex === previousIndex) return;
+
     const block = centralContainer.children[currentBlockIndex];
 
     if (window.innerWidth > mobileVersionMaxWidth)
@@ -93,6 +107,7 @@ const App: React.FC = () => {
   };
 
   const onFashionGridRendered = () => {
+    toggleFullScreen();
     if (!centralContainerRef.current) return;
 
     const centralContainer = centralContainerRef.current;
@@ -139,6 +154,7 @@ const App: React.FC = () => {
 
     // let lastScrollY = window.scrollY;
     const scrollHandler = (deltaY: number) => {
+      toggleFullScreen();
       if (blindTime) return;
 
       scrollAccumulator += deltaY;
@@ -160,9 +176,9 @@ const App: React.FC = () => {
       ({ touches }) => (lastTouchPosition = touches[0].clientY)
     );
 
-    // if (window.innerWidth > mobileVersionMaxWidth)
     disableBodyScroll(document.body);
-    // disableBodyScroll(centralContainer);
+    // if (window.innerWidth <= mobileVersionMaxWidth)
+    //   disableBodyScroll(centralContainer);
   };
 
   window.addEventListener("scroll", waitForScrollEnd);
