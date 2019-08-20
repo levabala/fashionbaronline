@@ -18,10 +18,10 @@
     scroll-snap-align: start;
     scroll-snap-stop: always;
 
-    animation-duration: 1s;
+    animation-duration: $fade-animation-duration;
     animation-fill-mode: both;
 
-    transition: opacity 1s ease-in-out;
+    transition: opacity $fade-animation-duration ease-in-out;
 
     & > div {
       margin-top: 0;
@@ -47,9 +47,15 @@
 
   -webkit-overflow-scrolling: touch;
 
-  &:not(.first):not(.disabled) {
+  // &:not(.first):not(.disabled) {
+  &:not(.disabled) {
     .animationContainer {
       opacity: 0;
+    }
+
+    &.reactivated .animationContainer {
+      animation-name: fadeInDown;
+      opacity: 1;
     }
 
     &.activated .animationContainer {
@@ -58,7 +64,7 @@
     }
 
     &.disactivated .animationContainer {
-      animation-name: fadeOutDown;
+      animation-name: fadeOutUp;
       opacity: 0;
     }
 
@@ -73,9 +79,9 @@
       // }
     }
 
-    @keyframes fadeOutUp {
+    @keyframes fadeInDown {
       from {
-        transform: translate3d(0, 40px, 0);
+        transform: translate3d(0, -40px, 0);
       }
 
       to {
@@ -83,11 +89,35 @@
       }
       // }
     }
+
+    @keyframes fadeOutUp {
+      from {
+        transform: translate3d(0, 0, 0);
+      }
+
+      to {
+        transform: translate3d(0, -40px, 0);
+      }
+      // }
+    }
+
+    @keyframes fadeOutDown {
+      from {
+        transform: translate3d(0, 0, 0);
+      }
+
+      to {
+        transform: translate3d(0, 40px, 0);
+      }
+      // }
+    }
   }
 
-  // @media screen and (max-width: $mobile-fit-content-max-width) {
-  //   &:not(.forced) {
-  //     max-height: fit-content;
-  //   }
-  // }
+  @media screen and (max-width: $mobile-version-max-width) {
+    position: fixed;
+    left: $app-padding-horizontal-mobile;
+    top: $app-padding-vertical-mobile / 2;
+    right: $app-padding-horizontal-mobile;
+    bottom: $app-padding-vertical-mobile / 2;
+  }
 }
