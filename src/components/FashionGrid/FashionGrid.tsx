@@ -121,7 +121,7 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
         )
         .filter(block => block.length === imagesPerBlockTotal)
         .map((group, i) => (
-          <ViewBlock key={`group_${i}`} around disabled={i !== 0}>
+          <ViewBlock key={`group_${i}`} around disabled={i !== 0} noAnimations>
             <div className="fashionGrid" style={cssVariables}>
               {group}
             </div>

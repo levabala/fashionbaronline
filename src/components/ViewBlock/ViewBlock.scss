@@ -21,11 +21,13 @@
     animation-duration: $fade-animation-duration;
     animation-fill-mode: both;
 
-    transition: opacity $fade-animation-duration ease-in-out;
-
     & > div {
       margin-top: 0;
     }
+  }
+
+  &:not(.noAnimations) .animationContainer {
+    transition: opacity $fade-animation-duration ease-in-out;
   }
 
   // outline: solid black 1px;
@@ -113,9 +115,7 @@
     }
   }
 
-  @media screen and (max-width: $mobile-version-max-width) {
-    position: absolute;
-    left: $app-padding-horizontal-mobile;
-    right: $app-padding-horizontal-mobile;
-  }
+  position: absolute;
+  left: $app-padding-horizontal-mobile;
+  right: $app-padding-horizontal-mobile;
 }

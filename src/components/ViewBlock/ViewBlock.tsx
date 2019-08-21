@@ -12,7 +12,8 @@ const ViewBlock = ({
   around,
   fitContent,
   first,
-  disabled
+  disabled,
+  noAnimations
 }: {
   children: React.ReactChild[] | React.ReactChild;
   forced?: boolean;
@@ -20,6 +21,7 @@ const ViewBlock = ({
   fitContent?: boolean;
   first?: boolean;
   disabled?: boolean;
+  noAnimations?: boolean;
 }) => {
   return (
     <Div100vh
@@ -29,7 +31,8 @@ const ViewBlock = ({
         fitContent ? "fitContent" : "",
         around ? "around" : "",
         first ? "first" : "",
-        disabled ? "disabled" : ""
+        disabled ? "disabled" : "",
+        noAnimations ? "noAnimations" : ""
       )}
     >
       <div className="animationContainer">{children}</div>

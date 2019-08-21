@@ -31,7 +31,7 @@ const App: React.FC = () => {
   const centralContainerRef = useRef<HTMLDivElement>(null);
 
   const triggerScrollValue =
-    window.innerWidth > mobileVersionMaxWidth ? 200 : 50;
+    window.innerWidth > mobileVersionMaxWidth ? 150 : 50;
   const afterScrollBlindTime =
     window.innerWidth > mobileVersionMaxWidth ? 600 : 300;
   let blindTime = false;
@@ -39,33 +39,13 @@ const App: React.FC = () => {
 
   const scrollCheck = () => {
     // console.log(scrollAccumulator);
-    if (Math.abs(scrollAccumulator) > triggerScrollValue && !isScrolling) {
+    if (Math.abs(scrollAccumulator) > triggerScrollValue) {
       scrollPage((Math.sign(scrollAccumulator) || 1) as 1 | -1);
       scrollAccumulator = 0;
     }
   };
 
-  let scrollTimeout: NodeJS.Timeout;
-  const waitForScrollEnd = () => {
-    // document.webkitExitFullscreen();
-    // if (isFull) document.exitFullscreen();
-
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      isScrolling = false;
-      scrollCheck();
-      scrollAccumulator = 0;
-
-      // const centralContainer = centralContainerRef.current;
-      // if (!centralContainer) return;
-      // const block = centralContainer.children[currentBlockIndex];
-
-      // block.classList.add("activated");
-    }, 60);
-  };
-
   let currentBlockIndex = 0;
-  let isScrolling = false;
   const scrollPage = (delta: 1 | -1) => {
     const centralContainer = centralContainerRef.current;
     if (!centralContainer) return;
@@ -81,23 +61,16 @@ const App: React.FC = () => {
 
     const block = centralContainer.children[currentBlockIndex];
 
-    if (window.innerWidth > mobileVersionMaxWidth)
-      block.scrollIntoView({ behavior: "smooth", block: "center" });
-    else {
-      previousBlock.classList.remove("activated");
-      previousBlock.classList.remove("reactivated");
+    previousBlock.classList.remove("activated");
+    previousBlock.classList.remove("reactivated");
 
-      setTimeout(() => {
-        if (delta === -1) block.classList.add("reactivated");
-        else block.classList.add("activated");
+    setTimeout(() => {
+      if (delta === -1) block.classList.add("reactivated");
+      else block.classList.add("activated");
 
-        block.classList.remove("disactivated");
-        previousBlock.classList.add("disactivated");
-      }, fadeAnimationDuration * 1000);
-    }
-
-    isScrolling = true;
-    waitForScrollEnd();
+      block.classList.remove("disactivated");
+      previousBlock.classList.add("disactivated");
+    }, fadeAnimationDuration * 1000);
 
     blindTime = true;
     setTimeout(() => (blindTime = false), afterScrollBlindTime);
@@ -180,8 +153,6 @@ const App: React.FC = () => {
     // if (window.innerWidth <= mobileVersionMaxWidth)
     //   disableBodyScroll(centralContainer);
   };
-
-  window.addEventListener("scroll", waitForScrollEnd);
 
   return (
     <div className="App">
