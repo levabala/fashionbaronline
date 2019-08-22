@@ -87,7 +87,9 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   const elements = new Array(imagesCount).fill(null).map((_, i) => (
     <div key={i} className="elem">
       <div className={`img ${bags[i] ? "withImage" : ""}`}>
-        {bags[i] ? <LazyLoadImage src={bags[i].image} /> : null}
+        {bags[i] ? (
+          <LazyLoadImage src={bags[i].image} visibleByDefault />
+        ) : null}
       </div>
       <div className="placeholder" onTransitionEnd={onTransitionEnd}>
         <div className="black" />

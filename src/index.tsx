@@ -24,5 +24,4 @@ if (isAndroid)
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
-// TODO: make it registered
-serviceWorker.unregister();
+serviceWorker.register();
