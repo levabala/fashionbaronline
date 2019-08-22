@@ -12,7 +12,7 @@
   // margin-top: $gap-mainFeature-fashionGrid;
 
   position: absolute;
-  top: 0;
+  top: $fashionGrid-padding;
   bottom: $fashionGrid-padding;
   left: 0;
   right: 0;
@@ -163,7 +163,7 @@
   // }
 
   // @media screen and (max-width: $mobile-version-max-width) {
-  height: 100%;
+  // height: 100%;
 
   // grid-auto-rows: 1fr;
 

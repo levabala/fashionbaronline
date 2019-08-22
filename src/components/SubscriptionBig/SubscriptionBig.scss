@@ -5,6 +5,12 @@
   margin: 0 auto;
   // margin-top: $gap-fashionGrid-subscriptionBig;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 80%;
+
   position: relative;
 
   .decorationImage {

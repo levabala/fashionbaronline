@@ -3,7 +3,6 @@ import './FashionGrid.scss';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { BounceLoader } from 'react-spinners';
 
 import StyleVariables from '../../variables.scss';
 import Button from '../Button';
@@ -11,7 +10,7 @@ import ViewBlock from '../ViewBlock';
 
 const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 const fashionElemHeightMin = parseFloat(StyleVariables.fashionElemHeightMin);
-const fashionElemSizeMin = parseFloat(StyleVariables.fashionElemSizeMin);
+const fashionElemWidthMin = parseFloat(StyleVariables.fashionElemWidthMin);
 
 const fashionElemHeightMinMobile = parseFloat(
   StyleVariables.fashionElemHeightMinMobile
@@ -27,7 +26,8 @@ const containerSize = {
 
 const mobile = window.innerWidth < mobileVersionMaxWidth;
 const imagesPerBlockHorizontal = Math.floor(
-  containerSize.width / (mobile ? fashionElemSizeMinMobile : fashionElemSizeMin)
+  containerSize.width /
+    (mobile ? fashionElemSizeMinMobile : fashionElemWidthMin)
 );
 const imagesPerBlockVertical = Math.floor(
   containerSize.height /
@@ -38,13 +38,11 @@ const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
 const imagesCount = imagesPerBlockTotal;
 
 console.log(
-  `${mobile ? fashionElemSizeMinMobile : fashionElemSizeMin}x${
+  `${mobile ? fashionElemSizeMinMobile : fashionElemWidthMin}x${
     mobile ? fashionElemHeightMinMobile : fashionElemHeightMin
   }`
 );
 console.log(`${imagesPerBlockHorizontal}x${imagesPerBlockVertical}`);
-
-const LL = LazyLoadImage as any;
 
 const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   const { t } = useTranslation();
@@ -53,12 +51,7 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   const bookingLabel = t("fashionGrid.booking");
 
   const goToBooking = () => {
-    (window.document.getElementById(
-      "emailSubscriptionBox"
-    ) as HTMLDivElement).scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
+    (window as any).scrollPage(1);
   };
 
   const onTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
@@ -91,7 +84,7 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
     <div key={i} className="elem">
       <div className={`img ${bags[i] ? "withImage" : ""}`}>
         {bags[i] ? (
-          <LL src={bags[i].image} placeholder={BounceLoader} visibleByDefault />
+          <LazyLoadImage src={bags[i].image} visibleByDefault />
         ) : null}
       </div>
       <div className="placeholder" onTransitionEnd={onTransitionEnd}>

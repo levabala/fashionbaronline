@@ -14,12 +14,14 @@
   @media screen and (max-width: $mobile-version-max-width) {
     padding-top: $app-padding-vertical-mobile / 2;
     padding-bottom: $app-padding-vertical-mobile / 4;
+
+    grid-template-columns: 1fr 1fr;
   }
 
   .woman1 {
     position: absolute;
     right: -$app-padding-horizontal / 2;
-    // top: -$app-padding-vertical / 2;
+    top: $app-padding-vertical / 2;
 
     // width: 648px;
     // height: 713px;

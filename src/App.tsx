@@ -79,6 +79,8 @@ const App: React.FC = () => {
     console.log("scroll to", currentBlockIndex);
   };
 
+  (window as any).scrollPage = scrollPage;
+
   const onFashionGridRendered = () => {
     toggleFullScreen();
     if (!centralContainerRef.current) return;
