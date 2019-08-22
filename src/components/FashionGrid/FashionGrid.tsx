@@ -3,6 +3,7 @@ import './FashionGrid.scss';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { BounceLoader } from 'react-spinners';
 
 import StyleVariables from '../../variables.scss';
 import Button from '../Button';
@@ -42,6 +43,8 @@ console.log(
   }`
 );
 console.log(`${imagesPerBlockHorizontal}x${imagesPerBlockVertical}`);
+
+const LL = LazyLoadImage as any;
 
 const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   const { t } = useTranslation();
@@ -88,7 +91,7 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
     <div key={i} className="elem">
       <div className={`img ${bags[i] ? "withImage" : ""}`}>
         {bags[i] ? (
-          <LazyLoadImage src={bags[i].image} visibleByDefault />
+          <LL src={bags[i].image} placeholder={BounceLoader} visibleByDefault />
         ) : null}
       </div>
       <div className="placeholder" onTransitionEnd={onTransitionEnd}>
