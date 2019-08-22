@@ -9,7 +9,14 @@
   grid-template-columns: repeat(var(--rows-count), 1fr);
   grid-template-rows: repeat(var(--columns-count), 1fr);
   // margin: 0px -#{$app-padding-horizontal};
-  margin-top: $gap-mainFeature-fashionGrid;
+  // margin-top: $gap-mainFeature-fashionGrid;
+
+  position: absolute;
+  top: 0;
+  bottom: $fashionGrid-padding;
+  left: 0;
+  right: 0;
+  // padding: $fashionGrid-padding;
 
   // &::before {
   //   content: "";
@@ -61,7 +68,7 @@
         left: -9999px;
         right: -9999px;
         margin: auto;
-        // zoom: 0.6;
+        zoom: 0.9;
         height: 100%;
       }
     }
@@ -160,9 +167,9 @@
 
   // grid-auto-rows: 1fr;
 
-  margin-left: -$app-padding-horizontal-mobile;
-  margin-right: -$app-padding-horizontal-mobile;
-  margin-top: 0;
+  // margin-left: -$app-padding-horizontal-mobile;
+  // margin-right: -$app-padding-horizontal-mobile;
+  // margin-top: 0;
   // &::before {
   //   content: inherit;
   //   width: inherit;

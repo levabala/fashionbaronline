@@ -5,6 +5,8 @@
   display: flex;
   flex-direction: column-reverse;
 
+  text-align: center;
+
   @media screen and (max-width: $mobile-hide-table-of-content-max-width) {
     display: none;
   }

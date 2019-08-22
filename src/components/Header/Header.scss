@@ -3,11 +3,11 @@
 .header {
   position: relative;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  // display: grid;
-  // grid-template-columns: 1fr 0.87fr 1fr;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 
   padding-top: $app-padding-vertical / 2;
 

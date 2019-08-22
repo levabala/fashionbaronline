@@ -21,9 +21,9 @@
     animation-duration: $fade-animation-duration;
     animation-fill-mode: both;
 
-    & > div {
-      margin-top: 0;
-    }
+    // & > div {
+    //   margin-top: 0;
+    // }
   }
 
   &:not(.noAnimations) .animationContainer {
@@ -55,14 +55,20 @@
       opacity: 0;
     }
 
+    pointer-events: none;
+
     &.reactivated .animationContainer {
       animation-name: fadeInDown;
       opacity: 1;
+
+      pointer-events: initial;
     }
 
     &.activated .animationContainer {
       animation-name: fadeInUp;
       opacity: 1;
+
+      pointer-events: initial;
     }
 
     &.disactivated .animationContainer {
@@ -115,7 +121,7 @@
     }
   }
 
-  position: absolute;
+  position: fixed;
   left: $app-padding-horizontal-mobile;
   right: $app-padding-horizontal-mobile;
 }
