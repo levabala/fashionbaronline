@@ -13,6 +13,7 @@ const EMAIL_POST_PATH = "http://localhost:8125/subscribe";
 const SubscriptionBlock = () => {
   const { t } = useTranslation();
   const [emailSent, setEmailSent] = useState(false);
+  const [sendTry, setSendTry] = useState(false);
 
   let emptyInputReport = false;
 
@@ -32,6 +33,7 @@ const SubscriptionBlock = () => {
     } else emptyInputReport = false;
 
     if (inputElem.validity.valid) sendEmail(inputElem.value);
+
     // else console.warn("input is invalid!");
   };
 
@@ -79,12 +81,20 @@ const SubscriptionBlock = () => {
     setEmailSent(false);
   };
 
+  const sendButtonClick = () => {
+    setSendTry(true);
+  };
+
   return (
     <form className="subscriptionBlock" onSubmit={onSend} action="#">
       <TextInput
         placeholder="example@fashionbar.online"
         key="input"
-        className={classNames("email", (window as any).emailSent ? "done" : "")}
+        className={classNames(
+          "email",
+          (window as any).emailSent ? "done" : "",
+          sendTry ? "sendTried" : ""
+        )}
         type="email"
         onBlur={onBlur}
         onKeyDown={onKeyDown}
@@ -93,7 +103,7 @@ const SubscriptionBlock = () => {
         // id={v4()}
         // required
       />
-      <Button className="send" key="button">
+      <Button className="send" key="button" onClick={sendButtonClick}>
         {t("subscriptionSmall.save")}
       </Button>
       <SubscriptionDone

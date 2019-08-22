@@ -31,7 +31,7 @@ input {
   //   background: green;
   // }
 
-  &:invalid {
+  &:invalid.sendTried {
     border-color: #ff0000;
     background: #ffeeee;
   }
