@@ -1,8 +1,8 @@
-import fs from "fs";
-import http from "http";
-import lineReader, { eachLine } from "line-reader";
-import path from "path";
-import url from "url";
+import fs from 'fs';
+import http from 'http';
+import lineReader, { eachLine } from 'line-reader';
+import path from 'path';
+import url from 'url';
 
 // tslint:disable:no-if-statement
 const buildPath = "../../build";
@@ -26,11 +26,13 @@ interface DataType {
   location: { country: string; city: string };
 }
 
-function shuffleArray(array: any[]): void {
+function shuffleArray(array: any[]): any[] {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
+
+  return array;
 }
 
 http
@@ -42,12 +44,12 @@ http
 
     switch (requestPath) {
       case "/bags":
-        const { count } = query;
+        const { count: countString } = query;
 
         if (
-          !count &&
-          typeof count === "string" &&
-          typeof parseInt(count, 10) === "number"
+          !countString &&
+          typeof countString === "string" &&
+          typeof parseInt(countString, 10) === "number"
         ) {
           response.writeHead(400);
           response.end();
@@ -67,11 +69,13 @@ http
         console.log(allBags);
         shuffleArray(allBags);
 
-        const countToTake = Math.min(
-          allBags.length,
-          parseInt(count as string, 10)
-        );
-        const bagsToTake = allBags.slice(0, countToTake);
+        const count = parseInt(countString as string, 10);
+        const countToTake = Math.min(allBags.length, count);
+        const extraBags = Math.max(count - allBags.length, 0);
+
+        const bagsToTake = allBags
+          .slice(0, countToTake)
+          .concat(shuffleArray(allBags).slice(0, extraBags));
         const json = JSON.stringify(bagsToTake);
 
         response.writeHead(200, { "Content-Type": "application/json" });
