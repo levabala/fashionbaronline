@@ -16,7 +16,7 @@ const fashionElemHeightMinMobile = parseFloat(
   StyleVariables.fashionElemHeightMinMobile
 );
 const fashionElemSizeMinMobile = parseFloat(
-  StyleVariables.fashionElemSizeMinMobile
+  StyleVariables.fashionElemWidthMinMobile
 );
 
 const containerSize = {
