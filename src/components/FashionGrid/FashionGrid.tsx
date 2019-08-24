@@ -25,14 +25,11 @@ const containerSize = {
 };
 
 const mobile = window.innerWidth < mobileVersionMaxWidth;
-const imagesPerBlockHorizontal = Math.floor(
-  containerSize.width /
-    (mobile ? fashionElemSizeMinMobile : fashionElemWidthMin)
-);
-const imagesPerBlockVertical = Math.floor(
-  containerSize.height /
-    (mobile ? fashionElemHeightMinMobile : fashionElemHeightMin)
-);
+const imageWidth = mobile ? fashionElemSizeMinMobile : fashionElemWidthMin;
+const imageHeight = mobile ? fashionElemHeightMinMobile : fashionElemHeightMin;
+
+const imagesPerBlockHorizontal = Math.floor(containerSize.width / imageWidth);
+const imagesPerBlockVertical = Math.floor(containerSize.height / imageHeight);
 
 const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
 const imagesCount = imagesPerBlockTotal;
@@ -43,6 +40,8 @@ console.log(
   }`
 );
 console.log(`${imagesPerBlockHorizontal}x${imagesPerBlockVertical}`);
+
+const fitToWidth = imageWidth >= imageHeight;
 
 const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   const { t } = useTranslation();
@@ -84,7 +83,11 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
     <div key={i} className="elem">
       <div className={`img ${bags[i] ? "withImage" : ""}`}>
         {bags[i] ? (
-          <LazyLoadImage src={bags[i].image} visibleByDefault />
+          <LazyLoadImage
+            src={bags[i].image}
+            visibleByDefault
+            className={fitToWidth ? "fitToWidth" : ""}
+          />
         ) : null}
       </div>
       <div className="placeholder" onTransitionEnd={onTransitionEnd}>

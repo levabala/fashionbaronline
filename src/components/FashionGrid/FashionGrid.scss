@@ -70,7 +70,13 @@
         right: -9999px;
         margin: auto;
         zoom: 0.9;
+
         height: 100%;
+
+        &.fitToWidth {
+          height: auto;
+          width: 100%;
+        }
       }
     }
 
