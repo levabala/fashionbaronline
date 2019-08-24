@@ -41,7 +41,7 @@ console.log(
 );
 console.log(`${imagesPerBlockHorizontal}x${imagesPerBlockVertical}`);
 
-const fitToWidth = imageWidth >= imageHeight;
+const fitToWidth = imageWidth <= imageHeight;
 
 const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   const { t } = useTranslation();
