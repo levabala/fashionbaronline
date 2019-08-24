@@ -68,7 +68,7 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
           name: string;
           image: string;
         }> = await (await fetch(`/bags?count=${imagesCount}`)).json();
-        console.log(bagsToLoad);
+        // console.log(bagsToLoad);
 
         setBags(bagsToLoad);
       } catch (e) {
