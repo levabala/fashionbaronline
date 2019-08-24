@@ -8,6 +8,7 @@
 
   grid-template-columns: repeat(var(--rows-count), 1fr);
   grid-template-rows: repeat(var(--columns-count), 1fr);
+
   // margin: 0px -#{$app-padding-horizontal};
   // margin-top: $gap-mainFeature-fashionGrid;
 
@@ -163,7 +164,7 @@
   // }
 
   // @media screen and (max-width: $mobile-version-max-width) {
-  // height: 100%;
+  height: calc(100% - #{$fashionGrid-padding} * 2);
 
   // grid-auto-rows: 1fr;
 

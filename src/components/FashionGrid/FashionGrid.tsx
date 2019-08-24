@@ -106,25 +106,28 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
     "--rows-count": imagesPerBlockHorizontal
   } as React.CSSProperties;
 
+  const blocks = elements
+    .reduce(
+      (acc: JSX.Element[][], val) => {
+        return acc[acc.length - 1].length < imagesPerBlockTotal
+          ? [...acc.slice(0, -1), [...acc[acc.length - 1], val]]
+          : [...acc, [val]];
+      },
+      [[]]
+    )
+    .filter(block => block.length === imagesPerBlockTotal);
+
+  alert(blocks.length);
+
   return (
     <>
-      {elements
-        .reduce(
-          (acc: JSX.Element[][], val) => {
-            return acc[acc.length - 1].length < imagesPerBlockTotal
-              ? [...acc.slice(0, -1), [...acc[acc.length - 1], val]]
-              : [...acc, [val]];
-          },
-          [[]]
-        )
-        .filter(block => block.length === imagesPerBlockTotal)
-        .map((group, i) => (
-          <ViewBlock key={`group_${i}`} around disabled={i !== 0}>
-            <div className="fashionGrid" style={cssVariables}>
-              {group}
-            </div>
-          </ViewBlock>
-        ))}
+      {blocks.map((group, i) => (
+        <ViewBlock key={`group_${i}`} around disabled={i !== 0}>
+          <div className="fashionGrid" style={cssVariables}>
+            {group}
+          </div>
+        </ViewBlock>
+      ))}
     </>
   );
 };
