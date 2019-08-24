@@ -117,8 +117,6 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
     )
     .filter(block => block.length === imagesPerBlockTotal);
 
-  alert(blocks.length);
-
   return (
     <>
       {blocks.map((group, i) => (
