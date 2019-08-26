@@ -139,10 +139,13 @@
         .name {
           color: white;
           font-family: "Open Sans", sans-serif;
-          font-size: 28px;
           font-weight: bold;
 
           text-transform: uppercase;
+
+          @media screen and (max-width: $mobile-version-max-width) {
+            font-size: 28px;
+          }
         }
 
         .bookWrapper {

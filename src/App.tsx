@@ -172,7 +172,7 @@ const App: React.FC = () => {
         <CentralContainer ref={centralContainerRef}>
           <ViewBlock
             first
-            fitContent={window.innerWidth > mobileVersionMaxWidth}
+            // fitContent={window.innerWidth > mobileVersionMaxWidth}
           >
             <ContentBlock>
               <Header />

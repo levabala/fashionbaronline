@@ -2,7 +2,9 @@
 
 .subscriptionSmall {
   margin-top: $gap-title-subscriptionSmall;
-  width: 36.3%;
+  width: 50%;
+
+  margin-bottom: $app-padding-vertical;
 
   .label {
     margin-bottom: $subscriptionSmall-label-gap;

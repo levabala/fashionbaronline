@@ -16,8 +16,9 @@
   .funnyImage {
     margin: 0 auto;
 
-    width: $funnyImage-size;
-    height: $funnyImage-size;
+    $scale: 0.9;
+    width: $funnyImage-size * $scale;
+    height: $funnyImage-size * $scale;
   }
 
   .feature {
