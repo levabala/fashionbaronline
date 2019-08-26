@@ -150,6 +150,16 @@ const App: React.FC = () => {
       "touchstart",
       ({ touches }) => (lastTouchPosition = touches[0].clientY)
     );
+    window.addEventListener("keydown", e => {
+      switch (e.key) {
+        case "ArrowDown":
+          scrollPage(1);
+          break;
+        case "ArrowUp":
+          scrollPage(-1);
+          break;
+      }
+    });
 
     disableBodyScroll(document.body);
     // if (window.innerWidth <= mobileVersionMaxWidth)

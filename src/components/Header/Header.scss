@@ -24,8 +24,8 @@
 
   .woman1 {
     position: absolute;
-    right: -$app-padding-horizontal / 2;
-    top: $app-padding-vertical / 2;
+    right: -$app-padding-horizontal / 2 + 20px;
+    top: $app-padding-vertical / 2 - 25px;
 
     // width: 648px;
     // height: 713px;
