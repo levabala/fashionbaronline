@@ -8,9 +8,12 @@ import StyleVariables from '../../variables.scss';
 import Button from '../Button';
 import ViewBlock from '../ViewBlock';
 
+const rawImageProportions = 691 / 557;
+
 const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 const fashionElemHeightMin = parseFloat(StyleVariables.fashionElemHeightMin);
 const fashionElemWidthMin = parseFloat(StyleVariables.fashionElemWidthMin);
+const fashionGridPadding = parseFloat(StyleVariables.fashionGridPadding);
 
 const fashionElemHeightMinMobile = parseFloat(
   StyleVariables.fashionElemHeightMinMobile
@@ -20,28 +23,28 @@ const fashionElemSizeMinMobile = parseFloat(
 );
 
 const containerSize = {
-  height: window.innerHeight,
-  width: window.innerWidth
+  height: window.innerHeight - fashionGridPadding * 2,
+  width: window.innerWidth - fashionGridPadding * 2
 };
 
-const mobile = window.innerWidth < mobileVersionMaxWidth;
+const mobile = containerSize.width < mobileVersionMaxWidth;
 const imageWidth = mobile ? fashionElemSizeMinMobile : fashionElemWidthMin;
 const imageHeight = mobile ? fashionElemHeightMinMobile : fashionElemHeightMin;
 
 const imagesPerBlockHorizontal = Math.floor(containerSize.width / imageWidth);
 const imagesPerBlockVertical = Math.floor(containerSize.height / imageHeight);
 
+const imageContainerWidth = containerSize.width / imagesPerBlockHorizontal;
+const imageContainerHeight = containerSize.height / imagesPerBlockVertical;
+
 const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
 const imagesCount = imagesPerBlockTotal;
 
-console.log(
-  `${mobile ? fashionElemSizeMinMobile : fashionElemWidthMin}x${
-    mobile ? fashionElemHeightMinMobile : fashionElemHeightMin
-  }`
-);
+console.log(`${imageContainerWidth}x${imageContainerHeight}`);
 console.log(`${imagesPerBlockHorizontal}x${imagesPerBlockVertical}`);
 
-const fitToWidth = imageWidth <= imageHeight;
+const realImageProportions = imageContainerWidth / imageContainerHeight;
+const fitToWidth = rawImageProportions <= realImageProportions;
 
 const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   const { t } = useTranslation();

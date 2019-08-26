@@ -27,6 +27,10 @@ const LanguageSelector = () => {
     {
       code: "zh",
       value: "chin"
+    },
+    {
+      code: "de",
+      value: "germ"
     }
   ];
 

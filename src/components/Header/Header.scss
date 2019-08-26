@@ -11,6 +11,10 @@
 
   padding-top: $app-padding-vertical / 2;
 
+  @media screen and (max-width: $mobile-hide-table-of-content-max-width) {
+    grid-template-columns: 1fr 1fr;
+  }
+
   @media screen and (max-width: $mobile-version-max-width) {
     padding-top: $app-padding-vertical-mobile / 2;
     padding-bottom: $app-padding-vertical-mobile / 4;
