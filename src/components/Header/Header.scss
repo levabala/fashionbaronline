@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
-  padding-top: $app-padding-vertical / 2;
+  margin-top: $app-padding-vertical / 2;
 
   @media screen and (max-width: $mobile-hide-table-of-content-max-width) {
     grid-template-columns: 1fr 1fr;
@@ -25,7 +25,7 @@
   .woman1 {
     position: absolute;
     right: -$app-padding-horizontal / 2 + 20px;
-    top: $app-padding-vertical / 2 - 25px;
+    top: $app-padding-vertical / 2 - 25px - 50px;
 
     // width: 648px;
     // height: 713px;

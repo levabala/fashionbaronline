@@ -1,9 +1,12 @@
+$wide-display-min-width: 1600px;
+
 $mobile-hide-table-of-content-max-width: 1200px;
 $mobile-version-max-width: 1000px;
 $mobile-fit-content-max-width: 950px;
 $mobile-extra-version-max-width: 325px;
 $mobile-block-gap: 5em;
 $fade-animation-duration: 0.3s;
+$languages-count: 3;
 
 $card-padding: 2.5em;
 
@@ -82,4 +85,5 @@ $gap-subscriptionBig-footer: 239px;
   fashionElemHeightMin: $fashionElem-height-min;
   fadeAnimationDuration: $fade-animation-duration;
   fashionGridPadding: $fashionGrid-padding;
+  wideDisplayMinWidth: $wide-display-min-width;
 }

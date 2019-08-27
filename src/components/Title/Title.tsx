@@ -4,11 +4,16 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import getTextWidth from '../../assemblies/measureText';
+import StyleVariables from '../../variables.scss';
+
+const wideDisplayMinWidth = parseFloat(StyleVariables.wideDisplayMinWidth);
 
 function splitToFillLastLine(
   chunks: string[],
   maxWidth: number,
-  font: string = "bold 30px Playfair Display, serif"
+  font: string = `bold ${
+    window.innerWidth > wideDisplayMinWidth ? 45 : 30
+  }px Playfair Display, serif`
 ): string[][] {
   const reversedChunks = chunks.slice().reverse();
   const lines = reversedChunks.reduce(

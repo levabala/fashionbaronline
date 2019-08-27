@@ -1,59 +1,131 @@
-.languageSelector {
-  // font-size: 17px;
-  font-size: 20px;
+@import "../../../variables.scss";
 
-  display: flex;
-  flex-direction: column-reverse;
-  text-align: right;
+// .languageSelector {
+//   // font-size: 17px;
+//   font-size: 20px;
 
-  .currentLanguage * {
-    text-transform: capitalize;
+//   display: flex;
+//   flex-direction: column-reverse;
+//   text-align: right;
+
+//   .currentLanguage * {
+//     text-transform: capitalize;
+//   }
+
+//   .wrapper {
+//     button {
+//       background: none;
+//       border: none;
+//       padding: 0px;
+//       color: black;
+//     }
+
+//     .dropdownWrapper {
+//       position: relative;
+//       display: none;
+
+//       &.visible {
+//         display: block;
+//       }
+
+//       .languageOptions {
+//         position: absolute;
+//         top: 0;
+//         right: 0;
+
+//         display: flex;
+//         flex-direction: column;
+
+//         background: #fafafa;
+//         padding: 5px;
+
+//         button {
+//           padding: 5px 0px;
+//           // font-size: 15px;
+//           border-radius: 0;
+
+//           text-align: left;
+//           text-transform: capitalize;
+
+//           &.selected {
+//             text-shadow: 0px 0px 1px black;
+//           }
+//         }
+
+//         // button + button {
+//         //   border-top: solid black 1px;
+//         // }
+//       }
+//     }
+//   }
+// }
+
+.languagepicker {
+  --rows-count: 2;
+  $row-height: 40px;
+
+  position: absolute;
+  top: -20px;
+  right: 0;
+
+  display: inline-block;
+  padding: 0;
+  height: $row-height;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  // margin: 0px 0px 10px 0px;
+  vertical-align: top;
+
+  background-color: transparent;
+
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.06);
+
+  &:hover {
+    /* don't forget the 1px border */
+    height: 81px;
+    background-color: #fff;
+  }
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+  li {
+    display: block;
+    padding: 0px 20px;
+    line-height: $row-height;
+    // border-top: 1px solid #eee;
+
+    background-color: transparent;
+
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+  a:first-child li {
+    border: none;
+    // background: #fff !important;
+    font-size: 18px;
+    color: black;
   }
 
-  .wrapper {
-    button {
-      background: none;
-      border: none;
-      padding: 0px;
-      color: black;
-    }
+  li img {
+    margin-right: 5px;
+  }
 
-    .dropdownWrapper {
-      position: relative;
-      display: none;
+  &.roundborders {
+    border-radius: 5px;
+  }
 
-      &.visible {
-        display: block;
-      }
-
-      .languageOptions {
-        position: absolute;
-        top: 0;
-        right: 0;
-
-        display: flex;
-        flex-direction: column;
-
-        background: #fafafa;
-        padding: 5px;
-
-        button {
-          padding: 5px 0px;
-          // font-size: 15px;
-          border-radius: 0;
-
-          text-align: left;
-          text-transform: capitalize;
-
-          &.selected {
-            text-shadow: 0px 0px 1px black;
-          }
-        }
-
-        // button + button {
-        //   border-top: solid black 1px;
-        // }
-      }
-    }
+  &.large:hover {
+    /* 
+    don't forget the 1px border!
+    The first language is 40px heigh, 
+    the others are 41px
+    */
+    // height: calc(var(--rows-count) * (#{$row-height} + 1) - 1px);
+    height: $languages-count * 40px - 1px;
   }
 }
