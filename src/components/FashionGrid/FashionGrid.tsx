@@ -38,7 +38,7 @@ const imageContainerWidth = containerSize.width / imagesPerBlockHorizontal;
 const imageContainerHeight = containerSize.height / imagesPerBlockVertical;
 
 const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
-const imagesCount = imagesPerBlockTotal;
+const imagesCount = imagesPerBlockTotal * (mobile ? 2 : 1);
 
 console.log(`${imageContainerWidth}x${imageContainerHeight}`);
 console.log(`${imagesPerBlockHorizontal}x${imagesPerBlockVertical}`);
@@ -126,7 +126,7 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   return (
     <>
       {blocks.map((group, i) => (
-        <ViewBlock key={`group_${i}`} around disabled={i !== 0}>
+        <ViewBlock key={`group_${i}`} around>
           <div className="fashionGrid" style={cssVariables}>
             {group}
           </div>

@@ -170,7 +170,7 @@ const App: React.FC = () => {
     <div className="App">
       <Suspense fallback={null}>
         <CentralContainer ref={centralContainerRef}>
-          <ViewBlock first>
+          <ViewBlock first around={window.innerWidth > mobileVersionMaxWidth}>
             <ContentBlock>
               <Header />
               <Title />
