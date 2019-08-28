@@ -24,8 +24,15 @@
 
   .woman1 {
     position: absolute;
-    right: -$app-padding-horizontal / 2 + 20px;
+    right: -$app-padding-horizontal / 2 + 40px;
     top: $app-padding-vertical / 2 - 25px - 50px;
+
+    height: 80vh;
+
+    @media screen and (min-width: $wide-display-min-width) {
+      right: -$app-padding-horizontal / 2 + 20px + 50px;
+      top: $app-padding-vertical / 2 - 35px - 35px;
+    }
 
     // width: 648px;
     // height: 713px;

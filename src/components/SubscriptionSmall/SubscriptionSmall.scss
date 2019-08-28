@@ -2,7 +2,7 @@
 
 .subscriptionSmall {
   margin-top: $gap-title-subscriptionSmall;
-  width: 50%;
+  width: 36%;
 
   margin-bottom: $app-padding-vertical;
 
@@ -21,5 +21,9 @@
     .label {
       display: none;
     }
+  }
+
+  @media screen and (min-width: $wide-display-min-width) {
+    width: 50%;
   }
 }
