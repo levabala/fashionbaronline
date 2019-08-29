@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
-  margin-top: $app-padding-vertical / 2;
+  // margin-top: $app-padding-vertical / 2;
 
   @media screen and (max-width: $mobile-hide-table-of-content-max-width) {
     grid-template-columns: 1fr 1fr;
@@ -24,14 +24,16 @@
 
   .woman1 {
     position: absolute;
-    right: -$app-padding-horizontal / 2 + 40px;
+    right: -$app-padding-horizontal / 2 + 40px + 50px;
     top: $app-padding-vertical / 2 - 25px - 50px;
 
-    height: 80vh;
+    height: 90vh;
 
     @media screen and (min-width: $wide-display-min-width) {
       right: -$app-padding-horizontal / 2 + 20px + 50px;
       top: $app-padding-vertical / 2 - 35px - 35px;
+
+      height: 80vh;
     }
 
     // width: 648px;

@@ -1,10 +1,15 @@
 import fs from 'fs';
 import http from 'http';
+import { sha256 } from 'js-sha256';
 import lineReader, { eachLine } from 'line-reader';
 import path from 'path';
 import url from 'url';
+import { v4 } from 'uuid';
 
-// tslint:disable:no-if-statement
+const { password } = require("../password.json");
+console.log({ password });
+
+// tslint:disable:no-if-statement no-object-mutation no-array-mutation
 const buildPath = "../../build";
 const bagsFolderPath = "../../public/data/bags";
 const brendPhotoPrefix = "Depositphotos_";
@@ -35,6 +40,8 @@ function shuffleArray(array: any[]): any[] {
   return array;
 }
 
+const authenticationTokens: string[] = [];
+
 http
   .createServer((request, response) => {
     const { pathname: requestPath, query } = url.parse(
@@ -43,6 +50,57 @@ http
     );
 
     switch (requestPath) {
+      case "/auth": {
+        const token = v4();
+        const data = { token };
+
+        const tokenAwaiting = sha256(token + password);
+        authenticationTokens.push(tokenAwaiting);
+
+        response.writeHead(200, { "Content-Type": "application/json" });
+        response.end(JSON.stringify(data), "utf-8");
+        break;
+      }
+      case "/getRegistrations": {
+        let tokensBody = "";
+        request.on("data", data => {
+          tokensBody += data;
+
+          // Too much POST data, kill the connection!
+          // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+          if (tokensBody.length > 1e6) request.connection.destroy();
+        });
+
+        request.on("end", () => {
+          try {
+            const recievedToken = JSON.parse(tokensBody);
+            const { token } = recievedToken;
+
+            const tokenIndex = authenticationTokens.indexOf(token);
+            if (tokenIndex === -1) {
+              response.writeHead(403);
+              response.end();
+            } else {
+              authenticationTokens.splice(tokenIndex, 1);
+
+              console.log("done");
+
+              fs.readFile(emailsStoreFile, (err, data) => {
+                response.writeHead(200, { "Content-Type": "application/json" });
+                console.log(data);
+                response.end(
+                  JSON.stringify({ data: data.toString("utf-8") }),
+                  "utf-8"
+                );
+              });
+            }
+          } catch (e) {
+            console.log(e);
+          }
+        });
+
+        break;
+      }
       case "/bags":
         const { count: countString } = query;
 
@@ -122,7 +180,10 @@ http
         break;
       default:
         const filePathAbs = request.url || "/";
-        const filePath = filePathAbs === "/" ? "/index.html" : filePathAbs;
+        const filePath =
+          filePathAbs === "/" || filePathAbs === "/registrations"
+            ? "/index.html"
+            : filePathAbs;
         const filePathDecoded = decodeURIComponent(filePath);
 
         const extname = path.extname(filePathDecoded);
