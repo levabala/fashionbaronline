@@ -8,7 +8,7 @@ import Button from '../Button';
 import SubscriptionDone from '../SubscriptionDone';
 import TextInput from '../TextInput';
 
-const EMAIL_POST_PATH = "http://fashionbar.online/subscribe";
+const EMAIL_POST_PATH = `${window.location.href}subscribe`;
 
 const SubscriptionBlock = () => {
   const { t } = useTranslation();

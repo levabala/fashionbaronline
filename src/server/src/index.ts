@@ -85,13 +85,9 @@ http
 
               console.log("done");
 
-              fs.readFile(emailsStoreFile, (err, data) => {
+              fs.readFile(emailsStoreFile, "utf-8", (err, data) => {
                 response.writeHead(200, { "Content-Type": "application/json" });
-                console.log(data);
-                response.end(
-                  JSON.stringify({ data: data.toString("utf-8") }),
-                  "utf-8"
-                );
+                response.end(JSON.stringify({ data }), "utf-8");
               });
             }
           } catch (e) {
