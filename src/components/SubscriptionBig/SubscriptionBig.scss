@@ -48,6 +48,10 @@
 
     padding: $subscriptionBig-costs-padding;
 
+    &.alone {
+      justify-content: space-around;
+    }
+
     .separator {
       display: flex;
       justify-content: space-around;

@@ -3,7 +3,6 @@ import './Description.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import TagEnum from '../../types/TagEnum';
 import BlockHeader from '../BlockHeader';
 import CompanyName from '../CompanyName';
 import TextWithCompanyName from '../TextWithCompanyName';
@@ -13,7 +12,7 @@ const Description = (props: { style?: React.CSSProperties }) => {
   const paragraphs: string[][] = t("description", { returnObjects: true });
 
   return (
-    <div className="description" id={TagEnum.About} {...props}>
+    <div className="description" {...props}>
       <BlockHeader>
         <CompanyName />
       </BlockHeader>

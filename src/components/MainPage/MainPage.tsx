@@ -1,6 +1,7 @@
 import { disableBodyScroll } from 'body-scroll-lock';
 import React, { Suspense, useRef } from 'react';
 
+import TagEnum from '../../types/TagEnum';
 import StyleVariables from '../../variables.scss';
 import CentralContainer from '../CentralContainer';
 import ContentBlock from '../ContentBlock';
@@ -17,6 +18,7 @@ import ViewBlock from '../ViewBlock';
 
 const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 const fadeAnimationDuration = parseFloat(StyleVariables.fadeAnimationDuration);
+const wideDisplayMinWidth = parseFloat(StyleVariables.wideDisplayMinWidth);
 
 // tslint:disable
 function toggleFullScreen() {
@@ -60,6 +62,8 @@ const MainPage: React.FC = () => {
 
     previousBlock.classList.remove("activated");
     previousBlock.classList.remove("reactivated");
+    block.classList.remove("activated");
+    block.classList.remove("reactivated");
 
     setTimeout(() => {
       if (delta === -1) block.classList.add("reactivated");
@@ -76,7 +80,24 @@ const MainPage: React.FC = () => {
     console.log("scroll to", currentBlockIndex);
   };
 
+  const scrollTo = (id: string) => {
+    const centralContainer = centralContainerRef.current;
+    if (!centralContainer) return;
+
+    const targetBlockIndex = Array.from(centralContainer.children).findIndex(
+      el => el.id === id
+    );
+    if (targetBlockIndex === -1) return;
+
+    let delta = targetBlockIndex - currentBlockIndex;
+    while (delta !== 0) {
+      scrollPage(delta >= 1 ? 1 : -1);
+      delta -= Math.sign(delta);
+    }
+  };
+
   (window as any).scrollPage = scrollPage;
+  (window as any).scrollTo = scrollTo;
 
   const onFashionGridRendered = () => {
     toggleFullScreen();
@@ -166,7 +187,11 @@ const MainPage: React.FC = () => {
   return (
     <Suspense fallback={null}>
       <CentralContainer ref={centralContainerRef}>
-        <ViewBlock first around={window.innerWidth > mobileVersionMaxWidth}>
+        <ViewBlock
+          first
+          around={window.innerWidth > wideDisplayMinWidth}
+          id={TagEnum.Brends}
+        >
           <ContentBlock>
             <Header />
             <Title />
@@ -176,25 +201,28 @@ const MainPage: React.FC = () => {
           </ContentBlock>
         </ViewBlock>
 
-        <ViewBlock forced around>
+        <ViewBlock forced around id={TagEnum.HowItWorks}>
           <Features />
         </ViewBlock>
 
-        <ViewBlock forced around>
+        <ViewBlock forced around id={TagEnum.About}>
           <Description />
         </ViewBlock>
 
-        <ViewBlock forced around>
+        <ViewBlock forced around id={TagEnum.MainFeature}>
           <MainFeature />
         </ViewBlock>
 
-        <FashionGrid renderCallback={onFashionGridRendered} />
+        <FashionGrid
+          renderCallback={onFashionGridRendered}
+          id={TagEnum.Collection}
+        />
 
-        <ViewBlock forced around>
+        <ViewBlock forced around id={TagEnum.Subscribe}>
           <SubscriptionBig />
         </ViewBlock>
 
-        <ViewBlock forced around>
+        <ViewBlock forced around id={"contacts"}>
           <Footer />
         </ViewBlock>
       </CentralContainer>

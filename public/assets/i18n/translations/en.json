@@ -4,9 +4,12 @@
     "postfix": ".online"
   },
   "tableOfContents": {
-    "collection": "Collection",
-    "social": "Social",
+    "brends": "Brends",
+    "howitworks": "How It Works",
     "about": "About",
+    "mainfeature": "Main Feature",
+    "subscribe": "Subscribe",
+    "collection": "Collection",
     "contacts": "Contacts"
   },
   "title": {

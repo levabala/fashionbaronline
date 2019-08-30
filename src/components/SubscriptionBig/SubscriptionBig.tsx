@@ -35,16 +35,16 @@ const SubscriptionBig = () => {
         />
         <div className="subTitle">
           <div className="main">{t("subscriptionBig.title.main")}</div>
-          <div className="secondary">
+          {/* <div className="secondary">
             {t("subscriptionBig.title.secondary")}
-          </div>
+          </div> */}
         </div>
-        <div className="variants">
+        <div className="variants alone">
           <Variant cost={125} target={t("subscriptionBig.variants.first")} />
-          <span className="separator">
+          {/* <span className="separator">
             <span>{"&"}</span>
           </span>
-          <Variant cost={250} target={t("subscriptionBig.variants.second")} />
+          <Variant cost={250} target={t("subscriptionBig.variants.second")} /> */}
         </div>
         <div className="bottomBlock">
           <SubscriptionBlock />

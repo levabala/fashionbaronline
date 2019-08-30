@@ -4,6 +4,10 @@
   margin-top: $gap-header-title;
   margin-right: $title-margin-right;
 
+  @media screen and (min-width: $wide-display-min-width) {
+    margin-right: $title-margin-right-wide;
+  }
+
   .brends {
     &:before {
       content: "";

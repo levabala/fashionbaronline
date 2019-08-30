@@ -10,12 +10,22 @@ const table = Object.values(TagEnum);
 const TableOfContents = () => {
   const { t } = useTranslation();
 
+  const onClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    const { blockid } = event.currentTarget.dataset;
+    if (!blockid) return;
+
+    console.log(blockid);
+    (window as any).scrollTo(blockid);
+  };
+
   return (
     <div className="tableOfContents">
       <div className="text">
         {table.map(name => (
           <span key={name} className="tag">
-            <a href={`#${name}`}>{t(`tableOfContents.${name}`)}</a>
+            <a data-blockid={name} onClick={onClick}>
+              {t(`tableOfContents.${name}`)}
+            </a>
           </span>
         ))}
       </div>

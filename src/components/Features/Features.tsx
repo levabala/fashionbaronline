@@ -3,7 +3,6 @@ import './Features.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import TagEnum from '../../types/TagEnum';
 import TextWithCompanyName from '../TextWithCompanyName';
 
 const LiWrapper = ({ children }: { children: React.ReactNode }) => (
@@ -17,7 +16,7 @@ const Features = () => {
   });
 
   return (
-    <div className="features" id={TagEnum.Social}>
+    <div className="features">
       <ol>{TextWithCompanyName(features, LiWrapper)}</ol>
       <img src="/assets/images/woman2.png" className="woman" alt="womanTwo" />
     </div>

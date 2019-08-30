@@ -13,7 +13,8 @@ const ViewBlock = ({
   fitContent,
   first,
   disabled,
-  noAnimations
+  noAnimations,
+  id
 }: {
   children: React.ReactChild[] | React.ReactChild;
   forced?: boolean;
@@ -22,6 +23,7 @@ const ViewBlock = ({
   first?: boolean;
   disabled?: boolean;
   noAnimations?: boolean;
+  id?: string;
 }) => {
   return (
     <Div100vh
@@ -34,6 +36,7 @@ const ViewBlock = ({
         disabled ? "disabled" : "",
         noAnimations ? "noAnimations" : ""
       )}
+      id={id}
     >
       <div className="animationContainer">{children}</div>
     </Div100vh>

@@ -1,7 +1,10 @@
 enum TagEnum {
-  Collection = "collection",
-  Social = "social",
+  Brends = "brends",
+  HowItWorks = "howitworks",
   About = "about",
+  MainFeature = "mainfeature",
+  Collection = "collection",
+  Subscribe = "subscribe",
   Contacts = "contacts"
 }
 

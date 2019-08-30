@@ -46,7 +46,13 @@ console.log(`${imagesPerBlockHorizontal}x${imagesPerBlockVertical}`);
 const realImageProportions = imageContainerWidth / imageContainerHeight;
 const fitToWidth = rawImageProportions <= realImageProportions;
 
-const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
+const FashionGrid = ({
+  renderCallback,
+  id
+}: {
+  renderCallback: () => void;
+  id: string;
+}) => {
   const { t } = useTranslation();
   const [bags, setBags] = useState<Array<{ name: string; image: string }>>([]);
 
@@ -126,7 +132,7 @@ const FashionGrid = ({ renderCallback }: { renderCallback: () => void }) => {
   return (
     <>
       {blocks.map((group, i) => (
-        <ViewBlock key={`group_${i}`} around>
+        <ViewBlock key={`group_${i}`} around id={i === 0 ? id : ""}>
           <div className="fashionGrid" style={cssVariables}>
             {group}
           </div>
