@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import { sha256 } from 'js-sha256';
 import React, { useEffect, useState } from 'react';
 
@@ -12,14 +13,20 @@ export interface RegistrationData {
 const RegistrationsPage = () => {
   const [registrations, setRegistrations] = useState([] as RegistrationData[]);
 
-  useEffect(() => {
-    const fetcher = async () => {
-      const data = await (await fetch("auth")).json();
-      const password = prompt("Enter password");
-      // const password = "mytestpassword";
-      const { token } = data;
-      const accessToken = sha256(token + password);
+  const fetchRegistations = async () => {
+    const data = await (await fetch("auth")).json();
 
+    const cachedPassword = Cookies.get("password");
+    const password = cachedPassword || prompt("Enter password");
+
+    if (!cachedPassword)
+      Cookies.set("password", password || "", { secure: true });
+
+    // const password = "mytestpassword";
+    const { token } = data;
+    const accessToken = sha256(token + password);
+
+    try {
       const registrationsJSON = await (await fetch("getRegistrations", {
         body: JSON.stringify({
           token: accessToken
@@ -43,9 +50,14 @@ const RegistrationsPage = () => {
       });
 
       setRegistrations(rr);
-    };
+    } catch (e) {
+      Cookies.remove("password", { secure: true });
+      fetchRegistations();
+    }
+  };
 
-    fetcher();
+  useEffect(() => {
+    fetchRegistations();
   }, []);
 
   return (

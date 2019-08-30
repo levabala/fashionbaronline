@@ -30,6 +30,7 @@
     top: $app-padding-vertical / 2 - 25px - 50px;
 
     height: 90vh;
+    max-height: 785px;
 
     @media screen and (min-width: $wide-display-min-width) {
       right: -$app-padding-horizontal / 2 + 20px + 50px;
