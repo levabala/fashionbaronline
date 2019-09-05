@@ -27,9 +27,6 @@ const Footer = () => {
         </BlockHeader>
         <div className="info">
           <div>
-            <a href="https://www.instagram.com/fashionbar.online/">Twitter</a>
-          </div>
-          <div>
             <a href="https://www.instagram.com/fashionbar.online/">Instagram</a>
           </div>
         </div>

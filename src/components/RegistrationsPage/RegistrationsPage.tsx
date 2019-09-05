@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 import { sha256 } from 'js-sha256';
 import React, { useEffect, useState } from 'react';
 
+import Button from '../Button';
 import Table from './Table';
 
 export interface RegistrationData {
@@ -49,6 +50,8 @@ const RegistrationsPage = () => {
         } as RegistrationData;
       });
 
+      console.log(registrationsRaw);
+
       setRegistrations(rr);
     } catch (e) {
       Cookies.remove("password", { secure: true });
@@ -56,13 +59,33 @@ const RegistrationsPage = () => {
     }
   };
 
+  const onExportButtonClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    const registrationsStr = registrations
+      .map(({ date, email, location }) => [date, email, location].join(", "))
+      .join("\n");
+    const csv = `data:text/csv;charset=utf-8,${registrationsStr}`;
+
+    const encodedUri = encodeURI(csv);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `registrations_${new Date()}.csv`);
+    document.body.appendChild(link);
+
+    link.click();
+  };
+
   useEffect(() => {
     fetchRegistations();
   }, []);
 
   return (
-    <div>
-      <Table registrations={registrations} />
+    <div style={{ padding: "1em" }}>
+      <Button onClick={onExportButtonClick}>Export</Button>
+      <div style={{ marginTop: "1em" }}>
+        <Table registrations={registrations} />
+      </div>
     </div>
   );
 };

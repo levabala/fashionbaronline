@@ -10,6 +10,15 @@ const { password } = require("../password.json");
 console.log({ password });
 
 // tslint:disable:no-if-statement no-object-mutation no-array-mutation
+
+const options = {
+  key: fs.readFileSync("./d3a8771856511a3e.pem").toString(),
+
+  cert: fs.readFileSync("./d3a8771856511a3e.crt").toString(),
+
+  ca: fs.readFileSync("./sf_bundle-g2-g1.crt").toString()
+};
+
 const buildPath = "../../build";
 const bagsFolderPath = "../../public/data/bags";
 const brendPhotoPrefix = "Depositphotos_";
@@ -43,7 +52,7 @@ function shuffleArray(array: any[]): any[] {
 const authenticationTokens: string[] = [];
 
 http
-  .createServer((request, response) => {
+  .createServer(options as any, (request, response) => {
     const { pathname: requestPath, query } = url.parse(
       request.url as string,
       true

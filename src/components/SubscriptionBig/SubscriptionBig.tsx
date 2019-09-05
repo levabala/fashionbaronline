@@ -40,7 +40,7 @@ const SubscriptionBig = () => {
           </div> */}
         </div>
         <div className="variants alone">
-          <Variant cost={125} target={t("subscriptionBig.variants.first")} />
+          <Variant cost={199} target={t("subscriptionBig.variants.first")} />
           {/* <span className="separator">
             <span>{"&"}</span>
           </span>
