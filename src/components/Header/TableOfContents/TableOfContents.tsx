@@ -23,9 +23,9 @@ const TableOfContents = () => {
       <div className="text">
         {table.map(name => (
           <span key={name} className="tag">
-            <a data-blockid={name} onClick={onClick}>
+            <span data-blockid={name} onClick={onClick}>
               {t(`tableOfContents.${name}`)}
-            </a>
+            </span>
           </span>
         ))}
       </div>

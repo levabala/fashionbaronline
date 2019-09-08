@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 import { sha256 } from 'js-sha256';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import Button from '../Button';
 import Table from './Table';
@@ -14,7 +14,7 @@ export interface RegistrationData {
 const RegistrationsPage = () => {
   const [registrations, setRegistrations] = useState([] as RegistrationData[]);
 
-  const fetchRegistations = async () => {
+  const fetchRegistations = useCallback(async () => {
     const data = await (await fetch("auth")).json();
 
     const cachedPassword = Cookies.get("password");
@@ -57,7 +57,7 @@ const RegistrationsPage = () => {
       Cookies.remove("password", { secure: true });
       fetchRegistations();
     }
-  };
+  }, []);
 
   const onExportButtonClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -78,7 +78,7 @@ const RegistrationsPage = () => {
 
   useEffect(() => {
     fetchRegistations();
-  }, []);
+  }, [fetchRegistations]);
 
   return (
     <div style={{ padding: "1em" }}>

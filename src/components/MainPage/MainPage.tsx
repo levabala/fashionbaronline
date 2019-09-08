@@ -1,20 +1,28 @@
 import { disableBodyScroll } from 'body-scroll-lock';
-import React, { Suspense, useRef } from 'react';
+import React, { lazy, Suspense, useRef } from 'react';
 
 import TagEnum from '../../types/TagEnum';
 import StyleVariables from '../../variables.scss';
 import CentralContainer from '../CentralContainer';
 import ContentBlock from '../ContentBlock';
 import Description from '../Description';
-import FashionGrid from '../FashionGrid';
-import Features from '../Features';
-import Footer from '../Footer';
 import Header from '../Header';
-import MainFeature from '../MainFeature';
-import SubscriptionBig from '../SubscriptionBig';
-import SubscriptionSmall from '../SubscriptionSmall';
 import Title from '../Title';
 import ViewBlock from '../ViewBlock';
+
+// import Features from '../Features';
+// import Footer from '../Footer';
+// import MainFeature from '../MainFeature';
+// import SubscriptionBig from '../SubscriptionBig';
+// import SubscriptionSmall from '../SubscriptionSmall';
+// import FashionGrid from "../FashionGrid";
+// const Header = lazy(() => import("../Header"));
+const FashionGrid = lazy(() => import("../FashionGrid"));
+const Features = lazy(() => import("../Features"));
+const MainFeature = lazy(() => import("../MainFeature"));
+const SubscriptionBig = lazy(() => import("../SubscriptionBig"));
+const SubscriptionSmall = lazy(() => import("../SubscriptionSmall"));
+const Footer = lazy(() => import("../Footer"));
 
 const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 const fadeAnimationDuration = parseFloat(StyleVariables.fadeAnimationDuration);
@@ -77,7 +85,7 @@ const MainPage: React.FC = () => {
     setTimeout(() => (blindTime = false), afterScrollBlindTime);
 
     // console.log(currentBlockIndex, block);
-    console.log("scroll to", currentBlockIndex);
+    // console.log("scroll to", currentBlockIndex);
   };
 
   const scrollTo = (id: string) => {
@@ -151,7 +159,7 @@ const MainPage: React.FC = () => {
       if (blindTime) return;
 
       scrollAccumulator += deltaY;
-      console.log(scrollAccumulator);
+      // console.log(scrollAccumulator);
 
       scrollCheck();
     };
@@ -191,6 +199,7 @@ const MainPage: React.FC = () => {
           first
           around={window.innerWidth > wideDisplayMinWidth}
           id={TagEnum.Brends}
+          noSuspense
         >
           <ContentBlock>
             <Header />

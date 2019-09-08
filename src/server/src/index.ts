@@ -12,11 +12,9 @@ console.log({ password });
 // tslint:disable:no-if-statement no-object-mutation no-array-mutation
 
 const options = {
-  key: fs.readFileSync("./d3a8771856511a3e.pem").toString(),
-
+  ca: fs.readFileSync("./sf_bundle-g2-g1.crt").toString(),
   cert: fs.readFileSync("./d3a8771856511a3e.crt").toString(),
-
-  ca: fs.readFileSync("./sf_bundle-g2-g1.crt").toString()
+  key: fs.readFileSync("./d3a8771856511a3e.pem").toString()
 };
 
 const buildPath = "../../build";
@@ -189,6 +187,9 @@ http
           filePathAbs === "/" || filePathAbs === "/registrations"
             ? "/index.html"
             : filePathAbs;
+        // const filePathDecoded = decodeURIComponent(
+        //   filePath.includes("__") ? filePath.split("__")[0] : filePath
+        // );
         const filePathDecoded = decodeURIComponent(filePath);
 
         const extname = path.extname(filePathDecoded);

@@ -1,6 +1,6 @@
 import './Title.scss';
 
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import getTextWidth from '../../assemblies/measureText';
@@ -35,48 +35,59 @@ function splitToFillLastLine(
     .map(line => line.slice().reverse());
 }
 
-function generateBrends(brendsArr: string[], offsetWidth: number): string {
+function generateBrends(
+  brendsArr: string[],
+  offsetWidth: number
+): JSX.Element[] {
   const brendsWithComma = brendsArr.map((chunk, i2, arr2) =>
     i2 === arr2.length - 1 ? chunk : chunk + ","
   );
 
-  return splitToFillLastLine(brendsWithComma, offsetWidth)
-    .map(
-      line =>
-        `<div>${line
-          .map(
-            chunk =>
-              `<span class="${line.length === 1 ? "alone" : 0}">${chunk}</span>`
-          )
-          .join("")}</div>`
-    )
-    .join(" ");
+  return splitToFillLastLine(brendsWithComma, offsetWidth).map((line, i) => (
+    <div key={i}>
+      {line.map((chunk, ii) => (
+        <span key={ii} className={`${line.length === 1 ? "alone" : 0}`}>
+          {chunk}
+        </span>
+      ))}
+    </div>
+  ));
 }
 
 const Title = () => {
   const { t } = useTranslation();
   const brendsArr = t("title.brends", { returnObjects: true }) as string[];
 
-  const update = () => {
-    const brendsElem = document.querySelector(
-      ".title .brends"
-    ) as HTMLDivElement | null;
+  const [brendsJXS, setBrendsJXS] = useState<JSX.Element[] | null>(null);
+  // const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+  // const [loaded, setLoaded] = useState(false);
 
-    // tslint:disable:no-unused-expression no-object-mutation
-    brendsElem &&
-      (brendsElem.innerHTML = generateBrends(
-        brendsArr,
-        brendsElem.offsetWidth
-      ));
-    // tslint:enable:no-unused-expression no-object-mutation
-  };
+  const update = useCallback(
+    (offsetWidth: number) => {
+      const brends = generateBrends(brendsArr, offsetWidth);
 
-  window.addEventListener("resize", update);
-  setTimeout(update);
+      setBrendsJXS(brends);
+    },
+    [brendsArr]
+  );
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      const brendsElem = document.querySelector(
+        ".title .brends"
+      ) as HTMLDivElement | null;
+
+      const offsetWidth = brendsElem ? brendsElem.offsetWidth : 0;
+      if (offsetWidth) {
+        update(offsetWidth);
+        clearInterval(id);
+      }
+    });
+  }, [update]);
 
   return (
     <div className="title">
-      <div className="brends">{}</div>
+      <div className="brends">{brendsJXS}</div>
       <div className="feature">{t("title.feature")}</div>
     </div>
   );

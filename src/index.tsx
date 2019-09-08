@@ -23,4 +23,4 @@ if (isAndroid)
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
-// serviceWorker.register();
+// register();

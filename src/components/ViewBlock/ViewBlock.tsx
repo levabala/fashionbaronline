@@ -1,7 +1,7 @@
 import './ViewBlock.scss';
 
 import classnames from 'classnames';
-import React from 'react';
+import React, { Suspense } from 'react';
 import Div100vh from 'react-div-100vh';
 
 // const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
@@ -14,7 +14,8 @@ const ViewBlock = ({
   first,
   disabled,
   noAnimations,
-  id
+  id,
+  noSuspense
 }: {
   children: React.ReactChild[] | React.ReactChild;
   forced?: boolean;
@@ -24,6 +25,7 @@ const ViewBlock = ({
   disabled?: boolean;
   noAnimations?: boolean;
   id?: string;
+  noSuspense?: boolean;
 }) => {
   return (
     <Div100vh
@@ -38,7 +40,13 @@ const ViewBlock = ({
       )}
       id={id}
     >
-      <div className="animationContainer">{children}</div>
+      {noSuspense ? (
+        <Suspense fallback={<div>Loading ...</div>}>
+          <div className="animationContainer">{children}</div>
+        </Suspense>
+      ) : (
+        <div className="animationContainer">{children}</div>
+      )}
     </Div100vh>
   );
   // return window.innerWidth > mobileVersionMaxWidth ? (
