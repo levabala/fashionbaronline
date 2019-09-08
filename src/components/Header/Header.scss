@@ -10,7 +10,7 @@
   grid-template-columns: 1fr 1fr 1fr;
 
   @media screen and (max-width: $wide-display-min-width) {
-    margin-top: $app-padding-vertical / 4;
+    margin-top: $app-padding-vertical / 2;
   }
 
   @media screen and (max-width: $mobile-hide-table-of-content-max-width) {

@@ -4,6 +4,7 @@
   font-size: 17px;
   display: flex;
   flex-direction: column-reverse;
+  justify-content: space-around;
 
   text-align: center;
 
@@ -44,6 +45,8 @@
   .tag {
     a {
       // text-shadow: 0px 0px 1px black;
+
+      cursor: pointer;
 
       opacity: 0.8;
       &:hover {
