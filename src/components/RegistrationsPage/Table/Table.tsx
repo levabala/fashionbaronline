@@ -14,7 +14,11 @@ const Table = ({ registrations }: { registrations: RegistrationData[] }) => {
             <div className="location">{location}</div>
             <div className="email">{email}</div>
             <div className="brend">{choosenBagName}</div>
-            <img className="image" src={choosenBagImage} alt="bag" />
+            <img
+              className="image"
+              src={choosenBagImage ? choosenBagImage : ""}
+              alt="bag"
+            />
           </React.Fragment>
         )
       )}
