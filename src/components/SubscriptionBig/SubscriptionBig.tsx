@@ -3,8 +3,11 @@ import './SubscriptionBig.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import StyleVariables from '../../variables.scss';
 import Card from '../Card';
 import SubscriptionBlock from '../SubscriptionBlock';
+
+const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 
 const Variant = ({ cost, target }: { cost: number; target: string }) => {
   const { t } = useTranslation();
@@ -26,7 +29,7 @@ const SubscriptionBig = () => {
   const { t } = useTranslation();
 
   return (
-    <Card>
+    <Card paddingOnly>
       <div className="subscriptionBig" id="emailSubscriptionBox">
         <img
           src="/assets/images/rectFullRedThin.png"

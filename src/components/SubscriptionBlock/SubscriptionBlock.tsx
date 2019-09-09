@@ -41,10 +41,16 @@ const SubscriptionBlock = () => {
     const locationData = await (await fetch("http://ip-api.com/json")).json();
     const { country, city } = locationData;
 
+    const { choosenBag } = window as any;
+
     const sendingData = {
+      choosenBag,
       date: new Date().toDateString(),
       email: emailAddress,
-      location: { country, city }
+      location: {
+        city,
+        country
+      }
     };
     // console.log(sendingData);
 

@@ -58,8 +58,18 @@ const FashionGrid = ({
 
   const bookingLabel = t("fashionGrid.booking");
 
-  const goToBooking = () => {
+  const goToBooking = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     (window as any).scrollPage(1);
+
+    const { bagindex: bagIndexRaw } = event.currentTarget.dataset;
+    const bagIndex = parseInt(
+      (bagIndexRaw || 0) >= 0 ? bagIndexRaw || "0" : "-1",
+      10
+    );
+
+    (window as any).choosenBag = bagIndex === -1 ? undefined : bags[bagIndex];
   };
 
   const onTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
@@ -104,7 +114,7 @@ const FashionGrid = ({
         <div className="container">
           <div className="name">{bags[i] ? bags[i].name : ""}</div>
           <div className="bookWrapper">
-            <Button className="book" onClick={goToBooking}>
+            <Button className="book" onClick={goToBooking} data-bagindex={i}>
               {bookingLabel}
             </Button>
           </div>

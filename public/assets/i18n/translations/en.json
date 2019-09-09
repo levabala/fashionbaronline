@@ -14,15 +14,15 @@
   },
   "title": {
     "brends": [
-      "Gucci",
-      "Prada",
       "Chanel",
       "Dior",
-      "Lousi Vuitton",
-      "Dolche & Gabbana",
-      "Hermes",
-      "Loro Piano",
-      "Valentino"
+      "Fendi",
+      "Louis Vuitton",
+      "Dolce & Gabbana",
+      "Valentino",
+      "Gucci",
+      "Prada",
+      "Hermes"
     ],
     "feature": "Original things by subscription from 120 euro/month"
   },
@@ -47,7 +47,7 @@
       "Members of <COMPANYNAME> can take things from our collection anytime they want to."
     ]
   ],
-  "mainFeature": "Use our collection <COMPANYNAME> switch your things whenevery you want to just 120 euro/month",
+  "mainFeature": "Use our collection <COMPANYNAME> switch your things whenevery you want to just 199 euro/month",
   "fashionGrid": {
     "booking": "Booking"
   },

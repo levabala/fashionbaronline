@@ -36,6 +36,7 @@ interface DataType {
   email: string;
   date: string;
   location: { country: string; city: string };
+  choosenBag?: { name: string; image: string };
 }
 
 function shuffleArray(array: any[]): any[] {
@@ -251,7 +252,10 @@ function formatData(data: DataType): string {
   return [
     data.email,
     data.date,
-    `${data.location.country} ${data.location.city}`
+    `${data.location.country} ${data.location.city}`,
+    ...(data.choosenBag
+      ? [data.choosenBag.name, data.choosenBag.image]
+      : [null, null])
   ].join(",");
 }
 

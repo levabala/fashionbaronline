@@ -1,4 +1,13 @@
 .table {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+
+  .image {
+    max-height: 100px;
+  }
+
+  div,
+  img {
+    line-height: 7;
+  }
 }

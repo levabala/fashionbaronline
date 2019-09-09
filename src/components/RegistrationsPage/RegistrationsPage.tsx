@@ -9,6 +9,8 @@ export interface RegistrationData {
   email: string;
   date: string;
   location: string;
+  choosenBagName?: string;
+  choosenBagImage?: string;
 }
 
 const RegistrationsPage = () => {
@@ -44,6 +46,8 @@ const RegistrationsPage = () => {
       const rr: RegistrationData[] = registrationsRaw.map(line => {
         const dd = line.split(",");
         return {
+          choosenBagImage: dd[4],
+          choosenBagName: dd[3],
           date: dd[1],
           email: dd[0],
           location: dd[2]

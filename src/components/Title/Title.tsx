@@ -56,22 +56,28 @@ function generateBrends(
 
 const Title = () => {
   const { t } = useTranslation();
-  const brendsArr = t("title.brends", { returnObjects: true }) as string[];
 
+  const getBrends = useCallback(
+    () => t("title.brends", { returnObjects: true }) as string[],
+    [t]
+  );
+
+  // const [loaded, setLoaded] = useState(false);
   const [brendsJXS, setBrendsJXS] = useState<JSX.Element[] | null>(null);
   // const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
   // const [loaded, setLoaded] = useState(false);
 
   const update = useCallback(
     (offsetWidth: number) => {
-      const brends = generateBrends(brendsArr, offsetWidth);
+      const brends = generateBrends(getBrends(), offsetWidth);
 
       setBrendsJXS(brends);
     },
-    [brendsArr]
+    [getBrends]
   );
 
   useEffect(() => {
+    console.log("update updated");
     const id = setInterval(() => {
       const brendsElem = document.querySelector(
         ".title .brends"
