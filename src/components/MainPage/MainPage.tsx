@@ -198,7 +198,6 @@ const MainPage: React.FC = () => {
         <ViewBlock
           first
           around={window.innerWidth > wideDisplayMinWidth}
-          id={TagEnum.Brends}
           noSuspense
         >
           <ContentBlock>

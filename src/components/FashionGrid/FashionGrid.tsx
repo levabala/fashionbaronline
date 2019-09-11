@@ -10,9 +10,16 @@ import ViewBlock from '../ViewBlock';
 
 const rawImageProportions = 691 / 557;
 
+const wideDisplayMinWidth = parseFloat(StyleVariables.wideDisplayMinWidth);
 const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 const fashionElemHeightMin = parseFloat(StyleVariables.fashionElemHeightMin);
 const fashionElemWidthMin = parseFloat(StyleVariables.fashionElemWidthMin);
+const fashionElemWidthNotWideMin = parseFloat(
+  StyleVariables.fashionElemWidthNotWideMin
+);
+const fashionElemHeightNotWideMin = parseFloat(
+  StyleVariables.fashionElemHeightNotWideMin
+);
 const fashionGridPadding = parseFloat(StyleVariables.fashionGridPadding);
 
 const fashionElemHeightMinMobile = parseFloat(
@@ -28,8 +35,18 @@ const containerSize = {
 };
 
 const mobile = containerSize.width < mobileVersionMaxWidth;
-const imageWidth = mobile ? fashionElemSizeMinMobile : fashionElemWidthMin;
-const imageHeight = mobile ? fashionElemHeightMinMobile : fashionElemHeightMin;
+const wide = containerSize.width > wideDisplayMinWidth;
+
+const imageWidth = mobile
+  ? fashionElemSizeMinMobile
+  : wide
+  ? fashionElemWidthMin
+  : fashionElemWidthNotWideMin;
+const imageHeight = mobile
+  ? fashionElemHeightMinMobile
+  : wide
+  ? fashionElemHeightMin
+  : fashionElemHeightNotWideMin;
 
 const imagesPerBlockHorizontal = Math.floor(containerSize.width / imageWidth);
 const imagesPerBlockVertical = Math.floor(containerSize.height / imageHeight);
