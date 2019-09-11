@@ -35,16 +35,16 @@ const containerSize = {
 };
 
 const mobile = containerSize.width < mobileVersionMaxWidth;
-const wide = containerSize.width > wideDisplayMinWidth;
+const notWide = containerSize.width > wideDisplayMinWidth;
 
 const imageWidth = mobile
   ? fashionElemSizeMinMobile
-  : wide
+  : notWide
   ? fashionElemWidthMin
   : fashionElemWidthNotWideMin;
 const imageHeight = mobile
   ? fashionElemHeightMinMobile
-  : wide
+  : notWide
   ? fashionElemHeightMin
   : fashionElemHeightNotWideMin;
 
