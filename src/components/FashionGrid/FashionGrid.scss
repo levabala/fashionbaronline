@@ -155,12 +155,19 @@
           .book {
             font-size: 17px;
             border: solid white 1px;
-            background: white;
-            color: black;
+            color: white;
+            background: transparent;
             width: 90%;
             box-sizing: border-box;
 
             pointer-events: none;
+
+            transition: all 0.5s ease-in-out;
+
+            &:hover {
+              background: white;
+              color: black;
+            }
           }
         }
       }
