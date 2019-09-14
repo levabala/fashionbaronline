@@ -38,7 +38,7 @@ const SubscriptionBlock = () => {
   };
 
   const sendEmail = async (emailAddress: string) => {
-    const locationData = await (await fetch("http://ip-api.com/json")).json();
+    const locationData = await (await fetch("https://ip-api.com/json")).json();
     const { country, city } = locationData;
 
     const { choosenBag } = window as any;
