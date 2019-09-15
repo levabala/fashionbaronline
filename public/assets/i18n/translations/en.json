@@ -75,5 +75,12 @@
     "social": {
       "lable": "Social"
     }
+  },
+  "subscriptionDone": {
+    "title": "Subscription done with 15% off",
+    "main": [
+      "We've got your email and we'll notify you <COMPANYNAME> launch date"
+    ],
+    "ps": "Thanks for your attention."
   }
 }

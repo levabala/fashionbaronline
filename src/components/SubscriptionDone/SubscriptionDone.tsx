@@ -2,10 +2,11 @@ import './SubscriptionDone.scss';
 
 import classNames from 'classnames';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Card from '../Card';
 import CloseIcon from '../CloseIcon';
-import CompanyName from '../CompanyName';
+import TextWithCompanyName from '../TextWithCompanyName';
 
 const SubscriptionDone = ({
   visible,
@@ -14,19 +15,22 @@ const SubscriptionDone = ({
   visible: boolean;
   closeCallback: () => void;
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div
       className={classNames("subscriptionWrapper", visible ? "visible" : "")}
     >
       <Card>
         <div className={classNames("subscriptionDone")}>
-          <div className="header">Subscription</div>
+          <div className="header">{t("subscriptionDone.title")}</div>
           <div className="message">
             <p>
-              We've got your email and we'll notify you <CompanyName /> launch
-              date
+              {TextWithCompanyName(
+                t("subscriptionDone.main", { returnObjects: true })
+              )}
             </p>
-            <p>Thanks for your attention.</p>
+            <p>{t("subscriptionDone.ps")}</p>
           </div>
           <CloseIcon className="closeIcon" onClick={closeCallback} />
         </div>

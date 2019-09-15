@@ -1,6 +1,7 @@
 import './SubscriptionBlock.scss';
 
 import classNames from 'classnames';
+import { sha256 } from 'js-sha256';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -42,20 +43,21 @@ const SubscriptionBlock = () => {
     const locationData = await (await fetch(
       `https://api.ipgeolocation.io/ipgeo?apiKey=${IPGeolocationApiKey}`
     )).json();
-    const { continent_name: country, city } = locationData;
+    const { continent_name: country, city, time_zone, ip } = locationData;
 
     const { choosenBag } = window as any;
 
     const sendingData = {
       choosenBag,
-      date: new Date().toDateString(),
+      date: time_zone.current_time,
       email: emailAddress,
+      id: sha256(ip),
       location: {
         city,
         country
       }
     };
-    // console.log(sendingData);
+    console.log(sendingData);
 
     fetch(EMAIL_POST_PATH, {
       body: JSON.stringify(sendingData),

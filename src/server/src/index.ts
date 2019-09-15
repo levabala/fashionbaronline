@@ -31,6 +31,7 @@ interface DataType {
   date: string;
   location: { country: string; city: string };
   choosenBag?: { name: string; image: string };
+  id: string;
 }
 
 function shuffleArray(array: any[]): any[] {
@@ -158,14 +159,19 @@ http
               !data.date ||
               !data.location ||
               !data.location.city ||
-              !data.location.country
+              !data.location.country ||
+              !data.id
             )
               throw new Error("Invalid data type");
 
-            saveData(data as DataType);
+            saveData({
+              ...(data as DataType),
+              id: request.connection.remoteAddress || data.id
+            });
           } catch (e) {
+            console.log(e);
             response.writeHead(400);
-            response.end(e);
+            response.end((e as Error).toString());
             response.end();
           } finally {
             response.writeHead(200);
@@ -249,7 +255,8 @@ function formatData(data: DataType): string {
     `${data.location.country} ${data.location.city}`,
     ...(data.choosenBag
       ? [data.choosenBag.name, data.choosenBag.image]
-      : [null, null])
+      : [null, null]),
+    data.id
   ].join(",");
 }
 
