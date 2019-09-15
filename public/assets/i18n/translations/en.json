@@ -23,7 +23,7 @@
       "Prada",
       "Hermes"
     ],
-    "feature": "Original things by subscription from 120 euro/month"
+    "feature": "Original bags by subscription from 120 euro/month"
   },
   "subscriptionSmall": {
     "label": "Enter your email address and you will be the first who will be notified about the service's start.",
@@ -31,7 +31,7 @@
   },
   "features": [
     "Buy <COMPANYNAME> subscription",
-    "Choose any thing from <COMPANYNAME> catalog",
+    "Choose any bag from <COMPANYNAME> catalog",
     "Get your order in 1-3 days",
     "Change your thing anytime you want to from <COMPANYNAME> collection"
   ],
