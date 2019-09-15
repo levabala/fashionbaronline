@@ -17,8 +17,14 @@ button {
   box-shadow: none;
   border: none;
 
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background: #0000ea;
+  }
   &:active {
     background: #0000dd;
+    transition: background 0.1s ease-in;
   }
 
   @media screen and (max-width: $mobile-extra-version-max-width) {

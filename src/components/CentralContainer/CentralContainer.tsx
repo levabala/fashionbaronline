@@ -8,9 +8,9 @@ const CentralContainer = forwardRef(
     ref: Ref<HTMLDivElement>
   ) => {
     return (
-      <div className="centralContainer" ref={ref}>
+      <main className="centralContainer" ref={ref}>
         {children}
-      </div>
+      </main>
     );
   }
 );

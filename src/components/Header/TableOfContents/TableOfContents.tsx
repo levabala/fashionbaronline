@@ -19,7 +19,7 @@ const TableOfContents = () => {
   };
 
   return (
-    <div className="tableOfContents">
+    <nav className="tableOfContents">
       <div className="text">
         {table.map(name => (
           <span key={name} className="tag">
@@ -29,7 +29,7 @@ const TableOfContents = () => {
           </span>
         ))}
       </div>
-    </div>
+    </nav>
   );
 };
 

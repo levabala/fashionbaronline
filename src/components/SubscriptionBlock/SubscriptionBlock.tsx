@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import Button from '../Button';
 import SubscriptionDone from '../SubscriptionDone';
 import TextInput from '../TextInput';
+import { key as IPGeolocationApiKey } from './apikey.private.json';
 
 const EMAIL_POST_PATH = `${window.location.href}subscribe`;
 
@@ -38,8 +39,10 @@ const SubscriptionBlock = () => {
   };
 
   const sendEmail = async (emailAddress: string) => {
-    const locationData = await (await fetch("https://ip-api.com/json")).json();
-    const { country, city } = locationData;
+    const locationData = await (await fetch(
+      `https://api.ipgeolocation.io/ipgeo?apiKey=${IPGeolocationApiKey}`
+    )).json();
+    const { continent_name: country, city } = locationData;
 
     const { choosenBag } = window as any;
 
@@ -110,7 +113,8 @@ const SubscriptionBlock = () => {
         // required
       />
       <Button className="send" key="button" onClick={sendButtonClick}>
-        {t("subscriptionSmall.save")}
+        <b>{t("subscriptionSmall.subscribe")}</b>
+        {t("subscriptionSmall.postSubscribe")}
       </Button>
       <SubscriptionDone
         visible={emailSent}

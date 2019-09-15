@@ -27,7 +27,8 @@
   },
   "subscriptionSmall": {
     "label": "Enter your email address and you will be the first who will be notified about the service's start.",
-    "save": "Subscribe"
+    "postSubscribe": " and get now 15% off",
+    "subscribe": "Subscribe"
   },
   "features": [
     "Buy <COMPANYNAME> subscription",
@@ -56,8 +57,8 @@
       "secondary": "Preferable option"
     },
     "variants": {
-      "first": "One thing",
-      "second": "Two things",
+      "first": "One thing at time",
+      "second": "Two things at time",
       "period": "month"
     },
     "sendBox": {

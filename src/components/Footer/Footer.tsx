@@ -26,9 +26,12 @@ const Footer = () => {
           <div className="label">{t("footer.social.lable")}</div>
         </BlockHeader>
         <div className="info">
-          <div>
-            <a href="https://www.instagram.com/fashionbar.online/">Instagram</a>
-          </div>
+          <a
+            className="link"
+            href="https://www.instagram.com/fashionbar.online/"
+          >
+            Instagram
+          </a>
         </div>
       </div>
     </div>
