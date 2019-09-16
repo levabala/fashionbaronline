@@ -13,12 +13,12 @@ const Table = ({ registrations }: { registrations: RegistrationData[] }) => {
             <div className="date">{date}</div>
             <div className="location">{location}</div>
             <div className="email">{email}</div>
-            <div className="brend">{choosenBagName}</div>
-            <img
-              className="image"
-              src={choosenBagImage ? choosenBagImage : ""}
-              alt="bag"
-            />
+            <div className="brend">{choosenBagName || "none"}</div>
+            {choosenBagImage ? (
+              <img className="image" src={choosenBagImage} alt="bag" />
+            ) : (
+              <div>none</div>
+            )}
           </React.Fragment>
         )
       )}

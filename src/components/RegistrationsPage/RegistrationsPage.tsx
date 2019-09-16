@@ -3,6 +3,7 @@ import { sha256 } from 'js-sha256';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import Button from '../Button';
+import Plot from './Plot';
 import Table from './Table';
 
 export interface RegistrationData {
@@ -87,6 +88,7 @@ const RegistrationsPage = () => {
   return (
     <div style={{ padding: "1em" }}>
       <Button onClick={onExportButtonClick}>Export</Button>
+      <Plot />
       <div style={{ marginTop: "1em" }}>
         <Table registrations={registrations} />
       </div>

@@ -2,11 +2,13 @@ import './App.scss';
 import './i18n';
 
 import { createBrowserHistory } from 'history';
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Route, Router } from 'react-router-dom';
 
-import MainPage from './components/MainPage';
-import RegistrationsPage from './components/RegistrationsPage';
+// import MainPage from './components/MainPage';
+// import RegistrationsPage from './components/RegistrationsPage';
+const MainPage = lazy(() => import("./components/MainPage"));
+const RegistrationsPage = lazy(() => import("./components/RegistrationsPage"));
 
 const h = createBrowserHistory();
 const App: React.FC = () => {
@@ -20,8 +22,12 @@ const App: React.FC = () => {
         className="App"
         // style={{ visibility: loaded ? "visible" : "hidden" }}
       >
-        <Route exact path="/" component={MainPage} />
-        <Route path="/registrations" component={RegistrationsPage} />
+        <Suspense fallback="">
+          <Route exact path="/" component={MainPage} />
+        </Suspense>
+        <Suspense fallback="">
+          <Route path="/registrations" component={RegistrationsPage} />
+        </Suspense>
       </div>
     </Router>
   );
