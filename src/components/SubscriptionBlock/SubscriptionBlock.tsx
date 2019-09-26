@@ -10,7 +10,11 @@ import SubscriptionDone from '../SubscriptionDone';
 import TextInput from '../TextInput';
 import { key as IPGeolocationApiKey } from './apikey.private.json';
 
-const EMAIL_POST_PATH = `${window.location.href}subscribe`;
+const EMAIL_POST_PATH = `${
+  window.location.href.includes("localhost")
+    ? "http://localhost:3000/"
+    : window.location.href
+}subscribe`;
 
 const SubscriptionBlock = () => {
   const { t } = useTranslation();

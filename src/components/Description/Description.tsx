@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import BlockHeader from '../BlockHeader';
 import CompanyName from '../CompanyName';
-import TextWithCompanyName from '../TextWithCompanyName';
+import TextWithCompanyName from '../TextWithInsertions';
 
 const Description = (props: { style?: React.CSSProperties }) => {
   const { t } = useTranslation();

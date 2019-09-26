@@ -1,3 +1,4 @@
+import { addDays } from 'date-fns';
 import Cookies from 'js-cookie';
 import { sha256 } from 'js-sha256';
 import React, { useCallback, useEffect, useState } from 'react';
@@ -15,7 +16,9 @@ export interface RegistrationData {
 }
 
 const RegistrationsPage = () => {
+  console.log("reeembo");
   const [registrations, setRegistrations] = useState([] as RegistrationData[]);
+  const [allowed, setAllowed] = useState(false);
 
   const fetchRegistations = useCallback(async () => {
     const data = await (await fetch("auth")).json();
@@ -58,6 +61,7 @@ const RegistrationsPage = () => {
       console.log(registrationsRaw);
 
       setRegistrations(rr);
+      setAllowed(true);
     } catch (e) {
       Cookies.remove("password", { secure: true });
       fetchRegistations();
@@ -85,10 +89,39 @@ const RegistrationsPage = () => {
     fetchRegistations();
   }, [fetchRegistations]);
 
+  const minR = 30;
+  const minS = 5;
+  const minV = 100;
+  const noize = 5;
+  const growPerDay = 0.5;
+  const sinCoeff1 = 10;
+  const sinCoeff2 = 6;
+
+  function f(min: number, i: number): number {
+    return Math.floor(
+      min +
+        (Math.random() - 0.5) * noize +
+        growPerDay * i +
+        sinCoeff2 * Math.sin(i / sinCoeff1)
+    );
+  }
+
+  const registrationsData: Array<{
+    time: Date;
+    registrations: number;
+    visits: number;
+    subscriptions: number;
+  }> = new Array(130).fill(null).map((_, i, arr) => ({
+    registrations: f(minR, i),
+    subscriptions: f(minS, i),
+    time: addDays(Date.now(), i - arr.length),
+    visits: f(minV, i)
+  }));
+
   return (
-    <div style={{ padding: "1em" }}>
+    <div style={{ padding: "1em", visibility: allowed ? "visible" : "hidden" }}>
       <Button onClick={onExportButtonClick}>Export</Button>
-      <Plot />
+      <Plot data={registrationsData} />
       <div style={{ marginTop: "1em" }}>
         <Table registrations={registrations} />
       </div>

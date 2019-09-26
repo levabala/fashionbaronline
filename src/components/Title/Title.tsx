@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import getTextWidth from '../../assemblies/measureText';
 import StyleVariables from '../../variables.scss';
+import TextWithInsertions from '../TextWithInsertions';
 
 const wideDisplayMinWidth = parseFloat(StyleVariables.wideDisplayMinWidth);
 
@@ -62,10 +63,8 @@ const Title = () => {
     [t]
   );
 
-  // const [loaded, setLoaded] = useState(false);
   const [brendsJXS, setBrendsJXS] = useState<JSX.Element[] | null>(null);
-  // const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
-  // const [loaded, setLoaded] = useState(false);
+  const [maxWidth, setMaxWidth] = useState(0);
 
   const update = useCallback(
     (offsetWidth: number) => {
@@ -91,10 +90,34 @@ const Title = () => {
     });
   }, [update]);
 
+  useEffect(() => {
+    const brendsDiv = document.querySelector(".brends") as
+      | HTMLDivElement
+      | undefined;
+    if (!brendsDiv) return;
+
+    const spans = brendsDiv.querySelectorAll("span");
+    if (!spans.length) return;
+
+    const lastSpan = spans[spans.length - 1];
+
+    const newMaxWidth =
+      lastSpan.offsetLeft + lastSpan.offsetWidth - brendsDiv.offsetLeft;
+    setMaxWidth(newMaxWidth);
+  }, [brendsJXS]);
+
   return (
     <div className="title">
       <div className="brends">{brendsJXS}</div>
-      <div className="feature">{t("title.feature")}</div>
+      <div
+        className="feature"
+        style={{
+          visibility: !maxWidth ? "hidden" : "visible",
+          width: `${maxWidth}px`
+        }}
+      >
+        {TextWithInsertions(t("title.feature", { returnObjects: true }))}
+      </div>
     </div>
   );
 };

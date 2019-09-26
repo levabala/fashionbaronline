@@ -1,5 +1,5 @@
 import { disableBodyScroll } from 'body-scroll-lock';
-import React, { lazy, Suspense, useRef } from 'react';
+import React, { lazy, Suspense, useEffect, useRef } from 'react';
 
 import TagEnum from '../../types/TagEnum';
 import StyleVariables from '../../variables.scss';
@@ -192,6 +192,10 @@ const MainPage: React.FC = () => {
     //   disableBodyScroll(centralContainer);
   };
 
+  // useEffect(() => {
+  //   setTimeout(() => scrollTo(TagEnum.Collection), 500);
+  // }, []);
+
   return (
     <Suspense fallback={null}>
       <CentralContainer ref={centralContainerRef}>
@@ -217,9 +221,9 @@ const MainPage: React.FC = () => {
           <Description />
         </ViewBlock>
 
-        <ViewBlock forced around id={TagEnum.MainFeature}>
+        {/* <ViewBlock forced around id={TagEnum.MainFeature}>
           <MainFeature />
-        </ViewBlock>
+        </ViewBlock> */}
 
         <FashionGrid
           renderCallback={onFashionGridRendered}

@@ -23,7 +23,9 @@
       "Prada",
       "Hermes"
     ],
-    "feature": "Original bags by subscription from 120 euro/month"
+    "feature": [
+      "Rent original branded bags by subscription and swith them from our collection whenevery you want just for <PRICE>"
+    ]
   },
   "subscriptionSmall": {
     "label": "Enter your email address and you will be the first who will be notified about the service's start.",
@@ -34,7 +36,7 @@
     "Buy <COMPANYNAME> subscription",
     "Choose any bag from <COMPANYNAME> catalog",
     "Get your order in 1-3 days",
-    "Change your thing anytime you want to from <COMPANYNAME> collection"
+    "Use our collection you want to from <COMPANYNAME> collection"
   ],
   "description": [
     ["We are startup from Germany."],
@@ -47,7 +49,7 @@
       "Members of <COMPANYNAME> can take things from our collection anytime they want to."
     ]
   ],
-  "mainFeature": "Use our collection <COMPANYNAME> switch your things whenevery you want to just 199 euro/month",
+  "mainFeature": "Use our collection <COMPANYNAME> switch your things whenevery you want to just <PRICE>.",
   "fashionGrid": {
     "booking": "Booking"
   },
@@ -79,7 +81,7 @@
   "subscriptionDone": {
     "title": "Subscription done with 15% off",
     "main": [
-      "We've got your email and we'll notify you <COMPANYNAME> launch date"
+      "We've got your email and we'll notify you <COMPANYNAME> launch date."
     ],
     "ps": "Thanks for your attention."
   }

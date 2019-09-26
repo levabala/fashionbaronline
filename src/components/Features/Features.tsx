@@ -3,7 +3,7 @@ import './Features.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import TextWithCompanyName from '../TextWithCompanyName';
+import TextWithCompanyName from '../TextWithInsertions';
 
 const LiWrapper = ({ children }: { children: React.ReactNode }) => (
   <li>{children}</li>

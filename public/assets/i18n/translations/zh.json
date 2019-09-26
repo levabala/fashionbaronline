@@ -1,74 +1,69 @@
 {
-  "company": {
-    "name": "FASHIONBAR",
-    "postfix": ".online"
-  },
+  "company": { "name": "FASHIONBAR", "postfix": ".在线" },
   "tableOfContents": {
-    "collection": "采集",
-    "social": "社会",
+    "howitworks": "它是如何工作的",
     "about": "关于",
-    "contacts": "往来"
+    "mainfeature": "主要特点",
+    "subscribe": "订阅",
+    "collection": "集合",
+    "contacts": "联系人"
   },
   "title": {
     "brends": [
-      "Gucci",
-      "Prada",
       "Chanel",
       "Dior",
-      "Lousi Vuitton",
-      "Dolche & Gabbana",
-      "Hermes",
-      "Loro Piano",
-      "Valentino"
+      "Fendi",
+      "Louis Vuitton",
+      "Dolce & Gabbana",
+      "Valentino",
+      "Gucci",
+      "Prada",
+      "Hermes"
     ],
-    "feature": "订阅的原始物品从120欧元/月"
+    "feature": "原袋通过订阅来自120欧元/月"
   },
   "subscriptionSmall": {
-    "label": "输入您的电子邮件地址，您将成为第一个收到服务开始通知的人。",
-    "save": "订阅"
+    "label": "输入你的电子邮件地址，你会是第一人将被通知有关服务的开始。",
+    "postSubscribe": " 和现在得到15％的折扣",
+    "subscribe": "订阅"
   },
   "features": [
-    "购买<COMPANYNAME>订阅",
-    "从<COMPANYNAME>目录中选择任何内容",
-    "在1-3天内获得您的订单",
-    "从<COMPANYNAME>集合中随时更改您的内容"
+    "买<公司名称>订阅",
+    "选择任何袋从<公司名称>目录",
+    "得到你的了1-3天",
+    "改变你的事情，任何时候你想从<公司名称>集合"
   ],
   "description": [
-    ["我们是德国的创业公司。"],
-    ["我们收集了最好的东西。"],
+    ["我们正在启动自德国。"],
+    ["我们已经收集到的最好的事情。"],
     [
-      "每个俱乐部会员都可以免费参加。 现在<COMPANYNAME>只是一个封闭的俱乐部。 您只能通过邀请成为会员。",
-      "但是将来我们想要<COMPANYNAME>开设俱乐部。"
+      "收开放，每个俱乐部的成员。 现在<公司名称>仅仅是一个封闭俱乐部。 你可以成为一个成员只有通过邀请。 ",
+      "但在未来，我们想要使<公司名称>开俱乐部。"
     ],
-    ["<COMPANYNAME>的成员可以随时从我们的收藏中获取内容。"]
+    ["成员<公司名称>可以把东西从我们收集的任何他们想要的时候。"]
   ],
-  "mainFeature": "使用我们的系列<COMPANYNAME>切换您想要的东西，只需120欧元/月",
-  "fashionGrid": {
-    "booking": "预订"
-  },
+  "mainFeature": "使用我们的集<公司名称>关你的事情没你想199欧元/月",
+  "fashionGrid": { "booking": "预订" },
   "subscriptionBig": {
     "title": {
-      "main": "请把数据留在这里",
-      "secondary": "优先选择"
+      "main": "离开你的数据，在这里，请你将可以通知有关的服务的启动作很快，因为它发生",
+      "secondary": "最好的选择"
     },
     "variants": {
-      "first": "一件事",
-      "second": "两件事情",
-      "period": "月"
+      "first": "一个事情时间",
+      "second": "两件事情在时间",
+      "period": "一个月"
     },
-    "sendBox": {
-      "send": "发送"
-    },
-    "smallText": "*您的数据是私密的"
+    "sendBox": { "send": "发送" },
+    "smallText": "*你的数据是私人的"
   },
   "footer": {
-    "contacts": {
-      "lable": "往来",
-      "mail": "邮件：",
-      "address": "地址："
-    },
-    "social": {
-      "lable": "社会"
-    }
+    "contacts": { "lable": "联系人", "mail": "邮件:", "address": "地址：" },
+    "social": { "lable": "社会" }
+  },
+  "subscriptionDone": {
+    "title": "订做了15%的折扣",
+    "main": ["我们已经得到了你的电子邮件我们会通知你<公司名称>启动日期"],
+    "ps": "感谢您的关注。"
   }
 }

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 import Card from '../Card';
 import CloseIcon from '../CloseIcon';
-import TextWithCompanyName from '../TextWithCompanyName';
+import TextWithCompanyName from '../TextWithInsertions';
 
 const SubscriptionDone = ({
   visible,
@@ -23,7 +23,7 @@ const SubscriptionDone = ({
     >
       <Card>
         <div className={classNames("subscriptionDone")}>
-          <div className="header">{t("subscriptionDone.title")}</div>
+          <div className="sc_header">{t("subscriptionDone.title")}</div>
           <div className="message">
             <p>
               {TextWithCompanyName(

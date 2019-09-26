@@ -1,0 +1,77 @@
+{
+  "company": { "name": "FASHIONBAR", "postfix": ".en línea" },
+  "tableOfContents": {
+    "howitworks": "Cómo Funciona",
+    "about": "Acerca de",
+    "mainfeature": "Característica Principal",
+    "subscribe": "Suscribirse",
+    "collection": "Colección",
+    "contacts": "Contactos"
+  },
+  "title": {
+    "brends": [
+      "Chanel",
+      "Dior",
+      "Fendi",
+      "Louis Vuitton",
+      "Dolce & Gabbana",
+      "Valentino",
+      "Gucci",
+      "Prada",
+      "Hermes"
+    ],
+    "feature": "Bolsas originales por la suscripción de 120 euros/mes"
+  },
+  "subscriptionSmall": {
+    "label": "Ingresa tu dirección de correo electrónico y usted será el primero que será notificado acerca del inicio del servicio.",
+    "postSubscribe": " y ahora 15% de descuento",
+    "subscribe": "Suscribirse"
+  },
+  "features": [
+    "Comprar <COMPANYNAME> suscripción",
+    "Elija cualquier bolsa de <COMPANYNAME> catálogo",
+    "Recibe su pedido en 1-3 días",
+    "Cambiar su cosa en cualquier momento que quieras desde <COMPANYNAME> colección"
+  ],
+  "description": [
+    ["Estamos en el inicio de Alemania."],
+    ["Hemos recopilado las mejores cosas."],
+    [
+      "Fuera de la colección está abierta para cada miembro del club. Ahora <COMPANYNAME> es sólo un club cerrado. Usted puede convertirse en un miembro sólo por una invitación. ",
+      "Pero en el futuro queremos hacer <COMPANYNAME> inaugurado club."
+    ],
+    [
+      "Los miembros de <COMPANYNAME> puede tomar las cosas de nuestra colección en cualquier momento que desee."
+    ]
+  ],
+  "mainFeature": "El uso de nuestra colección <COMPANYNAME> interruptor de sus cosas whenevery desea sólo 199 euros/mes",
+  "fashionGrid": { "booking": "Reserva" },
+  "subscriptionBig": {
+    "title": {
+      "main": "A la izquierda de los datos aquí por favor y se te informará sobre el servicio de lanzamiento del tan pronto como sucede",
+      "secondary": "Opción preferible"
+    },
+    "variants": {
+      "first": "Una cosa a la vez",
+      "second": "Dos cosas a la vez",
+      "period": "mes"
+    },
+    "sendBox": { "send": "Enviar" },
+    "smallText": "*Tus datos son privados"
+  },
+  "footer": {
+    "contacts": {
+      "lable": "Contactos",
+      "mail": "Correo:",
+      "address": "Dirección:"
+    },
+    "social": { "lable": "Social" }
+  },
+  "subscriptionDone": {
+    "title": "Suscripción realizada con 15% de descuento",
+    "main": [
+      "Tenemos tu email y te notificaremos <COMPANYNAME> fecha de lanzamiento"
+    ],
+    "ps": "Gracias por su atención."
+  }
+}

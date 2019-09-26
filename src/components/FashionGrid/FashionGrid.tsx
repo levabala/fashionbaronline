@@ -6,6 +6,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import StyleVariables from '../../variables.scss';
 import Button from '../Button';
+import Price from '../Price';
 import ViewBlock from '../ViewBlock';
 
 const rawImageProportions = 691 / 557;
@@ -129,7 +130,13 @@ const FashionGrid = ({
       <div className="placeholder" onTransitionEnd={onTransitionEnd}>
         <div className="black" />
         <div className="container">
-          <div className="name">{bags[i] ? bags[i].name : ""}</div>
+          <div className="name">{bags[i] ? bags[i].name : "Brend Name"}</div>
+          <div className="details">
+            <div className="priceRetail">retail Pirce: 5000$</div>
+            <div className="priceSubsription">
+              subscription: <Price />
+            </div>
+          </div>
           <div className="bookWrapper">
             <Button className="book" onClick={goToBooking} data-bagindex={i}>
               {bookingLabel}

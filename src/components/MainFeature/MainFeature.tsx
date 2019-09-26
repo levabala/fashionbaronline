@@ -3,7 +3,7 @@ import './MainFeature.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import TextWithCompanyName from '../TextWithCompanyName';
+import TextWithCompanyName from '../TextWithInsertions';
 
 const MainFeature = () => {
   const { t } = useTranslation();

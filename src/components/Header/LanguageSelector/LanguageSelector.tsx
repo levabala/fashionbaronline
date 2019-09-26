@@ -26,11 +26,15 @@ const LanguageSelector = () => {
     },
     {
       code: "zh",
-      value: "Chineze"
+      value: "Chinese"
     },
     {
       code: "de",
       value: "German"
+    },
+    {
+      code: "es",
+      value: "Spanish"
     }
   ];
 
@@ -45,37 +49,6 @@ const LanguageSelector = () => {
   ].concat(options.filter(({ code }) => code !== i18n.language));
 
   return (
-    // <div className="languageSelector">
-    //   <div className="wrapper">
-    //     <div className="currentLanguage">
-    //       <button onClick={triggerVisibility}>
-    //         {
-    //           (
-    //             options.find(({ code }) => code === i18n.language) || {
-    //               value: "English"
-    //             }
-    //           ).value
-    //         }
-    //       </button>
-    //     </div>
-    //     <div className={`dropdownWrapper ${dropDownVisible ? "visible" : ""}`}>
-    //       <div className="languageOptions" onMouseLeave={makeInvisible}>
-    //         {options
-    //           .filter(({ code }) => code !== i18n.language)
-    //           .map(({ code, value }) => (
-    //             <button
-    //               key={value}
-    //               data-code={code}
-    //               onClick={onClick}
-    //               className={`${i18n.language === code ? "selected" : ""}`}
-    //             >
-    //               {value}
-    //             </button>
-    //           ))}
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
     <div className="languageSelector">
       <div className="wrapper">
         <ul

@@ -1,7 +1,7 @@
 enum TagEnum {
   HowItWorks = "howitworks",
   About = "about",
-  MainFeature = "mainfeature",
+  // MainFeature = "mainfeature",
   Collection = "collection",
   Subscribe = "subscribe",
   Contacts = "contacts"

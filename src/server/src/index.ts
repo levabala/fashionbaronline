@@ -17,6 +17,7 @@ const brendPhotoPrefix = "Depositphotos_";
 const dataPath = "./build/data";
 const bagsClientPath = "data/bags";
 const emailsStoreFile = dataPath + "/emails.csv";
+const variablesStoreFile = dataPath + "/variables.json";
 
 const PORT = 3000;
 
@@ -53,6 +54,13 @@ http
     );
 
     switch (requestPath) {
+      case "/variables": {
+        fs.readFile(variablesStoreFile, "utf-8", (err, data) => {
+          response.writeHead(200, { "Content-Type": "application/json" });
+          response.end(data, "utf-8");
+        });
+        break;
+      }
       case "/auth": {
         const token = v4();
         const data = { token };
@@ -123,7 +131,7 @@ http
           ],
           []
         );
-        console.log(allBags);
+        // console.log(allBags);
         shuffleArray(allBags);
 
         const count = parseInt(countString as string, 10);
@@ -222,7 +230,7 @@ http
               response.end();
             }
           else {
-            console.warn("file read success");
+            // console.warn("file read success");
             response.writeHead(200, { "Content-Type": contentType });
             response.end(content, "utf-8");
           }

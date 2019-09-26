@@ -136,8 +136,20 @@
         padding: $fashionElem-placeholder-padding;
         box-sizing: border-box;
 
+        color: white;
+
+        .details {
+          font-size: 20px;
+          // .priceRetail {
+
+          // }
+
+          // .priceSubscription {
+
+          // }
+        }
+
         .name {
-          color: white;
           font-family: "Open Sans", sans-serif;
           font-weight: bold;
           font-size: 30px;
@@ -157,7 +169,7 @@
             border: solid white 1px;
             color: white;
             background: transparent;
-            width: 90%;
+            width: 100%;
             box-sizing: border-box;
 
             pointer-events: none;
