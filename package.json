@@ -39,7 +39,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "updateServer": "sudo git pull && sudo yarn install && sudo yarn build",
+    "updateServer": "sudo git pull && sudo yarn install",
     "start:server:dev": "ts-node-dev --respawn --transpileOnly ./src/server/app.ts",
     "start:server:prod": "cd ./src/server && tsc && node ./app.js",
     "build": "react-scripts build",
