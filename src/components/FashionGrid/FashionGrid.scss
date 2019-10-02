@@ -138,47 +138,52 @@
 
         color: white;
 
-        .details {
-          font-size: 20px;
-          // .priceRetail {
+        .top {
+          .details {
+            font-size: 20px;
 
-          // }
+            @media screen and (max-width: $wide-display-min-width) {
+              font-size: 16px;
+            }
+          }
 
-          // .priceSubscription {
+          .name {
+            font-family: "Open Sans", sans-serif;
+            font-weight: bold;
+            font-size: 30px;
 
-          // }
-        }
+            text-transform: uppercase;
 
-        .name {
-          font-family: "Open Sans", sans-serif;
-          font-weight: bold;
-          font-size: 30px;
+            @media screen and (max-width: $wide-display-min-width) {
+              font-size: 22px;
+            }
 
-          text-transform: uppercase;
-
-          @media screen and (max-width: $mobile-version-max-width) {
-            font-size: 28px;
+            @media screen and (max-width: $mobile-version-max-width) {
+              font-size: 28px;
+            }
           }
         }
 
-        .bookWrapper {
-          text-align: center;
+        .bottom {
+          .bookWrapper {
+            text-align: center;
 
-          .book {
-            font-size: 17px;
-            border: solid white 1px;
-            color: white;
-            background: transparent;
-            width: 100%;
-            box-sizing: border-box;
+            .book {
+              font-size: 17px;
+              border: solid white 1px;
+              color: white;
+              background: transparent;
+              width: 100%;
+              box-sizing: border-box;
 
-            pointer-events: none;
+              pointer-events: none;
 
-            transition: all 0.5s ease-in-out;
+              transition: all 0.5s ease-in-out;
 
-            &:hover {
-              background: white;
-              color: black;
+              &:hover {
+                background: white;
+                color: black;
+              }
             }
           }
         }
@@ -186,32 +191,5 @@
     }
   }
 
-  // @media screen and (max-width: $mobile-version-max-width) {
-  //   grid-template-columns: repeat(
-  //     auto-fit,
-  //     minmax(#{$fashionElem-size-min-mobile}, 1fr)
-  //   );
-  // }
-
-  // @media screen and (max-width: $mobile-version-max-width) {
   height: calc(100% - #{$fashionGrid-padding} * 2);
-
-  // grid-auto-rows: 1fr;
-
-  // margin-left: -$app-padding-horizontal-mobile;
-  // margin-right: -$app-padding-horizontal-mobile;
-  // margin-top: 0;
-  // &::before {
-  //   content: inherit;
-  //   width: inherit;
-  //   padding-bottom: inherit;
-  //   grid-row: inherit;
-  //   grid-column: inherit;
-  // }
-
-  // & > *:first-child {
-  //   grid-row: inherit;
-  //   grid-column: inherit;
-  // }
-  // }
 }

@@ -13,13 +13,14 @@ const Variant = ({ cost, target }: { cost: number; target: string }) => {
 
   return (
     <span className="variant">
-      <div className="costContainer">
+      <span className="costContainer">
         <span className="amount">{cost}</span>
         <span className="unit">€</span>
         <span className="slash">/</span>
         <span className="period">{t("subscriptionBig.variants.period")}</span>
-      </div>
-      <div className="target">{target}</div>
+      </span>
+      <span>, </span>
+      <span className="target">{target}</span>
     </span>
   );
 };

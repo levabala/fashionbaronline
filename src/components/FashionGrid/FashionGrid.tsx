@@ -88,6 +88,17 @@ const FashionGrid = ({
     );
 
     (window as any).choosenBag = bagIndex === -1 ? undefined : bags[bagIndex];
+
+    const callback = () => {
+      const bottomEmailInput = document.querySelector(
+        ".subscriptionBig .subscriptionBlock .email"
+      ) as HTMLDivElement;
+      bottomEmailInput.focus();
+
+      document.removeEventListener("keydown", callback);
+    };
+
+    document.addEventListener("keydown", callback);
   };
 
   const onTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
@@ -130,17 +141,23 @@ const FashionGrid = ({
       <div className="placeholder" onTransitionEnd={onTransitionEnd}>
         <div className="black" />
         <div className="container">
-          <div className="name">{bags[i] ? bags[i].name : "Brend Name"}</div>
-          <div className="details">
-            <div className="priceRetail">retail Pirce: 5000$</div>
-            <div className="priceSubsription">
-              subscription: <Price />
+          <div className="top">
+            <div className="name">{bags[i] ? bags[i].name : "Brend Name"}</div>
+            <div className="details">
+              <div className="priceRetail">
+                {t("fashionGrid.retailPrice")}: <b>5000 $</b>
+              </div>
+              <div className="priceSubsription">
+                {t("fashionGrid.subscription")}: <Price noMonth />
+              </div>
             </div>
           </div>
-          <div className="bookWrapper">
-            <Button className="book" onClick={goToBooking} data-bagindex={i}>
-              {bookingLabel}
-            </Button>
+          <div className="bottom">
+            <div className="bookWrapper">
+              <Button className="book" onClick={goToBooking} data-bagindex={i}>
+                {bookingLabel}
+              </Button>
+            </div>
           </div>
         </div>
       </div>

@@ -112,21 +112,22 @@ const Plot = ({ data }: Props) => {
             animationDuration={300}
             animationEasing="ease-in-out"
           />
-          <Line
-            yAxisId="1"
-            name="Registrations"
-            type="natural"
-            dataKey="registrations"
-            stroke="darkgreen"
-            animationDuration={300}
-            connectNulls
-          />
+
           <Line
             yAxisId="1"
             name="Visits"
             type="natural"
             dataKey="visits"
             stroke="darkblue"
+            animationDuration={300}
+            connectNulls
+          />
+          <Line
+            yAxisId="1"
+            name="Registrations"
+            type="natural"
+            dataKey="registrations"
+            stroke="darkgreen"
             animationDuration={300}
             connectNulls
           />

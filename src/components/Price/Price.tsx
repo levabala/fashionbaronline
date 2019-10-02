@@ -4,12 +4,13 @@ import React from 'react';
 
 import { VariablesContainer } from '../../App';
 
-const Price = () => {
+const Price = ({ noMonth }: { noMonth?: boolean }) => {
   const { subscriptionCost } = VariablesContainer.useContainer();
 
   return (
     <span className="price">
-      <b>{subscriptionCost}</b> €/month
+      <b>{subscriptionCost} €</b>
+      {noMonth ? "" : "/month"}
     </span>
   );
 };

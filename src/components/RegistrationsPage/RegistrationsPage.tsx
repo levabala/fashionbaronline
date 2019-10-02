@@ -1,3 +1,5 @@
+import './RegistrationsPage.scss';
+
 import { addDays } from 'date-fns';
 import Cookies from 'js-cookie';
 import { sha256 } from 'js-sha256';
@@ -85,6 +87,12 @@ const RegistrationsPage = () => {
     link.click();
   };
 
+  const onLogOutButtonClick = () => {
+    Cookies.remove("password");
+
+    window.location.reload();
+  };
+
   useEffect(() => {
     fetchRegistations();
   }, [fetchRegistations]);
@@ -119,8 +127,18 @@ const RegistrationsPage = () => {
   }));
 
   return (
-    <div style={{ padding: "1em", visibility: allowed ? "visible" : "hidden" }}>
-      <Button onClick={onExportButtonClick}>Export</Button>
+    <div
+      style={{ padding: "1em", visibility: allowed ? "visible" : "hidden" }}
+      className="registrationsPage"
+    >
+      <div className="header">
+        <Button onClick={onExportButtonClick} className="sendButton">
+          Export
+        </Button>
+        <Button onClick={onLogOutButtonClick} className="logoutButton">
+          Log Out
+        </Button>
+      </div>
       <Plot data={registrationsData} />
       <div style={{ marginTop: "1em" }}>
         <Table registrations={registrations} />

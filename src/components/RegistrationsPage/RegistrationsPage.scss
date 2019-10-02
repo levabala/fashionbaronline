@@ -1,6 +1,19 @@
-// import styled from 'styled-components';
+.registrationsPage {
+  font-family: sans-serif;
 
-// export const Test = styled.div`
-//  display: flex;
-// `;
-//
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin-bottom: 1em;
+
+    // .sendButton {
+
+    // }
+
+    // .logoutButton {
+
+    // }
+  }
+}

@@ -51,7 +51,9 @@
   ],
   "mainFeature": "Use our collection <COMPANYNAME> switch your things whenevery you want to just <PRICE>.",
   "fashionGrid": {
-    "booking": "Booking"
+    "booking": "Booking",
+    "retailPrice": "Retail price",
+    "subscription": "Subscription"
   },
   "subscriptionBig": {
     "title": {
@@ -59,8 +61,8 @@
       "secondary": "Preferable option"
     },
     "variants": {
-      "first": "One thing at time",
-      "second": "Two things at time",
+      "first": "one thing at time",
+      "second": "owo things at time",
       "period": "month"
     },
     "sendBox": {
