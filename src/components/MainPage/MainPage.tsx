@@ -192,9 +192,9 @@ const MainPage: React.FC = () => {
     //   disableBodyScroll(centralContainer);
   };
 
-  useEffect(() => {
-    setTimeout(() => scrollTo(TagEnum.Collection), 500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => scrollTo(TagEnum.Collection), 500);
+  // }, []);
 
   return (
     <Suspense fallback={null}>
