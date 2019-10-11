@@ -4,6 +4,10 @@
     "start:prod": "tsc ./src/index.ts --outDir ./build && node ./build/index.js"
   },
   "dependencies": {
-    "line-reader": "^0.4.0"
+    "line-reader": "^0.4.0",
+    "smtp-server": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/smtp-server": "^3.5.2"
   }
 }

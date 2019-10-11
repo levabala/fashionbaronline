@@ -31,7 +31,7 @@
     "no-class": true,
     // "no-mixed-interface": [true, { "ignore-prefix": ["on "] }],
     "no-expression-statement": false,
-    "no-if-statement": true,
+    "no-if-statement": false,
     /* end tslint-immutable rules */
 
     "no-console": false,

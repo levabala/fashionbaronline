@@ -3,6 +3,7 @@ import http from 'http';
 import { sha256 } from 'js-sha256';
 import lineReader, { eachLine } from 'line-reader';
 import path from 'path';
+import sendmail from 'sendmail';
 import url from 'url';
 import { v4 } from 'uuid';
 
@@ -172,9 +173,11 @@ http
             )
               throw new Error("Invalid data type");
 
+            const dataR = data as DataType;
+            sendHelloEmail(dataR.email);
             saveData({
-              ...(data as DataType),
-              id: request.connection.remoteAddress || data.id
+              ...dataR,
+              id: request.connection.remoteAddress || dataR.id
             });
           } catch (e) {
             console.log(e);
@@ -240,6 +243,18 @@ http
   })
   .listen(PORT);
 console.log(`Server running at http://127.0.0.1:${PORT}/`);
+
+function sendHelloEmail(mail: string): void {
+  sendmail({})(
+    {
+      from: "no-reply@fashionbar.online",
+      to: mail,
+      subject: "test sendmail",
+      html: "Mail of test sendmail "
+    },
+    err => (err ? console.log(err) : null)
+  );
+}
 
 function initDataStore(): void {
   function initCSV(): void {
