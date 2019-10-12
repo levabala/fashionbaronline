@@ -81,9 +81,13 @@
     }
   },
   "subscriptionDone": {
-    "title": "Subscription done with 15% off",
+    "title": "Thanks for your registration",
     "main": [
-      "We've got your email and we'll notify you <COMPANYNAME> launch date."
+      "We are very glad that you have left your email and will inform you about when our service will be launched, you will also be able to take part in the test launch of the project.",
+
+      "We have sent you an email with a link to confirm your mail. To get a 15% discount please confirm your email via the link in the received email.",
+
+      "If you have not received the email please click on this link 'Send email again'"
     ],
     "ps": "Thanks for your attention."
   }

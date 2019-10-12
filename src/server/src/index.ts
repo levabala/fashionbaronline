@@ -2,10 +2,34 @@ import fs from 'fs';
 import http from 'http';
 import { sha256 } from 'js-sha256';
 import lineReader, { eachLine } from 'line-reader';
+import mongoose from 'mongoose';
 import path from 'path';
 import sendmail from 'sendmail';
 import url from 'url';
 import { v4 } from 'uuid';
+
+mongoose.connect("mongodb://localhost/test", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("db connected");
+});
+
+const registartionSchema = new mongoose.Schema({
+  date: Date,
+  email: String,
+  location: {
+    country: String,
+    town: String
+  },
+  relativeBagBrend: String,
+  relativeBagPath: String
+});
+const Registration = mongoose.model("Registration", registartionSchema);
 
 const { password } = require("../password.json");
 console.log({ password });

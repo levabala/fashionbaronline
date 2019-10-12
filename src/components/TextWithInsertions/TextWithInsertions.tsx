@@ -3,7 +3,15 @@ import React from 'react';
 import CompanyName from '../CompanyName';
 import Price from '../Price';
 
-const SpanWrapper = ({ children }: { children: React.ReactNode }) => (
+export const PWrapper = ({ children }: { children: React.ReactNode }) => (
+  <p>{children}</p>
+);
+
+export const DivWrapper = ({ children }: { children: React.ReactNode }) => (
+  <div>{children}</div>
+);
+
+export const SpanWrapper = ({ children }: { children: React.ReactNode }) => (
   <span>{children}</span>
 );
 
