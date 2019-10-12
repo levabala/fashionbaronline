@@ -13,7 +13,7 @@ const Table = ({ registrations }: { registrations: RegistrationData[] }) => {
           <React.Fragment key={i}>
             <div className="index">{i + 1}</div>
             <div className="date">{format(new Date(date), "dd.MM.yyyy")}</div>
-            <div className="time">{format(new Date(date), "mm:HH")}</div>
+            <div className="time">{format(new Date(date), "HH:mm")}</div>
             <div className="country">{location.split(" ")[0]}</div>
             <div className="city">{location.split(" ")[1]}</div>
             <div className="email">{email}</div>

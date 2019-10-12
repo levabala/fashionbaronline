@@ -1,14 +1,13 @@
 import fs from 'fs';
 import http from 'http';
 import { sha256 } from 'js-sha256';
-import lineReader, { eachLine } from 'line-reader';
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 import path from 'path';
 import sendmail from 'sendmail';
 import url from 'url';
 import { v4 } from 'uuid';
 
-mongoose.connect("mongodb://localhost/test", {
+mongoose.connect("mongodb://localhost/fashionbar", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -19,17 +18,37 @@ db.once("open", () => {
   console.log("db connected");
 });
 
+interface IRegistration extends Document {
+  date: Date;
+  email: string;
+  location: {
+    country: string;
+    town: string;
+  };
+  relativeBagBrand: string;
+  relativeBagPath: string;
+  id: string;
+}
+
 const registartionSchema = new mongoose.Schema({
   date: Date,
   email: String,
+  id: String,
   location: {
     country: String,
     town: String
   },
-  relativeBagBrend: String,
+  relativeBagBrand: String,
   relativeBagPath: String
 });
-const Registration = mongoose.model("Registration", registartionSchema);
+const Registration = mongoose.model<IRegistration>(
+  "Registration",
+  registartionSchema
+);
+
+Registration.find()
+  .exec()
+  .then(regs => regs.forEach(r => console.log(r.toJSON())));
 
 const { password } = require("../password.json");
 console.log({ password });
@@ -41,8 +60,6 @@ const bagsFolderPath = "../../public/data/bags";
 const brendPhotoPrefix = "Depositphotos_";
 const dataPath = "./build/data";
 const bagsClientPath = "data/bags";
-const emailsStoreFile = dataPath + "/emails.csv";
-const variablesStoreFile = dataPath + "/variables.json";
 
 const PORT = 3000;
 
@@ -50,9 +67,7 @@ const foldersToCreate = ["./build", "./build/data"];
 
 const bagsMapJSON = loadBrendsData(bagsFolderPath);
 
-initDataStore();
-
-interface DataType {
+interface IRegistartionData {
   email: string;
   date: string;
   location: { country: string; city: string };
@@ -80,10 +95,6 @@ http
 
     switch (requestPath) {
       case "/variables": {
-        fs.readFile(variablesStoreFile, "utf-8", (err, data) => {
-          response.writeHead(200, { "Content-Type": "application/json" });
-          response.end(data, "utf-8");
-        });
         break;
       }
       case "/auth": {
@@ -107,7 +118,7 @@ http
           if (tokensBody.length > 1e6) request.connection.destroy();
         });
 
-        request.on("end", () => {
+        request.on("end", async () => {
           try {
             const recievedToken = JSON.parse(tokensBody);
             const { token } = recievedToken;
@@ -119,12 +130,12 @@ http
             } else {
               authenticationTokens.splice(tokenIndex, 1);
 
-              console.log("done");
+              console.log("'getRegistrations' request approved");
 
-              fs.readFile(emailsStoreFile, "utf-8", (err, data) => {
-                response.writeHead(200, { "Content-Type": "application/json" });
-                response.end(JSON.stringify({ data }), "utf-8");
-              });
+              const regs = await Registration.find().exec();
+              const jsons = regs.map(r => r.toJSON());
+
+              response.end(JSON.stringify(jsons));
             }
           } catch (e) {
             console.log(e);
@@ -186,7 +197,7 @@ http
 
         request.on("end", () => {
           try {
-            const data: Partial<DataType> = JSON.parse(body);
+            const data: Partial<IRegistartionData> = JSON.parse(body);
             if (
               !data.email ||
               !data.date ||
@@ -197,11 +208,12 @@ http
             )
               throw new Error("Invalid data type");
 
-            const dataR = data as DataType;
-            sendHelloEmail(dataR.email);
+            const dataR = data as IRegistartionData;
+            const id = request.connection.remoteAddress || dataR.id;
+            if (id !== "::1") sendHelloEmail(dataR.email);
             saveData({
               ...dataR,
-              id: request.connection.remoteAddress || dataR.id
+              id
             });
           } catch (e) {
             console.log(e);
@@ -280,74 +292,29 @@ function sendHelloEmail(mail: string): void {
   );
 }
 
-function initDataStore(): void {
-  function initCSV(): void {
-    fs.writeFileSync(emailsStoreFile, "");
-  }
-
-  foldersToCreate.forEach(
-    folder => fs.existsSync(folder) || fs.mkdirSync(folder)
-  );
-  fs.existsSync(emailsStoreFile) || initCSV();
-
-  // lineReader.eachLine(emailsStoreFile, line => {
-  //   console.log(line);
-  // });
-}
-
-function formatData(data: DataType): string {
-  return [
-    data.email,
-    data.date,
-    `${data.location.country} ${data.location.city}`,
-    ...(data.choosenBag
-      ? [data.choosenBag.name, data.choosenBag.image]
-      : [null, null]),
-    data.id
-  ].join(",");
-}
-
-async function isUnique(data: DataType): Promise<boolean> {
+async function isUnique(data: IRegistartionData): Promise<boolean> {
   const { email } = data;
 
-  return new Promise<boolean>(resolve => {
-    lineReader.open(emailsStoreFile, (err, reader) => {
-      if (reader.hasNextLine())
-        eachLine(emailsStoreFile, (line, last, cb) => {
-          const recordedEmail = line.split(",")[0];
-          const unique = email !== recordedEmail;
-
-          const doNext = cb as (val?: boolean) => void;
-
-          if (unique) {
-            doNext();
-            if (last) resolve(true);
-          } else {
-            doNext(false);
-            resolve(false);
-          }
-
-          if (last) reader.close(_ => null);
-        });
-      else {
-        reader.close(_ => null);
-        resolve(true);
-      }
-    });
-  });
+  return (await Registration.findOne({ email }).exec()) === null;
 }
 
-async function saveData(data: DataType): Promise<void> {
+async function saveData(data: IRegistartionData): Promise<void> {
   const unique = await isUnique(data);
-  if (unique) writeData(data);
-  else console.log("this email is already registered:", data.email);
-}
 
-function writeData(data: DataType): void {
-  fs.appendFile(emailsStoreFile, `${formatData(data)}\n`, err => {
-    if (err) console.warn("Error writing data");
-    else console.log(`${data.email} user is written down`);
+  if (!unique) return;
+
+  const { date, email, location, choosenBag, id } = data;
+  const registration: IRegistration = new Registration({
+    date,
+    email,
+    id,
+    location,
+    relativeBagBrand: (choosenBag || {}).name || "",
+    relativeBagPath: (choosenBag || {}).image || ""
   });
+
+  await registration.save();
+  console.log(`save ${email}`);
 }
 
 function loadBrendsData(folder: string): Record<string, string[]> {

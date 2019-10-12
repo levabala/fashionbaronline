@@ -35,8 +35,20 @@ const RegistrationsPage = () => {
     const { token } = data;
     const accessToken = sha256(token + password);
 
+    interface R {
+      date: Date;
+      email: string;
+      location: {
+        country: string;
+        town: string;
+      };
+      relativeBagBrand: string;
+      relativeBagPath: string;
+      id: string;
+    }
+
     try {
-      const registrationsJSON = await (await fetch("getRegistrations", {
+      const registrationsObj = await (await fetch("getRegistrations", {
         body: JSON.stringify({
           token: accessToken
         }),
@@ -46,27 +58,26 @@ const RegistrationsPage = () => {
         method: "POST"
       })).json();
 
-      const registrationsRaw: string[] = registrationsJSON.data
-        .split("\n")
-        .slice(0, -1);
-      const rr: RegistrationData[] = registrationsRaw.map(line => {
-        const dd = line.split(",");
+      console.log(registrationsObj);
+
+      const rr: RegistrationData[] = registrationsObj.map((r: R) => {
         return {
-          choosenBagImage: dd[4],
-          choosenBagName: dd[3],
-          date: dd[1],
-          email: dd[0],
-          location: dd[2]
+          choosenBagImage: r.relativeBagPath,
+          choosenBagName: r.relativeBagBrand,
+          date: r.date.toString(),
+          email: r.email,
+          location: `${r.location.country} ${r.location.town}`
         } as RegistrationData;
       });
 
-      console.log(registrationsRaw);
+      console.log(rr);
 
       setRegistrations(rr);
       setAllowed(true);
     } catch (e) {
       Cookies.remove("password", { secure: true });
-      fetchRegistations();
+
+      setTimeout(() => fetchRegistations(), 1000);
     }
   }, []);
 
