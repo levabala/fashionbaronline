@@ -75,7 +75,12 @@ const MainPage: React.FC = () => {
 
     setTimeout(() => {
       if (delta === -1) block.classList.add("reactivated");
-      else block.classList.add("activated");
+      else {
+        block.classList.add("activated");
+        Array.from(block.children[0].children).forEach(child =>
+          child.classList.add("activated")
+        );
+      }
 
       block.classList.remove("disactivated");
       previousBlock.classList.add("disactivated");

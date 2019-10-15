@@ -29,29 +29,34 @@ const SubscriptionBig = () => {
   const { t } = useTranslation();
 
   return (
-    <Card paddingOnly>
+    <Card noPadding>
       <div className="subscriptionBig" id="emailSubscriptionBox">
-        <img
-          src="/assets/images/rectFullRedThin.png"
-          className="decorationImage"
-          alt="justRect"
-        />
-        <div className="subTitle">
-          <div className="main">{t("subscriptionBig.title.main")}</div>
-          {/* <div className="secondary">
+        <div className="left">
+          <img src="/assets/images/follow-subscriptionBig.jpg" alt="a bag" />
+        </div>
+        <div className="right">
+          <img
+            src="/assets/images/rectFullRedThin.png"
+            className="decorationImage"
+            alt="justRect"
+          />
+          <div className="subTitle">
+            <div className="main">{t("subscriptionBig.title.main")}</div>
+            {/* <div className="secondary">
             {t("subscriptionBig.title.secondary")}
           </div> */}
-        </div>
-        <div className="variants alone">
-          <Variant cost={199} target={t("subscriptionBig.variants.first")} />
-          {/* <span className="separator">
+          </div>
+          <div className="variants alone">
+            <Variant cost={199} target={t("subscriptionBig.variants.first")} />
+            {/* <span className="separator">
             <span>{"&"}</span>
           </span>
           <Variant cost={250} target={t("subscriptionBig.variants.second")} /> */}
-        </div>
-        <div className="bottomBlock">
-          <SubscriptionBlock />
-          <div className="smallText">{t("subscriptionBig.smallText")}</div>
+          </div>
+          <div className="bottomBlock">
+            <SubscriptionBlock />
+            <div className="smallText">{t("subscriptionBig.smallText")}</div>
+          </div>
         </div>
       </div>
     </Card>

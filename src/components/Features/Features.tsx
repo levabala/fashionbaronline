@@ -22,7 +22,9 @@ const Features = () => {
         <span className="main">
           <ol>{TextWithCompanyName(features, LiWrapper)}</ol>
         </span>
-        <span className="woman" style={{ width: 700, height: 700 }} />
+        <div className="woman">
+          <img src="/assets/images/follow-features.jpg" alt="a bag" />
+        </div>
         {/* <img src="/assets/images/woman2.png" className="woman" alt="womanTwo" /> */}
       </div>
     </Card>

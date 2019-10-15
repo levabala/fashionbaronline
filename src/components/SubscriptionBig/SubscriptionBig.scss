@@ -4,20 +4,33 @@
 // $small-screen-height:
 
 .subscriptionBig {
-  width: 67%;
-  margin: 0 auto;
-  // margin-top: $gap-fashionGrid-subscriptionBig;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  position: relative;
 
   height: 70%;
+  max-width: 80%;
 
-  max-height: 500px;
-  max-width: 700px;
+  margin: 0 auto;
 
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  & > .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: $card-padding * 2;
+  }
+
+  & > .left {
+    height: 100%;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 
   .decorationImage {
     position: absolute;
@@ -45,6 +58,8 @@
   .variants {
     display: flex;
     justify-content: space-between;
+
+    white-space: nowrap;
 
     padding: $subscriptionBig-costs-padding;
 

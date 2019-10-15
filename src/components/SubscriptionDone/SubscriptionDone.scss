@@ -25,15 +25,21 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 
+    height: 70%;
+    max-width: 80%;
+
     .left {
-      background: lightgray;
-      width: 700px;
-      height: 700px;
+      height: 100%;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
     }
 
     .right {
-      padding: $card-padding;
-      width: 600px;
+      padding: $card-padding * 2;
 
       .sc_header {
         padding: 15px 0px;

@@ -24,7 +24,9 @@ const SubscriptionDone = ({
     >
       <Card noPadding>
         <div className="subscriptionDone">
-          <div className="left" />
+          <div className="left">
+            <img src="/assets/images/follow-subscriptionDone.jpg" alt="a bag" />
+          </div>
           <div className="right">
             <div className="sc_header">{t("subscriptionDone.title")}</div>
             <div className="message">

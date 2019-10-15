@@ -28,27 +28,28 @@ interface IRegistration extends Document {
   relativeBagBrand: string;
   relativeBagPath: string;
   id: string;
+  verified?: boolean;
 }
 
 const registartionSchema = new mongoose.Schema({
-  date: Date,
-  email: String,
-  id: String,
+  date: { type: Date, required: true },
+  email: { type: String, required: true },
+  id: { type: String, required: true },
   location: {
-    country: String,
-    town: String
+    required: true,
+    type: {
+      country: String,
+      town: String
+    }
   },
   relativeBagBrand: String,
-  relativeBagPath: String
+  relativeBagPath: String,
+  verified: Boolean
 });
 const Registration = mongoose.model<IRegistration>(
   "Registration",
   registartionSchema
 );
-
-Registration.find()
-  .exec()
-  .then(regs => regs.forEach(r => console.log(r.toJSON())));
 
 const { password } = require("../password.json");
 console.log({ password });
@@ -85,10 +86,10 @@ function shuffleArray(array: any[]): any[] {
 }
 
 const authenticationTokensPage: string[] = [];
-const authenticationTokensEmail: Record<string, string> = {};
+const authenticationTokensEmail: Record<string, string> = { testToken: "qwe" };
 
 http
-  .createServer((request, response) => {
+  .createServer(async (request, response) => {
     const { pathname: requestPath, query } = url.parse(
       request.url as string,
       true
@@ -96,7 +97,40 @@ http
 
     switch (requestPath) {
       case "/verifyEmail": {
-        console.log(query);
+        const { token } = query;
+        const email = authenticationTokensEmail[(token || "").toString()];
+
+        if (!email) {
+          response.end(
+            "This email was already verified. (or you have used very strange token)"
+          );
+          return;
+        }
+
+        const registration = await Registration.findOne({ email }).exec();
+        if (!registration) {
+          response.end(
+            "Internal error. Please, contant with us via this email: test@test.test"
+          );
+          return;
+        }
+
+        // tslint:disable-next-line:no-delete
+        delete authenticationTokensEmail[(token || "").toString()];
+
+        registration.verified = true;
+        registration.save();
+        console.log(`${email} was verified`);
+
+        response.end("The email is verified");
+
+        console.log(
+          `all verified registrations count: ${
+            (await Registration.find({ verified: true }).exec()).length
+          }`
+        );
+
+        break;
       }
       case "/variables": {
         break;
@@ -216,15 +250,17 @@ http
             const id = request.connection.remoteAddress || dataR.id;
 
             const unique = await isUnique(dataR);
+            const emailToken = v4();
+
+            if (id !== "::1") sendHelloEmail(dataR.email, emailToken);
+
             if (!unique) {
               response.end();
               return;
             }
 
-            const emailToken = v4();
             authenticationTokensEmail[dataR.email] = emailToken;
 
-            if (id !== "::1") sendHelloEmail(dataR.email, emailToken);
             saveData({
               ...dataR,
               id
@@ -297,7 +333,8 @@ http
 console.log(`Server running at http://127.0.0.1:${PORT}/`);
 
 function sendHelloEmail(mail: string, token: string): void {
-  sendmail({})(
+  console.log(`send mail to ${mail}`);
+  sendmail({ silent: true })(
     {
       from: "no-reply@fashionbar.online",
       to: mail,
