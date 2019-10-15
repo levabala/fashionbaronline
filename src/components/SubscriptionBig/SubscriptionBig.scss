@@ -14,6 +14,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 
+  @media screen and (max-width: $mobile-version-max-width) {
+    grid-template-columns: 1fr;
+  }
+
   & > .right {
     display: flex;
     flex-direction: column;
@@ -29,6 +33,10 @@
       height: 100%;
       width: 100%;
       object-fit: cover;
+    }
+
+    @media screen and (max-width: $mobile-version-max-width) {
+      display: none;
     }
   }
 
@@ -137,68 +145,72 @@
   }
 
   @media screen and (max-width: $mobile-version-max-width) {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-
-    // padding: 0;
     width: 100%;
+    max-width: 100%;
+    .right {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
 
-    height: 100%;
-    padding-top: ($app-padding-vertical-mobile / 2);
-    padding-bottom: ($app-padding-vertical-mobile / 2);
+      // padding: 0;
+      width: 100%;
 
-    background: none;
-    box-shadow: none;
-    margin-top: 0;
-    margin-left: -$app-padding-horizontal-mobile;
+      height: 100%;
+      padding-top: ($app-padding-vertical-mobile / 2);
+      padding-bottom: ($app-padding-vertical-mobile / 2);
 
-    .subTitle {
-      .secondary {
-        display: none;
+      background: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+
+      .subTitle {
+        .secondary {
+          display: none;
+        }
       }
-    }
 
-    .variants {
-      padding: $subscriptionBig-costs-padding-mobile;
+      .variants {
+        padding: $subscriptionBig-costs-padding-mobile;
 
-      .costContainer {
-        .amount,
-        .unit {
-          font-size: 30px;
+        .costContainer {
+          .amount,
+          .unit {
+            font-size: 30px;
+          }
+
+          .unit {
+            font-size: 30px;
+          }
+
+          .slash {
+            font-size: 20px;
+          }
+
+          .period {
+            font-size: 15px;
+          }
         }
 
-        .unit {
-          font-size: 30px;
-        }
-
-        .slash {
-          font-size: 20px;
-        }
-
-        .period {
+        .target {
           font-size: 15px;
         }
+
+        .separator {
+          font-size: 25px;
+        }
       }
 
-      .target {
-        font-size: 15px;
+      .decorationImage {
+        display: none;
       }
 
-      .separator {
-        font-size: 25px;
+      .sendBox {
+        width: 100%;
       }
-    }
-
-    .decorationImage {
-      display: none;
-    }
-
-    .sendBox {
-      width: 100%;
-    }
-    .bottomBlock .smallText {
-      display: none;
+      .bottomBlock .smallText {
+        display: none;
+      }
     }
   }
 }

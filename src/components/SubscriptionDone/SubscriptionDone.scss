@@ -28,6 +28,16 @@
     height: 70%;
     max-width: 80%;
 
+    @media screen and (max-width: $mobile-version-max-width) {
+      padding: 40px;
+    }
+
+    @media screen and (max-width: $mobile-version-max-width) {
+      height: 100%;
+      grid-template-columns: 1fr;
+      max-width: 100%;
+    }
+
     .left {
       height: 100%;
 
@@ -36,10 +46,18 @@
         width: 100%;
         object-fit: cover;
       }
+
+      @media screen and (max-width: $mobile-version-max-width) {
+        display: none;
+      }
     }
 
     .right {
       padding: $card-padding * 2;
+
+      @media screen and (max-width: $mobile-version-max-width) {
+        padding: 0;
+      }
 
       .sc_header {
         padding: 15px 0px;
@@ -65,11 +83,6 @@
           background: #0000000a;
         }
       }
-    }
-
-    @media screen and (max-width: $mobile-version-max-width) {
-      height: initial;
-      width: initial;
     }
   }
 }

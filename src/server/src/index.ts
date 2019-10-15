@@ -337,9 +337,9 @@ function sendHelloEmail(mail: string, token: string): void {
   sendmail({ silent: true })(
     {
       from: "no-reply@fashionbar.online",
-      to: mail,
+      html: `Mail of test sendmail. Verify: https://fashionbar.online/verifyEmail?token=${token}`,
       subject: "test sendmail",
-      html: `Mail of test sendmail. Verify: https://fashionbar.online/verifyEmail?token=${token}`
+      to: mail
     },
     err => (err ? console.log(err) : null)
   );

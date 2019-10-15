@@ -29,7 +29,7 @@ const SubscriptionBig = () => {
   const { t } = useTranslation();
 
   return (
-    <Card noPadding>
+    <Card noPadding desktopOnly>
       <div className="subscriptionBig" id="emailSubscriptionBox">
         <div className="left">
           <img src="/assets/images/follow-subscriptionBig.jpg" alt="a bag" />
