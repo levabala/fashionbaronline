@@ -95,6 +95,9 @@ http
     );
 
     switch (requestPath) {
+      case "/verifyEmail": {
+        console.log(query);
+      }
       case "/variables": {
         break;
       }
@@ -299,7 +302,7 @@ function sendHelloEmail(mail: string, token: string): void {
       from: "no-reply@fashionbar.online",
       to: mail,
       subject: "test sendmail",
-      html: "Mail of test sendmail "
+      html: `Mail of test sendmail. Verify: https://fashionbar.online/verifyEmail?token=${token}`
     },
     err => (err ? console.log(err) : null)
   );
