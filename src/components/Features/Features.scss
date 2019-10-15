@@ -2,36 +2,44 @@
 
 .features {
   // margin-top: $gap-subscriptionSmall-features;
-  margin-left: $features-margin-left;
   font-size: 20px;
 
   display: grid;
-  grid-template-columns: 1fr $woman-2-width;
+  grid-template-columns: 1fr 1fr;
 
-  ol {
-    margin-left: 1em;
+  margin: 0 auto;
 
-    li + li {
-      margin-top: $ordered-list-gap-between-lines;
-    }
+  .main {
+    padding: $card-padding;
+    padding-right: 0;
 
-    li::before {
-      content: "";
-      width: $ordered-list-gap-between-number-and-text;
-      display: inline-block;
-    }
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 
-    li {
-      list-style-position: inside;
-      text-indent: -2em;
+    ol {
+      margin-left: 1em;
+      width: 70%;
+
+      li + li {
+        margin-top: $ordered-list-gap-between-lines;
+      }
+
+      li::before {
+        content: "";
+        width: $ordered-list-gap-between-number-and-text;
+        display: inline-block;
+      }
+
+      li {
+        list-style-position: inside;
+        text-indent: -2em;
+      }
     }
   }
-
   .woman {
-    position: absolute;
-    right: 0;
-
-    margin-top: -47px;
+    background: lightgray;
+    // margin-top: -47px;
   }
 
   @media screen and (max-width: $mobile-hide-table-of-content-max-width) {
@@ -53,25 +61,29 @@
       display: none;
     }
 
-    ol {
-      padding-left: 0;
-      margin-left: 0;
-      text-align: center;
-      list-style-position: inside;
-
-      li + li {
-        margin-top: $ordered-list-gap-between-lines-mobile;
-      }
-
-      li {
+    .main {
+      padding: 0;
+      ol {
+        padding-left: 0;
+        margin-left: 0;
+        text-align: center;
         list-style-position: inside;
-        text-indent: 0;
-      }
+        width: 100%;
 
-      li::before {
-        content: "";
-        width: $ordered-list-gap-between-number-and-text-mobile;
-        display: inline-block;
+        li + li {
+          margin-top: $ordered-list-gap-between-lines-mobile;
+        }
+
+        li {
+          list-style-position: inside;
+          text-indent: 0;
+        }
+
+        li::before {
+          content: "";
+          width: $ordered-list-gap-between-number-and-text-mobile;
+          display: inline-block;
+        }
       }
     }
   }

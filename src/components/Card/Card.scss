@@ -5,6 +5,10 @@
   background: white;
   padding: $card-padding;
 
+  &.noPadding {
+    padding: 0;
+  }
+
   @media screen and (max-width: $mobile-version-max-width) {
     &.paddingOnly {
       box-shadow: none;

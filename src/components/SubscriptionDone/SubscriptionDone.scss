@@ -2,12 +2,14 @@
 
 .subscriptionWrapper {
   display: none;
-  position: absolute;
+  position: fixed;
 
-  left: 5px;
-  top: 5px;
-  bottom: 5px;
-  right: 5px;
+  left: -$app-padding-horizontal-mobile;
+  top: 0px;
+  bottom: 0px;
+  right: -$app-padding-horizontal-mobile;
+
+  background: rgba($color: #000000, $alpha: 0.4);
 
   &.visible {
     display: flex;
@@ -18,32 +20,44 @@
   .subscriptionDone {
     position: relative;
 
-    height: 80%;
-    width: 60%;
     margin: 0 auto;
 
-    .sc_header {
-      padding: 15px 0px;
-      font-size: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .left {
+      background: lightgray;
+      width: 700px;
+      height: 700px;
     }
 
-    .message {
-      font-size: 18px;
-    }
+    .right {
+      padding: $card-padding;
+      width: 600px;
 
-    .closeIcon {
-      position: absolute;
-      top: $card-padding;
-      right: $card-padding;
+      .sc_header {
+        padding: 15px 0px;
+        font-size: 30px;
+      }
 
-      width: 25px;
-      height: 25px;
+      .message {
+        font-size: 18px;
+      }
 
-      border-radius: 50%;
-      padding: 5px;
+      .closeIcon {
+        position: absolute;
+        top: $card-padding;
+        right: $card-padding;
 
-      &:hover {
-        background: #0000000a;
+        width: 25px;
+        height: 25px;
+
+        border-radius: 50%;
+        padding: 5px;
+
+        &:hover {
+          background: #0000000a;
+        }
       }
     }
 

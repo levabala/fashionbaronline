@@ -193,7 +193,7 @@ const MainPage: React.FC = () => {
   };
 
   // useEffect(() => {
-  //   setTimeout(() => scrollTo(TagEnum.Collection), 500);
+  //   setTimeout(() => scrollTo(TagEnum.HowItWorks), 500);
   // }, []);
 
   return (

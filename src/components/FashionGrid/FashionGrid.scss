@@ -141,9 +141,14 @@
         .top {
           .details {
             font-size: 20px;
+            margin-top: 0.5em;
 
             @media screen and (max-width: $wide-display-min-width) {
               font-size: 16px;
+            }
+
+            @media screen and (max-width: $mobile-version-max-width) {
+              display: none;
             }
           }
 
@@ -159,7 +164,7 @@
             }
 
             @media screen and (max-width: $mobile-version-max-width) {
-              font-size: 28px;
+              font-size: 22px;
             }
           }
         }

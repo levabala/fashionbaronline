@@ -145,10 +145,11 @@ const FashionGrid = ({
             <div className="name">{bags[i] ? bags[i].name : "Brend Name"}</div>
             <div className="details">
               <div className="priceRetail">
-                {t("fashionGrid.retailPrice")}: <b>5000 $</b>
+                {t("fashionGrid.retailPrice")}:{" "}
+                <Price noMonth customCost={5000} noBold />
               </div>
               <div className="priceSubsription">
-                {t("fashionGrid.subscription")}: <Price noMonth />
+                {t("fashionGrid.subscription")}: <Price noBold />
               </div>
             </div>
           </div>

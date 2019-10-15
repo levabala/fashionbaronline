@@ -3,6 +3,7 @@ import './Features.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Card from '../Card';
 import TextWithCompanyName from '../TextWithInsertions';
 
 const LiWrapper = ({ children }: { children: React.ReactNode }) => (
@@ -16,10 +17,15 @@ const Features = () => {
   });
 
   return (
-    <div className="features">
-      <ol>{TextWithCompanyName(features, LiWrapper)}</ol>
-      <img src="/assets/images/woman2.png" className="woman" alt="womanTwo" />
-    </div>
+    <Card noPadding desktopOnly>
+      <div className="features">
+        <span className="main">
+          <ol>{TextWithCompanyName(features, LiWrapper)}</ol>
+        </span>
+        <span className="woman" style={{ width: 700, height: 700 }} />
+        {/* <img src="/assets/images/woman2.png" className="woman" alt="womanTwo" /> */}
+      </div>
+    </Card>
   );
 };
 

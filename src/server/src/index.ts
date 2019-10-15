@@ -84,7 +84,8 @@ function shuffleArray(array: any[]): any[] {
   return array;
 }
 
-const authenticationTokens: string[] = [];
+const authenticationTokensPage: string[] = [];
+const authenticationTokensEmail: Record<string, string> = {};
 
 http
   .createServer((request, response) => {
@@ -102,7 +103,7 @@ http
         const data = { token };
 
         const tokenAwaiting = sha256(token + password);
-        authenticationTokens.push(tokenAwaiting);
+        authenticationTokensPage.push(tokenAwaiting);
 
         response.writeHead(200, { "Content-Type": "application/json" });
         response.end(JSON.stringify(data), "utf-8");
@@ -123,12 +124,12 @@ http
             const recievedToken = JSON.parse(tokensBody);
             const { token } = recievedToken;
 
-            const tokenIndex = authenticationTokens.indexOf(token);
+            const tokenIndex = authenticationTokensPage.indexOf(token);
             if (tokenIndex === -1) {
               response.writeHead(403);
               response.end();
             } else {
-              authenticationTokens.splice(tokenIndex, 1);
+              authenticationTokensPage.splice(tokenIndex, 1);
 
               console.log("'getRegistrations' request approved");
 
@@ -195,7 +196,7 @@ http
           if (body.length > 1e6) request.connection.destroy();
         });
 
-        request.on("end", () => {
+        request.on("end", async () => {
           try {
             const data: Partial<IRegistartionData> = JSON.parse(body);
             if (
@@ -210,11 +211,23 @@ http
 
             const dataR = data as IRegistartionData;
             const id = request.connection.remoteAddress || dataR.id;
-            if (id !== "::1") sendHelloEmail(dataR.email);
+
+            const unique = await isUnique(dataR);
+            if (!unique) {
+              response.end();
+              return;
+            }
+
+            const emailToken = v4();
+            authenticationTokensEmail[dataR.email] = emailToken;
+
+            if (id !== "::1") sendHelloEmail(dataR.email, emailToken);
             saveData({
               ...dataR,
               id
             });
+
+            response.end();
           } catch (e) {
             console.log(e);
             response.writeHead(400);
@@ -280,7 +293,7 @@ http
   .listen(PORT);
 console.log(`Server running at http://127.0.0.1:${PORT}/`);
 
-function sendHelloEmail(mail: string): void {
+function sendHelloEmail(mail: string, token: string): void {
   sendmail({})(
     {
       from: "no-reply@fashionbar.online",
@@ -299,10 +312,6 @@ async function isUnique(data: IRegistartionData): Promise<boolean> {
 }
 
 async function saveData(data: IRegistartionData): Promise<void> {
-  const unique = await isUnique(data);
-
-  if (!unique) return;
-
   const { date, email, location, choosenBag, id } = data;
   const registration: IRegistration = new Registration({
     date,

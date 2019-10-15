@@ -22,19 +22,20 @@ const SubscriptionDone = ({
     <div
       className={classNames("subscriptionWrapper", visible ? "visible" : "")}
     >
-      <Card>
-        <div className={classNames("subscriptionDone")}>
-          <div className="sc_header">{t("subscriptionDone.title")}</div>
-          <div className="message">
-            <p>
+      <Card noPadding>
+        <div className="subscriptionDone">
+          <div className="left" />
+          <div className="right">
+            <div className="sc_header">{t("subscriptionDone.title")}</div>
+            <div className="message">
               {TextWithCompanyName(
                 t("subscriptionDone.main", { returnObjects: true }),
                 PWrapper
               )}
-            </p>
-            <p>{t("subscriptionDone.ps")}</p>
+              <p>{t("subscriptionDone.ps")}</p>
+            </div>
+            <CloseIcon className="closeIcon" onClick={closeCallback} />
           </div>
-          <CloseIcon className="closeIcon" onClick={closeCallback} />
         </div>
       </Card>
     </div>
