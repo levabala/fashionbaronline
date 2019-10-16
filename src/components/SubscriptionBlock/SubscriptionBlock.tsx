@@ -100,6 +100,26 @@ const SubscriptionBlock = () => {
     setSendTry(true);
   };
 
+  const onInputFocus = () => {
+    console.log("focused");
+
+    const callback = () => {
+      document.body.classList.add("keyboardVisible");
+      document
+        .querySelectorAll(".viewBlock")
+        .forEach(block => block.setAttribute("style", "height: 100%"));
+
+      const postCallback = () => {
+        document.body.classList.remove("keyboardVisible");
+        window.removeEventListener("resize", postCallback);
+      };
+
+      window.removeEventListener("resize", callback);
+      window.addEventListener("resize", postCallback);
+    };
+    window.addEventListener("resize", callback);
+  };
+
   return (
     <form className="subscriptionBlock" onSubmit={onSend} action="#">
       <TextInput
@@ -113,6 +133,7 @@ const SubscriptionBlock = () => {
         type="email"
         onBlur={onBlur}
         onKeyDown={onKeyDown}
+        onClick={onInputFocus}
         // onFocus={onFocus}
         // ref={inputBoxRef}
         // id={v4()}

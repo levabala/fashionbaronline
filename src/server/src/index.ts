@@ -266,7 +266,7 @@ http
               id
             });
 
-            response.end();
+            response.end("already exists");
           } catch (e) {
             console.log(e);
             response.writeHead(400);
@@ -334,10 +334,40 @@ console.log(`Server running at http://127.0.0.1:${PORT}/`);
 
 function sendHelloEmail(mail: string, token: string): void {
   console.log(`send mail to ${mail}`);
+  const verifyLink = ` https://fashionbar.online/verifyEmail?token=${token}`;
   sendmail({ silent: true })(
     {
       from: "no-reply@fashionbar.online",
-      html: `Mail of test sendmail. Verify: https://fashionbar.online/verifyEmail?token=${token}`,
+      html: `
+      <div className="block" style="text-align: center; padding: 1em">
+  <h1 className="header">
+    Welcome to FASHIONBAR
+  </h1>
+  <p>
+    Приветствуем вас, спасибо большое, что Вы подписались на новости от fashionbar.online.
+  </p>
+  <p>
+    Мы работаем над запуском проекта и сообщим Вам как только будем готовы.
+  </p>
+  <div className="emojies" style="padding: 2em 0px;">
+    Emojies here
+  </div>
+  <div className="actions" style="width: calc(100% - 2em); display: grid; grid-template-columns: repeat(3, 1fr); background: red;">
+    <span style="text-align: left">
+      Fashionbar.online
+    </span>
+    <span style="text-align: center">
+      Unsubscribe
+    </span>
+    <span style="text-align: right">
+      Instagram
+    </span>
+  </div>
+  <div className="postscriptum" style="text-align: left; padding-top: 0.5em">
+    Fashionbar.online 2019
+  </div>
+</div>
+      `,
       subject: "test sendmail",
       to: mail
     },

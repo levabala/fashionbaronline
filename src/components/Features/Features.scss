@@ -13,6 +13,11 @@
 
   $duration: 0.8s;
 
+  @media screen and (max-width: $wide-display-min-width) {
+    height: 60%;
+    font-size: 18px;
+  }
+
   &.activated > .main > ol > li {
     animation: appear $duration linear forwards;
   }
@@ -31,6 +36,10 @@
 
       li + li {
         margin-top: $ordered-list-gap-between-lines;
+
+        @media screen and (max-width: $wide-display-min-width) {
+          margin-top: $ordered-list-gap-between-lines * 0.7;
+        }
       }
 
       li::before {
@@ -77,6 +86,7 @@
   .woman {
     // background: lightgray;
     height: 100%;
+    overflow: hidden;
     // margin-top: -47px;
 
     img {

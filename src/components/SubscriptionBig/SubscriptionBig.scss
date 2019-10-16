@@ -23,7 +23,7 @@
     flex-direction: column;
     justify-content: space-between;
 
-    padding: $card-padding * 2;
+    padding: $card-padding $card-padding * 2;
   }
 
   & > .left {

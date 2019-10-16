@@ -1,6 +1,7 @@
 @import "../../variables.scss";
 
 .viewBlock {
+  height: 100%;
   .animationContainer {
     height: 100%;
   }
@@ -124,4 +125,8 @@
   position: fixed;
   left: $app-padding-horizontal-mobile;
   right: $app-padding-horizontal-mobile;
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    bottom: 0px;
+  }
 }

@@ -4,12 +4,18 @@
   display: none;
   position: fixed;
 
-  left: -$app-padding-horizontal-mobile;
   top: 0px;
   bottom: 0px;
+  left: -$app-padding-horizontal-mobile;
   right: -$app-padding-horizontal-mobile;
+  // margin-left: $app-padding-horizontal-mobile;
+  // margin-right: $app-padding-horizontal-mobile;
 
   background: rgba($color: #000000, $alpha: 0.4);
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    // padding: 15px;
+  }
 
   &.visible {
     display: flex;
@@ -28,6 +34,10 @@
     height: 70%;
     max-width: 80%;
 
+    @media screen and (max-width: $wide-display-min-width) {
+      height: 80%;
+    }
+
     @media screen and (max-width: $mobile-version-max-width) {
       padding: 40px;
     }
@@ -40,6 +50,7 @@
 
     .left {
       height: 100%;
+      overflow: hidden;
 
       img {
         height: 100%;
@@ -53,15 +64,24 @@
     }
 
     .right {
-      padding: $card-padding * 2;
+      $padding-hor: 30px;
+      $padding-ver: 50px;
+      width: calc(100% - #{$padding-hor * 2});
+      height: calc(100% - #{$padding-ver * 2});
+
+      padding: $card-padding $card-padding * 2;
 
       @media screen and (max-width: $mobile-version-max-width) {
-        padding: 0;
+        padding: $padding-ver $padding-hor;
       }
 
       .sc_header {
-        padding: 15px 0px;
+        padding-bottom: 15px;
         font-size: 30px;
+
+        @media screen and (max-width: $mobile-version-max-width) {
+          // padding: 15px;
+        }
       }
 
       .message {
