@@ -48,7 +48,7 @@ $funnyImage-size: 105px;
 
 $mainFeature-margin-top: 94px;
 
-$fashionGrid-padding: 30px;
+$fashionGrid-padding: 80px;
 
 $fashionElem-width-min: 260px;
 $fashionElem-height-min: 200px;
@@ -92,4 +92,5 @@ $gap-subscriptionBig-footer: 239px;
   fadeAnimationDuration: $fade-animation-duration;
   fashionGridPadding: $fashionGrid-padding;
   wideDisplayMinWidth: $wide-display-min-width;
+  appPaddingHorizontalMobile: $app-padding-horizontal-mobile;
 }

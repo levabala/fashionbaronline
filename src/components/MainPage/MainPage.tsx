@@ -28,12 +28,6 @@ const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 const fadeAnimationDuration = parseFloat(StyleVariables.fadeAnimationDuration);
 const wideDisplayMinWidth = parseFloat(StyleVariables.wideDisplayMinWidth);
 
-// tslint:disable
-function toggleFullScreen() {
-  if (window.innerWidth <= mobileVersionMaxWidth) window.scrollTo(0, 1);
-}
-// tslint:enable
-
 const MainPage: React.FC = () => {
   const centralContainerRef = useRef<HTMLDivElement>(null);
 
@@ -113,7 +107,6 @@ const MainPage: React.FC = () => {
   (window as any).scrollTo = scrollTo;
 
   const onFashionGridRendered = () => {
-    toggleFullScreen();
     if (!centralContainerRef.current) return;
 
     const centralContainer = centralContainerRef.current;
@@ -160,7 +153,6 @@ const MainPage: React.FC = () => {
 
     // let lastScrollY = window.scrollY;
     const scrollHandler = (deltaY: number) => {
-      toggleFullScreen();
       if (blindTime) return;
 
       scrollAccumulator += deltaY;
@@ -210,7 +202,7 @@ const MainPage: React.FC = () => {
           noSuspense
         >
           <ContentBlock>
-            <Header />
+            <Header onlyWoman />
             <Title />
           </ContentBlock>
           <ContentBlock>
@@ -243,6 +235,7 @@ const MainPage: React.FC = () => {
           <Footer />
         </ViewBlock>
       </CentralContainer>
+      <Header absolute noWoman />
     </Suspense>
   );
 };

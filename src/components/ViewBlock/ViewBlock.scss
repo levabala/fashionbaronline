@@ -2,6 +2,7 @@
 
 .viewBlock {
   height: 100%;
+
   .animationContainer {
     height: 100%;
   }
@@ -127,6 +128,8 @@
   right: $app-padding-horizontal-mobile;
 
   @media screen and (max-width: $mobile-version-max-width) {
-    bottom: 0px;
+    .keyboardVisible & {
+      bottom: 0px;
+    }
   }
 }

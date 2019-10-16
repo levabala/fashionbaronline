@@ -16,9 +16,9 @@
       height: 0.1em;
     }
 
-    .keyboardVisible & {
-      display: none;
-    }
+    // .keyboardVisible & {
+    //   display: none;
+    // }
 
     font-size: 30px;
     font-weight: bold;
@@ -42,8 +42,11 @@
     }
   }
 
-  .feature {
+  & > .feature {
     font-size: 20px;
+
+    margin-left: 0;
+    margin-right: auto;
   }
 
   @media screen and (max-width: $mobile-version-max-width) {
@@ -65,7 +68,7 @@
       margin-left: auto;
     }
 
-    .feature {
+    & > .feature {
       margin-top: 20px;
     }
   }
@@ -75,7 +78,7 @@
       font-size: 28px;
     }
 
-    .feature {
+    & > .feature {
       font-size: 17px;
     }
   }

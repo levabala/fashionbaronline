@@ -15,6 +15,9 @@ const wideDisplayMinWidth = parseFloat(StyleVariables.wideDisplayMinWidth);
 const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 const fashionElemHeightMin = parseFloat(StyleVariables.fashionElemHeightMin);
 const fashionElemWidthMin = parseFloat(StyleVariables.fashionElemWidthMin);
+const appPaddingHorizontalMobile = parseFloat(
+  StyleVariables.appPaddingHorizontalMobile
+);
 const fashionElemWidthNotWideMin = parseFloat(
   StyleVariables.fashionElemWidthNotWideMin
 );
@@ -32,7 +35,7 @@ const fashionElemSizeMinMobile = parseFloat(
 
 const containerSize = {
   height: window.innerHeight - fashionGridPadding * 2,
-  width: window.innerWidth - fashionGridPadding * 2
+  width: window.innerWidth - appPaddingHorizontalMobile * 2
 };
 
 const mobile = containerSize.width < mobileVersionMaxWidth;

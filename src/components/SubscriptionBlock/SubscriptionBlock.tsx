@@ -76,6 +76,7 @@ const SubscriptionBlock = () => {
     });
 
     setEmailSent(true);
+    document.body.classList.add("subscriptionDoneVisible");
   };
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -94,6 +95,7 @@ const SubscriptionBlock = () => {
 
   const closeSubscriptionDone = () => {
     setEmailSent(false);
+    document.body.classList.remove("subscriptionDoneVisible");
   };
 
   const sendButtonClick = () => {
@@ -103,15 +105,27 @@ const SubscriptionBlock = () => {
   const onInputFocus = () => {
     console.log("focused");
 
+    const h1 = window.innerHeight;
     const callback = () => {
       document.body.classList.add("keyboardVisible");
       document
         .querySelectorAll(".viewBlock")
         .forEach(block => block.setAttribute("style", "height: 100%"));
 
+      const keyboardHeight = h1 - window.innerHeight;
+      console.log({ keyboardHeight });
+
+      const d = document.querySelector(".centralContainer") as HTMLDivElement;
+      d.setAttribute(
+        "style",
+        `transform: translateY(-${keyboardHeight + 40}px)`
+      );
+
       const postCallback = () => {
         document.body.classList.remove("keyboardVisible");
         window.removeEventListener("resize", postCallback);
+
+        d.setAttribute("style", ``);
       };
 
       window.removeEventListener("resize", callback);

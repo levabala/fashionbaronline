@@ -3,15 +3,22 @@
 .header {
   position: relative;
 
+  &.absolute {
+    position: fixed;
+    top: 0px;
+    left: $app-padding-horizontal-mobile;
+    right: $app-padding-horizontal-mobile;
+  }
+
   // display: flex;
   // flex-direction: row;
   // justify-content: space-between;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
-  @media screen and (max-width: $wide-display-min-width) {
-    margin-top: $app-padding-vertical / 2;
-  }
+  // @media screen and (max-width: $wide-display-min-width) {
+  margin-top: $app-padding-vertical / 4;
+  // }
 
   @media screen and (max-width: $mobile-hide-table-of-content-max-width) {
     grid-template-columns: 1fr 1fr;
@@ -22,6 +29,16 @@
     padding-bottom: $app-padding-vertical-mobile / 4;
 
     grid-template-columns: 1fr 1fr;
+  }
+
+  &.onlyWoman {
+    * {
+      visibility: hidden;
+    }
+
+    & > .woman1 {
+      visibility: visible;
+    }
   }
 
   .woman1 {

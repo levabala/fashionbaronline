@@ -10,11 +10,12 @@
   margin: 0 auto;
 
   height: 70%;
+  width: 80%;
 
   $duration: 0.8s;
 
   @media screen and (max-width: $wide-display-min-width) {
-    height: 60%;
+    // height: 60%;
     font-size: 18px;
   }
 
@@ -107,7 +108,7 @@
 
   @media screen and (max-width: $mobile-version-max-width) {
     text-align: center;
-    margin-left: 0;
+    // margin-left: 0;
     grid-template-columns: 1fr;
     margin-top: 0;
 

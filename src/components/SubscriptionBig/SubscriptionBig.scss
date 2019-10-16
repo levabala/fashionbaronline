@@ -46,6 +46,10 @@
     right: -73px;
     top: -113px;
     z-index: -1;
+
+    .subscriptionDoneVisible & {
+      visibility: hidden;
+    }
   }
 
   span + span {
@@ -69,9 +73,9 @@
 
     white-space: nowrap;
 
-    padding: $subscriptionBig-costs-padding;
+    // padding: $subscriptionBig-costs-padding;
 
-    &.alone {
+    @media screen and (max-width: $mobile-extra-version-max-width) {
       justify-content: space-around;
     }
 
@@ -106,6 +110,30 @@
     .target {
       font-size: 25px;
       text-align: center;
+    }
+
+    @media screen and (max-width: $wide-display-min-width) {
+      .costContainer {
+        .amount,
+        .unit {
+          font-size: 35px;
+        }
+
+        .unit {
+          font-size: 35px;
+        }
+
+        .slash {
+          font-size: 25px;
+        }
+
+        .period {
+          font-size: 20px;
+        }
+      }
+      .target {
+        font-size: 20px;
+      }
     }
 
     @media screen and (max-width: $mobile-extra-version-max-width) {
