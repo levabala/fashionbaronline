@@ -28,6 +28,8 @@ const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 const fadeAnimationDuration = parseFloat(StyleVariables.fadeAnimationDuration);
 const wideDisplayMinWidth = parseFloat(StyleVariables.wideDisplayMinWidth);
 
+document.body.classList.add(`${TagEnum.HowItWorks}Active`);
+
 const MainPage: React.FC = () => {
   const centralContainerRef = useRef<HTMLDivElement>(null);
 
@@ -52,10 +54,18 @@ const MainPage: React.FC = () => {
     if (!centralContainer) return;
 
     const previousBlock = centralContainer.children[currentBlockIndex];
+
     const previousIndex = currentBlockIndex;
     currentBlockIndex = Math.min(
       Math.max(currentBlockIndex + delta, 0),
       centralContainer.children.length - 1
+    );
+
+    document.body.classList.remove(
+      `${centralContainer.children[previousIndex].id}Active`
+    );
+    document.body.classList.add(
+      `${centralContainer.children[currentBlockIndex].id}Active`
     );
 
     if (currentBlockIndex === previousIndex) return;

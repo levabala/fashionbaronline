@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
+import TagEnum from '../../types/TagEnum';
 import StyleVariables from '../../variables.scss';
 import Button from '../Button';
 import Price from '../Price';
@@ -82,7 +83,7 @@ const FashionGrid = ({
   const goToBooking = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    (window as any).scrollPage(1);
+    (window as any).scrollTo(TagEnum.Subscribe);
 
     const { bagindex: bagIndexRaw } = event.currentTarget.dataset;
     const bagIndex = parseInt(
@@ -184,10 +185,11 @@ const FashionGrid = ({
     )
     .filter(block => block.length === imagesPerBlockTotal);
 
+  // id={i === 0 ? id : ""}>
   return (
     <>
       {blocks.map((group, i) => (
-        <ViewBlock key={`group_${i}`} around id={i === 0 ? id : ""}>
+        <ViewBlock key={`group_${i}`} around id={id}>
           <div className="fashionGrid" style={cssVariables}>
             {group}
           </div>

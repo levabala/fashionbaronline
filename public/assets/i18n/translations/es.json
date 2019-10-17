@@ -20,7 +20,9 @@
       "Prada",
       "Hermes"
     ],
-    "feature": "Bolsas originales por la suscripción de 120 euros/mes"
+    "feature": [
+      "Alquiler original de marca de bolsos de suscripción y el switch de nuestra colección de whenevery desea simplemente para <PRICE>"
+    ]
   },
   "subscriptionSmall": {
     "label": "Ingresa tu dirección de correo electrónico y usted será el primero que será notificado acerca del inicio del servicio.",
@@ -31,7 +33,7 @@
     "Comprar <COMPANYNAME> suscripción",
     "Elija cualquier bolsa de <COMPANYNAME> catálogo",
     "Recibe su pedido en 1-3 días",
-    "Cambiar su cosa en cualquier momento que quieras desde <COMPANYNAME> colección"
+    "El uso de nuestra colección desea de <COMPANYNAME> colección"
   ],
   "description": [
     ["Estamos en el inicio de Alemania."],
@@ -44,16 +46,20 @@
       "Los miembros de <COMPANYNAME> puede tomar las cosas de nuestra colección en cualquier momento que desee."
     ]
   ],
-  "mainFeature": "El uso de nuestra colección <COMPANYNAME> interruptor de sus cosas whenevery desea sólo 199 euros/mes",
-  "fashionGrid": { "booking": "Reserva" },
+  "mainFeature": "El uso de nuestra colección <COMPANYNAME> interruptor de sus cosas whenevery quieres <PRICE>.",
+  "fashionGrid": {
+    "booking": "Reserva",
+    "retailPrice": "Precio de venta",
+    "subscription": "Suscripción"
+  },
   "subscriptionBig": {
     "title": {
       "main": "A la izquierda de los datos aquí por favor y se te informará sobre el servicio de lanzamiento del tan pronto como sucede",
       "secondary": "Opción preferible"
     },
     "variants": {
-      "first": "Una cosa a la vez",
-      "second": "Dos cosas a la vez",
+      "first": "una cosa a la vez",
+      "second": "owo cosas a la vez",
       "period": "mes"
     },
     "sendBox": { "send": "Enviar" },
@@ -68,9 +74,11 @@
     "social": { "lable": "Social" }
   },
   "subscriptionDone": {
-    "title": "Suscripción realizada con 15% de descuento",
+    "title": "Gracias por tu registro",
     "main": [
-      "Tenemos tu email y te notificaremos <COMPANYNAME> fecha de lanzamiento"
+      "Estamos muy contentos de que usted ha dejado su correo electrónico y le informaremos acerca de cuándo nuestro servicio se puso en marcha, usted también será capaz de tomar parte en la prueba de lanzamiento del proyecto.",
+      "Le hemos enviado un correo electrónico con un enlace para confirmar tu correo. Para obtener un 15% de descuento por favor, confirme su correo electrónico a través del enlace en el correo electrónico recibido.",
+      "Si usted no ha recibido el correo electrónico, por favor haga clic en este enlace \"Enviar un correo electrónico nuevo'"
     ],
     "ps": "Gracias por su atención."
   }

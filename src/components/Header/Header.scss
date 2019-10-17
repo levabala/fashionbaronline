@@ -3,6 +3,15 @@
 .header {
   position: relative;
 
+  transition: opacity 0.5s ease-in-out;
+  .collectionActive & {
+    opacity: 0;
+  }
+
+  .subscriptionDoneVisible & {
+    display: none;
+  }
+
   &.absolute {
     position: fixed;
     top: 0px;

@@ -63,7 +63,7 @@
       }
     }
 
-    .right {
+    & > .right {
       $padding-hor: 30px;
       $padding-ver: 50px;
       // width: calc(100% - #{$padding-hor * 2});
@@ -72,7 +72,8 @@
       padding: $card-padding $card-padding * 2;
 
       @media screen and (max-width: $mobile-version-max-width) {
-        padding: $padding-ver $padding-hor;
+        // padding: $padding-ver $padding-hor;
+        padding: 0;
       }
 
       .sc_header {
