@@ -335,7 +335,9 @@ console.log(`Server running at http://127.0.0.1:${PORT}/`);
 function sendHelloEmail(mail: string, token: string): void {
   console.log(`send mail to ${mail}`);
   const verifyLink = ` https://fashionbar.online/verifyEmail?token=${token}`;
-  sendmail({ silent: true })(
+  sendmail({
+    silent: true
+  })(
     {
       from: "no-reply@fashionbar.online",
       html: `

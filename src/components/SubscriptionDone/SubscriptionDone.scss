@@ -32,7 +32,9 @@
     grid-template-columns: 1fr 1fr;
 
     height: 70%;
-    max-width: 80%;
+    // max-width: 80%;
+    margin: 0 $app-padding-horizontal-mobile;
+    width: auto;
 
     @media screen and (max-width: $wide-display-min-width) {
       height: 80%;

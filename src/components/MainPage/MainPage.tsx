@@ -1,5 +1,5 @@
 import { disableBodyScroll } from 'body-scroll-lock';
-import React, { lazy, Suspense, useEffect, useRef } from 'react';
+import React, { lazy, Suspense, useEffect, useLayoutEffect, useRef } from 'react';
 
 import TagEnum from '../../types/TagEnum';
 import StyleVariables from '../../variables.scss';
@@ -29,6 +29,9 @@ const fadeAnimationDuration = parseFloat(StyleVariables.fadeAnimationDuration);
 const wideDisplayMinWidth = parseFloat(StyleVariables.wideDisplayMinWidth);
 
 document.body.classList.add(`${TagEnum.HowItWorks}Active`);
+
+// tslint:disable:no-object-mutation
+document.body.style.visibility = "hidden";
 
 const MainPage: React.FC = () => {
   const centralContainerRef = useRef<HTMLDivElement>(null);
@@ -120,6 +123,8 @@ const MainPage: React.FC = () => {
     if (!centralContainerRef.current) return;
 
     const centralContainer = centralContainerRef.current;
+
+    document.body.style.visibility = "visible";
 
     currentBlockIndex = Math.round(window.scrollY / window.innerHeight);
     // console.log(

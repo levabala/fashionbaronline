@@ -16,12 +16,13 @@
 
   background-color: transparent;
 
+  background-color: #fff;
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.06);
   &:hover {
     /* don't forget the 1px border */
     height: 81px;
-    background-color: #fff;
-    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.06);
   }
+
   a {
     color: #000;
     text-decoration: none;

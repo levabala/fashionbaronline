@@ -7,7 +7,7 @@
   position: relative;
 
   height: 70%;
-  max-width: 80%;
+  // max-width: 80%;
 
   margin: 0 auto;
 
@@ -67,15 +67,15 @@
 
   .variants {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
     white-space: nowrap;
 
     // padding: $subscriptionBig-costs-padding;
 
-    @media screen and (max-width: $mobile-version-max-width) {
-      justify-content: space-around;
-    }
+    // @media screen and (max-width: $mobile-version-max-width) {
+    //   justify-content: space-around;
+    // }
 
     .separator {
       display: flex;
@@ -114,11 +114,11 @@
       .costContainer {
         .amount,
         .unit {
-          font-size: 35px;
+          font-size: 30px;
         }
 
         .unit {
-          font-size: 35px;
+          font-size: 30px;
         }
 
         .slash {
