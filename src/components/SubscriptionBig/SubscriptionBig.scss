@@ -47,9 +47,7 @@
     top: -113px;
     z-index: -1;
 
-    .subscriptionDoneVisible & {
-      visibility: hidden;
-    }
+    display: none;
   }
 
   span + span {

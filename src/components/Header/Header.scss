@@ -4,8 +4,10 @@
   position: relative;
 
   transition: opacity 0.5s ease-in-out;
-  .collectionActive & {
-    opacity: 0;
+  @media screen and (max-width: $mobile-version-max-width) {
+    .collectionActive & {
+      opacity: 0;
+    }
   }
 
   .subscriptionDoneVisible & {

@@ -60,7 +60,7 @@ const imageContainerWidth = containerSize.width / imagesPerBlockHorizontal;
 const imageContainerHeight = containerSize.height / imagesPerBlockVertical;
 
 const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
-const imagesCount = imagesPerBlockTotal * (mobile ? 2 : 1);
+const imagesCount = imagesPerBlockTotal * 2; // (mobile ? 2 : 1);
 
 console.log(`${imageContainerWidth}x${imageContainerHeight}`);
 console.log(`${imagesPerBlockHorizontal}x${imagesPerBlockVertical}`);
@@ -185,7 +185,6 @@ const FashionGrid = ({
     )
     .filter(block => block.length === imagesPerBlockTotal);
 
-  // id={i === 0 ? id : ""}>
   return (
     <>
       {blocks.map((group, i) => (
