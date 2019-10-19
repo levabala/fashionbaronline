@@ -17,6 +17,12 @@
   bottom: $fashionGrid-padding;
   left: 0;
   right: 0;
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    top: $fashionGrid-padding-mobile;
+    bottom: $fashionGrid-padding-mobile;
+  }
+
   // padding: $fashionGrid-padding;
 
   // &::before {
@@ -202,4 +208,8 @@
   }
 
   height: calc(100% - #{$fashionGrid-padding} * 2);
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    height: calc(100% - #{$fashionGrid-padding-mobile} * 2);
+  }
 }

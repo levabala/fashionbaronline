@@ -26,6 +26,9 @@ const fashionElemHeightNotWideMin = parseFloat(
   StyleVariables.fashionElemHeightNotWideMin
 );
 const fashionGridPadding = parseFloat(StyleVariables.fashionGridPadding);
+const fashionGridPaddingMobile = parseFloat(
+  StyleVariables.fashionGridPaddingMobile
+);
 
 const fashionElemHeightMinMobile = parseFloat(
   StyleVariables.fashionElemHeightMinMobile
@@ -34,13 +37,15 @@ const fashionElemSizeMinMobile = parseFloat(
   StyleVariables.fashionElemWidthMinMobile
 );
 
+const mobile = window.innerHeight < mobileVersionMaxWidth;
+const notWide = window.innerWidth > wideDisplayMinWidth;
+
 const containerSize = {
-  height: window.innerHeight - fashionGridPadding * 2,
+  height:
+    window.innerHeight -
+    (mobile ? fashionGridPaddingMobile : fashionGridPadding) * 2,
   width: window.innerWidth - appPaddingHorizontalMobile * 2
 };
-
-const mobile = containerSize.width < mobileVersionMaxWidth;
-const notWide = containerSize.width > wideDisplayMinWidth;
 
 const imageHeight = mobile
   ? fashionElemHeightMinMobile
