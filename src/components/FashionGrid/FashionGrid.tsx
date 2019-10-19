@@ -42,19 +42,24 @@ const containerSize = {
 const mobile = containerSize.width < mobileVersionMaxWidth;
 const notWide = containerSize.width > wideDisplayMinWidth;
 
-const imageWidth = mobile
-  ? fashionElemSizeMinMobile
-  : notWide
-  ? fashionElemWidthMin
-  : fashionElemWidthNotWideMin;
 const imageHeight = mobile
   ? fashionElemHeightMinMobile
   : notWide
   ? fashionElemHeightMin
   : fashionElemHeightNotWideMin;
 
-const imagesPerBlockHorizontal = Math.floor(containerSize.width / imageWidth);
 const imagesPerBlockVertical = Math.floor(containerSize.height / imageHeight);
+
+const imageWidth = Math.max(
+  mobile
+    ? fashionElemSizeMinMobile
+    : notWide
+    ? fashionElemWidthMin
+    : fashionElemWidthNotWideMin,
+  imageHeight
+);
+
+const imagesPerBlockHorizontal = Math.floor(containerSize.width / imageWidth);
 
 const imageContainerWidth = containerSize.width / imagesPerBlockHorizontal;
 const imageContainerHeight = containerSize.height / imagesPerBlockVertical;
