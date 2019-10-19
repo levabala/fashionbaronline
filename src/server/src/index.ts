@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs, { readFileSync } from 'fs';
 import http from 'http';
 import { sha256 } from 'js-sha256';
 import mongoose, { Document } from 'mongoose';
@@ -336,6 +336,10 @@ function sendHelloEmail(mail: string, token: string): void {
   console.log(`send mail to ${mail}`);
   const verifyLink = ` https://fashionbar.online/verifyEmail?token=${token}`;
   sendmail({
+    dkim: {
+      keySelector: "1571431363",
+      privateKey: readFileSync("./key.pem").toString()
+    },
     silent: true
   })(
     {

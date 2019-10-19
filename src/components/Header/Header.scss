@@ -10,7 +10,8 @@
     }
   }
 
-  .subscriptionDoneVisible & {
+  .subscriptionDoneVisible &,
+  .keyboardVisible & {
     display: none;
   }
 

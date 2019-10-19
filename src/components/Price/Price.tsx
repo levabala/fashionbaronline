@@ -17,10 +17,13 @@ const Price = ({
 
   return (
     <span className="price">
-      <span style={{ fontWeight: noBold ? "initial" : "bold" }}>
+      <span
+        className="cost"
+        style={{ fontWeight: noBold ? "initial" : "bold" }}
+      >
         €{customCost || subscriptionCost}
       </span>
-      {noMonth ? "" : " in month"}
+      <span className="period">{noMonth ? "" : " in month"}</span>
     </span>
   );
 };
