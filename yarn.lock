@@ -9905,6 +9905,11 @@ sendmail@^1.6.1:
     dkim-signer "0.2.2"
     mailcomposer "3.12.0"
 
+sendpulse-api@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/sendpulse-api/-/sendpulse-api-1.1.2.tgz#e85e32cffd570695f570a0c6eb65855c86cde202"
+  integrity sha512-PpelvZ1Prxp2b8oEaI+9gPFec6sZPeeFuYCJlayKHaVS+WuONmnlL0J73fgwy3hfc8ZtEGWFbMRWRW32pteBLA==
+
 serialize-javascript@^1.4.0:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-1.6.1.tgz#4d1f697ec49429a847ca6f442a2a755126c4d879"

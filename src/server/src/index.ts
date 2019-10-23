@@ -1,11 +1,21 @@
-import fs, { readFileSync } from 'fs';
+import fs from 'fs';
 import http from 'http';
 import { sha256 } from 'js-sha256';
 import mongoose, { Document } from 'mongoose';
-import nodemailer from 'nodemailer';
 import path from 'path';
 import url from 'url';
 import { v4 } from 'uuid';
+
+const { id: emailId, secret: emailSecret } = require("../email_keys.json");
+const sendpulse = require("sendpulse-api");
+
+const API_USER_ID = emailId;
+const API_SECRET = emailSecret;
+
+const TOKEN_STORAGE = "/tmp/";
+sendpulse.init(API_USER_ID, API_SECRET, TOKEN_STORAGE, (token: any) => {
+  console.log("authorized", token);
+});
 
 mongoose.connect("mongodb://localhost/fashionbar", {
   useNewUrlParser: true,
@@ -337,329 +347,27 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
   const verifyLink = ` https://fashionbar.online/verifyEmail?token=${token}`;
 
   // create reusable transporter object using the default SMTP transport
-  const transporter = nodemailer.createTransport({
-    dkim: {
-      domainName: "fashionbar.online",
-      keySelector: "1571431363",
-      privateKey: readFileSync("./key.pem").toString()
+  const email = {
+    from: {
+      email: "info@fashionbar.online",
+      name: "Fashionbar.online"
     },
-    host: "mail.nic.com",
-    port: 465,
-    secure: true
-  });
+    html: htmlEmailBody,
+    subject: "Testing SendPulse API",
+    text: "Hello mail from fashionbar.online",
+    to: [
+      {
+        email: "levabala@ya.ru",
+        name: "Dear subscriber"
+      }
+    ]
+  };
 
-  // send mail with defined transport object
-  const info = await transporter.sendMail({
-    from: '"Fashionbar.online" <info@fashionbar.online>',
-    // plain text body
-    html: "<b>Hello world?</b>", // html body
-    // list of receivers
-    subject: "Hello ✔",
-    // Subject line
-    text: "Hello world?",
-    // sender address
-    to: mail
-  });
-
-  console.log("Message sent: %s", info.messageId);
-  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-  // Preview only available when sending through an Ethereal account
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+  const answerGetter = (data: any) => {
+    console.log(data);
+  };
+  sendpulse.smtpSendMail(answerGetter, email);
 }
-
-// function sendHelloEmail(mail: string, token: string): void {
-//   console.log(`send mail to ${mail}`);
-//   const verifyLink = ` https://fashionbar.online/verifyEmail?token=${token}`;
-//   sendmail({
-//     dkim: {
-//       keySelector: "1571431363",
-//       privateKey: readFileSync("./key.pem").toString()
-//     },
-//     silent: true
-//   })(
-//     {
-//       from: "no-reply@fashionbar.online",
-//       html: `
-//       <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-// <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
-// <head>
-// <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
-// <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-// <meta content="width=device-width" name="viewport"/>
-// <!--[if !mso]><!-->
-// <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-// <!--<![endif]-->
-// <title></title>
-// <!--[if !mso]><!-->
-// <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css"/>
-// <!--<![endif]-->
-// <style type="text/css">
-// 		body {
-// 			margin: 0;
-// 			padding: 0;
-// 		}
-
-// 		table,
-// 		td,
-// 		tr {
-// 			vertical-align: top;
-// 			border-collapse: collapse;
-// 		}
-
-// 		* {
-// 			line-height: inherit;
-// 		}
-
-// 		a[x-apple-data-detectors=true] {
-// 			color: inherit !important;
-// 			text-decoration: none !important;
-// 		}
-// 	</style>
-// <style id="media-query" type="text/css">
-// 		@media (max-width: 520px) {
-
-// 			.block-grid,
-// 			.col {
-// 				min-width: 320px !important;
-// 				max-width: 100% !important;
-// 				display: block !important;
-// 			}
-
-// 			.block-grid {
-// 				width: 100% !important;
-// 			}
-
-// 			.col {
-// 				width: 100% !important;
-// 			}
-
-// 			.col>div {
-// 				margin: 0 auto;
-// 			}
-
-// 			img.fullwidth,
-// 			img.fullwidthOnMobile {
-// 				max-width: 100% !important;
-// 			}
-
-// 			.no-stack .col {
-// 				min-width: 0 !important;
-// 				display: table-cell !important;
-// 			}
-
-// 			.no-stack.two-up .col {
-// 				width: 50% !important;
-// 			}
-
-// 			.no-stack .col.num4 {
-// 				width: 33% !important;
-// 			}
-
-// 			.no-stack .col.num8 {
-// 				width: 66% !important;
-// 			}
-
-// 			.no-stack .col.num4 {
-// 				width: 33% !important;
-// 			}
-
-// 			.no-stack .col.num3 {
-// 				width: 25% !important;
-// 			}
-
-// 			.no-stack .col.num6 {
-// 				width: 50% !important;
-// 			}
-
-// 			.no-stack .col.num9 {
-// 				width: 75% !important;
-// 			}
-
-// 			.video-block {
-// 				max-width: none !important;
-// 			}
-
-// 			.mobile_hide {
-// 				min-height: 0px;
-// 				max-height: 0px;
-// 				max-width: 0px;
-// 				display: none;
-// 				overflow: hidden;
-// 				font-size: 0px;
-// 			}
-
-// 			.desktop_hide {
-// 				display: block !important;
-// 				max-height: none !important;
-// 			}
-// 		}
-// 	</style>
-// </head>
-// <body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #FFFFFF;">
-// <!--[if IE]><div class="ie-browser"><![endif]-->
-// <table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 0 auto; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF; width: 100%;" valign="top" width="100%">
-// <tbody>
-// <tr style="vertical-align: top;" valign="top">
-// <td style="word-break: break-word; vertical-align: top;" valign="top">
-// <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color:#FFFFFF"><![endif]-->
-// <div style="background-color:transparent;">
-// <div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
-// <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
-// <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
-// <!--[if (mso)|(IE)]><td align="center" width="500" style="background-color:transparent;width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
-// <div class="col num12" style="min-width: 320px; max-width: 500px; display: table-cell; vertical-align: top; width: 500px;">
-// <div style="width:100% !important;">
-// <!--[if (!mso)&(!IE)]><!-->
-// <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
-// <!--<![endif]-->
-// <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-// <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-// <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-// <p style="font-size: 18px; line-height: 1.2; text-align: center; mso-line-height-alt: 22px; margin: 0;"><span style="font-size: 18px;"><strong>Welcome to FASHIONBAR</strong></span></p>
-// </div>
-// </div>
-// <!--[if mso]></td></tr></table><![endif]-->
-// <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 30px; padding-left: 30px; padding-top: 20px; padding-bottom: 20px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-// <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:30px;padding-bottom:20px;padding-left:30px;">
-// <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-// <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Приветствуем вас, спасибо большое, что Вы подписались на новости от fashionbar.online.</p>
-// </div>
-// </div>
-// <!--[if mso]></td></tr></table><![endif]-->
-// <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 30px; padding-left: 30px; padding-top: 20px; padding-bottom: 20px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-// <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:30px;padding-bottom:20px;padding-left:30px;">
-// <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-// <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Мы работаем над запуском проекта и сообщим Вам как только будем готовы.</p>
-// </div>
-// </div>
-// <!--[if mso]></td></tr></table><![endif]-->
-// <div align="center" class="img-container center autowidth" style="padding-right: 35px;padding-left: 35px;">
-// <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 35px;padding-left: 35px;" align="center"><![endif]-->
-// <div style="font-size:1px;line-height:35px"> </div><img align="center" alt="Image" border="0" class="center autowidth" src="images/2.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; border: 0; height: auto; width: 100%; max-width: 20px; display: block;" title="Image" width="20"/>
-// <div style="font-size:1px;line-height:35px"> </div>
-// <!--[if mso]></td></tr></table><![endif]-->
-// </div>
-// <!--[if (!mso)&(!IE)]><!-->
-// </div>
-// <!--<![endif]-->
-// </div>
-// </div>
-// <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-// <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-// </div>
-// </div>
-// </div>
-// <div style="background-color:transparent;">
-// <div class="block-grid three-up" style="Margin: 0 auto; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
-// <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
-// <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
-// <!--[if (mso)|(IE)]><td align="center" width="166" style="background-color:transparent;width:166px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
-// <div class="col num4" style="max-width: 320px; min-width: 166px; display: table-cell; vertical-align: top; width: 166px;">
-// <div style="width:100% !important;">
-// <!--[if (!mso)&(!IE)]><!-->
-// <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
-// <!--<![endif]-->
-// <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-// <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-// <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-// <p style="font-size: 14px; line-height: 1.2; mso-line-height-alt: 17px; margin: 0;"><strong>Fashionbar.online</strong></p>
-// </div>
-// </div>
-// <!--[if mso]></td></tr></table><![endif]-->
-// <!--[if (!mso)&(!IE)]><!-->
-// </div>
-// <!--<![endif]-->
-// </div>
-// </div>
-// <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-// <!--[if (mso)|(IE)]></td><td align="center" width="166" style="background-color:transparent;width:166px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
-// <div class="col num4" style="max-width: 320px; min-width: 166px; display: table-cell; vertical-align: top; width: 166px;">
-// <div style="width:100% !important;">
-// <!--[if (!mso)&(!IE)]><!-->
-// <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
-// <!--<![endif]-->
-// <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-// <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-// <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-// <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;"><strong>Unsubscribe</strong></p>
-// </div>
-// </div>
-// <!--[if mso]></td></tr></table><![endif]-->
-// <!--[if (!mso)&(!IE)]><!-->
-// </div>
-// <!--<![endif]-->
-// </div>
-// </div>
-// <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-// <!--[if (mso)|(IE)]></td><td align="center" width="166" style="background-color:transparent;width:166px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
-// <div class="col num4" style="max-width: 320px; min-width: 166px; display: table-cell; vertical-align: top; width: 166px;">
-// <div style="width:100% !important;">
-// <!--[if (!mso)&(!IE)]><!-->
-// <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
-// <!--<![endif]-->
-// <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-// <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-// <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-// <p style="font-size: 14px; line-height: 1.2; text-align: right; mso-line-height-alt: 17px; margin: 0;"><strong>Instagram</strong></p>
-// </div>
-// </div>
-// <!--[if mso]></td></tr></table><![endif]-->
-// <!--[if (!mso)&(!IE)]><!-->
-// </div>
-// <!--<![endif]-->
-// </div>
-// </div>
-// <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-// <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-// </div>
-// </div>
-// </div>
-// <div style="background-color:transparent;">
-// <div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
-// <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
-// <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
-// <!--[if (mso)|(IE)]><td align="center" width="500" style="background-color:transparent;width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
-// <div class="col num12" style="min-width: 320px; max-width: 500px; display: table-cell; vertical-align: top; width: 500px;">
-// <div style="width:100% !important;">
-// <!--[if (!mso)&(!IE)]><!-->
-// <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
-// <!--<![endif]-->
-// <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-// <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-// <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-// <p style="font-size: 14px; line-height: 1.2; mso-line-height-alt: 17px; margin: 0;">Fashionbar.online 2019</p>
-// </div>
-// </div>
-// <!--[if mso]></td></tr></table><![endif]-->
-// <!--[if (!mso)&(!IE)]><!-->
-// </div>
-// <!--<![endif]-->
-// </div>
-// </div>
-// <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-// <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-// </div>
-// </div>
-// </div>
-// <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-// </td>
-// </tr>
-// </tbody>
-// </table>
-// <!--[if (IE)]></div><![endif]-->
-// </body>
-// </html>
-//       `,
-//       subject: "test sendmail",
-//       to: mail
-//     },
-//     err => (err ? console.log(err) : null)
-//   );
-// }
-
 async function isUnique(data: IRegistartionData): Promise<boolean> {
   const { email } = data;
 
@@ -701,3 +409,276 @@ function loadBrendsData(folder: string): Record<string, string[]> {
   );
   return bagsMap;
 }
+
+const htmlEmailBody = `
+      <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="width=device-width" name="viewport"/>
+<!--[if !mso]><!-->
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!--<![endif]-->
+<title></title>
+<!--[if !mso]><!-->
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css"/>
+<!--<![endif]-->
+<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		table,
+		td,
+		tr {
+			vertical-align: top;
+			border-collapse: collapse;
+		}
+
+		* {
+			line-height: inherit;
+		}
+
+		a[x-apple-data-detectors=true] {
+			color: inherit !important;
+			text-decoration: none !important;
+		}
+	</style>
+<style id="media-query" type="text/css">
+		@media (max-width: 520px) {
+
+			.block-grid,
+			.col {
+				min-width: 320px !important;
+				max-width: 100% !important;
+				display: block !important;
+			}
+
+			.block-grid {
+				width: 100% !important;
+			}
+
+			.col {
+				width: 100% !important;
+			}
+
+			.col>div {
+				margin: 0 auto;
+			}
+
+			img.fullwidth,
+			img.fullwidthOnMobile {
+				max-width: 100% !important;
+			}
+
+			.no-stack .col {
+				min-width: 0 !important;
+				display: table-cell !important;
+			}
+
+			.no-stack.two-up .col {
+				width: 50% !important;
+			}
+
+			.no-stack .col.num4 {
+				width: 33% !important;
+			}
+
+			.no-stack .col.num8 {
+				width: 66% !important;
+			}
+
+			.no-stack .col.num4 {
+				width: 33% !important;
+			}
+
+			.no-stack .col.num3 {
+				width: 25% !important;
+			}
+
+			.no-stack .col.num6 {
+				width: 50% !important;
+			}
+
+			.no-stack .col.num9 {
+				width: 75% !important;
+			}
+
+			.video-block {
+				max-width: none !important;
+			}
+
+			.mobile_hide {
+				min-height: 0px;
+				max-height: 0px;
+				max-width: 0px;
+				display: none;
+				overflow: hidden;
+				font-size: 0px;
+			}
+
+			.desktop_hide {
+				display: block !important;
+				max-height: none !important;
+			}
+		}
+	</style>
+</head>
+<body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #FFFFFF;">
+<!--[if IE]><div class="ie-browser"><![endif]-->
+<table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 0 auto; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF; width: 100%;" valign="top" width="100%">
+<tbody>
+<tr style="vertical-align: top;" valign="top">
+<td style="word-break: break-word; vertical-align: top;" valign="top">
+<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color:#FFFFFF"><![endif]-->
+<div style="background-color:transparent;">
+<div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
+<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+<!--[if (mso)|(IE)]><td align="center" width="500" style="background-color:transparent;width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+<div class="col num12" style="min-width: 320px; max-width: 500px; display: table-cell; vertical-align: top; width: 500px;">
+<div style="width:100% !important;">
+<!--[if (!mso)&(!IE)]><!-->
+<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+<!--<![endif]-->
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+<div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+<div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
+<p style="font-size: 18px; line-height: 1.2; text-align: center; mso-line-height-alt: 22px; margin: 0;"><span style="font-size: 18px;"><strong>Welcome to FASHIONBAR</strong></span></p>
+</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 30px; padding-left: 30px; padding-top: 20px; padding-bottom: 20px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+<div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:30px;padding-bottom:20px;padding-left:30px;">
+<div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
+<p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Приветствуем вас, спасибо большое, что Вы подписались на новости от fashionbar.online.</p>
+</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 30px; padding-left: 30px; padding-top: 20px; padding-bottom: 20px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+<div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:30px;padding-bottom:20px;padding-left:30px;">
+<div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
+<p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Мы работаем над запуском проекта и сообщим Вам как только будем готовы.</p>
+</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+<div align="center" class="img-container center autowidth" style="padding-right: 35px;padding-left: 35px;">
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 35px;padding-left: 35px;" align="center"><![endif]-->
+<div style="font-size:1px;line-height:35px"> </div><img align="center" alt="Image" border="0" class="center autowidth" src="images/2.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; border: 0; height: auto; width: 100%; max-width: 20px; display: block;" title="Image" width="20"/>
+<div style="font-size:1px;line-height:35px"> </div>
+<!--[if mso]></td></tr></table><![endif]-->
+</div>
+<!--[if (!mso)&(!IE)]><!-->
+</div>
+<!--<![endif]-->
+</div>
+</div>
+<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+</div>
+</div>
+</div>
+<div style="background-color:transparent;">
+<div class="block-grid three-up" style="Margin: 0 auto; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
+<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+<!--[if (mso)|(IE)]><td align="center" width="166" style="background-color:transparent;width:166px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+<div class="col num4" style="max-width: 320px; min-width: 166px; display: table-cell; vertical-align: top; width: 166px;">
+<div style="width:100% !important;">
+<!--[if (!mso)&(!IE)]><!-->
+<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+<!--<![endif]-->
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+<div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+<div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
+<p style="font-size: 14px; line-height: 1.2; mso-line-height-alt: 17px; margin: 0;"><strong>Fashionbar.online</strong></p>
+</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+<!--[if (!mso)&(!IE)]><!-->
+</div>
+<!--<![endif]-->
+</div>
+</div>
+<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+<!--[if (mso)|(IE)]></td><td align="center" width="166" style="background-color:transparent;width:166px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+<div class="col num4" style="max-width: 320px; min-width: 166px; display: table-cell; vertical-align: top; width: 166px;">
+<div style="width:100% !important;">
+<!--[if (!mso)&(!IE)]><!-->
+<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+<!--<![endif]-->
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+<div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+<div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
+<p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;"><strong>Unsubscribe</strong></p>
+</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+<!--[if (!mso)&(!IE)]><!-->
+</div>
+<!--<![endif]-->
+</div>
+</div>
+<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+<!--[if (mso)|(IE)]></td><td align="center" width="166" style="background-color:transparent;width:166px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+<div class="col num4" style="max-width: 320px; min-width: 166px; display: table-cell; vertical-align: top; width: 166px;">
+<div style="width:100% !important;">
+<!--[if (!mso)&(!IE)]><!-->
+<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+<!--<![endif]-->
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+<div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+<div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
+<p style="font-size: 14px; line-height: 1.2; text-align: right; mso-line-height-alt: 17px; margin: 0;"><strong>Instagram</strong></p>
+</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+<!--[if (!mso)&(!IE)]><!-->
+</div>
+<!--<![endif]-->
+</div>
+</div>
+<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+</div>
+</div>
+</div>
+<div style="background-color:transparent;">
+<div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
+<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+<!--[if (mso)|(IE)]><td align="center" width="500" style="background-color:transparent;width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+<div class="col num12" style="min-width: 320px; max-width: 500px; display: table-cell; vertical-align: top; width: 500px;">
+<div style="width:100% !important;">
+<!--[if (!mso)&(!IE)]><!-->
+<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+<!--<![endif]-->
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+<div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+<div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
+<p style="font-size: 14px; line-height: 1.2; mso-line-height-alt: 17px; margin: 0;">Fashionbar.online 2019</p>
+</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+<!--[if (!mso)&(!IE)]><!-->
+</div>
+<!--<![endif]-->
+</div>
+</div>
+<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+</div>
+</div>
+</div>
+<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<!--[if (IE)]></div><![endif]-->
+</body>
+</html>
+      `;

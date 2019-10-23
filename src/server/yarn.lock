@@ -177,6 +177,11 @@ semver@^5.1.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
 
+sendpulse-api@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/sendpulse-api/-/sendpulse-api-1.1.2.tgz#e85e32cffd570695f570a0c6eb65855c86cde202"
+  integrity sha512-PpelvZ1Prxp2b8oEaI+9gPFec6sZPeeFuYCJlayKHaVS+WuONmnlL0J73fgwy3hfc8ZtEGWFbMRWRW32pteBLA==
+
 sift@7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/sift/-/sift-7.0.1.tgz#47d62c50b159d316f1372f8b53f9c10cd21a4b08"

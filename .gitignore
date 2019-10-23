@@ -25,6 +25,7 @@ yarn-error.log*
 /public/data/bags
 
 password.json
+email_keys.json
 
 *.pem
 *.crt
