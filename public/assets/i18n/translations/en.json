@@ -51,9 +51,10 @@
   ],
   "mainFeature": "Use our collection <COMPANYNAME> switch your things whenevery you want to just <PRICE>.",
   "fashionGrid": {
-    "booking": "Booking",
+    "booking": "Subscribe",
     "retailPrice": "Retail price",
-    "subscription": "Subscription"
+    "subscription": "Subscription",
+    "lastLabel": "The complete collection of bags will be available to subscribers after the launch of the project"
   },
   "subscriptionBig": {
     "title": {

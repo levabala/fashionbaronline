@@ -37,8 +37,8 @@ const fashionElemSizeMinMobile = parseFloat(
   StyleVariables.fashionElemWidthMinMobile
 );
 
-const mobile = window.innerHeight < mobileVersionMaxWidth;
-const notWide = window.innerWidth > wideDisplayMinWidth;
+const mobile = window.innerWidth < mobileVersionMaxWidth;
+const wide = window.innerWidth >= wideDisplayMinWidth;
 
 const containerSize = {
   height:
@@ -49,7 +49,7 @@ const containerSize = {
 
 const imageHeight = mobile
   ? fashionElemHeightMinMobile
-  : notWide
+  : wide
   ? fashionElemHeightMin
   : fashionElemHeightNotWideMin;
 
@@ -58,7 +58,7 @@ const imagesPerBlockVertical = Math.floor(containerSize.height / imageHeight);
 const imageWidth = Math.max(
   mobile
     ? fashionElemSizeMinMobile
-    : notWide
+    : wide
     ? fashionElemWidthMin
     : fashionElemWidthNotWideMin,
   imageHeight
@@ -72,6 +72,7 @@ const imageContainerHeight = containerSize.height / imagesPerBlockVertical;
 const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
 const imagesCount = imagesPerBlockTotal * 2; // (mobile ? 2 : 1);
 
+console.log({ mobile, notWide: wide });
 console.log(`${imageContainerWidth}x${imageContainerHeight}`);
 console.log(`${imagesPerBlockHorizontal}x${imagesPerBlockVertical}`);
 
@@ -142,7 +143,7 @@ const FashionGrid = ({
   }, [renderCallback]);
 
   const elements = new Array(imagesCount).fill(null).map((_, i) => (
-    <div key={i} className="elem">
+    <div key={i} className={`elem`}>
       <div className={`img ${bags[i] ? "withImage" : ""}`}>
         {bags[i] ? (
           <LazyLoadImage
@@ -155,18 +156,24 @@ const FashionGrid = ({
       <div className="placeholder" onTransitionEnd={onTransitionEnd}>
         <div className="black" />
         <div className="container">
-          <div className="top">
-            <div className="name">{bags[i] ? bags[i].name : "Brend Name"}</div>
-            <div className="details">
-              <div className="priceRetail">
-                {t("fashionGrid.retailPrice")}:{" "}
-                <Price noMonth customCost={5000} noBold />
+          {(i + 1) % imagesPerBlockTotal === 0 ? (
+            <div className="top">{t("fashionGrid.lastLabel")}</div>
+          ) : (
+            <div className="top">
+              <div className="name">
+                {bags[i] ? bags[i].name : "Brend Name"}
               </div>
-              <div className="priceSubsription">
-                {t("fashionGrid.subscription")}: <Price noBold />
+              <div className="details">
+                <div className="priceRetail">
+                  {t("fashionGrid.retailPrice")}:{" "}
+                  <Price noMonth customCost={5000} noBold />
+                </div>
+                <div className="priceSubsription">
+                  {t("fashionGrid.subscription")}: <Price noBold />
+                </div>
               </div>
             </div>
-          </div>
+          )}
           <div className="bottom">
             <div className="bookWrapper">
               <Button className="book" onClick={goToBooking} data-bagindex={i}>

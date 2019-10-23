@@ -54,6 +54,19 @@
       background: rgb(170, 170, 170);
     }
 
+    &:last-of-type {
+      background: black;
+
+      & > .placeholder > .container {
+        background: black;
+        font-size: 18px;
+      }
+
+      & > .img {
+        background: black;
+      }
+    }
+
     .img {
       position: absolute;
       left: 0;
@@ -69,6 +82,10 @@
       }
 
       img {
+        .last & {
+          visibility: hidden;
+        }
+
         position: absolute;
         top: -9999px;
         bottom: -9999px;

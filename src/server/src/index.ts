@@ -143,6 +143,7 @@ http
         break;
       }
       case "/variables": {
+        response.end(JSON.stringify({ subscriptionCost: 199 }));
         break;
       }
       case "/auth": {
