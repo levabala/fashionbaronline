@@ -40,12 +40,17 @@ const fashionElemSizeMinMobile = parseFloat(
 const mobile = window.innerWidth < mobileVersionMaxWidth;
 const wide = window.innerWidth >= wideDisplayMinWidth;
 
-const containerSize = {
-  height:
-    window.innerHeight -
-    (mobile ? fashionGridPaddingMobile : fashionGridPadding) * 2,
-  width: window.innerWidth - appPaddingHorizontalMobile * 2
-};
+const containerSize = mobile
+  ? {
+      height: window.innerHeight,
+      width: window.innerWidth
+    }
+  : {
+      height:
+        window.innerHeight -
+        (mobile ? fashionGridPaddingMobile : fashionGridPadding) * 2,
+      width: window.innerWidth - appPaddingHorizontalMobile * 2
+    };
 
 const imageHeight = mobile
   ? fashionElemHeightMinMobile
@@ -55,14 +60,12 @@ const imageHeight = mobile
 
 const imagesPerBlockVertical = Math.floor(containerSize.height / imageHeight);
 
-const imageWidth = Math.max(
-  mobile
-    ? fashionElemSizeMinMobile
-    : wide
-    ? fashionElemWidthMin
-    : fashionElemWidthNotWideMin,
-  imageHeight
-);
+const imageWidth = mobile
+  ? fashionElemSizeMinMobile
+  : Math.max(
+      wide ? fashionElemWidthMin : fashionElemWidthNotWideMin,
+      imageHeight
+    );
 
 const imagesPerBlockHorizontal = Math.floor(containerSize.width / imageWidth);
 
@@ -72,7 +75,8 @@ const imageContainerHeight = containerSize.height / imagesPerBlockVertical;
 const imagesPerBlockTotal = imagesPerBlockHorizontal * imagesPerBlockVertical;
 const imagesCount = imagesPerBlockTotal * 2; // (mobile ? 2 : 1);
 
-console.log({ mobile, notWide: wide });
+console.log({ mobile, wide });
+console.log(`${imageWidth}x${imageHeight}`);
 console.log(`${imageContainerWidth}x${imageContainerHeight}`);
 console.log(`${imagesPerBlockHorizontal}x${imagesPerBlockVertical}`);
 

@@ -1,0 +1,21 @@
+.bagAdd {
+  width: auto !important;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
+
+  .text {
+    text-align: center;
+    vertical-align: middle;
+
+    font-size: 30px;
+  }
+
+  transition: background 0.3s ease-out;
+
+  &:hover {
+    background: #f1f1f1;
+  }
+}

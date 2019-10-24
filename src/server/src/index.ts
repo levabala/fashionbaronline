@@ -18,6 +18,7 @@ sendpulse.init(API_USER_ID, API_SECRET, TOKEN_STORAGE, (token: any) => {
 });
 
 mongoose.connect("mongodb://localhost/fashionbar", {
+  useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -41,6 +42,15 @@ interface IRegistration extends Document {
   verified?: boolean;
 }
 
+interface IBagData {
+  id: string;
+  brandName: string;
+  nameOfModel: string;
+  price: number;
+}
+
+type IBag = IBagData & Document;
+
 const registartionSchema = new mongoose.Schema({
   date: { type: Date, required: true },
   email: { type: String, required: true },
@@ -56,10 +66,27 @@ const registartionSchema = new mongoose.Schema({
   relativeBagPath: String,
   verified: Boolean
 });
+
+const bagSchema = new mongoose.Schema({
+  brandName: String,
+  id: String,
+  nameOfModel: String,
+  price: Number
+});
+
 const Registration = mongoose.model<IRegistration>(
   "Registration",
   registartionSchema
 );
+
+const Bag = mongoose.model<IBag>("Bag", bagSchema);
+
+Bag.find()
+  .exec()
+  .then(bags => {
+    console.log("bags collection:");
+    bags.forEach(bag => console.log(`\t${bag.brandName}: ${bag.nameOfModel}`));
+  });
 
 const { password } = require("../password.json");
 console.log({ password });
@@ -157,6 +184,74 @@ http
         response.end(JSON.stringify(data), "utf-8");
         break;
       }
+      case "/bagsInfo": {
+        const bags = await Bag.find().exec();
+        const bagsInfo: IBagData[] = bags.map(
+          ({ nameOfModel, price, brandName, id }: IBagData) => ({
+            nameOfModel,
+            price,
+            brandName,
+            id
+          })
+        );
+
+        response.end(JSON.stringify(bagsInfo));
+        break;
+      }
+      case "/setBag": {
+        console.log("set bag request");
+
+        let tokensBody = "";
+        request.on("data", data => {
+          tokensBody += data;
+
+          // Too much POST data, kill the connection!
+          // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+          if (tokensBody.length > 1e6) request.connection.destroy();
+        });
+
+        request.on("end", async () => {
+          try {
+            const recievedData = JSON.parse(tokensBody);
+            const { token } = recievedData;
+
+            const tokenIndex = authenticationTokensPage.indexOf(token);
+            if (tokenIndex === -1) {
+              response.writeHead(403);
+              response.end();
+            } else {
+              authenticationTokensPage.splice(tokenIndex, 1);
+
+              console.log("'setBag' request approved");
+
+              const {
+                id,
+                nameOfModel,
+                brandName,
+                price
+              } = recievedData as IBagData;
+              const bag = (await Bag.findOneAndUpdate(
+                { id },
+                { id, nameOfModel, brandName, price },
+                { upsert: true, strict: false }
+              ).exec()) as IBag;
+
+              if (bag) await bag.save();
+
+              console.log({ id, nameOfModel, brandName, price });
+
+              console.log(`${bag.id} bag saved`);
+
+              response.end("success");
+            }
+          } catch (e) {
+            console.log(e);
+            response.end("error");
+          }
+        });
+
+        break;
+      }
       case "/getRegistrations": {
         let tokensBody = "";
         request.on("data", data => {
@@ -193,6 +288,21 @@ http
 
         break;
       }
+      case "/allBags":
+        const bags = Object.entries(bagsMapJSON).reduce(
+          (acc: Array<{ name: string; image: string }>, [brend, photos]) => [
+            ...acc,
+            ...photos.map(ph => ({
+              image: `${bagsClientPath}/${brend}/${ph}`,
+              name: brend
+            }))
+          ],
+          []
+        );
+
+        response.writeHead(200, { "Content-Type": "application/json" });
+        response.end(JSON.stringify(bags), "utf-8");
+        return;
       case "/bags":
         const { count: countString } = query;
 
@@ -295,7 +405,9 @@ http
       default:
         const filePathAbs = request.url || "/";
         const filePath =
-          filePathAbs === "/" || filePathAbs === "/registrations"
+          filePathAbs === "/" ||
+          filePathAbs === "/registrations" ||
+          filePathAbs === "/manageBags"
             ? "/index.html"
             : filePathAbs;
         // const filePathDecoded = decodeURIComponent(

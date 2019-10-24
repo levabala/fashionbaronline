@@ -6,6 +6,8 @@ import React, { lazy, Suspense, useMemo, useState } from 'react';
 import { Route, Router } from 'react-router-dom';
 import { createContainer } from 'unstated-next';
 
+import BagsPage from './components/BagsPage';
+
 const VARIABLES_GET_PATH = `${
   window.location.href.includes("localhost")
     ? "http://localhost:3000/"
@@ -61,6 +63,9 @@ const App: React.FC = () => {
           </Suspense>
           <Suspense fallback="">
             <Route path="/registrations" component={RegistrationsPage} />
+          </Suspense>
+          <Suspense fallback="">
+            <Route path="/manageBags" component={BagsPage} />
           </Suspense>
         </VariablesContainer.Provider>
       </div>

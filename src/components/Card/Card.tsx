@@ -1,5 +1,6 @@
 import './Card.scss';
 
+import classnames from 'classnames';
 import React from 'react';
 
 import StyleVariables from '../../variables.scss';
@@ -23,10 +24,12 @@ const Card = ({
     ...child,
     props: {
       ...child.props,
-      className:
-        `card ${paddingOnly ? "paddingOnly " : ""} ${
-          noPadding ? "noPadding " : ""
-        }` + (child.props.className || "")
+      className: classnames(
+        "card",
+        paddingOnly ? "paddingOnly " : "",
+        noPadding ? "noPadding " : "",
+        child.props.className
+      )
     }
   };
 

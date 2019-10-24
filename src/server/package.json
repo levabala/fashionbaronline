@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start:dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
-    "start:prod": "tsc ./src/index.ts --outDir ./build && node ./build/index.js"
+    "start:prod": "tsc ./src/index.ts --outDir ./build && node ./build/index.js",
+    "dropDB": "ts-node ./src/resetDB.ts"
   },
   "dependencies": {
     "line-reader": "^0.4.0",

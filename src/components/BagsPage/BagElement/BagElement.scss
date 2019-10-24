@@ -1,0 +1,53 @@
+.bagElement {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: auto;
+  font-size: 16px;
+
+  .left {
+    padding: 1em;
+    width: 30%;
+
+    background: none;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: -9999px;
+      bottom: -9999px;
+      left: -9999px;
+      right: -9999px;
+      margin: auto;
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+
+    width: 60%;
+
+    input {
+      font-size: 16px;
+      padding: 0.3em;
+    }
+
+    * + * {
+      margin-top: 1em;
+    }
+
+    .brandName {
+    }
+
+    .modelName {
+    }
+
+    .price {
+    }
+  }
+}
