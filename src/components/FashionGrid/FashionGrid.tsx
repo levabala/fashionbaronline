@@ -1,6 +1,6 @@
 import './FashionGrid.scss';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
@@ -83,6 +83,13 @@ console.log(`${imagesPerBlockHorizontal}x${imagesPerBlockVertical}`);
 const realImageProportions = imageContainerWidth / imageContainerHeight;
 const fitToWidth = rawImageProportions <= realImageProportions;
 
+interface BagData {
+  id: string;
+  brandName: string;
+  nameOfModel: string;
+  price: number;
+}
+
 const FashionGrid = ({
   renderCallback,
   id
@@ -92,6 +99,7 @@ const FashionGrid = ({
 }) => {
   const { t } = useTranslation();
   const [bags, setBags] = useState<Array<{ name: string; image: string }>>([]);
+  const [costs, setCosts] = useState<{ [id: string]: number }>({});
 
   const bookingLabel = t("fashionGrid.booking");
 
@@ -137,6 +145,25 @@ const FashionGrid = ({
         }> = await (await fetch(`/bags?count=${imagesCount}`)).json();
         // console.log(bagsToLoad);
 
+        const bagsInfoData: BagData[] = await (await fetch(`/bagsInfo`)).json();
+        console.log(bagsInfoData);
+
+        const costsData = bagsToLoad.reduce(
+          (acc: Record<string, number>, val) => ({
+            ...acc,
+            [val.image]: (
+              bagsInfoData.find(bag => val.image.includes(bag.id)) || {
+                price: 5000
+              }
+            ).price
+          }),
+          {}
+        );
+
+        console.log(bagsInfoData);
+        console.log(costsData);
+
+        setCosts(costsData);
         setBags(bagsToLoad);
       } catch (e) {
         console.warn(e);
@@ -170,7 +197,11 @@ const FashionGrid = ({
               <div className="details">
                 <div className="priceRetail">
                   {t("fashionGrid.retailPrice")}:{" "}
-                  <Price noMonth customCost={5000} noBold />
+                  <Price
+                    noMonth
+                    customCost={costs[(bags[i] || { image: "" }).image] || 5000}
+                    noBold
+                  />
                 </div>
                 <div className="priceSubsription">
                   {t("fashionGrid.subscription")}: <Price noBold />
