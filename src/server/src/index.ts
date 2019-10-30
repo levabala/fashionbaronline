@@ -472,7 +472,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
     text: "Hello mail from fashionbar.online",
     to: [
       {
-        email: "levabala@ya.ru",
+        email: mail,
         name: "Dear subscriber"
       }
     ]
