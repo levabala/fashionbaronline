@@ -78,18 +78,23 @@ function useBags() {
     const { token } = data;
     const accessToken = sha256(token + password);
 
-    const result = await (await fetch("setBag", {
-      body: JSON.stringify({
-        ...bag,
-        token: accessToken
-      } as BagData),
-      headers: {
-        Accept: "application/json"
-      },
-      method: "POST"
-    })).text();
+    try {
+      const result = await (await fetch("setBag", {
+        body: JSON.stringify({
+          ...bag,
+          token: accessToken
+        } as BagData),
+        headers: {
+          Accept: "application/json"
+        },
+        method: "POST"
+      })).text();
 
-    console.log(result);
+      console.log(result);
+    } catch (e) {
+      console.log(e);
+      await setBagRemote(bag);
+    }
   }, []);
 
   const updateBag = (updatedBag: BagData) => {
