@@ -90,10 +90,14 @@ function useBags() {
         method: "POST"
       })).text();
 
+      if (!result) throw new Error("setBag error");
+
       console.log(result);
     } catch (e) {
       console.log(e);
-      await setBagRemote(bag);
+      Cookies.remove("password");
+
+      setTimeout(() => setBagRemote(bag), 1000);
     }
   }, []);
 

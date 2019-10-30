@@ -98,7 +98,9 @@ const FashionGrid = ({
   id: string;
 }) => {
   const { t } = useTranslation();
-  const [bags, setBags] = useState<Array<{ name: string; image: string }>>([]);
+  const [bags, setBags] = useState<
+    Array<{ name: string; image: string; model: string }>
+  >([]);
   const [costs, setCosts] = useState<{ [id: string]: number }>({});
 
   const bookingLabel = t("fashionGrid.booking");
@@ -164,7 +166,14 @@ const FashionGrid = ({
         console.log(costsData);
 
         setCosts(costsData);
-        setBags(bagsToLoad);
+        setBags(
+          bagsToLoad.map(bag => ({
+            ...bag,
+            model: (bagsInfoData.find(bagInfo =>
+              bag.image.includes(bagInfo.id)
+            ) as BagData).nameOfModel
+          }))
+        );
       } catch (e) {
         console.warn(e);
       }
@@ -193,6 +202,9 @@ const FashionGrid = ({
             <div className="top">
               <div className="name">
                 {bags[i] ? bags[i].name : "Brend Name"}
+              </div>
+              <div className="model">
+                {bags[i] ? bags[i].model : "Model Name"}
               </div>
               <div className="details">
                 <div className="priceRetail">
