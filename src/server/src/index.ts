@@ -461,71 +461,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
   console.log(`send mail to ${mail}`);
   const verifyLink = ` https://fashionbar.online/verifyEmail?token=${token}`;
 
-  // create reusable transporter object using the default SMTP transport
-  const email = {
-    from: {
-      email: "info@fashionbar.online",
-      name: "Fashionbar.online"
-    },
-    html: htmlEmailBody,
-    subject: "Successful registration",
-    text: "Hello mail from fashionbar.online",
-    to: [
-      {
-        email: mail,
-        name: "Dear subscriber"
-      }
-    ]
-  };
-
-  const answerGetter = (data: any) => {
-    console.log(data);
-  };
-  sendpulse.smtpSendMail(answerGetter, email);
-}
-async function isUnique(data: IRegistartionData): Promise<boolean> {
-  const { email } = data;
-
-  return (await Registration.findOne({ email }).exec()) === null;
-}
-
-async function saveData(data: IRegistartionData): Promise<void> {
-  const { date, email, location, choosenBag, id } = data;
-  const registration: IRegistration = new Registration({
-    date,
-    email,
-    id,
-    location,
-    relativeBagBrand: (choosenBag || {}).name || "",
-    relativeBagPath: (choosenBag || {}).image || ""
-  });
-
-  await registration.save();
-  console.log(`save ${email}`);
-}
-
-function loadBrendsData(folder: string): Record<string, string[]> {
-  const brends = fs
-    .readdirSync(folder, { withFileTypes: true })
-    .filter(entity => entity.isDirectory())
-    .map(dir => dir.name);
-
-  const bags: Array<[string, string[]]> = brends.map(brendFolderName => {
-    const photos = fs
-      .readdirSync(`${folder}/${brendFolderName}`, { withFileTypes: true })
-      .filter(entity => entity.name.startsWith(brendPhotoPrefix))
-      .map(ph => ph.name);
-    return [brendFolderName, photos];
-  });
-
-  const bagsMap: Record<string, string[]> = bags.reduce(
-    (acc, [brend, photos]) => ({ ...acc, [brend]: photos }),
-    {}
-  );
-  return bagsMap;
-}
-
-const htmlEmailBody = `
+  const htmlEmailBody = `
       <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
@@ -684,11 +620,16 @@ const htmlEmailBody = `
                                             <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Мы работаем над запуском проекта и сообщим Вам как только будем готовы.</p>
                                         </div>
                                     </div>
+                                    <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:30px;padding-bottom:20px;padding-left:30px;">
+                                        <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
+                                            <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Для подтверждения вашей почты, пройдите по <a href="${verifyLink}" style="color: blue">этой ссылке</a>.</p>
+                                        </div>
+                                    </div>
+                                    
+                                     
                                     <!--[if mso]></td></tr></table><![endif]-->
                                     
                                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 35px;padding-left: 35px;" align="center"><![endif]-->
-                                      
-                                        <div style="font-size:1px;line-height:35px"> </div>
                                         <!--[if mso]></td></tr></table><![endif]-->
                                     </div>
                                     <!--[if (!mso)&(!IE)]><!-->
@@ -802,3 +743,67 @@ const htmlEmailBody = `
 </body>
 </html>
       `;
+
+  // create reusable transporter object using the default SMTP transport
+  const email = {
+    from: {
+      email: "info@fashionbar.online",
+      name: "Fashionbar.online"
+    },
+    html: htmlEmailBody,
+    subject: "Successful registration",
+    text: "Hello mail from fashionbar.online",
+    to: [
+      {
+        email: mail,
+        name: "Dear subscriber"
+      }
+    ]
+  };
+
+  const answerGetter = (data: any) => {
+    console.log(data);
+  };
+  sendpulse.smtpSendMail(answerGetter, email);
+}
+async function isUnique(data: IRegistartionData): Promise<boolean> {
+  const { email } = data;
+
+  return (await Registration.findOne({ email }).exec()) === null;
+}
+
+async function saveData(data: IRegistartionData): Promise<void> {
+  const { date, email, location, choosenBag, id } = data;
+  const registration: IRegistration = new Registration({
+    date,
+    email,
+    id,
+    location,
+    relativeBagBrand: (choosenBag || {}).name || "",
+    relativeBagPath: (choosenBag || {}).image || ""
+  });
+
+  await registration.save();
+  console.log(`save ${email}`);
+}
+
+function loadBrendsData(folder: string): Record<string, string[]> {
+  const brends = fs
+    .readdirSync(folder, { withFileTypes: true })
+    .filter(entity => entity.isDirectory())
+    .map(dir => dir.name);
+
+  const bags: Array<[string, string[]]> = brends.map(brendFolderName => {
+    const photos = fs
+      .readdirSync(`${folder}/${brendFolderName}`, { withFileTypes: true })
+      .filter(entity => entity.name.startsWith(brendPhotoPrefix))
+      .map(ph => ph.name);
+    return [brendFolderName, photos];
+  });
+
+  const bagsMap: Record<string, string[]> = bags.reduce(
+    (acc, [brend, photos]) => ({ ...acc, [brend]: photos }),
+    {}
+  );
+  return bagsMap;
+}
