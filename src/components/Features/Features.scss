@@ -14,6 +14,10 @@
 
   $duration: 0.5s;
 
+  .keyboardVisible & {
+    display: none;
+  }
+
   @media screen and (max-width: $wide-display-min-width) {
     // height: 60%;
     font-size: 18px;

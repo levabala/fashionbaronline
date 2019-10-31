@@ -16,6 +16,8 @@ const EMAIL_POST_PATH = `${
     : window.location.href
 }subscribe`;
 
+window.addEventListener("resize", () => console.log(window.innerHeight));
+
 const SubscriptionBlock = () => {
   const { t } = useTranslation();
   const [emailSent, setEmailSent] = useState(false);
@@ -105,27 +107,35 @@ const SubscriptionBlock = () => {
   const onInputFocus = () => {
     console.log("focused");
 
-    const h1 = window.innerHeight;
+    const initialHeight = window.innerHeight;
     const callback = () => {
+      const withKeyboardHeight = window.innerHeight;
+      if (Math.abs(initialHeight - withKeyboardHeight) < 100) return;
+
+      console.log("keyboardVisible");
       document.body.classList.add("keyboardVisible");
       document
         .querySelectorAll(".viewBlock")
         .forEach(block => block.setAttribute("style", "height: 100%"));
 
-      const keyboardHeight = h1 - window.innerHeight;
+      const keyboardHeight = initialHeight - window.innerHeight;
       console.log({ keyboardHeight });
 
-      const d = document.querySelector(".centralContainer") as HTMLDivElement;
-      d.setAttribute(
-        "style",
-        `transform: translateY(-${keyboardHeight + 40}px)`
-      );
+      // const d = document.querySelector(".centralContainer") as HTMLDivElement;
+      // d.setAttribute(
+      //   "style",
+      //   `transform: translateY(-${keyboardHeight + 40}px)`
+      // );
 
       const postCallback = () => {
+        const withoutKeyboardHeight = window.innerHeight;
+        if (Math.abs(withoutKeyboardHeight - withKeyboardHeight) < 100) return;
+
+        console.log("keyboardHidden");
         document.body.classList.remove("keyboardVisible");
         window.removeEventListener("resize", postCallback);
 
-        d.setAttribute("style", ``);
+        // d.setAttribute("style", ``);
       };
 
       window.removeEventListener("resize", callback);

@@ -3,6 +3,10 @@
 .viewBlock {
   height: 100%;
 
+  .keyboardVisible & {
+    top: 0px;
+  }
+
   .animationContainer {
     height: 100%;
   }
