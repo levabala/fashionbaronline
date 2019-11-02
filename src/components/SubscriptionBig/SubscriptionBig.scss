@@ -16,7 +16,10 @@
 
   @media screen and (max-width: $mobile-version-max-width) {
     grid-template-columns: 1fr;
-    height: auto;
+
+    .keyboardVisible & {
+      height: 100%;
+    }
   }
 
   & > .right {
