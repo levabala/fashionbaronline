@@ -4,6 +4,7 @@ import './i18n';
 import { createBrowserHistory } from 'history';
 import React, { lazy, Suspense, useMemo, useState } from 'react';
 import { Route, Router } from 'react-router-dom';
+import smoothscroll from 'smoothscroll-polyfill';
 import { createContainer } from 'unstated-next';
 
 import BagsPage from './components/BagsPage';
@@ -14,6 +15,9 @@ const VARIABLES_GET_PATH = `${
     ? "http://localhost:3000/"
     : window.location.href
 }variables`;
+
+// kick off the polyfill!
+smoothscroll.polyfill();
 
 export interface Variables {
   subscriptionCost: number;

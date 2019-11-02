@@ -118,9 +118,9 @@ const SubscriptionBlock = () => {
 
       console.log("keyboardVisible");
       document.body.classList.add("keyboardVisible");
-      document
-        .querySelectorAll(".viewBlock")
-        .forEach(block => block.setAttribute("style", "height: 100%"));
+      // document
+      //   .querySelectorAll(".viewBlock")
+      //   .forEach(block => block.setAttribute("style", "height: 100%"));
 
       const keyboardHeight = initialHeight - window.innerHeight;
       console.log({ keyboardHeight });

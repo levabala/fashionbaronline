@@ -19,8 +19,7 @@
   // right: 0;
 
   @media screen and (max-width: $mobile-version-max-width) {
-    top: $fashionGrid-padding-mobile;
-    bottom: $fashionGrid-padding-mobile;
+    margin: 0 -$app-padding-horizontal-mobile;
   }
 
   // padding: $fashionGrid-padding;
@@ -189,7 +188,8 @@
               font-size: 16px;
               margin-top: 0.1em;
             }
-
+          }
+          .details {
             @media screen and (max-width: $mobile-version-max-width) {
               display: none;
             }
@@ -248,8 +248,8 @@
   @media screen and (max-width: $mobile-version-max-width) {
     height: 100%;
 
-    top: 0; // $fashionGrid-padding;
-    bottom: 0; // $fashionGrid-padding;
+    // top: 0; // $fashionGrid-padding;
+    // bottom: 0; // $fashionGrid-padding;
     // left: -$app-padding-horizontal-mobile;
     // right: -$app-padding-horizontal-mobile;
   }

@@ -28,7 +28,7 @@ const ViewBlock = ({
   noSuspense?: boolean;
 }) => {
   return (
-    <Div100vh
+    <div
       className={classnames(
         "viewBlock",
         forced ? "forced" : "",
@@ -42,13 +42,35 @@ const ViewBlock = ({
     >
       {noSuspense ? (
         <Suspense fallback={<div>Loading ...</div>}>
-          <div className="animationContainer">{children}</div>
+          <Div100vh className="animationContainer">{children}</Div100vh>
         </Suspense>
       ) : (
-        <div className="animationContainer">{children}</div>
+        <Div100vh className="animationContainer">{children}</Div100vh>
       )}
-    </Div100vh>
+    </div>
   );
+  // return (
+  //   <Div100vh
+  //     className={classnames(
+  //       "viewBlock",
+  //       forced ? "forced" : "",
+  //       fitContent ? "fitContent" : "",
+  //       around ? "around" : "",
+  //       first ? "first" : "",
+  //       disabled ? "disabled" : "",
+  //       noAnimations ? "noAnimations" : ""
+  //     )}
+  //     id={id}
+  //   >
+  //     {noSuspense ? (
+  //       <Suspense fallback={<div>Loading ...</div>}>
+  //         <div className="animationContainer">{children}</div>
+  //       </Suspense>
+  //     ) : (
+  //       <div className="animationContainer">{children}</div>
+  //     )}
+  //   </Div100vh>
+  // );
   // return window.innerWidth > mobileVersionMaxWidth ? (
   //   <Div100vh
   //     className={classnames(

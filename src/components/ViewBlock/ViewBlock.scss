@@ -1,11 +1,11 @@
 @import "../../variables.scss";
 
 .viewBlock {
-  height: 100%;
+  height: calc(var(--vh) * 100);
 
-  .animationContainer {
-    height: 100%;
-  }
+  // .animationContainer {
+  //   height: 100%;
+  // }
 
   &:last-of-type {
     margin-bottom: 10em;
@@ -54,27 +54,27 @@
   // &:not(.first):not(.disabled) {
   &:not(.disabled) {
     .animationContainer {
-      // opacity: 0;
+      opacity: 0;
     }
 
     // pointer-events: none;
 
     &.reactivated .animationContainer {
-      animation-name: fadeInDown;
+      // animation-name: fadeInDown;
       opacity: 1;
 
-      pointer-events: initial;
+      // pointer-events: initial;
     }
 
     &.activated .animationContainer {
-      animation-name: fadeInUp;
+      // animation-name: fadeInUp;
       opacity: 1;
 
-      pointer-events: initial;
+      // pointer-events: initial;
     }
 
     &.disactivated .animationContainer {
-      animation-name: fadeOutUp;
+      // animation-name: fadeOutUp;
       opacity: 0;
     }
 
