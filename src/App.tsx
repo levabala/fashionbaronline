@@ -7,6 +7,7 @@ import { Route, Router } from 'react-router-dom';
 import { createContainer } from 'unstated-next';
 
 import BagsPage from './components/BagsPage';
+import MainPageReforged from './components/MainPageReforged';
 
 const VARIABLES_GET_PATH = `${
   window.location.href.includes("localhost")
@@ -42,7 +43,7 @@ export const VariablesContainer = createContainer(useVariables);
 
 // import MainPage from './components/MainPage';
 // import RegistrationsPage from './components/RegistrationsPage';
-const MainPage = lazy(() => import("./components/MainPage"));
+// const MainPage = lazy(() => import("./components/MainPage"));
 const RegistrationsPage = lazy(() => import("./components/RegistrationsPage"));
 
 const h = createBrowserHistory();
@@ -59,7 +60,7 @@ const App: React.FC = () => {
       >
         <VariablesContainer.Provider>
           <Suspense fallback="">
-            <Route exact path="/" component={MainPage} />
+            <Route exact path="/" component={MainPageReforged} />
           </Suspense>
           <Suspense fallback="">
             <Route path="/registrations" component={RegistrationsPage} />

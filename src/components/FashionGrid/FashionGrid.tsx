@@ -91,11 +91,11 @@ interface BagData {
 }
 
 const FashionGrid = ({
-  renderCallback,
-  id
+  id,
+  onLoadCallback
 }: {
-  renderCallback: () => void;
   id: string;
+  onLoadCallback: () => void;
 }) => {
   const { t } = useTranslation();
   const [bags, setBags] = useState<
@@ -137,8 +137,7 @@ const FashionGrid = ({
   };
 
   useEffect(() => {
-    renderCallback();
-
+    onLoadCallback();
     const fetchData = async () => {
       try {
         const bagsToLoad: Array<{
@@ -180,7 +179,7 @@ const FashionGrid = ({
     };
 
     fetchData();
-  }, [renderCallback]);
+  }, []);
 
   const elements = new Array(imagesCount).fill(null).map((_, i) => (
     <div key={i} className={`elem`}>

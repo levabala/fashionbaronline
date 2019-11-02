@@ -1,258 +1,260 @@
-import { disableBodyScroll } from 'body-scroll-lock';
-import React, { lazy, Suspense, useEffect, useLayoutEffect, useRef } from 'react';
+// import { disableBodyScroll } from 'body-scroll-lock';
+// import React, { lazy, Suspense, useEffect, useLayoutEffect, useRef } from 'react';
 
-import TagEnum from '../../types/TagEnum';
-import StyleVariables from '../../variables.scss';
-import CentralContainer from '../CentralContainer';
-import ContentBlock from '../ContentBlock';
-import Description from '../Description';
-import Header from '../Header';
-import Title from '../Title';
-import ViewBlock from '../ViewBlock';
+// import TagEnum from '../../types/TagEnum';
+// import StyleVariables from '../../variables.scss';
+// import CentralContainer from '../CentralContainer';
+// import ContentBlock from '../ContentBlock';
+// import Description from '../Description';
+// import Header from '../Header';
+// import Title from '../Title';
+// import ViewBlock from '../ViewBlock';
 
-// import Features from '../Features';
-// import Footer from '../Footer';
-// import MainFeature from '../MainFeature';
-// import SubscriptionBig from '../SubscriptionBig';
-// import SubscriptionSmall from '../SubscriptionSmall';
-// import FashionGrid from "../FashionGrid";
-// const Header = lazy(() => import("../Header"));
-const FashionGrid = lazy(() => import("../FashionGrid"));
-const Features = lazy(() => import("../Features"));
-const MainFeature = lazy(() => import("../MainFeature"));
-const SubscriptionBig = lazy(() => import("../SubscriptionBig"));
-const SubscriptionSmall = lazy(() => import("../SubscriptionSmall"));
-const Footer = lazy(() => import("../Footer"));
+// // import Features from '../Features';
+// // import Footer from '../Footer';
+// // import MainFeature from '../MainFeature';
+// // import SubscriptionBig from '../SubscriptionBig';
+// // import SubscriptionSmall from '../SubscriptionSmall';
+// // import FashionGrid from "../FashionGrid";
+// // const Header = lazy(() => import("../Header"));
+// const FashionGrid = lazy(() => import("../FashionGrid"));
+// const Features = lazy(() => import("../Features"));
+// const MainFeature = lazy(() => import("../MainFeature"));
+// const SubscriptionBig = lazy(() => import("../SubscriptionBig"));
+// const SubscriptionSmall = lazy(() => import("../SubscriptionSmall"));
+// const Footer = lazy(() => import("../Footer"));
 
-const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
-const fadeAnimationDuration = parseFloat(StyleVariables.fadeAnimationDuration);
-const wideDisplayMinWidth = parseFloat(StyleVariables.wideDisplayMinWidth);
+// const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
+// const fadeAnimationDuration = parseFloat(StyleVariables.fadeAnimationDuration);
+// const wideDisplayMinWidth = parseFloat(StyleVariables.wideDisplayMinWidth);
 
-document.body.classList.add(`${TagEnum.HowItWorks}Active`);
+// document.body.classList.add(`${TagEnum.HowItWorks}Active`);
 
-// tslint:disable:no-object-mutation
-document.body.style.visibility = "hidden";
+// // tslint:disable:no-object-mutation
+// document.body.style.visibility = "hidden";
 
-const MainPage: React.FC = () => {
-  const centralContainerRef = useRef<HTMLDivElement>(null);
+// const MainPage: React.FC = () => {
+//   const centralContainerRef = useRef<HTMLDivElement>(null);
 
-  const triggerScrollValue =
-    window.innerWidth > mobileVersionMaxWidth ? 150 : 50;
-  const afterScrollBlindTime =
-    window.innerWidth > mobileVersionMaxWidth ? 600 : 300;
-  let blindTime = false;
-  let scrollAccumulator = 0;
+//   const triggerScrollValue =
+//     window.innerWidth > mobileVersionMaxWidth ? 150 : 50;
+//   const afterScrollBlindTime =
+//     window.innerWidth > mobileVersionMaxWidth ? 600 : 300;
+//   let blindTime = false;
+//   let scrollAccumulator = 0;
 
-  const scrollCheck = () => {
-    // console.log(scrollAccumulator);
-    if (Math.abs(scrollAccumulator) > triggerScrollValue) {
-      scrollPage((Math.sign(scrollAccumulator) || 1) as 1 | -1);
-      scrollAccumulator = 0;
-    }
-  };
+//   const scrollCheck = () => {
+//     // console.log(scrollAccumulator);
+//     if (Math.abs(scrollAccumulator) > triggerScrollValue) {
+//       scrollPage((Math.sign(scrollAccumulator) || 1) as 1 | -1);
+//       scrollAccumulator = 0;
+//     }
+//   };
 
-  let currentBlockIndex = 0;
-  const scrollPage = (delta: 1 | -1) => {
-    const centralContainer = centralContainerRef.current;
-    if (!centralContainer) return;
+//   let currentBlockIndex = 0;
+//   const scrollPage = (delta: 1 | -1) => {
+//     const centralContainer = centralContainerRef.current;
+//     if (!centralContainer) return;
 
-    const previousBlock = centralContainer.children[currentBlockIndex];
+//     const previousBlock = centralContainer.children[currentBlockIndex];
 
-    const previousIndex = currentBlockIndex;
-    currentBlockIndex = Math.min(
-      Math.max(currentBlockIndex + delta, 0),
-      centralContainer.children.length - 1
-    );
+//     const previousIndex = currentBlockIndex;
+//     currentBlockIndex = Math.min(
+//       Math.max(currentBlockIndex + delta, 0),
+//       centralContainer.children.length - 1
+//     );
 
-    document.body.classList.remove(
-      `${centralContainer.children[previousIndex].id}Active`
-    );
-    document.body.classList.add(
-      `${centralContainer.children[currentBlockIndex].id}Active`
-    );
+//     document.body.classList.remove(
+//       `${centralContainer.children[previousIndex].id}Active`
+//     );
+//     document.body.classList.add(
+//       `${centralContainer.children[currentBlockIndex].id}Active`
+//     );
 
-    if (currentBlockIndex === previousIndex) return;
+//     if (currentBlockIndex === previousIndex) return;
 
-    const block = centralContainer.children[currentBlockIndex];
+//     const block = centralContainer.children[currentBlockIndex];
 
-    previousBlock.classList.remove("activated");
-    previousBlock.classList.remove("reactivated");
-    block.classList.remove("activated");
-    block.classList.remove("reactivated");
+//     previousBlock.classList.remove("activated");
+//     previousBlock.classList.remove("reactivated");
+//     block.classList.remove("activated");
+//     block.classList.remove("reactivated");
 
-    setTimeout(() => {
-      if (delta === -1) block.classList.add("reactivated");
-      else {
-        block.classList.add("activated");
-        Array.from(block.children[0].children).forEach(child =>
-          child.classList.add("activated")
-        );
-      }
+//     setTimeout(() => {
+//       if (delta === -1) block.classList.add("reactivated");
+//       else {
+//         block.classList.add("activated");
+//         Array.from(block.children[0].children).forEach(child =>
+//           child.classList.add("activated")
+//         );
+//       }
 
-      block.classList.remove("disactivated");
-      previousBlock.classList.add("disactivated");
-    }, fadeAnimationDuration * 1000);
+//       block.classList.remove("disactivated");
+//       previousBlock.classList.add("disactivated");
+//     }, fadeAnimationDuration * 1000);
 
-    blindTime = true;
-    setTimeout(() => (blindTime = false), afterScrollBlindTime);
+//     blindTime = true;
+//     setTimeout(() => (blindTime = false), afterScrollBlindTime);
 
-    // console.log(currentBlockIndex, block);
-    // console.log("scroll to", currentBlockIndex);
-  };
+//     // console.log(currentBlockIndex, block);
+//     // console.log("scroll to", currentBlockIndex);
+//   };
 
-  const scrollTo = (id: string) => {
-    const centralContainer = centralContainerRef.current;
-    if (!centralContainer) return;
+//   const scrollTo = (id: string) => {
+//     const centralContainer = centralContainerRef.current;
+//     if (!centralContainer) return;
 
-    const targetBlockIndex = Array.from(centralContainer.children).findIndex(
-      el => el.id === id
-    );
-    if (targetBlockIndex === -1) return;
+//     const targetBlockIndex = Array.from(centralContainer.children).findIndex(
+//       el => el.id === id
+//     );
+//     if (targetBlockIndex === -1) return;
 
-    let delta = targetBlockIndex - currentBlockIndex;
-    while (delta !== 0) {
-      scrollPage(delta >= 1 ? 1 : -1);
-      delta -= Math.sign(delta);
-    }
-  };
+//     let delta = targetBlockIndex - currentBlockIndex;
+//     while (delta !== 0) {
+//       scrollPage(delta >= 1 ? 1 : -1);
+//       delta -= Math.sign(delta);
+//     }
+//   };
 
-  (window as any).scrollPage = scrollPage;
-  (window as any).scrollTo = scrollTo;
+//   (window as any).scrollPage = scrollPage;
+//   (window as any).scrollTo = scrollTo;
 
-  const onFashionGridRendered = () => {
-    if (!centralContainerRef.current) return;
+//   const onFashionGridRendered = () => {
+//     if (!centralContainerRef.current) return;
 
-    const centralContainer = centralContainerRef.current;
+//     const centralContainer = centralContainerRef.current;
 
-    document.body.style.visibility = "visible";
+//     document.body.style.visibility = "visible";
 
-    currentBlockIndex = Math.round(window.scrollY / window.innerHeight);
-    // console.log(
-    //   "start from",
-    //   currentBlockIndex,
-    //   window.scrollY / window.innerHeight
-    // );
+//     currentBlockIndex = Math.round(window.scrollY / window.innerHeight);
+//     // console.log(
+//     //   "start from",
+//     //   currentBlockIndex,
+//     //   window.scrollY / window.innerHeight
+//     // );
 
-    const viewBlocks = Array.from(
-      centralContainer.querySelectorAll(".viewBlock")
-    );
-    viewBlocks[currentBlockIndex].classList.add("activated");
+//     const viewBlocks = Array.from(
+//       centralContainer.querySelectorAll(".viewBlock")
+//     );
+//     viewBlocks[currentBlockIndex].classList.add("activated");
 
-    let previous: Element;
-    const intersectionObserver = new IntersectionObserver(
-      ([intersection]) => {
-        // const preprevious = previous;
-        previous = intersection.isIntersecting ? intersection.target : previous;
-        // console.log(preprevious, previous);
+//     let previous: Element;
+//     const intersectionObserver = new IntersectionObserver(
+//       ([intersection]) => {
+//         // const preprevious = previous;
+//         previous = intersection.isIntersecting ? intersection.target : previous;
+//         // console.log(preprevious, previous);
 
-        // console.log(previous !== preprevious);
-        // if (previous !== preprevious && preprevious)
-        //   preprevious.classList.add("disactivated");
+//         // console.log(previous !== preprevious);
+//         // if (previous !== preprevious && preprevious)
+//         //   preprevious.classList.add("disactivated");
 
-        // if (!intersection.isIntersecting && previous) {
-        //   previous.classList.add("activated");
-        //   previous.classList.remove("disactivated");
-        // }
+//         // if (!intersection.isIntersecting && previous) {
+//         //   previous.classList.add("activated");
+//         //   previous.classList.remove("disactivated");
+//         // }
 
-        if (!intersection.isIntersecting && previous)
-          previous.classList.add("activated");
-      },
-      {
-        root: centralContainer,
-        threshold: 0.3
-      }
-    );
+//         if (!intersection.isIntersecting && previous)
+//           previous.classList.add("activated");
+//       },
+//       {
+//         root: centralContainer,
+//         threshold: 0.3
+//       }
+//     );
 
-    viewBlocks.forEach(block => intersectionObserver.observe(block));
-    // console.log(viewBlocks);
+//     viewBlocks.forEach(block => intersectionObserver.observe(block));
+//     // console.log(viewBlocks);
 
-    // let lastScrollY = window.scrollY;
-    const scrollHandler = (deltaY: number) => {
-      if (blindTime) return;
+//     // let lastScrollY = window.scrollY;
+//     const scrollHandler = (deltaY: number) => {
+//       if (blindTime) return;
 
-      scrollAccumulator += deltaY;
-      // console.log(scrollAccumulator);
+//       scrollAccumulator += deltaY;
+//       // console.log(scrollAccumulator);
 
-      scrollCheck();
-    };
+//       scrollCheck();
+//     };
 
-    let lastTouchPosition = 0;
-    document.body.addEventListener("wheel", ({ deltaY }) =>
-      scrollHandler(deltaY)
-    );
-    document.body.addEventListener("touchmove", ({ touches }) => {
-      scrollHandler(lastTouchPosition - touches[0].clientY);
-      lastTouchPosition = touches[0].clientY;
-    });
-    document.body.addEventListener(
-      "touchstart",
-      ({ touches }) => (lastTouchPosition = touches[0].clientY)
-    );
-    window.addEventListener("keydown", e => {
-      switch (e.key) {
-        case "ArrowDown":
-          scrollPage(1);
-          break;
-        case "ArrowUp":
-          scrollPage(-1);
-          break;
-      }
-    });
+//     let lastTouchPosition = 0;
+//     document.body.addEventListener("wheel", ({ deltaY }) =>
+//       scrollHandler(deltaY)
+//     );
+//     document.body.addEventListener("touchmove", ({ touches }) => {
+//       scrollHandler(lastTouchPosition - touches[0].clientY);
+//       lastTouchPosition = touches[0].clientY;
+//     });
+//     document.body.addEventListener(
+//       "touchstart",
+//       ({ touches }) => (lastTouchPosition = touches[0].clientY)
+//     );
+//     window.addEventListener("keydown", e => {
+//       switch (e.key) {
+//         case "ArrowDown":
+//           scrollPage(1);
+//           break;
+//         case "ArrowUp":
+//           scrollPage(-1);
+//           break;
+//       }
+//     });
 
-    disableBodyScroll(document.body);
-    // if (window.innerWidth <= mobileVersionMaxWidth)
-    //   disableBodyScroll(centralContainer);
-  };
+//     disableBodyScroll(document.body);
+//     // if (window.innerWidth <= mobileVersionMaxWidth)
+//     //   disableBodyScroll(centralContainer);
+//   };
 
-  // useEffect(() => {
-  //   setTimeout(() => scrollTo(TagEnum.HowItWorks), 500);
-  // }, []);
+//   // useEffect(() => {
+//   //   setTimeout(() => scrollTo(TagEnum.HowItWorks), 500);
+//   // }, []);
 
-  return (
-    <Suspense fallback={null}>
-      <CentralContainer ref={centralContainerRef}>
-        <ViewBlock
-          first
-          around={window.innerWidth > wideDisplayMinWidth}
-          noSuspense
-        >
-          <ContentBlock>
-            <Header onlyWoman />
-            <Title />
-          </ContentBlock>
-          <ContentBlock>
-            <SubscriptionSmall />
-          </ContentBlock>
-        </ViewBlock>
+//   return (
+//     <Suspense fallback={null}>
+//       <CentralContainer ref={centralContainerRef}>
+//         <ViewBlock
+//           first
+//           around={window.innerWidth > wideDisplayMinWidth}
+//           noSuspense
+//         >
+//           <ContentBlock>
+//             <Header onlyWoman />
+//             <Title />
+//           </ContentBlock>
+//           <ContentBlock>
+//             <SubscriptionSmall />
+//           </ContentBlock>
+//         </ViewBlock>
 
-        <ViewBlock forced around id={TagEnum.HowItWorks}>
-          <Features />
-        </ViewBlock>
+//         <ViewBlock forced around id={TagEnum.HowItWorks}>
+//           <Features />
+//         </ViewBlock>
 
-        <ViewBlock forced around id={TagEnum.About}>
-          <Description />
-        </ViewBlock>
+//         <ViewBlock forced around id={TagEnum.About}>
+//           <Description />
+//         </ViewBlock>
 
-        {/* <ViewBlock forced around id={TagEnum.MainFeature}>
-          <MainFeature />
-        </ViewBlock> */}
+//         {/* <ViewBlock forced around id={TagEnum.MainFeature}>
+//           <MainFeature />
+//         </ViewBlock> */}
 
-        <FashionGrid
-          renderCallback={onFashionGridRendered}
-          id={TagEnum.Collection}
-        />
+//         <FashionGrid
+//           renderCallback={onFashionGridRendered}
+//           id={TagEnum.Collection}
+//         />
 
-        <ViewBlock forced around id={TagEnum.Subscribe}>
-          <SubscriptionBig />
-        </ViewBlock>
+//         <ViewBlock forced around id={TagEnum.Subscribe}>
+//           <SubscriptionBig />
+//         </ViewBlock>
 
-        <ViewBlock forced around id={"contacts"}>
-          <Footer />
-        </ViewBlock>
-      </CentralContainer>
-      <Header absolute noWoman />
-    </Suspense>
-  );
-};
+//         <ViewBlock forced around id={"contacts"}>
+//           <Footer />
+//         </ViewBlock>
+//       </CentralContainer>
+//       <Header absolute noWoman />
+//     </Suspense>
+//   );
+// };
 
-export default MainPage;
+// export default MainPage;
+
+export default 0;

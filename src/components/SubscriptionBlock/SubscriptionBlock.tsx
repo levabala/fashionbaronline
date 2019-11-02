@@ -16,8 +16,6 @@ const EMAIL_POST_PATH = `${
     : window.location.href
 }subscribe`;
 
-window.addEventListener("resize", () => console.log(window.innerHeight));
-
 const SubscriptionBlock = () => {
   const { t } = useTranslation();
   const [emailSent, setEmailSent] = useState(false);
@@ -127,11 +125,11 @@ const SubscriptionBlock = () => {
       const keyboardHeight = initialHeight - window.innerHeight;
       console.log({ keyboardHeight });
 
-      const d = document.querySelector(".centralContainer") as HTMLDivElement;
-      d.setAttribute(
-        "style",
-        `transform: translateY(-${keyboardHeight + 40}px)`
-      );
+      // const d = document.querySelector(".centralContainer") as HTMLDivElement;
+      // d.setAttribute(
+      //   "style",
+      //   `transform: translateY(-${keyboardHeight + 40}px)`
+      // );
 
       const postCallback = () => {
         const withoutKeyboardHeight = window.innerHeight;
@@ -141,7 +139,7 @@ const SubscriptionBlock = () => {
         document.body.classList.remove("keyboardVisible");
         window.removeEventListener("resize", postCallback);
 
-        d.setAttribute("style", ``);
+        // d.setAttribute("style", ``);
       };
 
       window.removeEventListener("resize", callback);

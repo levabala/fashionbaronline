@@ -22,13 +22,14 @@
     // "readonly-array": true,
     "no-array-mutation": [true, "ignore-new-array"],
     "no-let": false,
-    "no-object-mutation": [
-      true,
-      {
-        "ignore-postfix": ["Elem"],
-        "ignore-prefix": ["window.", "(window as any)"]
-      }
-    ],
+    // "no-object-mutation": [
+    //   true,
+    //   {
+    //     "ignore-postfix": ["Elem"],
+    //     "ignore-prefix": ["window.", "(window as any)"]
+    //   }
+    // ],
+    "no-object-mutation": false,
     "no-delete": true,
     "no-method-signature": true,
     "no-object-literal-type-assertion": false,

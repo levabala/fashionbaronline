@@ -2,14 +2,6 @@
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap&subset=cyrillic");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 
-@media screen and (max-width: $mobile-version-max-width) {
-  html,
-  body {
-    height: 100vh;
-    overflow: hidden;
-  }
-}
-
 body {
   margin: 0;
   font-family: "Playfair Display", serif;
