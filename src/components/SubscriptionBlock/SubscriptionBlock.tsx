@@ -108,6 +108,12 @@ const SubscriptionBlock = () => {
     console.log("focused");
 
     const initialHeight = window.innerHeight;
+    const viewBlockHeight = (document.querySelector(
+      ".viewBlock"
+    ) as HTMLDivElement).offsetHeight;
+    const topBarHeight = initialHeight - viewBlockHeight;
+    console.log({ topBarHeight });
+
     const callback = () => {
       const withKeyboardHeight = window.innerHeight;
       if (Math.abs(initialHeight - withKeyboardHeight) < 100) return;
@@ -121,11 +127,11 @@ const SubscriptionBlock = () => {
       const keyboardHeight = initialHeight - window.innerHeight;
       console.log({ keyboardHeight });
 
-      // const d = document.querySelector(".centralContainer") as HTMLDivElement;
-      // d.setAttribute(
-      //   "style",
-      //   `transform: translateY(-${keyboardHeight + 40}px)`
-      // );
+      const d = document.querySelector(".centralContainer") as HTMLDivElement;
+      d.setAttribute(
+        "style",
+        `transform: translateY(-${keyboardHeight + 40}px)`
+      );
 
       const postCallback = () => {
         const withoutKeyboardHeight = window.innerHeight;
@@ -135,7 +141,7 @@ const SubscriptionBlock = () => {
         document.body.classList.remove("keyboardVisible");
         window.removeEventListener("resize", postCallback);
 
-        // d.setAttribute("style", ``);
+        d.setAttribute("style", ``);
       };
 
       window.removeEventListener("resize", callback);

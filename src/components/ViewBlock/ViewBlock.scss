@@ -4,7 +4,7 @@
   height: 100%;
 
   .keyboardVisible & {
-    top: 0px;
+    top: var(--top-bar-height);
   }
 
   .animationContainer {
