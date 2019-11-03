@@ -22,5 +22,6 @@ updateVH();
 //   );
 
 ReactDOM.render(<App />, document.getElementById("root"));
+// ReactDOM.render(<SnapTest />, document.getElementById("root"));
 
 // register ();

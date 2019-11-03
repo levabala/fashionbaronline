@@ -1,11 +1,12 @@
 @import "../../variables.scss";
 
 .viewBlock {
-  height: calc(var(--vh) * 100);
+  // height: calc(var(--vh) * 100);
 
   // .animationContainer {
   //   height: 100%;
   // }
+  scroll-snap-align: start;
 
   &:last-of-type {
     margin-bottom: 10em;
@@ -17,8 +18,8 @@
     justify-content: space-between;
     flex-direction: column;
 
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    // scroll-snap-align: start;
+    // scroll-snap-stop: always;
 
     animation-duration: $fade-animation-duration;
     animation-fill-mode: both;
@@ -54,7 +55,7 @@
   // &:not(.first):not(.disabled) {
   &:not(.disabled) {
     .animationContainer {
-      opacity: 0;
+      // opacity: 0;
     }
 
     // pointer-events: none;

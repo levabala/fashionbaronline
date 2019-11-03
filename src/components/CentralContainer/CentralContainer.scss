@@ -6,4 +6,8 @@
 
   // padding: 0px #{$app-padding-horizontal};
   padding: 0 $app-padding-horizontal-mobile;
+
+  scroll-snap-type: y mandatory;
+
+  height: 100vh;
 }

@@ -8,7 +8,7 @@ import smoothscroll from 'smoothscroll-polyfill';
 import { createContainer } from 'unstated-next';
 
 import BagsPage from './components/BagsPage';
-import MainPageReforged from './components/MainPageReforged';
+import SnapTest from './components/SnapTest';
 
 const VARIABLES_GET_PATH = `${
   window.location.href.includes("localhost")
@@ -58,13 +58,10 @@ const App: React.FC = () => {
 
   return (
     <Router history={h}>
-      <div
-        className="App"
-        // style={{ visibility: loaded ? "visible" : "hidden" }}
-      >
+      <>
         <VariablesContainer.Provider>
           <Suspense fallback="">
-            <Route exact path="/" component={MainPageReforged} />
+            <Route exact path="/" component={SnapTest} />
           </Suspense>
           <Suspense fallback="">
             <Route path="/registrations" component={RegistrationsPage} />
@@ -73,7 +70,7 @@ const App: React.FC = () => {
             <Route path="/manageBags" component={BagsPage} />
           </Suspense>
         </VariablesContainer.Provider>
-      </div>
+      </>
     </Router>
   );
 };
