@@ -3,33 +3,37 @@
 .viewBlock {
   // height: calc(var(--vh) * 100);
 
-  // .animationContainer {
+  //  {
   //   height: 100%;
   // }
+
   scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  .keyboardVisible & {
+    scroll-snap-align: none;
+    scroll-snap-stop: none;
+  }
+
+  position: relative;
+  height: 100%;
+
+  // border: solid black 1px;
 
   &:last-of-type {
     margin-bottom: 10em;
   }
 
   // @media screen and (max-width: $mobile-version-max-width) {
-  .animationContainer {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
 
-    // scroll-snap-align: start;
-    // scroll-snap-stop: always;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 
-    animation-duration: $fade-animation-duration;
-    animation-fill-mode: both;
+  animation-duration: $fade-animation-duration;
+  animation-fill-mode: both;
 
-    // & > div {
-    //   margin-top: 0;
-    // }
-  }
-
-  &:not(.noAnimations) .animationContainer {
+  &:not(.noAnimations) {
     transition: opacity $fade-animation-duration ease-in-out;
   }
 
@@ -39,42 +43,34 @@
   // height: calc(var(--vh, 1vh) * 100);
 
   &.around {
-    .animationContainer {
-      justify-content: space-around;
-    }
+    justify-content: space-around;
   }
 
   &.fitContent {
-    .animationContainer {
-      height: auto;
-    }
+    height: auto;
   }
-
-  -webkit-overflow-scrolling: touch;
 
   // &:not(.first):not(.disabled) {
   &:not(.disabled) {
-    .animationContainer {
-      // opacity: 0;
-    }
+    // opacity: 0;
 
     // pointer-events: none;
 
-    &.reactivated .animationContainer {
+    &.reactivated {
       // animation-name: fadeInDown;
       opacity: 1;
 
       // pointer-events: initial;
     }
 
-    &.activated .animationContainer {
+    &.activated {
       // animation-name: fadeInUp;
       opacity: 1;
 
       // pointer-events: initial;
     }
 
-    &.disactivated .animationContainer {
+    &.disactivated {
       // animation-name: fadeOutUp;
       opacity: 0;
     }

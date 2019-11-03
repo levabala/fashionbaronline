@@ -9,5 +9,14 @@
 
   scroll-snap-type: y mandatory;
 
+  -webkit-overflow-scrolling: touch;
+  overflow: scroll;
+
+  // height: calc(var(--vh) * 100);
+}
+
+html,
+body {
   height: 100vh;
+  overflow: scroll;
 }

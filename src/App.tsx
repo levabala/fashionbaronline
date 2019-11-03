@@ -8,7 +8,7 @@ import smoothscroll from 'smoothscroll-polyfill';
 import { createContainer } from 'unstated-next';
 
 import BagsPage from './components/BagsPage';
-import SnapTest from './components/SnapTest';
+import MainPageReforged from './components/MainPageReforged';
 
 const VARIABLES_GET_PATH = `${
   window.location.href.includes("localhost")
@@ -61,7 +61,7 @@ const App: React.FC = () => {
       <>
         <VariablesContainer.Provider>
           <Suspense fallback="">
-            <Route exact path="/" component={SnapTest} />
+            <Route exact path="/" component={MainPageReforged} />
           </Suspense>
           <Suspense fallback="">
             <Route path="/registrations" component={RegistrationsPage} />

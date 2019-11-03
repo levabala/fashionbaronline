@@ -131,6 +131,8 @@ const SubscriptionBlock = () => {
       //   `transform: translateY(-${keyboardHeight + 40}px)`
       // );
 
+      (window as any).resizeRestricted = true;
+
       const postCallback = () => {
         const withoutKeyboardHeight = window.innerHeight;
         if (Math.abs(withoutKeyboardHeight - withKeyboardHeight) < 100) return;
@@ -138,6 +140,8 @@ const SubscriptionBlock = () => {
         console.log("keyboardHidden");
         document.body.classList.remove("keyboardVisible");
         window.removeEventListener("resize", postCallback);
+
+        (window as any).resizeRestricted = false;
 
         // d.setAttribute("style", ``);
       };

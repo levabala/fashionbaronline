@@ -9,6 +9,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background: #fafafa;
+
+  // padding: 0px #{$app-padding-horizontal};
+  padding: 0 $app-padding-horizontal-mobile;
+
+  scroll-snap-type: y mandatory;
+
+  -webkit-overflow-scrolling: touch;
+  overflow: scroll;
 }
 
 h1 {

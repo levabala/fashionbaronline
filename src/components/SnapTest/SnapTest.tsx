@@ -1,11 +1,10 @@
 import './SnapTest.scss';
 
 import React from 'react';
-import Div100vh from 'react-div-100vh';
 
 const SnapTest = () => {
   return (
-    <Div100vh className="container">
+    <>
       {new Array(10).fill(null).map((_, i) => (
         <div className="element" key={i}>
           <p>{i}</p>
@@ -17,7 +16,7 @@ const SnapTest = () => {
           />
         </div>
       ))}
-    </Div100vh>
+    </>
   );
 };
 

@@ -2,7 +2,6 @@ import './ViewBlock.scss';
 
 import classnames from 'classnames';
 import React, { Suspense } from 'react';
-import Div100vh from 'react-div-100vh';
 
 // const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 
@@ -28,7 +27,7 @@ const ViewBlock = ({
   noSuspense?: boolean;
 }) => {
   return (
-    <div
+    <section
       className={classnames(
         "viewBlock",
         forced ? "forced" : "",
@@ -40,14 +39,8 @@ const ViewBlock = ({
       )}
       id={id}
     >
-      {noSuspense ? (
-        <Suspense fallback={<div>Loading ...</div>}>
-          <Div100vh className="animationContainer">{children}</Div100vh>
-        </Suspense>
-      ) : (
-        <Div100vh className="animationContainer">{children}</Div100vh>
-      )}
-    </div>
+      {children}
+    </section>
   );
   // return (
   //   <Div100vh
