@@ -9,14 +9,25 @@
 
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  .noSnap {
+    .ios & {
+      scroll-snap-align: none;
+      scroll-snap-stop: none;
+    }
+  }
 
-  .keyboardVisible & {
+  .needToScroll & {
     scroll-snap-align: none;
     scroll-snap-stop: none;
   }
 
+  // .keyboardVisible & {
+  //   // scroll-snap-align: none;
+  //   // scroll-snap-stop: none;
+  // }
+
   position: relative;
-  height: 100%;
+  height: 100vh;
 
   // border: solid black 1px;
 
@@ -24,7 +35,9 @@
     margin-bottom: 10em;
   }
 
-  // @media screen and (max-width: $mobile-version-max-width) {
+  @media screen and (max-width: $mobile-version-max-width) {
+    height: 100%;
+  }
 
   display: flex;
   justify-content: space-between;

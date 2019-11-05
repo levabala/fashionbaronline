@@ -12,9 +12,9 @@
     }
   }
 
-  .subscriptionDoneVisible &,
-  .keyboardVisible & {
-    display: none;
+  .subscriptionDoneVisible & {
+    visibility: hidden;
+    pointer-events: none;
   }
 
   &.absolute {
@@ -22,6 +22,13 @@
     top: 0px;
     left: $app-padding-horizontal-mobile;
     right: $app-padding-horizontal-mobile;
+
+    .subscriptionDoneVisible &,
+    .keyboardVisible & {
+      display: none;
+      // visibility: hidden;
+      // pointer-events: none;
+    }
   }
 
   // display: flex;
@@ -53,15 +60,26 @@
     & > .woman1 {
       visibility: visible;
     }
+
+    .hidden & {
+      & > .woman1 {
+        visibility: hidden;
+      }
+    }
   }
 
   .woman1 {
     position: absolute;
     right: -$app-padding-horizontal / 2 + 40px + 50px;
-    top: $app-padding-vertical / 2 - 25px - 50px;
+    top: $app-padding-vertical / 2 - 25px;
 
     height: 90vh;
     max-height: 785px;
+
+    .subscriptionDoneVisible & {
+      visibility: hidden;
+      pointer-events: none;
+    }
 
     @media screen and (min-width: $wide-display-min-width) {
       right: -$app-padding-horizontal / 2 + 20px + 50px;
@@ -85,6 +103,6 @@
       display: none;
     }
 
-    z-index: -1;
+    z-index: 101;
   }
 }

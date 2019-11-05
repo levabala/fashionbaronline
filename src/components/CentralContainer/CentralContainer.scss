@@ -10,13 +10,31 @@
   scroll-snap-type: y mandatory;
 
   -webkit-overflow-scrolling: touch;
-  overflow: scroll;
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    overflow: scroll;
+  }
 
   // height: calc(var(--vh) * 100);
 }
 
 html,
 body {
-  height: 100vh;
-  overflow: scroll;
+  &.mainContent {
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: $mobile-version-max-width) {
+    height: 100vh;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+  }
+
+  -webkit-overflow-scrolling: auto;
+}
+
+html {
+  &.ios {
+    overflow-y: hidden;
+  }
 }

@@ -8,7 +8,8 @@ import smoothscroll from 'smoothscroll-polyfill';
 import { createContainer } from 'unstated-next';
 
 import BagsPage from './components/BagsPage';
-import MainPageReforged from './components/MainPageReforged';
+import EmailConfirmed from './components/EmailConfirmed';
+import MainPageReforgedReforged from './components/MainPageReforgedReforged';
 
 const VARIABLES_GET_PATH = `${
   window.location.href.includes("localhost")
@@ -31,11 +32,15 @@ function useVariables(): Variables {
   useMemo(
     () =>
       (async () => {
-        const { subscriptionCost } = await (await fetch(VARIABLES_GET_PATH, {
-          method: "GET"
-        })).json();
-        console.log(subscriptionCost);
-        setVariables({ subscriptionCost: parseInt(subscriptionCost, 10) });
+        try {
+          const { subscriptionCost } = await (await fetch(VARIABLES_GET_PATH, {
+            method: "GET"
+          })).json();
+          console.log(subscriptionCost);
+          setVariables({ subscriptionCost: parseInt(subscriptionCost, 10) });
+        } catch (e) {
+          console.log(e);
+        }
       })(),
     []
   );
@@ -61,13 +66,16 @@ const App: React.FC = () => {
       <>
         <VariablesContainer.Provider>
           <Suspense fallback="">
-            <Route exact path="/" component={MainPageReforged} />
+            <Route exact path="/" component={MainPageReforgedReforged} />
           </Suspense>
           <Suspense fallback="">
             <Route path="/registrations" component={RegistrationsPage} />
           </Suspense>
           <Suspense fallback="">
             <Route path="/manageBags" component={BagsPage} />
+          </Suspense>
+          <Suspense fallback="">
+            <Route path="/verifyEmail" component={EmailConfirmed} />
           </Suspense>
         </VariablesContainer.Provider>
       </>

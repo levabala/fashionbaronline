@@ -108,6 +108,7 @@ const FashionGrid = ({
   const goToBooking = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
+    document.body.classList.add(".needToScroll");
     (window as any).scrollTo(TagEnum.Subscribe);
 
     const { bagindex: bagIndexRaw } = event.currentTarget.dataset;

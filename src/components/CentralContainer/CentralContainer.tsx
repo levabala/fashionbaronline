@@ -11,6 +11,7 @@ const CentralContainer = forwardRef(
   ) => {
     return (
       // <Div100vh className="centralContainer" ref={ref}>
+      // <div className="centralContainer">{children}</div>
       <>{children}</>
       // </Div100vh>
     );

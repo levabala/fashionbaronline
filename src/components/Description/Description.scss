@@ -23,7 +23,6 @@
 
   @media screen and (max-width: $mobile-version-max-width) {
     width: 100%;
-    margin-top: 0;
   }
 
   @media screen and (max-width: $mobile-extra-version-max-width) {
@@ -32,5 +31,9 @@
 
   @media screen and (min-width: $wide-display-min-width) {
     width: 23%;
+  }
+
+  @media screen and (max-width: $mobile-extra-version-max-width) and (max-height: $mobile-small-version-max-height) {
+    font-size: 16px;
   }
 }

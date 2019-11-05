@@ -61,6 +61,10 @@
   .subTitle {
     .main {
       font-size: 27px;
+
+      @media screen and (max-width: $mobile-extra-version-max-width) {
+        font-size: 23px;
+      }
     }
 
     .secondary {
@@ -177,6 +181,7 @@
   @media screen and (max-width: $mobile-version-max-width) {
     width: 100%;
     max-width: 100%;
+
     .right {
       display: flex;
       justify-content: space-between;

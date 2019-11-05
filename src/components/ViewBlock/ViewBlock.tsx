@@ -1,9 +1,13 @@
 import './ViewBlock.scss';
 
 import classnames from 'classnames';
+import detect from 'mobile-detect';
 import React, { Suspense } from 'react';
 
-// const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
+// const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);\
+
+const os = new detect(window.navigator.userAgent).os();
+const ios = os === "iOS" || os === "iPadOS";
 
 const ViewBlock = ({
   children,
@@ -14,12 +18,14 @@ const ViewBlock = ({
   disabled,
   noAnimations,
   id,
-  noSuspense
+  noSuspense,
+  noSnap
 }: {
   children: React.ReactChild[] | React.ReactChild;
   forced?: boolean;
   around?: boolean;
   fitContent?: boolean;
+  noSnap?: boolean;
   first?: boolean;
   disabled?: boolean;
   noAnimations?: boolean;
@@ -35,9 +41,11 @@ const ViewBlock = ({
         around ? "around" : "",
         first ? "first" : "",
         disabled ? "disabled" : "",
-        noAnimations ? "noAnimations" : ""
+        noAnimations ? "noAnimations" : "",
+        noSnap ? "noSnap" : ""
       )}
       id={id}
+      style={noSnap && ios ? { height: (window.innerHeight / 2) * 1.1 } : {}}
     >
       {children}
     </section>

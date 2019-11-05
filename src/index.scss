@@ -17,6 +17,10 @@ body {
 
   -webkit-overflow-scrolling: touch;
   overflow: scroll;
+
+  &.hidden {
+    visibility: hidden !important;
+  }
 }
 
 h1 {

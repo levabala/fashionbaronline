@@ -78,7 +78,7 @@
 
         @media screen and (max-width: $mobile-version-max-width) {
           & > .container > .top {
-            font-size: 16px;
+            font-size: 14px;
           }
         }
       }
@@ -247,6 +247,8 @@
 
   @media screen and (max-width: $mobile-version-max-width) {
     height: 100%;
+
+    z-index: 100;
 
     // top: 0; // $fashionGrid-padding;
     // bottom: 0; // $fashionGrid-padding;
