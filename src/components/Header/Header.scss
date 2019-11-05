@@ -2,17 +2,19 @@
 
 .header {
   position: relative;
+  background: inherit;
 
   transition: opacity 0.5s ease-in-out;
   @media screen and (max-width: $mobile-version-max-width) {
     .collectionActive & {
       opacity: 0;
+      transition: opacity 0s ease-in-out;
     }
   }
 
-  .subscriptionDoneVisible &,
-  .keyboardVisible & {
-    display: none;
+  .subscriptionDoneVisible & {
+    visibility: hidden;
+    pointer-events: none;
   }
 
   &.absolute {
@@ -20,6 +22,13 @@
     top: 0px;
     left: $app-padding-horizontal-mobile;
     right: $app-padding-horizontal-mobile;
+
+    .subscriptionDoneVisible &,
+    .keyboardVisible & {
+      display: none;
+      // visibility: hidden;
+      // pointer-events: none;
+    }
   }
 
   // display: flex;
@@ -29,7 +38,7 @@
   grid-template-columns: 1fr 1fr 1fr;
 
   // @media screen and (max-width: $wide-display-min-width) {
-  margin-top: $app-padding-vertical / 4;
+  padding-top: $app-padding-vertical / 4;
   // }
 
   @media screen and (max-width: $mobile-hide-table-of-content-max-width) {
@@ -37,7 +46,7 @@
   }
 
   @media screen and (max-width: $mobile-version-max-width) {
-    margin-top: $app-padding-vertical-mobile / 2;
+    padding-top: $app-padding-vertical-mobile / 2;
     padding-bottom: $app-padding-vertical-mobile / 4;
 
     grid-template-columns: 1fr 1fr;
@@ -51,15 +60,26 @@
     & > .woman1 {
       visibility: visible;
     }
+
+    .hidden & {
+      & > .woman1 {
+        visibility: hidden;
+      }
+    }
   }
 
   .woman1 {
     position: absolute;
     right: -$app-padding-horizontal / 2 + 40px + 50px;
-    top: $app-padding-vertical / 2 - 25px - 50px;
+    top: $app-padding-vertical / 2 - 25px;
 
     height: 90vh;
     max-height: 785px;
+
+    .subscriptionDoneVisible & {
+      visibility: hidden;
+      pointer-events: none;
+    }
 
     @media screen and (min-width: $wide-display-min-width) {
       right: -$app-padding-horizontal / 2 + 20px + 50px;
@@ -83,6 +103,6 @@
       display: none;
     }
 
-    z-index: -1;
+    z-index: 101;
   }
 }

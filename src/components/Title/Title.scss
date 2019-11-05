@@ -35,8 +35,8 @@
       white-space: nowrap;
 
       &.alone {
-        margin-left: -100%;
-        margin-right: -100%;
+        // margin-left: -100%;
+        // margin-right: -100%;
         text-align: center;
       }
     }
@@ -45,11 +45,15 @@
   & > .feature {
     font-size: 20px;
 
-    margin-left: auto;
+    margin-left: 0;
     margin-right: auto;
 
-    .keyboardVisible & {
-      display: none;
+    // .keyboardVisible & {
+    //   display: none;
+    // }
+
+    &.hidden {
+      visibility: hidden;
     }
   }
 
@@ -73,17 +77,30 @@
     }
 
     & > .feature {
+      margin-left: auto;
       margin-top: 20px;
     }
   }
 
-  @media screen and (max-width: $mobile-extra-version-max-width) {
-    .brends {
-      font-size: 28px;
-    }
+  // @media screen and (max-width: $mobile-extra-version-max-width) {
+  //   .brends {
+  //     font-size: 28px;
+  //   }
 
-    & > .feature {
-      font-size: 17px;
+  //   & > .feature {
+  //     font-size: 17px;
+  //   }
+  // }
+
+  @media screen and (max-width: $mobile-extra-version-max-width) {
+    @media screen and (max-height: $mobile-small-version-max-height) {
+      .brends {
+        font-size: 25px;
+      }
+
+      & > .feature {
+        font-size: 17px;
+      }
     }
   }
 }

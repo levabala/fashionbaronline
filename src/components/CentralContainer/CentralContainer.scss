@@ -4,24 +4,37 @@
   max-width: $maxContainersWidth;
   margin: 0 auto;
 
-  padding: 0px #{$app-padding-horizontal};
+  // padding: 0px #{$app-padding-horizontal};
+  padding: 0 $app-padding-horizontal-mobile;
 
-  overflow-y: hidden;
-  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
 
-  height: 100vh;
+  -webkit-overflow-scrolling: touch;
 
   @media screen and (max-width: $mobile-version-max-width) {
-    transform: translate3d(0px, 0px, 0px);
+    overflow: scroll;
+  }
 
-    padding: 0px #{$app-padding-horizontal-mobile};
+  // height: calc(var(--vh) * 100);
+}
 
-    scroll-snap-type: y mandatory;
-    -webkit-overflow-scrolling: touch;
+html,
+body {
+  &.mainContent {
+    overflow: hidden;
+  }
 
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
+  @media screen and (max-width: $mobile-version-max-width) {
+    height: 100vh;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+  }
 
-    // overflow-y: scroll;
+  -webkit-overflow-scrolling: auto;
+}
+
+html {
+  &.ios {
+    overflow-y: hidden;
   }
 }

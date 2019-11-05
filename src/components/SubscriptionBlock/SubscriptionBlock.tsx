@@ -2,7 +2,8 @@ import './SubscriptionBlock.scss';
 
 import classNames from 'classnames';
 import { sha256 } from 'js-sha256';
-import React, { useState } from 'react';
+import detect from 'mobile-detect';
+import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Button from '../Button';
@@ -10,18 +11,19 @@ import SubscriptionDone from '../SubscriptionDone';
 import TextInput from '../TextInput';
 import { key as IPGeolocationApiKey } from './apikey.private.json';
 
+const os = new detect(window.navigator.userAgent).os();
 const EMAIL_POST_PATH = `${
   window.location.href.includes("localhost")
     ? "http://localhost:3000/"
     : window.location.href
 }subscribe`;
 
-window.addEventListener("resize", () => console.log(window.innerHeight));
-
 const SubscriptionBlock = () => {
   const { t } = useTranslation();
   const [emailSent, setEmailSent] = useState(false);
   const [sendTry, setSendTry] = useState(false);
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [startOffset, setStartOffset] = useState(0);
 
   let emptyInputReport = false;
 
@@ -46,6 +48,8 @@ const SubscriptionBlock = () => {
   };
 
   const sendEmail = async (emailAddress: string) => {
+    document.body.classList.add("subscriptionDoneVisible");
+
     const locationData = await (await fetch(
       `https://api.ipgeolocation.io/ipgeo?apiKey=${IPGeolocationApiKey}`
     )).json();
@@ -78,11 +82,31 @@ const SubscriptionBlock = () => {
     });
 
     setEmailSent(true);
-    document.body.classList.add("subscriptionDoneVisible");
   };
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    // event.currentTarget.reportValidity();
+    console.log("blur");
+    setTimeout(() => {
+      document.body.classList.remove("keyboardVisible");
+
+      setTimeout(() => {
+        if (os === "iOS" || os === "iPadOS")
+          document.body.scrollBy({
+            left: 0,
+            top: 1
+          });
+      }, 1000);
+    });
+
+    // document.body.scrollTo({
+    //   left: 0,
+    //   top: startOffset + 1
+    // });
+
+    // alert(startOffset + 1);
+    // alert(
+    //   `${window.scrollY} ${document.body.scrollTop} ${document.documentElement.scrollTop}`
+    // );
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -102,6 +126,7 @@ const SubscriptionBlock = () => {
 
   const sendButtonClick = () => {
     setSendTry(true);
+    // alert("send");
   };
 
   const onInputFocus = () => {
@@ -114,24 +139,35 @@ const SubscriptionBlock = () => {
     const topBarHeight = initialHeight - viewBlockHeight;
     console.log({ topBarHeight });
 
+    console.log("keyboardVisible");
+    if (os === "iOS" || os === "iPadOS") {
+      document.body.classList.add("keyboardVisible");
+      if (!formRef.current) return;
+
+      setStartOffset(document.body.scrollTop);
+      formRef.current.scrollIntoView({ behavior: "auto", block: "center" });
+      return;
+    }
+
     const callback = () => {
       const withKeyboardHeight = window.innerHeight;
       if (Math.abs(initialHeight - withKeyboardHeight) < 100) return;
 
-      console.log("keyboardVisible");
       document.body.classList.add("keyboardVisible");
-      document
-        .querySelectorAll(".viewBlock")
-        .forEach(block => block.setAttribute("style", "height: 100%"));
+      // document
+      //   .querySelectorAll(".viewBlock")
+      //   .forEach(block => block.setAttribute("style", "height: 100%"));
 
       const keyboardHeight = initialHeight - window.innerHeight;
       console.log({ keyboardHeight });
 
-      const d = document.querySelector(".centralContainer") as HTMLDivElement;
-      d.setAttribute(
-        "style",
-        `transform: translateY(-${keyboardHeight + 40}px)`
-      );
+      // const d = document.querySelector(".centralContainer") as HTMLDivElement;
+      // d.setAttribute(
+      //   "style",
+      //   `transform: translateY(-${keyboardHeight + 40}px)`
+      // );
+
+      (window as any).resizeRestricted = true;
 
       const postCallback = () => {
         const withoutKeyboardHeight = window.innerHeight;
@@ -139,9 +175,12 @@ const SubscriptionBlock = () => {
 
         console.log("keyboardHidden");
         document.body.classList.remove("keyboardVisible");
+
         window.removeEventListener("resize", postCallback);
 
-        d.setAttribute("style", ``);
+        (window as any).resizeRestricted = false;
+
+        // d.setAttribute("style", ``);
       };
 
       window.removeEventListener("resize", callback);
@@ -151,7 +190,12 @@ const SubscriptionBlock = () => {
   };
 
   return (
-    <form className="subscriptionBlock" onSubmit={onSend} action="#">
+    <form
+      className="subscriptionBlock"
+      onSubmit={onSend}
+      action="#"
+      ref={formRef}
+    >
       <TextInput
         placeholder="example@fashionbar.online"
         key="input"

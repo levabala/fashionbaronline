@@ -1,38 +1,52 @@
 @import "../../variables.scss";
 
 .viewBlock {
-  height: 100%;
+  // height: calc(var(--vh) * 100);
 
-  .keyboardVisible & {
-    top: var(--top-bar-height);
+  //  {
+  //   height: 100%;
+  // }
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  .noSnap {
+    .ios & {
+      scroll-snap-align: none;
+      scroll-snap-stop: none;
+    }
   }
 
-  .animationContainer {
-    height: 100%;
+  .needToScroll & {
+    scroll-snap-align: none;
+    scroll-snap-stop: none;
   }
+
+  // .keyboardVisible & {
+  //   // scroll-snap-align: none;
+  //   // scroll-snap-stop: none;
+  // }
+
+  position: relative;
+  height: 100vh;
+
+  // border: solid black 1px;
 
   &:last-of-type {
     margin-bottom: 10em;
   }
 
-  // @media screen and (max-width: $mobile-version-max-width) {
-  .animationContainer {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-
-    animation-duration: $fade-animation-duration;
-    animation-fill-mode: both;
-
-    // & > div {
-    //   margin-top: 0;
-    // }
+  @media screen and (max-width: $mobile-version-max-width) {
+    height: 100%;
   }
 
-  &:not(.noAnimations) .animationContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  animation-duration: $fade-animation-duration;
+  animation-fill-mode: both;
+
+  &:not(.noAnimations) {
     transition: opacity $fade-animation-duration ease-in-out;
   }
 
@@ -42,43 +56,35 @@
   // height: calc(var(--vh, 1vh) * 100);
 
   &.around {
-    .animationContainer {
-      justify-content: space-around;
-    }
+    justify-content: space-around;
   }
 
   &.fitContent {
-    .animationContainer {
-      height: auto;
-    }
+    height: auto;
   }
-
-  -webkit-overflow-scrolling: touch;
 
   // &:not(.first):not(.disabled) {
   &:not(.disabled) {
-    .animationContainer {
-      opacity: 0;
-    }
+    // opacity: 0;
 
-    pointer-events: none;
+    // pointer-events: none;
 
-    &.reactivated .animationContainer {
-      animation-name: fadeInDown;
+    &.reactivated {
+      // animation-name: fadeInDown;
       opacity: 1;
 
-      pointer-events: initial;
+      // pointer-events: initial;
     }
 
-    &.activated .animationContainer {
-      animation-name: fadeInUp;
+    &.activated {
+      // animation-name: fadeInUp;
       opacity: 1;
 
-      pointer-events: initial;
+      // pointer-events: initial;
     }
 
-    &.disactivated .animationContainer {
-      animation-name: fadeOutUp;
+    &.disactivated {
+      // animation-name: fadeOutUp;
       opacity: 0;
     }
 
@@ -127,13 +133,5 @@
     }
   }
 
-  position: fixed;
-  left: $app-padding-horizontal-mobile;
-  right: $app-padding-horizontal-mobile;
-
-  @media screen and (max-width: $mobile-version-max-width) {
-    .keyboardVisible & {
-      bottom: 0px;
-    }
-  }
+  // margin: 0 $app-padding-horizontal-mobile;
 }

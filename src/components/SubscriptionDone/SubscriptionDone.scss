@@ -6,8 +6,8 @@
 
   top: 0px;
   bottom: 0px;
-  left: -$app-padding-horizontal-mobile;
-  right: -$app-padding-horizontal-mobile;
+  left: 0px;
+  right: 0px;
   // margin-left: $app-padding-horizontal-mobile;
   // margin-right: $app-padding-horizontal-mobile;
 
@@ -42,10 +42,11 @@
 
     @media screen and (max-width: $mobile-version-max-width) {
       padding: 40px;
+      // top: $card-padding;
     }
 
     @media screen and (max-width: $mobile-version-max-width) {
-      height: 100%;
+      height: 90%;
       grid-template-columns: 1fr;
       max-width: 100%;
 
@@ -104,6 +105,8 @@
 
         border-radius: 50%;
         padding: 5px;
+        margin-top: 1em - $card-padding;
+        margin-right: 1em / 3 * 2 - $card-padding;
 
         &:hover {
           background: #0000000a;

@@ -1,5 +1,6 @@
 import './Title.scss';
 
+import classnames from 'classnames';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -77,17 +78,21 @@ const Title = () => {
 
   useEffect(() => {
     console.log("update updated");
-    const id = setInterval(() => {
-      const brendsElem = document.querySelector(
-        ".title .brends"
-      ) as HTMLDivElement | null;
+    setTimeout(() => {
+      const id = setInterval(() => {
+        const brendsElem = document.querySelector(
+          ".title .brends"
+        ) as HTMLDivElement | null;
 
-      const offsetWidth = brendsElem ? brendsElem.offsetWidth : 0;
-      if (offsetWidth) {
-        update(offsetWidth);
-        clearInterval(id);
-      }
-    });
+        const offsetWidth = brendsElem
+          ? brendsElem.getBoundingClientRect().width
+          : 0;
+        if (offsetWidth) {
+          update(offsetWidth);
+          clearInterval(id);
+        }
+      });
+    }, 100);
   }, [update]);
 
   useEffect(() => {
@@ -110,9 +115,8 @@ const Title = () => {
     <div className="title">
       <div className="brends">{brendsJXS}</div>
       <div
-        className="feature"
+        className={classnames("feature", !maxWidth ? "hidden" : "")}
         style={{
-          visibility: !maxWidth ? "hidden" : "visible",
           width: `${maxWidth}px`
         }}
       >

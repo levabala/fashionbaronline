@@ -1,0 +1,18 @@
+.element {
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+
+  border: solid black 1px;
+  background: darkgreen;
+
+  font-size: 5em;
+  text-align: center;
+}
+
+html,
+body {
+  height: 100vh;
+  overflow: scroll;
+}

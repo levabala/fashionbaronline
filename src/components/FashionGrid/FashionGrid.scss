@@ -12,15 +12,14 @@
   // margin: 0px -#{$app-padding-horizontal};
   // margin-top: $gap-mainFeature-fashionGrid;
 
-  position: absolute;
-  top: $fashionGrid-padding;
-  bottom: $fashionGrid-padding;
-  left: 0;
-  right: 0;
+  // position: absolute;
+  // top: $fashionGrid-padding;
+  // bottom: $fashionGrid-padding;
+  // left: 0;
+  // right: 0;
 
   @media screen and (max-width: $mobile-version-max-width) {
-    top: $fashionGrid-padding-mobile;
-    bottom: $fashionGrid-padding-mobile;
+    margin: 0 -$app-padding-horizontal-mobile;
   }
 
   // padding: $fashionGrid-padding;
@@ -79,7 +78,7 @@
 
         @media screen and (max-width: $mobile-version-max-width) {
           & > .container > .top {
-            font-size: 16px;
+            font-size: 14px;
           }
         }
       }
@@ -189,7 +188,8 @@
               font-size: 16px;
               margin-top: 0.1em;
             }
-
+          }
+          .details {
             @media screen and (max-width: $mobile-version-max-width) {
               display: none;
             }
@@ -248,9 +248,11 @@
   @media screen and (max-width: $mobile-version-max-width) {
     height: 100%;
 
-    top: 0; // $fashionGrid-padding;
-    bottom: 0; // $fashionGrid-padding;
-    left: -$app-padding-horizontal-mobile;
-    right: -$app-padding-horizontal-mobile;
+    z-index: 100;
+
+    // top: 0; // $fashionGrid-padding;
+    // bottom: 0; // $fashionGrid-padding;
+    // left: -$app-padding-horizontal-mobile;
+    // right: -$app-padding-horizontal-mobile;
   }
 }
