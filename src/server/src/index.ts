@@ -638,22 +638,22 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                           <div style="font-size:16px;text-align:center;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif">
                             <div class="our-class" style="background: transparent; height: 3em"></div>
                           </div>
-                          <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 30px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-                          <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:30px;padding-right:10px;padding-bottom:10px;padding-left:10px;background:white">
+                          <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 40px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+                          <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:40px;padding-right:10px;padding-bottom:10px;padding-left:10px;background:white">
                             <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
                               <p style="font-size: 18px; line-height: 1.2; text-align: center; mso-line-height-alt: 22px; margin: 0;"><span style="font-size: 18px;"><strong>Welcome to FASHIONBAR</strong></span></p>
                             </div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
-                          <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 30px; padding-left: 30px; padding-top: 20px; padding-bottom: 20px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-                          <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:30px;padding-bottom:20px;padding-left:30px;background:white">
+                          <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 40px; padding-left: 40px; padding-top: 20px; padding-bottom: 20px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+                          <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:40px;padding-bottom:20px;padding-left:40px;background:white">
                             <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
                               <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Приветствуем вас, спасибо большое, что Вы подписались на новости от fashionbar.online.</p>
                             </div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
-                          <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 30px; padding-left: 30px; padding-top: 20px; padding-bottom: 20px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-                          <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:30px;padding-bottom:20px;padding-left:30px;background:white">
+                          <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 40px; padding-left: 40px; padding-top: 20px; padding-bottom: 20px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+                          <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:40px;padding-bottom:20px;padding-left:40px;background:white">
                             <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
                               <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Мы работаем над запуском проекта и сообщим Вам как только будем готовы.</p>
                             </div>
@@ -662,7 +662,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
     
                           <!--[if (!mso)&(!IE)]><!-->
                         </div>
-                        <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:30px;padding-bottom:20px;padding-left:30px;background:white">
+                        <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:40px;padding-bottom:20px;padding-left:40px;background:white">
                           <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
                           <a href="${verifyLink}" rel="noopener" style="text-decoration: none; font-weight: bold" target="_blank" class="button">Подтвердить почту</a>
                           </div>
@@ -688,8 +688,8 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                         <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
                           <!--<![endif]-->
                           <div class="mobile_hide">
-                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 30px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-                            <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:30px;">
+                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 40px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+                            <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:40px;">
                               <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
                                 <p style="font-size: 12px; line-height: 1.2; mso-line-height-alt: 14px; margin: 0;"><span style="font-size: 12px;"><strong><a href="fashionbar.online" rel="noopener" style="text-decoration: none; color: #555555;" target="_blank">Fashionbar</a></strong></span></p>
                               </div>
@@ -730,8 +730,8 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                         <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
                           <!--<![endif]-->
                           <div class="mobile_hide">
-                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 30px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-                            <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:30px;padding-bottom:10px;padding-left:10px;">
+                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 40px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+                            <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:40px;padding-bottom:10px;padding-left:10px;">
                               <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
                                 <p style="font-size: 12px; line-height: 1.2; text-align: right; mso-line-height-alt: 14px; margin: 0;"><strong><a href="https://www.instagram.com/fashionbar.online/" rel="noopener" style="text-decoration: none; color: #555555;" target="_blank">Instagram</a></strong></p>
                               </div>
@@ -760,8 +760,8 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                           <!--<![endif]-->
                           <!--[if !mso]><!-->
                           <div class="desktop_hide" style="mso-hide: all; display: none; max-height: 0px; overflow: hidden;">
-                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 30px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-                            <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:30px;">
+                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 40px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+                            <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:40px;">
                               <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
                                 <p style="font-size: 10px; line-height: 1.2; mso-line-height-alt: 12px; margin: 0;"><span style="font-size: 10px;"><strong><a href="fashionbar.online" rel="noopener" style="text-decoration: none; color: #555555;" target="_blank">Fashionbar.online</a></strong></span></p>
                               </div>
@@ -806,8 +806,8 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                           <!--<![endif]-->
                           <!--[if !mso]><!-->
                           <div class="desktop_hide" style="mso-hide: all; display: none; max-height: 0px; overflow: hidden;">
-                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 30px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-                            <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:30px;padding-bottom:10px;padding-left:10px;">
+                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 40px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+                            <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:40px;padding-bottom:10px;padding-left:10px;">
                               <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
                                 <p style="font-size: 10px; line-height: 1.2; text-align: right; mso-line-height-alt: 12px; margin: 0;"><span style="font-size: 10px;"><strong><a href="https://www.instagram.com/fashionbar.online/" rel="noopener" style="text-decoration: none; color: #555555;" target="_blank">Instagram</a></strong></span></p>
                               </div>
@@ -835,8 +835,8 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                         <!--[if (!mso)&(!IE)]><!-->
                         <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
                           <!--<![endif]-->
-                          <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 30px; padding-top: 10px; padding-bottom: 30px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-                          <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:30px;padding-left:30px;background:white; display: none">
+                          <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 40px; padding-top: 10px; padding-bottom: 40px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
+                          <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:40px;padding-left:40px;background:white; display: none">
                             <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
                               <p style="font-size: 12px; line-height: 1.2; mso-line-height-alt: 14px; margin: 0;"><span style="font-size: 12px;">Fashionbar.online 2019</span></p>
                             </div>
