@@ -152,6 +152,8 @@ http
       case "/verifyEmail": {
         const { token } = query;
         const email = authenticationTokensEmail[(token || "").toString()];
+        console.log(authenticationTokensEmail);
+        console.log(email, token);
 
         if (!email) {
           response.end(
@@ -387,14 +389,14 @@ http
             const unique = await isUnique(dataR);
             const emailToken = v4();
 
+            authenticationTokensEmail[emailToken] = dataR.email;
+
             if (id !== "::1") sendHelloEmail(dataR.email, emailToken);
 
             if (!unique) {
               response.end();
               return;
             }
-
-            authenticationTokensEmail[dataR.email] = emailToken;
 
             saveData({
               ...dataR,
