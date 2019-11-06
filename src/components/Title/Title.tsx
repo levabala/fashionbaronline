@@ -9,6 +9,9 @@ import StyleVariables from '../../variables.scss';
 import TextWithInsertions from '../TextWithInsertions';
 
 const wideDisplayMinWidth = parseFloat(StyleVariables.wideDisplayMinWidth);
+const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
+
+const mobile = window.innerWidth < mobileVersionMaxWidth;
 
 function splitToFillLastLine(
   chunks: string[],
@@ -116,9 +119,13 @@ const Title = () => {
       <div className="brends">{brendsJXS}</div>
       <div
         className={classnames("feature", !maxWidth ? "hidden" : "")}
-        style={{
-          width: `${maxWidth}px`
-        }}
+        style={
+          mobile
+            ? {}
+            : {
+                width: `${maxWidth}px`
+              }
+        }
       >
         {TextWithInsertions(t("title.feature", { returnObjects: true }))}
       </div>

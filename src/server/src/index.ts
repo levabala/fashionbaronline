@@ -40,6 +40,7 @@ interface IRegistration extends Document {
   relativeBagPath: string;
   id: string;
   verified?: boolean;
+  unsubscribed?: boolean;
 }
 
 interface IBagData {
@@ -52,9 +53,18 @@ interface IBagData {
 type IBag = IBagData & Document;
 
 const registartionSchema = new mongoose.Schema({
-  date: { type: Date, required: true },
-  email: { type: String, required: true },
-  id: { type: String, required: true },
+  date: {
+    required: true,
+    type: Date
+  },
+  email: {
+    required: true,
+    type: String
+  },
+  id: {
+    required: true,
+    type: String
+  },
   location: {
     required: true,
     type: {
@@ -64,6 +74,7 @@ const registartionSchema = new mongoose.Schema({
   },
   relativeBagBrand: String,
   relativeBagPath: String,
+  unsubscribed: Boolean,
   verified: Boolean
 });
 
@@ -135,6 +146,9 @@ http
     );
 
     switch (requestPath) {
+      case "/unsubscribe": {
+        console.log("user has been unsubscribed");
+      }
       case "/verifyEmail": {
         const { token } = query;
         const email = authenticationTokensEmail[(token || "").toString()];
@@ -616,7 +630,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
     </head>
   
     <body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: white;">
-      <h3 style="padding: 0 0.5em; padding-bottom: 0.5em">
+      <h3 style="padding: 0 0.5em;">
         FASHIONBAR.ONLINE
       </h3>
       <!--[if IE]><div class="ie-browser"><![endif]-->
@@ -636,7 +650,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                         <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
                           <!--<![endif]-->
                           <div style="font-size:16px;text-align:center;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif">
-                            <div class="our-class" style="background: transparent; height: 3em"></div>
+                            <div class="our-class" style="background: transparent; height: 5em"></div>
                           </div>
                           <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 40px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
                           <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:40px;padding-right:10px;padding-bottom:10px;padding-left:10px;background:white">
@@ -843,7 +857,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
                           <div style="font-size:16px;text-align:center;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif">
-                            <div class="our-class" style="background: transparent; height: 3em"></div>
+                            <div class="our-class" style="background: transparent; height: 5em"></div>
                           </div>
                           <!--[if (!mso)&(!IE)]><!-->
                         </div>

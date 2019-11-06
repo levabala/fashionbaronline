@@ -15,6 +15,8 @@ export interface RegistrationData {
   location: string;
   choosenBagName?: string;
   choosenBagImage?: string;
+  unsubscribed?: boolean;
+  verified?: boolean;
 }
 
 const RegistrationsPage = () => {
@@ -45,6 +47,8 @@ const RegistrationsPage = () => {
       relativeBagBrand: string;
       relativeBagPath: string;
       id: string;
+      unsubscribed?: boolean;
+      verified?: boolean;
     }
 
     try {
@@ -66,7 +70,9 @@ const RegistrationsPage = () => {
           choosenBagName: r.relativeBagBrand,
           date: r.date.toString(),
           email: r.email,
-          location: `${r.location.country} ${r.location.town}`
+          location: `${r.location.country} ${r.location.town}`,
+          unsubscribed: r.unsubscribed,
+          verified: r.verified
         } as RegistrationData;
       });
 

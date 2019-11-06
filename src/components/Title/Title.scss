@@ -102,6 +102,16 @@
         font-size: 17px;
       }
     }
+
+    @media screen and (max-height: $mobile-extra-small-version-max-height) {
+      .brends {
+        font-size: 20px;
+      }
+
+      & > .feature {
+        font-size: 16px;
+      }
+    }
   }
 }
 

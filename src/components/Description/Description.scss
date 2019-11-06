@@ -36,4 +36,8 @@
   @media screen and (max-width: $mobile-extra-version-max-width) and (max-height: $mobile-small-version-max-height) {
     font-size: 16px;
   }
+
+  @media screen and (max-width: $mobile-extra-version-max-width) and (max-height: $mobile-extra-small-version-max-height) {
+    font-size: 14px;
+  }
 }

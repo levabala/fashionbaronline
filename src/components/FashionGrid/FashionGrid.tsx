@@ -223,9 +223,15 @@ const FashionGrid = ({
           )}
           <div className="bottom">
             <div className="bookWrapper">
-              <Button className="book" onClick={goToBooking} data-bagindex={i}>
-                {bookingLabel}
-              </Button>
+              {(i + 1) % imagesPerBlockTotal === 0 ? null : (
+                <Button
+                  className="book"
+                  onClick={goToBooking}
+                  data-bagindex={i}
+                >
+                  {bookingLabel}
+                </Button>
+              )}
             </div>
           </div>
         </div>
