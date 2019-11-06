@@ -590,7 +590,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
           color: white;
   
           width: 100%;
-          font-family: inherit;
+          font-weight: bold;
   
           outline: none;
           box-shadow: none;
