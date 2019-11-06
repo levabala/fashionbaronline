@@ -459,7 +459,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
   const verifyLink = ` https://fashionbar.online/verifyEmail?token=${token}`;
 
   const htmlEmailBody = `
-  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <!DOCTYPE html>
 
   <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
   
@@ -677,7 +677,6 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                   <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
                 </div>
               </div>
-              </div>
               <div style="background-color:transparent;">
                 <div class="block-grid three-up" style="Margin: 0 auto; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;background:white">
                   <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
@@ -866,7 +865,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
     </body>
   
   </html>
-  
+
 
       `;
 
