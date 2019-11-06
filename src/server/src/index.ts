@@ -615,16 +615,16 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
       </style>
     </head>
   
-    <body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #EEE;">
+    <body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: white;">
       <h3 style="padding: 0 0.5em; padding-bottom: 1em">
         FASHIONBAR.ONLINE
       </h3>
       <!--[if IE]><div class="ie-browser"><![endif]-->
-      <table bgcolor="#EEE" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 0 auto; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #EEE; width: 100%;" valign="top" width="100%">
+      <table bgcolor="white" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 0 auto; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: white; width: 100%;" valign="top" width="100%">
         <tbody>
           <tr style="vertical-align: top;" valign="top">
             <td style='background-size: cover; border-collapse: collapse; line-height: inherit; vertical-align: top; word-break: break-word; background-image: url("https://resize.yandex.net/mailservice?url=https%3A%2F%2Ffashionbar.online%2Fassets%2Fimages%2Femail-background.jpg&proxy=yes&key=c5af2837c3d1ccda9ec3ec0f6f4bd429");' valign="top">
-              <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color:#EEE"><![endif]-->
+              <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color:white"><![endif]-->
               <div style="background-color:transparent;">
                 <div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
                   <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
