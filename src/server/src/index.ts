@@ -577,9 +577,48 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
         }
   
       </style>
+      <style>
+        .button {
+          font-size: 14px;
+  
+          display: inline-block;
+          box-sizing: border-box;
+          padding: 12px 20px;
+          border-radius: 50px;
+          text-align: center;
+          background: #0000ff;
+          color: white;
+  
+          width: 100%;
+          font-family: inherit;
+  
+          outline: none;
+          box-shadow: none;
+          border: none;
+  
+          transition: background 0.3s ease-in-out;
+  
+  
+  
+  
+        }
+  
+        .button :hover {
+          background: #0000cc;
+        }
+  
+        .button :active {
+          background: #0000dd;
+          transition: background 0.1s ease-in;
+        }
+  
+      </style>
     </head>
   
     <body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #EEE;">
+      <h3 style="padding: 0 0.5em; padding-bottom: 1em">
+        FASHIONBAR.ONLINE
+      </h3>
       <!--[if IE]><div class="ie-browser"><![endif]-->
       <table bgcolor="#EEE" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 0 auto; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #EEE; width: 100%;" valign="top" width="100%">
         <tbody>
@@ -620,22 +659,24 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                             </div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
-                          <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 30px; padding-left: 30px; padding-top: 20px; padding-bottom: 20px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-                          <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:30px;padding-bottom:20px;padding-left:30px;background:white">
-                            <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-                              <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Для подтверждения вашей почты, пройдите по этой <a href="${verifyLink}" rel="noopener" style="text-decoration: none; color: #0068A5;" target="_blank">ссылке</a>.</p>
-                            </div>
-                          </div>
-                          <!--[if mso]></td></tr></table><![endif]-->
+    
                           <!--[if (!mso)&(!IE)]><!-->
                         </div>
-                        <!--<![endif]-->
+                        <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:30px;padding-bottom:20px;padding-left:30px;background:white">
+                          <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
+                          <a href="${verifyLink}" rel="noopener" style="text-decoration: none;" target="_blank" class="button">Подтвердить почту</a>
+                          </div>
+                        </div>
+                        <!--[if mso]></td></tr></table><![endif]-->
+                        <!--[if (!mso)&(!IE)]><!-->
                       </div>
+                      <!--<![endif]-->
                     </div>
-                    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                    <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
                   </div>
+                  <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+                  <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
                 </div>
+              </div>
               </div>
               <div style="background-color:transparent;">
                 <div class="block-grid three-up" style="Margin: 0 auto; min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;background:white">
@@ -651,7 +692,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                             <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 30px; padding-top: 10px; padding-bottom: 10px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
                             <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:30px;">
                               <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-                                <p style="font-size: 12px; line-height: 1.2; mso-line-height-alt: 14px; margin: 0;"><span style="font-size: 12px;"><strong><a href="https://fashionbar.online" rel="noopener" style="text-decoration: none; color: #555555;" target="_blank">Fashionbar.online</a></strong></span></p>
+                                <p style="font-size: 12px; line-height: 1.2; mso-line-height-alt: 14px; margin: 0;"><span style="font-size: 12px;"><strong><a href="fashionbar.online" rel="noopener" style="text-decoration: none; color: #555555;" target="_blank">Fashionbar</a></strong></span></p>
                               </div>
                             </div>
                             <!--[if mso]></td></tr></table><![endif]-->
@@ -796,7 +837,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                         <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
                           <!--<![endif]-->
                           <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 30px; padding-top: 10px; padding-bottom: 30px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
-                          <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:30px;padding-left:30px;background:white">
+                          <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:30px;padding-left:30px;background:white; display: none">
                             <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
                               <p style="font-size: 12px; line-height: 1.2; mso-line-height-alt: 14px; margin: 0;"><span style="font-size: 12px;">Fashionbar.online 2019</span></p>
                             </div>
@@ -820,6 +861,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
           </tr>
         </tbody>
       </table>
+      <span style="font-size: 12px; padding: 1em;">Fashionbar.online 2019</span>
       <!--[if (IE)]></div><![endif]-->
     </body>
   
