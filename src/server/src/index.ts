@@ -616,7 +616,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
     </head>
   
     <body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: white;">
-      <h3 style="padding: 0 0.5em; padding-bottom: 1em">
+      <h3 style="padding: 0 0.5em; padding-bottom: 0.5em">
         FASHIONBAR.ONLINE
       </h3>
       <!--[if IE]><div class="ie-browser"><![endif]-->
@@ -664,7 +664,7 @@ async function sendHelloEmail(mail: string, token: string): Promise<void> {
                         </div>
                         <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:30px;padding-bottom:20px;padding-left:30px;background:white">
                           <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-                          <a href="${verifyLink}" rel="noopener" style="text-decoration: none;" target="_blank" class="button">Подтвердить почту</a>
+                          <a href="${verifyLink}" rel="noopener" style="text-decoration: none; font-weight: bold" target="_blank" class="button">Подтвердить почту</a>
                           </div>
                         </div>
                         <!--[if mso]></td></tr></table><![endif]-->
