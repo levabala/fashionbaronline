@@ -74,7 +74,10 @@ const App: React.FC = () => {
             <Route path="/manageBags" component={BagsPage} />
           </Suspense>
           <Suspense fallback="">
-            <Route path="/verifyEmail" component={MainPageReforgedReforged} />
+            <Route
+              path="/verifyEmail/:pathParam?"
+              component={MainPageReforgedReforged}
+            />
           </Suspense>
         </VariablesContainer.Provider>
       </>

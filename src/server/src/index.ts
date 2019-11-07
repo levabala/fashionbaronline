@@ -146,7 +146,7 @@ http
     );
 
     const defaultChecker = () => {
-      const filePathAbs = request.url || "/";
+      const filePathAbs = requestPath || "/";
       const filePath =
         filePathAbs === "/" ||
         filePathAbs === "/registrations" ||
