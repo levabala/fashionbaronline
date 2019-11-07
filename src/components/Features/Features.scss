@@ -53,8 +53,8 @@
         list-style-position: inside;
         text-indent: -2em;
 
-        // animation-delay: $duration * 1;
-        // opacity: 0;
+        animation-delay: $duration * 1;
+        opacity: 0;
 
         &:nth-of-type(2) {
           animation-delay: $duration * 1;

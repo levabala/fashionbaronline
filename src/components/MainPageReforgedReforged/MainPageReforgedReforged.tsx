@@ -84,7 +84,10 @@ const MainPageReforged = React.memo(() => {
         );
 
         if (delta === -1) newBlock.classList.add("reactivated");
-        else newBlock.classList.add("activated");
+        else {
+          newBlock.classList.add("activated");
+          newBlock.children[0].classList.add("activated");
+        }
 
         if (newBlock.querySelector(".fashionGrid"))
           document.documentElement.classList.add("collectionActive");
@@ -129,6 +132,18 @@ const MainPageReforged = React.memo(() => {
     const { current: centralContainer } = centralContainerRef;
     const blocks = centralContainer.querySelectorAll(".viewBlock");
     setBlocksCount(blocks.length);
+
+    const intersectionObserver = new IntersectionObserver(
+      ([intersection]) => {
+        intersection.target.children[0].classList.add("activated");
+      },
+      {
+        root: centralContainer,
+        threshold: 0.3
+      }
+    );
+
+    blocks.forEach(block => intersectionObserver.observe(block));
 
     blocks[0].classList.add("activated");
 
