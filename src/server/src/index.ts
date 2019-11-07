@@ -145,6 +145,56 @@ http
       true
     );
 
+    const defaultChecker = () => {
+      const filePathAbs = request.url || "/";
+      const filePath =
+        filePathAbs === "/" ||
+        filePathAbs === "/registrations" ||
+        filePathAbs === "/manageBags" ||
+        filePathAbs === "/verifyEmail"
+          ? "/index.html"
+          : filePathAbs;
+      // const filePathDecoded = decodeURIComponent(
+      //   filePath.includes("__") ? filePath.split("__")[0] : filePath
+      // );
+      const filePathDecoded = decodeURIComponent(filePath);
+
+      const extname = path.extname(filePathDecoded);
+      const map: Record<string, string> = {
+        ".css": "text/css",
+        ".jpg": "image/jpg",
+        ".js": "text/javascript",
+        ".json": "application/json",
+        ".png": "image/png"
+      };
+      const contentType = map[extname] || "text/html";
+
+      fs.readFile(buildPath + filePathDecoded, (error, content) => {
+        if (error)
+          if (error.code === "ENOENT") {
+            console.warn("no such file error", filePathDecoded);
+            fs.readFile("./404.html", (err, errContent) => {
+              response.writeHead(200, { "Content-Type": contentType });
+              response.end(errContent, "utf-8");
+            });
+          } else {
+            console.warn("file read error");
+            response.writeHead(500);
+            response.end(
+              "Sorry, check with the site admin for error: " +
+                error.code +
+                " ..\n"
+            );
+            response.end();
+          }
+        else {
+          // console.warn("file read success");
+          response.writeHead(200, { "Content-Type": contentType });
+          response.end(content, "utf-8");
+        }
+      });
+    };
+
     switch (requestPath) {
       case "/unsubscribe": {
         console.log("user has been unsubscribed");
@@ -181,8 +231,12 @@ http
             (await Registration.find({ verified: true }).exec()).length
           }`
         );
+
+        defaultChecker();
+        break;
       }
       case "/variables": {
+        console.log(requestPath);
         response.end(JSON.stringify({ subscriptionCost: 199 }));
         break;
       }
@@ -414,54 +468,7 @@ http
 
         return;
       default:
-        const filePathAbs = request.url || "/";
-        const filePath =
-          filePathAbs === "/" ||
-          filePathAbs === "/registrations" ||
-          filePathAbs === "/manageBags" ||
-          filePathAbs === "/verifyEmail"
-            ? "/index.html"
-            : filePathAbs;
-        // const filePathDecoded = decodeURIComponent(
-        //   filePath.includes("__") ? filePath.split("__")[0] : filePath
-        // );
-        const filePathDecoded = decodeURIComponent(filePath);
-
-        const extname = path.extname(filePathDecoded);
-        const map: Record<string, string> = {
-          ".css": "text/css",
-          ".jpg": "image/jpg",
-          ".js": "text/javascript",
-          ".json": "application/json",
-          ".png": "image/png"
-        };
-        const contentType = map[extname] || "text/html";
-
-        fs.readFile(buildPath + filePathDecoded, (error, content) => {
-          if (error)
-            if (error.code === "ENOENT") {
-              console.warn("no such file error", filePathDecoded);
-              fs.readFile("./404.html", (err, errContent) => {
-                response.writeHead(200, { "Content-Type": contentType });
-                response.end(errContent, "utf-8");
-              });
-            } else {
-              console.warn("file read error");
-              response.writeHead(500);
-              response.end(
-                "Sorry, check with the site admin for error: " +
-                  error.code +
-                  " ..\n"
-              );
-              response.end();
-            }
-          else {
-            // console.warn("file read success");
-            response.writeHead(200, { "Content-Type": contentType });
-            response.end(content, "utf-8");
-          }
-        });
-        break;
+        defaultChecker();
     }
   })
   .listen(PORT);
