@@ -9,6 +9,7 @@ import { createContainer } from 'unstated-next';
 
 import BagsPage from './components/BagsPage';
 import MainPageReforgedReforged from './components/MainPageReforgedReforged';
+import UnsubscribePage from './components/UnsubscribePage';
 
 const VARIABLES_GET_PATH = `${
   window.location.href.includes("localhost")
@@ -72,6 +73,9 @@ const App: React.FC = () => {
           </Suspense>
           <Suspense fallback="">
             <Route path="/manageBags" component={BagsPage} />
+          </Suspense>
+          <Suspense fallback="">
+            <Route path="/unsubscribe" component={UnsubscribePage} />
           </Suspense>
           <Suspense fallback="">
             <Route

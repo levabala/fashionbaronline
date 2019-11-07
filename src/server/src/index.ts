@@ -151,6 +151,7 @@ http
         filePathAbs === "/" ||
         filePathAbs === "/registrations" ||
         filePathAbs === "/manageBags" ||
+        filePathAbs === "/unsubscribe" ||
         filePathAbs === "/verifyEmail"
           ? "/index.html"
           : filePathAbs;
@@ -198,6 +199,8 @@ http
     switch (requestPath) {
       case "/unsubscribe": {
         console.log("user has been unsubscribed");
+        defaultChecker();
+        break;
       }
       case "/verifyEmail": {
         const { token } = query;

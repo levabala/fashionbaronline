@@ -1,0 +1,42 @@
+.unsubscribeBlockWrapper {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  z-index: 10000;
+
+  .unsubscribeBlock {
+    position: relative;
+
+    font-size: 18px;
+    height: 60%;
+    width: 60%;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+    .closeIcon {
+      position: absolute;
+
+      right: 1em;
+      top: 1em;
+      padding: 5px;
+
+      border-radius: 50%;
+      &:hover {
+        background: #0000000a;
+      }
+    }
+  }
+}
