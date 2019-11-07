@@ -155,29 +155,26 @@ http
         console.log(authenticationTokensEmail);
         console.log(email, token);
 
-        if (!email) {
-          response.end(
-            "This email was already verified. (or you have used very strange token)"
-          );
-          return;
-        }
-
-        const registration = await Registration.findOne({ email }).exec();
-        if (!registration) {
-          response.end(
-            "Internal error. Please, contact with us via this email: test@test.test"
-          );
-          return;
-        }
+        // if (!email) {
+        //   response.end(
+        //     "This email was already verified. (or you have used very strange token)"
+        //   );
+        //   return;
+        // }
 
         // tslint:disable-next-line:no-delete
         delete authenticationTokensEmail[(token || "").toString()];
 
-        registration.verified = true;
-        registration.save();
-        console.log(`${email} was verified`);
+        const registration = await Registration.findOne({ email }).exec();
+        if (registration) {
+          registration.verified = true;
+          registration.save();
+        }
+        console.log(
+          `${email} was verified (or not? who knows - maybe it's undefined)`
+        );
 
-        response.end("The email is verified");
+        // response.end("The email is verified");
 
         console.log(
           `all verified registrations count: ${
