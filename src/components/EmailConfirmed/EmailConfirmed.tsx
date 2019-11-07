@@ -10,7 +10,10 @@ const EmailConfirmed = () => {
   const { t } = useTranslation();
 
   const [closed, setClosed] = useState(false);
-  const closeCallback = useCallback(() => setClosed(true), []);
+  const closeCallback = useCallback(() => {
+    setClosed(true);
+    window.history.pushState({}, "", "/");
+  }, []);
 
   const visible = (window as any).emailConfirmedBoxVisible && !closed;
 
