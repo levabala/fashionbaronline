@@ -6,6 +6,7 @@ import StyleVariables from '../../variables.scss';
 import CentralContainer from '../CentralContainer';
 import ContentBlock from '../ContentBlock';
 import Description from '../Description';
+import EmailConfirmed from '../EmailConfirmed';
 import FashionGrid from '../FashionGrid';
 import Features from '../Features';
 import Footer from '../Footer';
@@ -211,6 +212,7 @@ const MainPageReforged = React.memo(() => {
           /> */}
         </CentralContainer>
         <Header absolute noWoman />
+        <EmailConfirmed />
       </>
     ),
     [onLoadCallback]

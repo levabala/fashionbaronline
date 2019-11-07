@@ -91,5 +91,9 @@
       "If you have not received the email please click on this link 'Send email again'"
     ],
     "ps": "Thanks for your attention."
+  },
+  "emailConfirmed": {
+    "header": "Email Confirmed",
+    "main": "Your email is confirmed, after the launch of the project you will be saved 15 discount%"
   }
 }

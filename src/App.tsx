@@ -8,7 +8,6 @@ import smoothscroll from 'smoothscroll-polyfill';
 import { createContainer } from 'unstated-next';
 
 import BagsPage from './components/BagsPage';
-import EmailConfirmed from './components/EmailConfirmed';
 import MainPageReforgedReforged from './components/MainPageReforgedReforged';
 
 const VARIABLES_GET_PATH = `${
@@ -75,7 +74,7 @@ const App: React.FC = () => {
             <Route path="/manageBags" component={BagsPage} />
           </Suspense>
           <Suspense fallback="">
-            <Route path="/verifyEmail" component={EmailConfirmed} />
+            <Route path="/verifyEmail" component={MainPageReforgedReforged} />
           </Suspense>
         </VariablesContainer.Provider>
       </>

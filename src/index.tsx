@@ -15,6 +15,9 @@ const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
 
 polyfill();
 
+if (window.location.href.includes("verifyEmail"))
+  (window as any).emailConfirmedBoxVisible = true;
+
 // const updateVH = () => {
 //   if ((window as any).resizeRestricted) return;
 //   const vh = window.innerHeight * 0.01;
