@@ -24,8 +24,7 @@ const SubscriptionBlock = () => {
   const [sendTry, setSendTry] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
   const [startOffset, setStartOffset] = useState(0);
-
-  let emptyInputReport = false;
+  const [emptyInputReport, setEmptyInputReport] = useState(false);
 
   const onSend = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -39,8 +38,8 @@ const SubscriptionBlock = () => {
       inputElem.setCustomValidity("Input is empty");
       inputElem.reportValidity();
 
-      emptyInputReport = true;
-    } else emptyInputReport = false;
+      setEmptyInputReport(true);
+    } else setEmptyInputReport(false);
 
     if (inputElem.validity.valid) sendEmail(inputElem.value);
 
@@ -86,17 +85,17 @@ const SubscriptionBlock = () => {
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     console.log("blur");
-    setTimeout(() => {
-      document.body.classList.remove("keyboardVisible");
+    // setTimeout(() => {
+    setTimeout(() => document.body.classList.remove("keyboardVisible"));
 
-      setTimeout(() => {
-        if (os === "iOS" || os === "iPadOS")
-          document.body.scrollBy({
-            left: 0,
-            top: 1
-          });
-      }, 1000);
-    });
+    // setTimeout(() => {
+    //   if (os === "iOS" || os === "iPadOS")
+    //     document.body.scrollBy({
+    //       left: 0,
+    //       top: 1
+    //     });
+    // }, 1000);
+    // });
 
     // document.body.scrollTo({
     //   left: 0,
@@ -115,7 +114,7 @@ const SubscriptionBlock = () => {
     if (emptyInputReport) {
       event.currentTarget.setCustomValidity("");
       event.currentTarget.reportValidity();
-      emptyInputReport = false;
+      setEmptyInputReport(false);
     }
   };
 
@@ -125,13 +124,11 @@ const SubscriptionBlock = () => {
   };
 
   const sendButtonClick = () => {
-    setSendTry(true);
     // alert("send");
+    setSendTry(true);
   };
 
   const onInputFocus = () => {
-    console.log("focused");
-
     const initialHeight = window.innerHeight;
     const viewBlockHeight = (document.querySelector(
       ".viewBlock"
@@ -140,53 +137,54 @@ const SubscriptionBlock = () => {
     console.log({ topBarHeight });
 
     console.log("keyboardVisible");
-    if (os === "iOS" || os === "iPadOS") {
-      document.body.classList.add("keyboardVisible");
-      if (!formRef.current) return;
+    document.body.classList.add("keyboardVisible");
+    // if (os === "iOS" || os === "iPadOS") {
+    //   // document.body.classList.add("keyboardVisible");
+    //   if (!formRef.current) return;
 
-      setStartOffset(document.body.scrollTop);
-      formRef.current.scrollIntoView({ behavior: "auto", block: "center" });
-      return;
-    }
+    //   // setStartOffset(document.body.scrollTop);
+    //   // formRef.current.scrollIntoView({ behavior: "auto", block: "center" });
+    //   return;
+    // }
 
-    const callback = () => {
-      const withKeyboardHeight = window.innerHeight;
-      if (Math.abs(initialHeight - withKeyboardHeight) < 100) return;
+    // const callback = () => {
+    //   const withKeyboardHeight = window.innerHeight;
+    //   if (Math.abs(initialHeight - withKeyboardHeight) < 100) return;
 
-      document.body.classList.add("keyboardVisible");
-      // document
-      //   .querySelectorAll(".viewBlock")
-      //   .forEach(block => block.setAttribute("style", "height: 100%"));
+    //   // document.body.classList.add("keyboardVisible");
+    //   // document
+    //   //   .querySelectorAll(".viewBlock")
+    //   //   .forEach(block => block.setAttribute("style", "height: 100%"));
 
-      const keyboardHeight = initialHeight - window.innerHeight;
-      console.log({ keyboardHeight });
+    //   const keyboardHeight = initialHeight - window.innerHeight;
+    //   console.log({ keyboardHeight });
 
-      // const d = document.querySelector(".centralContainer") as HTMLDivElement;
-      // d.setAttribute(
-      //   "style",
-      //   `transform: translateY(-${keyboardHeight + 40}px)`
-      // );
+    //   // const d = document.querySelector(".centralContainer") as HTMLDivElement;
+    //   // d.setAttribute(
+    //   //   "style",
+    //   //   `transform: translateY(-${keyboardHeight + 40}px)`
+    //   // );
 
-      (window as any).resizeRestricted = true;
+    //   (window as any).resizeRestricted = true;
 
-      const postCallback = () => {
-        const withoutKeyboardHeight = window.innerHeight;
-        if (Math.abs(withoutKeyboardHeight - withKeyboardHeight) < 100) return;
+    //   const postCallback = () => {
+    //     const withoutKeyboardHeight = window.innerHeight;
+    //     if (Math.abs(withoutKeyboardHeight - withKeyboardHeight) < 100) return;
 
-        console.log("keyboardHidden");
-        document.body.classList.remove("keyboardVisible");
+    //     console.log("keyboardHidden");
+    //     document.body.classList.remove("keyboardVisible");
 
-        window.removeEventListener("resize", postCallback);
+    //     window.removeEventListener("resize", postCallback);
 
-        (window as any).resizeRestricted = false;
+    //     (window as any).resizeRestricted = false;
 
-        // d.setAttribute("style", ``);
-      };
+    //     // d.setAttribute("style", ``);
+    //   };
 
-      window.removeEventListener("resize", callback);
-      window.addEventListener("resize", postCallback);
-    };
-    window.addEventListener("resize", callback);
+    //   window.removeEventListener("resize", callback);
+    //   window.addEventListener("resize", postCallback);
+    // };
+    // window.addEventListener("resize", callback);
   };
 
   return (
@@ -207,13 +205,18 @@ const SubscriptionBlock = () => {
         type="email"
         onBlur={onBlur}
         onKeyDown={onKeyDown}
-        onClick={onInputFocus}
+        onFocus={onInputFocus}
         // onFocus={onFocus}
         // ref={inputBoxRef}
         // id={v4()}
         // required
       />
-      <Button className="send" key="button" onClick={sendButtonClick}>
+      <Button
+        className="send"
+        key="button"
+        onClick={sendButtonClick}
+        // onTouchStartCapture={sendButtonClick}
+      >
         <b>{t("subscriptionSmall.subscribe")}</b>
         {t("subscriptionSmall.postSubscribe")}
       </Button>

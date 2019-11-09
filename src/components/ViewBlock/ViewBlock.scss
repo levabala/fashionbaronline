@@ -21,10 +21,12 @@
     scroll-snap-stop: none;
   }
 
-  // .keyboardVisible & {
-  //   // scroll-snap-align: none;
-  //   // scroll-snap-stop: none;
-  // }
+  .keyboardVisible & {
+    .ios & {
+      scroll-snap-align: none;
+      scroll-snap-stop: none;
+    }
+  }
 
   position: relative;
   height: 100vh;

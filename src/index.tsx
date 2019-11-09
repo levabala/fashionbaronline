@@ -39,20 +39,17 @@ if (window.location.href.includes("verifyEmail"))
 // const inter = setInterval(() => console.log(window.innerWidth));
 // setTimeout(() => clearInterval(inter), 2000);
 
-document.body.classList.add("hidden");
 if (window.innerWidth < mobileVersionMaxWidth) {
-  document.body.style.height = `${window.innerHeight}px`;
-  // document.body.style.width = `${window.innerWidth}px`;
-  document.documentElement.style.height = `${window.innerHeight +
-    (ios ? 0 : 1)}px`;
-  document.documentElement.style.width = `${window.innerWidth}px`;
-
-  setTimeout(() => {
-    document.body.style.height = `${window.innerHeight}px`;
+  const interval = setInterval(() => {
     document.body.classList.add("hidden");
+    document.body.style.height = `${window.innerHeight}px`;
+    // document.body.style.width = `${window.innerWidth}px`;
     document.documentElement.style.height = `${window.innerHeight +
       (ios ? 0 : 1)}px`;
+    document.documentElement.style.width = `${window.innerWidth}px`;
+    console.log("window size approving");
   });
+  setTimeout(() => clearInterval(interval), 500);
 }
 // if (window.innerWidth < mobileVersionMaxWidth) {
 //   (document.body.querySelector(

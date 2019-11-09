@@ -29,7 +29,13 @@ const initialWindowHeight = window.innerHeight;
 const os = new detect(window.navigator.userAgent).os();
 const ios = os === "iOS" || os === "iPadOS";
 
+// setTimeout(() => (window as any).scrolll(1), 1000);
+
 if (ios) document.documentElement.classList.add("ios");
+
+document.documentElement.addEventListener("scroll", () =>
+  document.documentElement.scrollTo({ top: 0, left: 0 })
+);
 
 const MainPageReforged = React.memo(() => {
   document.documentElement.classList.add("mainContent");
@@ -47,9 +53,19 @@ const MainPageReforged = React.memo(() => {
   const [currentBlockIndex, setCurrentBlockIndex] = useState(0);
   const [blocksCount, setBlocksCount] = useState(0);
   const [accumulator, setAccumulator] = useState(0);
+  const [previousScreenY, setPreviousScreenY] = useState<number | null>(null);
   const [blind, setBlind] = useState(false);
 
   const listenerWheel = useRef((e: WheelEvent) => {
+    /**/
+  });
+  const listenerTouchStart = useRef((e: TouchEvent) => {
+    /**/
+  });
+  const listenerTouchMove = useRef((e: TouchEvent) => {
+    /**/
+  });
+  const listenerTouchEnd = useRef((e: TouchEvent) => {
     /**/
   });
 
@@ -71,9 +87,10 @@ const MainPageReforged = React.memo(() => {
 
       const newBlock = blocks[newBlockIndex] as HTMLDivElement;
 
-      if (os === "iOS" || os === "iPadOS")
-        document.body.scrollTo({ top: newBlock.offsetTop });
-      else newBlock.scrollIntoView({ behavior: "smooth", block: "start" });
+      // if (os === "iOS" || os === "iPadOS")
+      //   document.body.scrollTo({ top: newBlock.offsetTop, behavior: "smooth" });
+      // else newBlock.scrollIntoView({ behavior: "smooth", block: "start" });
+      // alert(`scroll to block ${newBlockIndex}`);
       // console.log(newBlock.offsetTop);
 
       if (scrollOnly) return;
@@ -169,10 +186,78 @@ const MainPageReforged = React.memo(() => {
       e.preventDefault();
     };
 
+    listenerTouchEnd.current = (e: TouchEvent) => {
+      // e.preventDefault();
+
+      setPreviousScreenY(null);
+      setAccumulator(0);
+    };
+
+    listenerTouchStart.current = (e: TouchEvent) => {
+      e.preventDefault();
+
+      setPreviousScreenY(e.touches[0].screenY);
+    };
+
+    listenerTouchMove.current = (e: TouchEvent) => {
+      e.preventDefault();
+      // console.log({ accumulator, blind });
+
+      const { screenY } = e.touches[0];
+      const delta = previousScreenY === null ? 0 : screenY - previousScreenY;
+      setPreviousScreenY(screenY);
+
+      // console.log({ screenY });
+      // setTimeout(() => alert(`${previousScreenY} => ${screenY}`), 1000);
+
+      if (!blind) {
+        setAccumulator(accumulator + delta);
+
+        if (Math.abs(accumulator) > triggerScrollValue) {
+          // alert(accumulator);
+          scroll(Math.sign(accumulator) * -1);
+          setAccumulator(0);
+
+          setBlind(true);
+          setTimeout(() => setBlind(false), afterScrollBlindTime);
+        }
+      } else if (accumulator !== 0) setAccumulator(0);
+    };
+
+    listenerWheel.current = (e: WheelEvent) => {
+      if (!blind) {
+        setAccumulator(accumulator + e.deltaY);
+
+        if (Math.abs(accumulator) > triggerScrollValue) {
+          scroll(Math.sign(accumulator));
+          setAccumulator(0);
+
+          setBlind(true);
+          setTimeout(() => setBlind(false), afterScrollBlindTime);
+        }
+      } else if (accumulator !== 0) setAccumulator(0);
+
+      e.preventDefault();
+    };
+
+    // if (ios) {
+    //   document.body.addEventListener("touchend", listenerTouchEnd.current, {
+    //     passive: true
+    //   });
+
+    //   document.body.addEventListener("touchstart", listenerTouchStart.current, {
+    //     passive: true
+    //   });
+
+    //   document.body.addEventListener("touchmove", listenerTouchMove.current, {
+    //     passive: false
+    //   });
+    // }
+
     document.body.addEventListener("wheel", listenerWheel.current, {
       passive: false
     });
-  }, [accumulator, blind, setBlind]);
+  }, [accumulator, blind, setBlind, previousScreenY]);
 
   return useMemo(
     () => (
