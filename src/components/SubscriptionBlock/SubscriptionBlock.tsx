@@ -3,7 +3,7 @@ import './SubscriptionBlock.scss';
 import classNames from 'classnames';
 import { sha256 } from 'js-sha256';
 import detect from 'mobile-detect';
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Button from '../Button';
@@ -18,6 +18,8 @@ const EMAIL_POST_PATH = `${
     : window.location.href
 }subscribe`;
 
+let counter = 0;
+
 const SubscriptionBlock = () => {
   const { t } = useTranslation();
   const [emailSent, setEmailSent] = useState(false);
@@ -25,6 +27,8 @@ const SubscriptionBlock = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [startOffset, setStartOffset] = useState(0);
   const [emptyInputReport, setEmptyInputReport] = useState(false);
+
+  const index = useMemo(() => counter++, []);
 
   const onSend = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -86,15 +90,18 @@ const SubscriptionBlock = () => {
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     console.log("blur");
     // setTimeout(() => {
-    setTimeout(() => document.body.classList.remove("keyboardVisible"));
+    setTimeout(() => {
+      document.body.classList.remove("keyboardVisible");
+      document.body.classList.remove("caseZero");
+    });
 
-    // setTimeout(() => {
-    //   if (os === "iOS" || os === "iPadOS")
-    //     document.body.scrollBy({
-    //       left: 0,
-    //       top: 1
-    //     });
-    // }, 1000);
+    setTimeout(() => {
+      if (os === "iOS" || os === "iPadOS")
+        document.body.scrollBy({
+          left: 0,
+          top: 1
+        });
+    }, 1000);
     // });
 
     // document.body.scrollTo({
@@ -138,14 +145,18 @@ const SubscriptionBlock = () => {
 
     console.log("keyboardVisible");
     document.body.classList.add("keyboardVisible");
-    // if (os === "iOS" || os === "iPadOS") {
-    //   // document.body.classList.add("keyboardVisible");
-    //   if (!formRef.current) return;
+    if (index === 0) document.body.classList.add("caseZero");
+    // alert(index);
 
-    //   // setStartOffset(document.body.scrollTop);
-    //   // formRef.current.scrollIntoView({ behavior: "auto", block: "center" });
-    //   return;
-    // }
+    if (os === "iOS" || os === "iPadOS") {
+      // document.body.classList.add("keyboardVisible");
+      if (!formRef.current) return;
+
+      // setStartOffset(document.body.scrollTop);
+      if (index === 1)
+        formRef.current.scrollIntoView({ behavior: "auto", block: "center" });
+      return;
+    }
 
     // const callback = () => {
     //   const withKeyboardHeight = window.innerHeight;
@@ -215,6 +226,10 @@ const SubscriptionBlock = () => {
         className="send"
         key="button"
         onClick={sendButtonClick}
+        onClickCapture={sendButtonClick}
+        onTouchMoveCapture={sendButtonClick}
+        onTouchStartCapture={sendButtonClick}
+        onTouchEndCapture={sendButtonClick}
         // onTouchStartCapture={sendButtonClick}
       >
         <b>{t("subscriptionSmall.subscribe")}</b>

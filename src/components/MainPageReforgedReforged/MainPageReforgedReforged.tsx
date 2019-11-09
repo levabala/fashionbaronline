@@ -31,7 +31,7 @@ const ios = os === "iOS" || os === "iPadOS";
 
 // setTimeout(() => (window as any).scrolll(1), 1000);
 
-if (ios) document.documentElement.classList.add("ios");
+if (ios) document.body.classList.add("ios");
 
 document.documentElement.addEventListener("scroll", () =>
   document.documentElement.scrollTo({ top: 0, left: 0 })

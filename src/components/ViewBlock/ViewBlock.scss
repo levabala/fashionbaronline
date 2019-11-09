@@ -1,5 +1,11 @@
 @import "../../variables.scss";
 
+.keyboardVisible.ios.caseZero .viewBlock {
+  scroll-snap-align: none;
+  scroll-snap-stop: none;
+  // background: green;
+}
+
 .viewBlock {
   // height: calc(var(--vh) * 100);
 
@@ -21,12 +27,11 @@
     scroll-snap-stop: none;
   }
 
-  .keyboardVisible & {
-    .ios & {
-      scroll-snap-align: none;
-      scroll-snap-stop: none;
-    }
+  // .keyboardVisible & {
+  .ios & .caseZero {
+    // }
   }
+  // }
 
   position: relative;
   height: 100vh;
