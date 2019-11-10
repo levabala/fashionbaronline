@@ -460,7 +460,11 @@ http
             )
               throw new Error("Invalid data type");
 
-            const dataR = data as IRegistartionData;
+            // tslint:disable-next-line:no-object-literal-type-assertion
+            const dataR = {
+              ...data,
+              email: data.email.toLowerCase()
+            } as IRegistartionData;
             const id = request.connection.remoteAddress || dataR.id;
 
             const unique = await isUnique(dataR);
