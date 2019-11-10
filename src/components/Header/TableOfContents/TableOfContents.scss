@@ -54,6 +54,14 @@
       }
     }
 
+    .collectionIndex {
+      vertical-align: super;
+
+      &.hidden {
+        visibility: hidden;
+      }
+    }
+
     .howitworksActive & {
       &:nth-of-type(1) {
         span {

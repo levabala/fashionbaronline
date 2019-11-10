@@ -68,6 +68,10 @@
         @media screen and (max-height: $mobile-small-version-max-height) {
           font-size: 20px;
         }
+
+        @media screen and (max-height: $mobile-extra-small-version-max-height) {
+          font-size: 16px;
+        }
       }
     }
 
@@ -237,6 +241,37 @@
 
         .separator {
           font-size: 25px;
+        }
+      }
+
+      @media screen and (max-height: $mobile-small-version-max-height) {
+        .variants {
+          .costContainer {
+            .amount,
+            .unit {
+              font-size: 25px;
+            }
+
+            .unit {
+              font-size: 25px;
+            }
+
+            .slash {
+              font-size: 20px;
+            }
+
+            .period {
+              font-size: 15px;
+            }
+          }
+
+          .target {
+            font-size: 15px;
+          }
+
+          .separator {
+            font-size: 25px;
+          }
         }
       }
 

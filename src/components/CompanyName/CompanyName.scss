@@ -1,7 +1,17 @@
+@import "../../variables.scss";
+
 .companyName {
   .name {
     font-weight: bold;
     font-size: 20px;
+
+    @media screen and (max-width: $mobile-version-max-width) {
+      font-size: 18px;
+
+      @media screen and (max-height: $mobile-small-version-max-height) {
+        font-size: 16px;
+      }
+    }
   }
 
   .postfix {

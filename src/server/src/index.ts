@@ -220,6 +220,29 @@ http
 
         const registration = await Registration.findOne({ email }).exec();
         if (registration) {
+          if (!registration.verified) {
+            const emailObj = {
+              from: {
+                email: "info@fashionbar.online",
+                name: "Fashionbar.online"
+              },
+              html: `<h1>New verified registration</h1><div><span>mail: </span><span>${email}</span></div>`,
+              subject: "New registration",
+              text: "New registration",
+              to: [
+                {
+                  email: "dtohparidi@gmail.com",
+                  name: "God of Fashionbar"
+                }
+              ]
+            };
+
+            const answerGetter = (data: any) => {
+              console.log(data);
+            };
+            sendpulse.smtpSendMail(answerGetter, emailObj);
+          }
+
           registration.verified = true;
           registration.save();
         }

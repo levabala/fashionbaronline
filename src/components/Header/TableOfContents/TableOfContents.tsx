@@ -1,14 +1,17 @@
 import './TableOfContents.scss';
 
+import classnames from 'classnames';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import TagEnum from '../../../types/TagEnum';
+import { CurrentFashionGridIndexInfo } from '../../MainPageReforgedReforged/MainPageReforgedReforged';
 
 const table = Object.values(TagEnum);
 
 const TableOfContents = () => {
   const { t } = useTranslation();
+  const { currentIndex } = CurrentFashionGridIndexInfo.useContainer();
 
   const onClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     const { blockid } = event.currentTarget.dataset;
@@ -26,6 +29,16 @@ const TableOfContents = () => {
             <span data-blockid={name} onClick={onClick}>
               {t(`tableOfContents.${name}`)}
             </span>
+            {name === TagEnum.Collection ? (
+              <span
+                className={classnames(
+                  "collectionIndex",
+                  currentIndex === -1 ? "hidden" : ""
+                )}
+              >
+                {currentIndex + 1}
+              </span>
+            ) : null}
           </span>
         ))}
       </div>

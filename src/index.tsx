@@ -39,9 +39,9 @@ if (window.location.href.includes("verifyEmail"))
 // const inter = setInterval(() => console.log(window.innerWidth));
 // setTimeout(() => clearInterval(inter), 2000);
 
+document.body.classList.add("hidden");
 if (window.innerWidth < mobileVersionMaxWidth) {
   const interval = setInterval(() => {
-    document.body.classList.add("hidden");
     document.body.style.height = `${window.innerHeight}px`;
     // document.body.style.width = `${window.innerWidth}px`;
     document.documentElement.style.height = `${window.innerHeight +
@@ -51,6 +51,9 @@ if (window.innerWidth < mobileVersionMaxWidth) {
   });
   setTimeout(() => clearInterval(interval), 500);
 }
+
+// alert(`${window.innerWidth} ${window.innerHeight}`);
+
 // if (window.innerWidth < mobileVersionMaxWidth) {
 //   (document.body.querySelector(
 //     ".centralContainer"

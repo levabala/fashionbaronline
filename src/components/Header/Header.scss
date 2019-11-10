@@ -2,10 +2,11 @@
 
 .header {
   position: relative;
-  background: inherit;
+  background: transparent;
 
   transition: opacity 0.5s ease-in-out;
   @media screen and (max-width: $mobile-version-max-width) {
+    background: inherit;
     .collectionActive & {
       opacity: 0;
       transition: opacity 0s ease-in-out;
@@ -23,11 +24,14 @@
     left: $app-padding-horizontal-mobile;
     right: $app-padding-horizontal-mobile;
 
-    .subscriptionDoneVisible &,
-    .keyboardVisible & {
-      display: none;
-      // visibility: hidden;
-      // pointer-events: none;
+    @media screen and (max-width: $mobile-version-max-width) {
+      .subscriptionDoneVisible &,
+      .keyboardVisible &,
+      .footerActive & {
+        display: none;
+        // visibility: hidden;
+        // pointer-events: none;
+      }
     }
   }
 

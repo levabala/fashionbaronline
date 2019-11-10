@@ -188,12 +188,16 @@
               font-size: 16px;
               margin-top: 0.1em;
             }
-          }
-          .details {
+
             @media screen and (max-width: $mobile-version-max-width) {
-              display: none;
+              font-size: 14px;
             }
           }
+          // .details {
+          //   @media screen and (max-width: $mobile-version-max-width) {
+          //     display: none;
+          //   }
+          // }
 
           .name {
             font-family: "Open Sans", sans-serif;
@@ -208,6 +212,10 @@
 
             @media screen and (max-width: $mobile-version-max-width) {
               font-size: 22px;
+
+              @media screen and (max-height: $mobile-small-version-max-height) {
+                font-size: 18px;
+              }
             }
           }
         }

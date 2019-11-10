@@ -40,6 +40,9 @@
 
   &:last-of-type {
     margin-bottom: 10em;
+    @media screen and (max-width: $mobile-version-max-width) {
+      margin-bottom: 0px;
+    }
   }
 
   @media screen and (max-width: $mobile-version-max-width) {

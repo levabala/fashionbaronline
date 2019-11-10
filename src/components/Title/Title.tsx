@@ -10,15 +10,33 @@ import TextWithInsertions from '../TextWithInsertions';
 
 const wideDisplayMinWidth = parseFloat(StyleVariables.wideDisplayMinWidth);
 const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
+const mobileSmallVersionMaxHeight = parseFloat(
+  StyleVariables.mobileSmallVersionMaxHeight
+);
+const mobileExtraSmallVersionMaxHeight = parseFloat(
+  StyleVariables.mobileExtraSmallVersionMaxHeight
+);
 
+const wide = window.innerWidth > wideDisplayMinWidth;
 const mobile = window.innerWidth < mobileVersionMaxWidth;
+const smallMobile = mobile && window.innerHeight < mobileSmallVersionMaxHeight;
+const extraSmallMobile =
+  smallMobile && window.innerHeight < mobileExtraSmallVersionMaxHeight;
+
+const fontSize = extraSmallMobile
+  ? 16
+  : smallMobile
+  ? 25
+  : mobile
+  ? 30
+  : wide
+  ? 45
+  : 30;
 
 function splitToFillLastLine(
   chunks: string[],
   maxWidth: number,
-  font: string = `bold ${
-    window.innerWidth > wideDisplayMinWidth ? 45 : 30
-  }px Playfair Display, serif`
+  font: string = `bold ${fontSize}px Playfair Display, serif`
 ): string[][] {
   const reversedChunks = chunks.slice().reverse();
   const lines = reversedChunks.reduce(

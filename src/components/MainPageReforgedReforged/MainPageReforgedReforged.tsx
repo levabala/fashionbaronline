@@ -1,5 +1,6 @@
 import detect from 'mobile-detect';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { createContainer } from 'unstated-next';
 
 import TagEnum from '../../types/TagEnum';
 import StyleVariables from '../../variables.scss';
@@ -37,6 +38,16 @@ document.documentElement.addEventListener("scroll", () =>
   document.documentElement.scrollTo({ top: 0, left: 0 })
 );
 
+function useCurrentFashionGridIndex() {
+  const [currentIndex, setCurrentIndex] = useState(-1);
+
+  return { currentIndex, setCurrentIndex };
+}
+
+export const CurrentFashionGridIndexInfo = createContainer(
+  useCurrentFashionGridIndex
+);
+
 const MainPageReforged = React.memo(() => {
   document.documentElement.classList.add("mainContent");
 
@@ -55,6 +66,9 @@ const MainPageReforged = React.memo(() => {
   const [accumulator, setAccumulator] = useState(0);
   const [previousScreenY, setPreviousScreenY] = useState<number | null>(null);
   const [blind, setBlind] = useState(false);
+  const {
+    setCurrentIndex: setCurrentFashionGridIndex
+  } = CurrentFashionGridIndexInfo.useContainer();
 
   const listenerWheel = useRef((e: WheelEvent) => {
     /**/
@@ -87,13 +101,19 @@ const MainPageReforged = React.memo(() => {
 
       const newBlock = blocks[newBlockIndex] as HTMLDivElement;
 
-      // if (os === "iOS" || os === "iPadOS")
-      //   document.body.scrollTo({ top: newBlock.offsetTop, behavior: "smooth" });
-      // else newBlock.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (os === "iOS" || os === "iPadOS")
+        document.body.scrollTo({ top: newBlock.offsetTop, behavior: "smooth" });
+      else newBlock.scrollIntoView({ behavior: "smooth", block: "start" });
       // alert(`scroll to block ${newBlockIndex}`);
       // console.log(newBlock.offsetTop);
 
       if (scrollOnly) return;
+
+      // if (newBlock.querySelector(".footer")) {
+      //   alert("footer");
+      // }
+      //   document.documentElement.classList.add("footerActive");
+      // else document.documentElement.classList.remove("footerActive");
 
       if (os !== "iOS" && os !== "iPadOS") {
         Array.from(document.body.querySelectorAll(".viewBlock")).forEach(
@@ -106,9 +126,16 @@ const MainPageReforged = React.memo(() => {
           newBlock.children[0].classList.add("activated");
         }
 
-        if (newBlock.querySelector(".fashionGrid"))
+        if (newBlock.querySelector(".fashionGrid")) {
           document.documentElement.classList.add("collectionActive");
-        else document.documentElement.classList.remove("collectionActive");
+          const first =
+            newBlock.querySelector(".fashionGrid") ===
+            document.body.querySelectorAll(".fashionGrid")[0];
+          setCurrentFashionGridIndex(first ? 0 : 1);
+        } else {
+          document.documentElement.classList.remove("collectionActive");
+          setCurrentFashionGridIndex(-1);
+        }
 
         if (currentBlockIndex === newBlockIndex) return;
 
@@ -299,17 +326,9 @@ const MainPageReforged = React.memo(() => {
             <SubscriptionBig />
           </ViewBlock>
 
-          <ViewBlock noSnap forced around id={"contacts"}>
+          <ViewBlock forced around id={"contacts"}>
             <Footer />
           </ViewBlock>
-          {/* <div
-            style={{
-              scrollSnapType: "start",
-              scrollSnapStop: "always",
-              height: 10,
-              background: "green"
-            }}
-          /> */}
         </CentralContainer>
         <Header absolute noWoman />
         <EmailConfirmed />
@@ -319,4 +338,8 @@ const MainPageReforged = React.memo(() => {
   );
 });
 
-export default MainPageReforged;
+export default () => (
+  <CurrentFashionGridIndexInfo.Provider>
+    <MainPageReforged />
+  </CurrentFashionGridIndexInfo.Provider>
+);
