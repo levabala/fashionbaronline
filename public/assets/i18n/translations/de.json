@@ -1,11 +1,11 @@
 {
   "company": { "name": "FASHIONBAR", "postfix": ".online" },
   "tableOfContents": {
-    "howitworks": "Wie Es Funktioniert",
+    "howitworks": "Wie funktioniert es",
     "about": "Über",
     "mainfeature": "Die Main-Funktion",
     "subscribe": "Abonnieren",
-    "collection": "Sammlung",
+    "collection": "Kollektion",
     "contacts": "Kontakte"
   },
   "title": {
