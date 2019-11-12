@@ -55,7 +55,9 @@
     "booking": "Buchung",
     "retailPrice": "Verkaufspreis",
     "subscription": "Abonnement",
-    "inMonth": "im Monat"
+    "inMonth": "im Monat",
+    "lastLabel": "Die gesamte Taschenkollektion steht den Abonnenten nach dem Start des Projekts zur Verfügung",
+    "model": "Modell"
   },
   "subscriptionBig": {
     "title": {
@@ -63,8 +65,8 @@
       "secondary": "Bevorzugte option"
     },
     "variants": {
-      "first": "eine Sache zurzeit.",
-      "second": "owo Dinge zur Zeit",
+      "first": "für eine Tasche zu einem Zeitpunkt",
+      "second": "für eine Tasche zu einem Zeitpunkt",
       "period": "Monat"
     },
     "sendBox": { "send": "Senden" },
@@ -85,7 +87,7 @@
       "Wir haben Ihnen eine E-Mail mit einem Bestätigungs-E-Mail-Link gesendet, wonach Ihnen ein Rabatt von 15% zugewiesen wird",
       "Wenn Sie den Brief nicht erhalten haben, prüfen Sie, ob er möglicherweise in SPAM ist."
     ],
-    "ps": ["Vielen Dank, deine <COMPANYNAME>."]
+    "ps": ["Vielen Dank,", "deine <COMPANYNAME>."]
   },
   "emailConfirmed": {
     "header": "E-Mail bestätigt",

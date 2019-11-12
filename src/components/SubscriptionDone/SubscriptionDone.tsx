@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import Card from '../Card';
 import CloseIcon from '../CloseIcon';
 import TextWithCompanyName from '../TextWithInsertions';
-import { PWrapper } from '../TextWithInsertions/TextWithInsertions';
+import { DivWrapper, PWrapper } from '../TextWithInsertions/TextWithInsertions';
 
 const SubscriptionDone = ({
   visible,
@@ -40,7 +40,8 @@ const SubscriptionDone = ({
               )}
               <p>
                 {TextWithCompanyName(
-                  t("subscriptionDone.ps", { returnObjects: true })
+                  t("subscriptionDone.ps", { returnObjects: true }),
+                  DivWrapper
                 )}
               </p>
             </div>

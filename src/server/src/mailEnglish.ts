@@ -189,14 +189,15 @@ export default function mailEnglish(verifyLink: string) {
                           <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 40px; padding-left: 40px; padding-top: 20px; padding-bottom: 20px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
                           <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:40px;padding-bottom:20px;padding-left:40px;background:white">
                             <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-                              <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Приветствуем вас, спасибо большое, что Вы подписались на новости от fashionbar.online.</p>
+                              <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Welcome! We are grateful for subscribing to the news from FASHIONBAR.</p>
                             </div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
                           <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 40px; padding-left: 40px; padding-top: 20px; padding-bottom: 20px; font-family: Georgia, 'Times New Roman', serif"><![endif]-->
                           <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:40px;padding-bottom:20px;padding-left:40px;background:white">
                             <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-                              <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Мы работаем над запуском проекта и сообщим Вам как только будем готовы.</p>
+                              <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">We are working on the launch of the project and will inform you as soon as we are
+ready.</p>
                             </div>
                           </div>
                           <!--[if mso]></td></tr></table><![endif]-->
@@ -205,7 +206,7 @@ export default function mailEnglish(verifyLink: string) {
                         </div>
                         <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:40px;padding-bottom:20px;padding-left:40px;background:white">
                           <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-                          <a href="${verifyLink}" rel="noopener" style="text-decoration: none; font-weight: bold" target="_blank" class="button">Подтвердить почту</a>
+                          <a href="${verifyLink}" rel="noopener" style="text-decoration: none; font-weight: bold" target="_blank" class="button">Acknowledge the email</a>
                           </div>
                         </div>
                         <!--[if mso]></td></tr></table><![endif]-->
@@ -406,7 +407,6 @@ export default function mailEnglish(verifyLink: string) {
     </body>
   
   </html>
-
 
       `;
 

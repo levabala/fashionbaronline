@@ -1,12 +1,15 @@
 {
-  "company": { "name": "FASHIONBAR", "postfix": ".en línea" },
+  "company": {
+    "name": "FASHIONBAR",
+    "postfix": ".online"
+  },
   "tableOfContents": {
-    "howitworks": "Cómo Funciona",
-    "about": "Acerca de",
-    "mainfeature": "Característica Principal",
-    "subscribe": "Suscribirse",
-    "collection": "Colección",
-    "contacts": "Contactos"
+    "howitworks": "How It Works",
+    "about": "About",
+    "mainfeature": "Main Feature",
+    "subscribe": "Subscribe",
+    "collection": "Collection",
+    "contacts": "Contacts"
   },
   "title": {
     "brends": [
@@ -21,75 +24,82 @@
       "Hermes"
     ],
     "feature": [
-      "Alquiler original de marca de bolsos de suscripción y el intercambio con cualquier otro de nuestra colección cada vez que se desea sólo para <PRECIO>"
+      "Rent original branded bags by subscription and exchange them with any other from our collection whenever you want just for <PRICE>"
     ]
   },
   "subscriptionSmall": {
-    "label": "Ingresa tu dirección de correo electrónico y usted será uno de los primeros en saber acerca de la puesta en marcha del servicio.",
-    "postSubscribe": " y ahora 15% de descuento",
-    "subscribe": "Suscribirse"
+    "label": "Enter your email address and you will be one of the first to know about the launch of the service.",
+    "postSubscribe": " and get now 15% off",
+    "subscribe": "Subscribe"
   },
   "features": [
-    "Comprar un <COMPANYNAME> suscripción",
-    "Elija cualquier bolsa de la <COMPANYNAME> colección.",
-    "Obtener una orden de uno a tres días.",
-    "Cambiar en cualquier momento a cualquier otro de la <COMPANYNAME> colección."
+    "Buy a <COMPANYNAME> subscription",
+    "Choose any bag from the <COMPANYNAME> collection.",
+    "Get an order from one to three days.",
+    "Change at any time to any other from the <COMPANYNAME> collection."
   ],
   "description": [
     [
-      "Arrancamos desde Alemania y asumimos que cada persona puede ser una parte del mundo de la moda."
+      "We start up from Germany and we assume that every person can be a part of the fashion world."
     ],
     [
-      "Hemos recopilado los mejores productos de marcas famosas, nuestra colección se actualiza de manera constante y creciente."
+      "We have collected the best items of famous brands, our collection is constantly being updated and growing."
     ],
     [
-      "Toda la colección está disponible para los miembros del club. Mientras que <COMPANYNAME> es un club privado, que usted puede participar en la invitación. ",
-      "Pero en el futuro queremos que gire <COMPANYNAME> en abrir."
+      "The whole collection is available for the club members. While <COMPANYNAME> is a private club, which you can participate in by invitation only. ",
+      "But in the future we want to turn <COMPANYNAME> into open."
     ],
     [
-      "<COMPANYNAME> los miembros pueden recoger los artículos de nuestra colección para el uso tantas veces como se desee."
+      "<COMPANYNAME> members can pick up items from our collection for use as many times as they want to."
     ]
   ],
-  "mainFeature": "Alquiler original de marca de bolsos de suscripción y el intercambio con cualquier otro de nuestra colección cada vez que se desea sólo para <PRECIO>.",
+  "mainFeature": "Rent original branded bags by subscription and exchange them with any other from our collection whenever you want just for <PRICE>.",
   "fashionGrid": {
-    "booking": "Suscribirse",
-    "retailPrice": "Precio de venta",
-    "subscription": "Suscripción",
-    "lastLabel": "La completa colección de bolsos va a estar disponible para los suscriptores después del lanzamiento del proyecto",
-    "inMonth": "en el mes"
+    "booking": "Subscribe",
+    "retailPrice": "Retail price",
+    "subscription": "Subscription",
+    "lastLabel": "The complete collection of bags will be available to subscribers after the launch of the project",
+    "inMonth": "in month",
+    "model": "Model"
   },
   "subscriptionBig": {
     "title": {
-      "main": "Deje sus datos, de ser el primero en llegar a conocer acerca de la puesta en marcha del servicio, y el libro de las cosas primero:",
-      "secondary": "Opción preferible"
+      "main": "Leave your details, be the first one to get to know about the launch of the service and book things first:",
+      "secondary": "Preferable option"
     },
     "variants": {
-      "first": "una cosa de una sola vez",
-      "second": "dos cosas de una sola vez",
-      "period": "mes"
+      "first": "one bag in one go",
+      "second": "two things in one go",
+      "period": "month"
     },
-    "sendBox": { "send": "Enviar" },
-    "smallText": "*Tus datos son privados"
+    "sendBox": {
+      "send": "Send"
+    },
+    "smallText": "*Your data is private"
   },
   "footer": {
     "contacts": {
-      "lable": "Contactos",
-      "mail": "Correo:",
-      "address": "Dirección:"
+      "lable": "Contacts",
+      "mail": "Mail:",
+      "address": "Address:"
     },
-    "social": { "lable": "Social" }
+    "social": {
+      "lable": "Social"
+    }
   },
   "subscriptionDone": {
-    "title": ["Gracias por el registro"],
+    "title": ["Thank you for registration"],
     "main": [
-      "Estamos contentos de haber encontrado tu correo electrónico y te informaremos tan pronto como el servicio se puso en marcha, también puede tomar parte en una prueba de lanzamiento del proyecto.",
-      "Le hemos enviado un correo electrónico con un enlace del correo de confirmación, después de que un 15% de descuento será asignado a usted.",
-      "Si usted no ha recibido la carta, revise si está en el SPAM."
+      "We are glad to have found your email and we will notify you as soon as the service is launched, you can also take part in a test launch of the project.",
+
+      "We have sent you an email with a confirmation email link, after which a 15% discount will be assigned to you.",
+
+      "If you haven’t received the letter, check whether it is in SPAM."
     ],
-    "ps": ["Gracias. Fielmente, su <COMPANYNAME>"]
+    "ps": ["Thank you. Faithfully,", "your <COMPANYNAME>"]
   },
   "emailConfirmed": {
-    "header": "Correo Electrónico Confirmado",
-    "main": "Su correo electrónico es confirmado, después de que el lanzamiento del proyecto recibirá un 15% de descuento. El final de la colección, no puede tener ninguna bolsas."
+    "header": "Email Confirmed",
+    "main": "Your email is confirmed, after the launch of the project you will receive a 15% discount. The final collection may not have any bags."
   }
 }

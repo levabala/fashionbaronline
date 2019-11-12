@@ -204,7 +204,8 @@ const FashionGrid = ({
                 {bags[i] ? bags[i].name : "Brend Name"}
               </div>
               <div className="model">
-                Model: {bags[i] ? bags[i].model : "Model Name"}
+                {t("fashionGrid.model")}:{" "}
+                {bags[i] ? bags[i].model : "Model Name"}
               </div>
               <div className="details">
                 <div className="priceRetail">

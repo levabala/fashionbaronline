@@ -18,7 +18,7 @@ const Footer = () => {
           <span className="mail">{t("footer.contacts.mail")}</span>
           <span className="value">info@fashionbar.online</span>
           <span className="address">{t("footer.contacts.address")}</span>
-          <span className="value">Nelly Sasshe Strahss 12</span>
+          <span className="value">Stuttgart Stockholmer Platz 1</span>
         </div>
       </div>
       <div className="social">

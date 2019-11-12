@@ -1,6 +1,5 @@
 import './TableOfContents.scss';
 
-import classnames from 'classnames';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -29,16 +28,6 @@ const TableOfContents = () => {
             <span data-blockid={name} onClick={onClick}>
               {t(`tableOfContents.${name}`)}
             </span>
-            {name === TagEnum.Collection ? (
-              <span
-                className={classnames(
-                  "collectionIndex",
-                  currentIndex === -1 ? "hidden" : ""
-                )}
-              >
-                {currentIndex + 1}
-              </span>
-            ) : null}
           </span>
         ))}
       </div>
