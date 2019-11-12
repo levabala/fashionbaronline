@@ -76,6 +76,7 @@
     position: absolute;
     right: -$app-padding-horizontal / 2 + 40px + 50px;
     top: $app-padding-vertical / 2 - 25px;
+    pointer-events: none;
 
     height: 90vh;
     max-height: 785px;

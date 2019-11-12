@@ -63,7 +63,7 @@
   },
   "subscriptionBig": {
     "title": {
-      "main": "Leave your details; be the first one to get to know about the launch of the service and book things first:",
+      "main": "Leave your details, be the first one to get to know about the launch of the service and book things first:",
       "secondary": "Preferable option"
     },
     "variants": {
@@ -87,7 +87,7 @@
     }
   },
   "subscriptionDone": {
-    "title": ["Thank you for registering"],
+    "title": ["Thank you for registration"],
     "main": [
       "We are glad to have found your email and we will notify you as soon as the service is launched, you can also take part in a test launch of the project.",
 

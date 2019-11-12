@@ -26,13 +26,11 @@
   a {
     color: #000;
     text-decoration: none;
-    pointer-events: none;
   }
   li {
     display: block;
     padding: 0px 20px;
     line-height: $row-height;
-    pointer-events: none;
     // border-top: 1px solid #eee;
 
     background-color: transparent;

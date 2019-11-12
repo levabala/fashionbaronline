@@ -207,7 +207,7 @@ sind.</p>
                         </div>
                         <div style="color:#555555;font-family:'Droid Serif', Georgia, Times, 'Times New Roman', serif;line-height:1.2;padding-top:20px;padding-right:40px;padding-bottom:20px;padding-left:40px;background:white">
                           <div style="font-family: 'Droid Serif', Georgia, Times, 'Times New Roman', serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
-                          <a href="${verifyLink}" rel="noopener" style="text-decoration: none; font-weight: bold" target="_blank" class="button">Bestätigungs-E-Mail</a>
+                          <a href="${verifyLink}" rel="noopener" style="text-decoration: none; font-weight: bold" target="_blank" class="button">E-Mail bestätigen</a>
                           </div>
                         </div>
                         <!--[if mso]></td></tr></table><![endif]-->
