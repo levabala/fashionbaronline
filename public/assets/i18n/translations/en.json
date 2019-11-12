@@ -24,46 +24,51 @@
       "Hermes"
     ],
     "feature": [
-      "Rent original branded bags by subscription and swith them from our collection whenevery you want just for <PRICE>"
+      "Rent original branded bags by subscription and exchange them with any other from our collection whenever you want just for <PRICE>"
     ]
   },
   "subscriptionSmall": {
-    "label": "Enter your email address and you will be the first who will be notified about the service's start.",
+    "label": "Enter your email address and you will be one of the first to know about the launch of the service.",
     "postSubscribe": " and get now 15% off",
     "subscribe": "Subscribe"
   },
   "features": [
-    "Buy <COMPANYNAME> subscription",
-    "Choose any bag from <COMPANYNAME> catalog",
-    "Get your order in 1-3 days",
-    "Use our collection you want to from <COMPANYNAME> collection"
+    "Buy a <COMPANYNAME> subscription",
+    "Choose any bag from the <COMPANYNAME> collection.",
+    "Get an order from one to three days.",
+    "Change at any time to any other from the <COMPANYNAME> collection."
   ],
   "description": [
-    ["We are startup from Germany."],
-    ["We've collected the best things."],
     [
-      "Out collection is open for every club member. Now <COMPANYNAME> is just a closed club. You can become a member only by an invitation. ",
-      "But in future we want to make <COMPANYNAME> opened club."
+      "We start up from Germany and we assume that every person can be a part of the fashion world."
     ],
     [
-      "Members of <COMPANYNAME> can take things from our collection anytime they want to."
+      "We have collected the best items of famous brands, our collection is constantly being updated and growing."
+    ],
+    [
+      "The whole collection is available for the club members. While <COMPANYNAME> is a private club, which you can participate in by invitation only. ",
+      "But in the future we want to turn <COMPANYNAME> into open."
+    ],
+    [
+      "<COMPANYNAME> members can pick up items from our collection for use as many times as they want to."
     ]
   ],
-  "mainFeature": "Use our collection <COMPANYNAME> switch your things whenevery you want to just <PRICE>.",
+  "mainFeature": "Rent original branded bags by subscription and exchange them with any other from our collection whenever you want just for <PRICE>.",
   "fashionGrid": {
     "booking": "Subscribe",
     "retailPrice": "Retail price",
     "subscription": "Subscription",
-    "lastLabel": "The complete collection of bags will be available to subscribers after the launch of the project"
+    "lastLabel": "The complete collection of bags will be available to subscribers after the launch of the project",
+    "inMonth": "in month"
   },
   "subscriptionBig": {
     "title": {
-      "main": "Left you data here please and you'll be notified about the service's launch as soon as it happens",
+      "main": "Leave your details; be the first one to get to know about the launch of the service and book things first:",
       "secondary": "Preferable option"
     },
     "variants": {
-      "first": "one thing at time",
-      "second": "owo things at time",
+      "first": "one thing in one go",
+      "second": "two things in one go",
       "period": "month"
     },
     "sendBox": {
@@ -82,18 +87,18 @@
     }
   },
   "subscriptionDone": {
-    "title": "Thanks for your registration",
+    "title": ["Thank you for registering"],
     "main": [
-      "We are very glad that you have left your email and will inform you about when our service will be launched, you will also be able to take part in the test launch of the project.",
+      "We are glad to have found your email and we will notify you as soon as the service is launched, you can also take part in a test launch of the project.",
 
-      "We have sent you an email with a link to confirm your mail. To get a 15% discount please confirm your email via the link in the received email.",
+      "We have sent you an email with a confirmation email link, after which a 15% discount will be assigned to you.",
 
-      "If you have not received the email please click on this link 'Send email again'"
+      "If you haven’t received the letter, check whether it is in SPAM."
     ],
-    "ps": "Thanks for your attention."
+    "ps": ["Thank you. Faithfully, your <COMPANYNAME>"]
   },
   "emailConfirmed": {
     "header": "Email Confirmed",
-    "main": "Your email is confirmed, after the launch of the project you will be saved 15% discount"
+    "main": "Your email is confirmed, after the launch of the project you will receive a 15% discount. The final collection may not have any bags."
   }
 }

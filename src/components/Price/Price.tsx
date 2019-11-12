@@ -1,6 +1,7 @@
 import './Price.scss';
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { VariablesContainer } from '../../App';
 
@@ -14,6 +15,7 @@ const Price = ({
   noBold?: boolean;
 }) => {
   const { subscriptionCost } = VariablesContainer.useContainer();
+  const { t } = useTranslation();
 
   return (
     <span className="price">
@@ -23,7 +25,9 @@ const Price = ({
       >
         €{customCost || subscriptionCost}
       </span>
-      <span className="period">{noMonth ? "" : " in month"}</span>
+      <span className="period">
+        {noMonth ? "" : ` ${t("fashionGrid.inMonth")}`}
+      </span>
     </span>
   );
 };

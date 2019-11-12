@@ -102,7 +102,7 @@ const MainPageReforged = React.memo(() => {
       const newBlock = blocks[newBlockIndex] as HTMLDivElement;
 
       if (os === "iOS" || os === "iPadOS")
-        document.body.scrollTo({ top: newBlock.offsetTop, behavior: "smooth" });
+        document.body.scrollTo({ top: newBlock.offsetTop, behavior: "auto" });
       else newBlock.scrollIntoView({ behavior: "smooth", block: "start" });
       // alert(`scroll to block ${newBlockIndex}`);
       // console.log(newBlock.offsetTop);

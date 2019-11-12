@@ -60,11 +60,14 @@ const SubscriptionBlock = () => {
 
     const { choosenBag } = window as any;
 
+    const language: string =
+      (window.navigator as any).userLanguage || window.navigator.language;
     const sendingData = {
       choosenBag,
       date: time_zone.current_time,
       email: emailAddress,
       id: sha256(ip),
+      language,
       location: {
         city,
         country

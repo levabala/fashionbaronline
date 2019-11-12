@@ -21,44 +21,49 @@
       "Hermes"
     ],
     "feature": [
-      "Mieten Sie original-Marken-Taschen, die von Abonnements und wechseln Sie Sie aus unserer Sammlung whenevery Sie wollen nur <PRICE>"
+      "Mieten Sie Original-Markentaschen im Abonnement und tauschen Sie sie mit anderen aus unserer Kollektion aus, wann immer Sie möchten."
     ]
   },
   "subscriptionSmall": {
-    "label": "Geben Sie Ihre E-Mail-Adresse und Sie werden zu den ersten, die informiert werden über den Dienst zu starten.",
-    "postSubscribe": " und erhalten jetzt 15% Rabatt",
+    "label": "Geben Sie Ihre E-Mail-Adresse ein und Sie werden als einer der Ersten über den Start des Dienstes informiert.",
+    "postSubscribe": " und erhalten 15% Rabatt",
     "subscribe": "Abonnieren"
   },
   "features": [
-    "Kaufen <COMPANYNAME> Abonnement",
-    "Wählen Sie eine beliebige Tasche aus <COMPANYNAME> Katalog",
-    "Holen Sie Ihre Bestellung in 1-3 Tagen",
-    "Nutzen Sie unsere Kollektion, die Sie wollen aus <COMPANYNAME> Sammlung"
+    "Kaufen Sie ein <COMPANYNAME>-Abonnement.",
+    "Wählen Sie eine beliebige Tasche aus der <COMPANYNAME>-Kollektion.",
+    "Erhalten Sie eine Bestellung von einem bis drei Tagen.",
+    "Wechseln Sie jederzeit zu einem anderen aus der <COMPANYNAME>-Kollektion."
   ],
   "description": [
-    ["Wir sind startup aus Deutschland."],
-    ["Wir haben gesammelt die besten Dinge."],
     [
-      "Out-Sammlung ist offen für jedes club-Mitglied. Jetzt <COMPANYNAME> ist nur ein geschlossener club. Sie können Mitglied werden, nur durch eine Einladung. ",
-      "Aber in der Zukunft, die wir wollen zu machen <COMPANYNAME> geöffnet club."
+      "Wir sind aus Deutschland angereist und glauben, dass jeder Mensch ein Teil der Modewelt sein kann."
     ],
     [
-      "Mitglieder von <COMPANYNAME> kann Dinge aus unserer Sammlung Wann immer Sie möchten."
+      "Wir haben die besten Artikel von bekannten Marken gesammelt, unsere Kollektion wird ständig aktualisiert und erweitert."
+    ],
+    [
+      "Die gesamte Sammlung steht Clubmitgliedern zur Verfügung. Während <COMPANYNAME> ein privater Club ist, an dem Sie nur auf Einladung teilnehmen können. ",
+      "Aber in Zukunft wollen wir die <COMPANYNAME> öffnen."
+    ],
+    [
+      "<COMPANYNAME>-Mitglieder können Artikel aus unserer Sammlung beliebig oft verwenden."
     ]
   ],
-  "mainFeature": "Nutzen Sie unsere Sammlung <COMPANYNAME> schalten Sie Ihre Sachen whenevery möchten Sie nur <PRICE>.",
+  "mainFeature": "Nach dem Start des Projekts steht den Abonnenten eine vollständige Sammlung von Taschen zur Verfügung.",
   "fashionGrid": {
     "booking": "Buchung",
     "retailPrice": "Verkaufspreis",
-    "subscription": "Abonnement"
+    "subscription": "Abonnement",
+    "inMonth": "im Monat"
   },
   "subscriptionBig": {
     "title": {
-      "main": "Linken Sie Daten bitte hier ein und Sie werden benachrichtigt, über den Dienst zu starten, sobald es passiert",
+      "main": "Hinterlassen Sie Ihre Daten, informieren Sie sich zuerst über den Start des Dienstes und buchen Sie zuerst:",
       "secondary": "Bevorzugte option"
     },
     "variants": {
-      "first": "eine Sache auf Zeit",
+      "first": "eine Sache zurzeit.",
       "second": "owo Dinge zur Zeit",
       "period": "Monat"
     },
@@ -74,12 +79,16 @@
     "social": { "lable": "Soziale" }
   },
   "subscriptionDone": {
-    "title": "Vielen Dank für Ihre Registrierung",
+    "title": ["Vielen Dank für Ihre Anmeldung"],
     "main": [
-      "Wir sind sehr froh, dass Sie Links Ihre E-Mail und informiert Sie darüber, Wann der Dienst gestartet werden, werden Sie auch in der Lage sein zur Teilnahme an der Prüfung Start des Projekts.",
-      "Wir haben Ihnen eine email zugesandt mit einem link zur Bestätigung Ihrer E-mail. Auf erhalten Sie einen 15% Rabatt-bitte bestätigen Sie Ihre E-Mail über den link in der empfangenen E-Mail.",
-      "Wenn Sie nicht erhalten haben, die E-Mail klicken Sie bitte auf den link \"E-Mail Senden wieder\""
+      "Wir freuen uns sehr, dass Sie Ihre E-Mail hinterlassen haben und wissen, wann der Dienst gestartet wurde. Sie können auch an einem Teststart des Projekts teilnehmen.",
+      "Wir haben Ihnen eine E-Mail mit einem Bestätigungs-E-Mail-Link gesendet, wonach Ihnen ein Rabatt von 15% zugewiesen wird",
+      "Wenn Sie den Brief nicht erhalten haben, prüfen Sie, ob er möglicherweise in SPAM ist."
     ],
-    "ps": "Vielen Dank für Ihre Aufmerksamkeit."
+    "ps": ["Vielen Dank, deine <COMPANYNAME>."]
+  },
+  "emailConfirmed": {
+    "header": "E-Mail bestätigt",
+    "main": "Ihre E-Mail-Adresse wird bestätigt. Nach dem Start des Projekts erhalten Sie 15% Rabatt."
   }
 }

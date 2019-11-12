@@ -28,13 +28,21 @@ const SubscriptionDone = ({
             <img src="/assets/images/follow-subscriptionDone.jpg" alt="a bag" />
           </div>
           <div className="right">
-            <div className="sc_header">{t("subscriptionDone.title")}</div>
+            <div className="sc_header">
+              {TextWithCompanyName(
+                t("subscriptionDone.title", { returnObjects: true })
+              )}
+            </div>
             <div className="message">
               {TextWithCompanyName(
                 t("subscriptionDone.main", { returnObjects: true }),
                 PWrapper
               )}
-              <p>{t("subscriptionDone.ps")}</p>
+              <p>
+                {TextWithCompanyName(
+                  t("subscriptionDone.ps", { returnObjects: true })
+                )}
+              </p>
             </div>
             <CloseIcon className="closeIcon" onClick={closeCallback} />
           </div>

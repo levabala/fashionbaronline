@@ -18,7 +18,7 @@
   }
 
   &.visible {
-    display: flex;
+    display: block;
     justify-content: space-around;
     flex-direction: column;
   }
@@ -76,6 +76,7 @@
       height: calc(100% - #{$padding-ver * 2});
 
       padding: $card-padding $card-padding * 2;
+      text-align: center;
 
       @media screen and (max-width: $mobile-version-max-width) {
         // padding: $padding-ver $padding-hor;
