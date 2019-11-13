@@ -15,6 +15,12 @@ export const SpanWrapper = ({ children }: { children: React.ReactNode }) => (
   <span>{children}</span>
 );
 
+export const SpanOnePerLineWrapper = ({
+  children
+}: {
+  children: React.ReactNode;
+}) => <span style={{ display: "block" }}>{children}</span>;
+
 const TextWithInsertions = (strings: string[], Wrapper = SpanWrapper) => {
   return strings.map((str, i) => {
     const arr0 = str.split("<COMPANYNAME>");

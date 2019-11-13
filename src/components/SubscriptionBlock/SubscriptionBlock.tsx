@@ -6,6 +6,7 @@ import detect from 'mobile-detect';
 import React, { useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import i18n from '../../i18n';
 import Button from '../Button';
 import SubscriptionDone from '../SubscriptionDone';
 import TextInput from '../TextInput';
@@ -53,15 +54,17 @@ const SubscriptionBlock = () => {
   const sendEmail = async (emailAddress: string) => {
     document.body.classList.add("subscriptionDoneVisible");
 
-    const locationData = await (await fetch(
-      `https://api.ipgeolocation.io/ipgeo?apiKey=${IPGeolocationApiKey}`
-    )).json();
+    const locationData = await (
+      await fetch(
+        `https://api.ipgeolocation.io/ipgeo?apiKey=${IPGeolocationApiKey}`
+      )
+    ).json();
     const { continent_name: country, city, time_zone, ip } = locationData;
 
     const { choosenBag } = window as any;
 
-    const language: string =
-      (window.navigator as any).userLanguage || window.navigator.language;
+    const language = i18n.language;
+    console.log(language);
     const sendingData = {
       choosenBag,
       date: time_zone.current_time,

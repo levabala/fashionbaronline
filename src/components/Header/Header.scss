@@ -6,7 +6,7 @@
 
   transition: opacity 0.5s ease-in-out;
   @media screen and (max-width: $mobile-version-max-width) {
-    background: inherit;
+    // background: inherit;
     .collectionActive & {
       opacity: 0;
       transition: opacity 0s ease-in-out;
