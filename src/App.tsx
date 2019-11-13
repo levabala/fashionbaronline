@@ -26,7 +26,7 @@ export interface Variables {
 
 function useVariables(): Variables {
   const [variables, setVariables] = useState<Variables>({
-    subscriptionCost: 100
+    subscriptionCost: 199
   });
 
   useMemo(

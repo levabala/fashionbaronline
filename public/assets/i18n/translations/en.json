@@ -29,28 +29,25 @@
   },
   "subscriptionSmall": {
     "label": "Enter your email address and you will be one of the first to know about the launch of the service.",
-    "postSubscribe": " and get now 15% off",
+    "postSubscribe": " and get 15% off",
     "subscribe": "Subscribe"
   },
   "features": [
     "Buy a <COMPANYNAME> subscription",
     "Choose any bag from the <COMPANYNAME> collection.",
-    "Get an order from one to three days.",
+    "Get your order in 1-3 days.",
     "Change at any time to any other from the <COMPANYNAME> collection."
   ],
   "description": [
     [
-      "We start up from Germany and we assume that every person can be a part of the fashion world."
-    ],
-    [
       "We have collected the best items of famous brands, our collection is constantly being updated and growing."
     ],
     [
-      "The whole collection is available for the club members. While <COMPANYNAME> is a private club, which you can participate in by invitation only. ",
-      "But in the future we want to turn <COMPANYNAME> into open."
+      "The whole collection is available for the club members. Currently <COMPANYNAME> is a private club, which you can join only by invitation. ",
+      "But in the future we want to make <COMPANYNAME> open."
     ],
     [
-      "<COMPANYNAME> members can pick up items from our collection for use as many times as they want to."
+      "<COMPANYNAME> members can pick up items from our collection as many times as they want to."
     ]
   ],
   "mainFeature": "Rent original branded bags by subscription and exchange them with any other from our collection whenever you want just for <PRICE>.",
@@ -59,12 +56,12 @@
     "retailPrice": "Retail price",
     "subscription": "Subscription",
     "lastLabel": "The complete collection of bags will be available to subscribers after the launch of the project",
-    "inMonth": "in month",
+    "inMonth": "a month",
     "model": "Model"
   },
   "subscriptionBig": {
     "title": {
-      "main": "Leave your details, be the first one to get to know about the launch of the service and book things first:",
+      "main": "Leave your email, and be the first to find out about the launch and to book the items:",
       "secondary": "Preferable option"
     },
     "variants": {

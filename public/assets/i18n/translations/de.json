@@ -21,7 +21,7 @@
       "Hermes"
     ],
     "feature": [
-      "Mieten Sie Original-Markentaschen im Abonnement und tauschen Sie sie mit anderen aus unserer Kollektion aus, wann immer Sie möchten."
+      "Mieten Sie Original-Markentaschen im Abonnement und tauschen Sie sie mit anderen aus unserer Kollektion aus, wann immer Sie möchten, nur 199 euro pro monat."
     ]
   },
   "subscriptionSmall": {
@@ -30,24 +30,18 @@
     "subscribe": "Abonnieren"
   },
   "features": [
-    "Kaufen Sie ein <COMPANYNAME>-Abonnement.",
+    "Kaufen Sie ein Abo in FASHIONBAR",
     "Wählen Sie eine beliebige Tasche aus der <COMPANYNAME>-Kollektion.",
-    "Erhalten Sie eine Bestellung von einem bis drei Tagen.",
-    "Wechseln Sie jederzeit zu einem anderen aus der <COMPANYNAME>-Kollektion."
+    "Sie erhalten Ihre Bestellung innerhalb von 1-3 Tagen",
+    "Wechseln aus der FASHIONBAR- Kollektion jederzeit möglich"
   ],
   "description": [
     [
-      "Wir sind aus Deutschland angereist und glauben, dass jeder Mensch ein Teil der Modewelt sein kann."
+      "Wir haben die besten Marken in unserer Kollektion zusammengestellt. Kollektion wird ständig aktualisiert und erweitert."
     ],
+    ["Die gesamte Kollektion steht unseren Mitgliedern zur Verfügung."],
     [
-      "Wir haben die besten Artikel von bekannten Marken gesammelt, unsere Kollektion wird ständig aktualisiert und erweitert."
-    ],
-    [
-      "Die gesamte Sammlung steht Clubmitgliedern zur Verfügung. Während <COMPANYNAME> ein privater Club ist, an dem Sie nur auf Einladung teilnehmen können. ",
-      "Aber in Zukunft wollen wir die <COMPANYNAME> öffnen."
-    ],
-    [
-      "<COMPANYNAME>-Mitglieder können Artikel aus unserer Sammlung beliebig oft verwenden."
+      "FASHIONBAR-Mitglieder dürfen aus unserer Kollektion beliebig oft auswählen."
     ]
   ],
   "mainFeature": "Nach dem Start des Projekts steht den Abonnenten eine vollständige Sammlung von Taschen zur Verfügung.",
@@ -61,7 +55,7 @@
   },
   "subscriptionBig": {
     "title": {
-      "main": "Hinterlassen Sie Ihre Daten, informieren Sie sich zuerst über den Start des Dienstes und buchen Sie zuerst:",
+      "main": "Hinterlassen Sie bitte Ihre E-Mail-Adresse, wir informieren Sie gerne über den Eröffnungstermin und bestellen Sie dann als Erstes:",
       "secondary": "Bevorzugte option"
     },
     "variants": {
