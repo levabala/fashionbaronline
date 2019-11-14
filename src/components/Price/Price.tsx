@@ -26,7 +26,7 @@ const Price = ({
         €{customCost || subscriptionCost}
       </span>
       <span className="period">
-        {noMonth ? "" : ` ${t("fashionGrid.inMonth")}`}
+        {noMonth ? "" : `${t("fashionGrid.inMonth")}`}
       </span>
     </span>
   );

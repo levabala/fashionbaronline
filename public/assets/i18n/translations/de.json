@@ -21,7 +21,7 @@
       "Hermes"
     ],
     "feature": [
-      "Mieten Sie Original-Markentaschen im Abonnement und tauschen Sie sie mit anderen aus unserer Kollektion aus, wann immer Sie möchten, nur 199 euro pro monat."
+      "Mieten Sie Original-Markentaschen im Abonnement und tauschen Sie sie mit anderen aus unserer Kollektion aus, wann immer Sie möchten, nur <PRICE> euro pro monat."
     ]
   },
   "subscriptionSmall": {
@@ -49,7 +49,7 @@
     "booking": "Buchung",
     "retailPrice": "Verkaufspreis",
     "subscription": "Abonnement",
-    "inMonth": "im Monat",
+    "inMonth": "/Monat",
     "lastLabel": "Die gesamte Taschenkollektion steht den Abonnenten nach dem Start des Projekts zur Verfügung",
     "model": "Modell"
   },
@@ -59,8 +59,8 @@
       "secondary": "Bevorzugte option"
     },
     "variants": {
-      "first": "für eine Tasche zu einem Zeitpunkt",
-      "second": "für eine Tasche zu einem Zeitpunkt",
+      "first": "für eine Tasche",
+      "second": "für eine Tasche",
       "period": "Monat"
     },
     "sendBox": { "send": "Senden" },
@@ -77,8 +77,8 @@
   "subscriptionDone": {
     "title": ["Vielen Dank für Ihre Anmeldung"],
     "main": [
-      "Wir freuen uns sehr, dass Sie Ihre E-Mail hinterlassen haben und wissen, wann der Dienst gestartet wurde. Sie können auch an einem Teststart des Projekts teilnehmen.",
-      "Wir haben Ihnen eine E-Mail mit einem Bestätigungs-E-Mail-Link gesendet, wonach Ihnen ein Rabatt von 15% zugewiesen wird",
+      "Wir freuen uns sehr,dass Sie Ihre E-Mail hinterlassen habe. Wir werden Sie   benachrichtigen, sobald wir eröffnen.",
+      "Wir haben Ihnen eine E-Mail mit einem Bestätigungs-E-Mail-Link gesendet, wonach Ihnen ein Rabatt von 15% zugewiesen wird.",
       "Wenn Sie den Brief nicht erhalten haben, prüfen Sie, ob er möglicherweise in SPAM ist."
     ],
     "ps": ["Vielen Dank,", "deine <COMPANYNAME>."]

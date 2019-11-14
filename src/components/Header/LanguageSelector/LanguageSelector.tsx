@@ -1,5 +1,6 @@
 import './LanguageSelector.scss';
 
+import Cookies from 'js-cookie';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -16,7 +17,9 @@ const LanguageSelector = () => {
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     console.log(event.currentTarget.dataset.code);
-    i18n.changeLanguage(event.currentTarget.dataset.code || "en");
+    const lang = event.currentTarget.dataset.code || "en";
+    i18n.changeLanguage(lang);
+    Cookies.set("language", lang);
   };
 
   const options: Array<{ code: string; value: string }> = [

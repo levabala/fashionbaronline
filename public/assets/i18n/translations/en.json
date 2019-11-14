@@ -42,10 +42,7 @@
     [
       "We have collected the best items of famous brands, our collection is constantly being updated and growing."
     ],
-    [
-      "The whole collection is available for the club members. Currently <COMPANYNAME> is a private club, which you can join only by invitation. ",
-      "But in the future we want to make <COMPANYNAME> open."
-    ],
+    ["The whole collection is available for the club members. "],
     [
       "<COMPANYNAME> members can pick up items from our collection as many times as they want to."
     ]
@@ -56,7 +53,7 @@
     "retailPrice": "Retail price",
     "subscription": "Subscription",
     "lastLabel": "The complete collection of bags will be available to subscribers after the launch of the project",
-    "inMonth": "a month",
+    "inMonth": "/month",
     "model": "Model"
   },
   "subscriptionBig": {
@@ -87,13 +84,13 @@
   "subscriptionDone": {
     "title": ["Thank you for registration"],
     "main": [
-      "We are glad to have found your email and we will notify you as soon as the service is launched, you can also take part in a test launch of the project.",
+      "Thank you for leaving your email and we will notify you as soon as the service is launched. ",
 
-      "We have sent you an email with a confirmation email link, after which a 15% discount will be assigned to you.",
+      "We have sent you an email with a confirmation link. After confirmation you will get a 15%.",
 
-      "If you haven’t received the letter, check whether it is in SPAM."
+      "If you haven’t received the letter, check the SPAM folder."
     ],
-    "ps": ["Thank you. Faithfully,", "your <COMPANYNAME>"]
+    "ps": ["Thank you. Yours faithfully,", "<COMPANYNAME>"]
   },
   "emailConfirmed": {
     "header": "Email Confirmed",

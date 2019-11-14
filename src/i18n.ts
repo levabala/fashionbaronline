@@ -1,9 +1,12 @@
 import i18n from 'i18next';
 import Backend from 'i18next-xhr-backend';
+import Cookies from 'js-cookie';
 import { initReactI18next } from 'react-i18next';
 
 const language: string =
-  (window.navigator as any).userLanguage || window.navigator.language;
+  Cookies.get("language") ||
+  (window.navigator as any).userLanguage ||
+  window.navigator.language;
 
 i18n
   .use(Backend)
