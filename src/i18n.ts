@@ -3,10 +3,23 @@ import Backend from 'i18next-xhr-backend';
 import Cookies from 'js-cookie';
 import { initReactI18next } from 'react-i18next';
 
+import { key as IPGeolocationApiKey } from './components/SubscriptionBlock/apikey.private.json';
+
 const language: string =
   Cookies.get("language") ||
   (window.navigator as any).userLanguage ||
   window.navigator.language;
+
+(async () => {
+  const locationData = await (
+    await fetch(
+      `https://api.ipgeolocation.io/ipgeo?apiKey=${IPGeolocationApiKey}`
+    )
+  ).json();
+  const { country_name } = locationData;
+  console.log({ country_name });
+  if (country_name === "Germany") i18n.changeLanguage("de");
+})();
 
 i18n
   .use(Backend)
