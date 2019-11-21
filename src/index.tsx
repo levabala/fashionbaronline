@@ -1,5 +1,6 @@
 import './index.scss';
 
+import Cookies from 'js-cookie';
 import detect from 'mobile-detect';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -88,3 +89,10 @@ ReactDOM.render(<App />, document.body);
 // ReactDOM.render(<SnapTest />, document.getElementById("root"));
 
 // register ();
+
+const visited = Cookies.get("alreadyVisited");
+if (!visited) {
+  Cookies.set("alreadyVisited", "true");
+
+  fetch("registerUniqualUser");
+}

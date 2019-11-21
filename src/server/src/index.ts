@@ -53,6 +53,13 @@ interface IBagData {
   price: number;
 }
 
+interface IDay extends Document {
+  time: Date;
+  registrations: number;
+  visits: number;
+  subscriptions: number;
+}
+
 type IBag = IBagData & Document;
 
 const registartionSchema = new mongoose.Schema({
@@ -88,12 +95,22 @@ const bagSchema = new mongoose.Schema({
   price: Number
 });
 
+const daySchema = new mongoose.Schema({
+  _id: String,
+  registrations: Number,
+  subscriptions: Number,
+  time: Date,
+  visits: Number
+});
+
 const Registration = mongoose.model<IRegistration>(
   "Registration",
   registartionSchema
 );
 
 const Bag = mongoose.model<IBag>("Bag", bagSchema);
+
+const Day = mongoose.model<IDay>("Day", daySchema);
 
 Bag.find()
   .exec()
@@ -104,6 +121,10 @@ Bag.find()
     );
   });
 
+Day.find()
+  .exec()
+  .then(days => console.log(`stored data for ${days.length} days`));
+
 const { password } = require("../password.json");
 console.log({ password });
 
@@ -112,12 +133,12 @@ console.log({ password });
 const buildPath = "../../build";
 const bagsFolderPath = "../../public/data/bags";
 const brendPhotoPrefix = "Depositphotos_";
-const dataPath = "./build/data";
+// const dataPath = "./build/data";
 const bagsClientPath = "data/bags";
 
 const PORT = 3000;
 
-const foldersToCreate = ["./build", "./build/data"];
+// const foldersToCreate = ["./build", "./build/data"];
 
 const bagsMapJSON = loadBrendsData(bagsFolderPath);
 
@@ -156,7 +177,9 @@ http
         filePathAbs === "/registrations" ||
         filePathAbs === "/manageBags" ||
         filePathAbs === "/unsubscribe" ||
-        filePathAbs === "/verifyEmail"
+        filePathAbs === "/verifyEmail" ||
+        filePathAbs === "/getDaysData" ||
+        filePathAbs === "/registerUniqualUser"
           ? "/index.html"
           : filePathAbs;
       // const filePathDecoded = decodeURIComponent(
@@ -201,6 +224,10 @@ http
     };
 
     switch (requestPath) {
+      case "/registerUniqualUser": {
+        addVisit();
+        break;
+      }
       case "/unsubscribe": {
         console.log("user has been unsubscribed");
         defaultChecker();
@@ -249,6 +276,8 @@ http
 
           registration.verified = true;
           registration.save();
+
+          addSubscription();
         }
         console.log(
           `${email} was verified (or not? who knows - maybe it's undefined)`
@@ -344,6 +373,42 @@ http
           } catch (e) {
             console.log(e);
             response.end("error");
+          }
+        });
+
+        break;
+      }
+      case "/getDaysData": {
+        let tokensBody = "";
+        request.on("data", data => {
+          tokensBody += data;
+
+          // Too much POST data, kill the connection!
+          // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+          if (tokensBody.length > 1e6) request.connection.destroy();
+        });
+
+        request.on("end", async () => {
+          try {
+            const recievedToken = JSON.parse(tokensBody);
+            const { token } = recievedToken;
+
+            const tokenIndex = authenticationTokensPage.indexOf(token);
+            if (tokenIndex === -1) {
+              response.writeHead(403);
+              response.end();
+            } else {
+              authenticationTokensPage.splice(tokenIndex, 1);
+
+              console.log("'getDaysData' request approved");
+
+              const days = await Day.find().exec();
+              const jsons = days.map(d => d.toJSON());
+
+              response.end(JSON.stringify(jsons));
+            }
+          } catch (e) {
+            console.log(e);
           }
         });
 
@@ -489,7 +554,9 @@ http
               id
             });
 
-            response.end("already exists");
+            addRegistration();
+
+            response.end("done");
           } catch (e) {
             console.log(e);
             response.writeHead(400);
@@ -544,6 +611,46 @@ async function sendHelloEmail(
 
   console.log("mail sent successfully");
 }
+
+async function addSmth(type: keyof IDay): Promise<void> {
+  const date = new Date();
+  const dateStamp = [date.getFullYear(), date.getMonth(), date.getDate()].join(
+    ""
+  );
+  const day = await Day.findById(dateStamp).exec();
+
+  if (!day) {
+    const newDay = new Day({
+      _id: dateStamp,
+      registrations: 0,
+      subscriptions: 0,
+      time: date,
+      visits: 0,
+      ...{ [type]: 1 }
+    });
+
+    await newDay.save();
+    console.log("new day instance created!");
+  } else {
+    day[type]++;
+    const updatedDay = await day.save();
+
+    console.log(`new ${type}: ${updatedDay[type] - 1} -> ${updatedDay[type]}`);
+  }
+}
+
+async function addRegistration(): Promise<void> {
+  addSmth("registrations");
+}
+
+async function addSubscription(): Promise<void> {
+  addSmth("subscriptions");
+}
+
+async function addVisit(): Promise<void> {
+  addSmth("visits");
+}
+
 async function isUnique(data: IRegistartionData): Promise<boolean> {
   const { email } = data;
 
