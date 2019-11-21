@@ -77,7 +77,7 @@
   "subscriptionDone": {
     "title": ["Vielen Dank für Ihre Anmeldung"],
     "main": [
-      "Wir freuen uns sehr,dass Sie Ihre E-Mail hinterlassen habe. Wir werden Sie   benachrichtigen, sobald wir eröffnen.",
+      "Wir freuen uns sehr,dass Sie Ihre E-Mail hinterlassen haben. Wir werden Sie   benachrichtigen, sobald wir eröffnen.",
       "Wir haben Ihnen eine E-Mail mit einem Bestätigungs-E-Mail-Link gesendet, wonach Ihnen ein Rabatt von 15% zugewiesen wird.",
       "Wenn Sie den Brief nicht erhalten haben, prüfen Sie, ob er möglicherweise in SPAM ist."
     ],
@@ -85,6 +85,6 @@
   },
   "emailConfirmed": {
     "header": "E-Mail bestätigt",
-    "main": "Ihre E-Mail-Adresse wird bestätigt. Nach dem Start des Projekts erhalten Sie 15% Rabatt."
+    "main": "Ihre E-Mail-Adresse ist bestätigt. Nach dem Start des Projekts erhalten Sie 15% Rabatt."
   }
 }
