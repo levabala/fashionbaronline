@@ -133,7 +133,7 @@ const Title = () => {
   }, [brendsJXS]);
 
   return (
-    <div className="title">
+    <div className="title inheritMonthFontSize">
       <div className="brends">{brendsJXS}</div>
       <div
         className={classnames("feature", !maxWidth ? "hidden" : "")}

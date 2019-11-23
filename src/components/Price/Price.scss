@@ -3,5 +3,9 @@
 
   .period {
     font-size: 12px;
+
+    .inheritMonthFontSize & {
+      font-size: inherit;
+    }
   }
 }

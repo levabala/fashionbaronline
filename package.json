@@ -17,6 +17,7 @@
     "csv-generate": "^3.2.3",
     "csv-parse": "^4.4.3",
     "date-fns": "^2.2.1",
+    "detect-browser": "^4.8.0",
     "history": "^4.9.0",
     "i18next": "^17.0.6",
     "i18next-xhr-backend": "^3.0.0",
@@ -50,7 +51,8 @@
     "start:server:prod": "cd ./src/server && tsc && node ./app.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postbuild": "cd build && find . -type f -name \"*.js\" -exec gzip {} \\; && cd ../"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -78,6 +80,7 @@
     "@types/sendmail": "^1.4.2",
     "@types/smoothscroll-polyfill": "^0.3.1",
     "@types/uuid": "^3.4.5",
+    "compression-webpack-plugin": "^3.0.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-immutable": "^6.0.1",

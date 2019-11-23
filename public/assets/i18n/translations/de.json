@@ -49,7 +49,7 @@
     "booking": "Buchung",
     "retailPrice": "Verkaufspreis",
     "subscription": "Abonnement",
-    "inMonth": "/Monat",
+    "inMonth": "/monat",
     "lastLabel": "Die gesamte Taschenkollektion steht den Abonnenten nach dem Start des Projekts zur Verfügung",
     "model": "Modell"
   },
@@ -61,7 +61,7 @@
     "variants": {
       "first": "für eine Tasche",
       "second": "für eine Tasche",
-      "period": "Monat"
+      "period": "monat"
     },
     "sendBox": { "send": "Senden" },
     "smallText": "*Ihre Daten privat"

@@ -29,7 +29,23 @@
       }
       gtag("js", new Date());
 
-      gtag("config", "UA-145230356-1");
+      gtag("config", "AW-708724898");
+    </script>
+    <!-- Event snippet for Email conversion page
+    In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function() {
+          if (typeof url != "undefined") {
+            window.location = url;
+          }
+        };
+        gtag("event", "conversion", {
+          send_to: "AW-708724898/7jZQCJKZjLUBEKKR-dEC",
+          event_callback: callback
+        });
+        return false;
+      }
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
 

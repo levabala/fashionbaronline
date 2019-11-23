@@ -192,35 +192,47 @@ http
         ".css": "text/css",
         ".jpg": "image/jpg",
         ".js": "text/javascript",
+        // ".js": "gzip",
         ".json": "application/json",
         ".png": "image/png"
       };
       const contentType = map[extname] || "text/html";
 
-      fs.readFile(buildPath + filePathDecoded, (error, content) => {
-        if (error)
-          if (error.code === "ENOENT") {
-            console.warn("no such file error", filePathDecoded);
-            fs.readFile("./404.html", (err, errContent) => {
-              response.writeHead(200, { "Content-Type": contentType });
-              response.end(errContent, "utf-8");
-            });
-          } else {
-            console.warn("file read error");
-            response.writeHead(500);
-            response.end(
-              "Sorry, check with the site admin for error: " +
-                error.code +
-                " ..\n"
-            );
-            response.end();
+      const isJS = extname === ".js";
+      fs.readFile(
+        buildPath + filePathDecoded + (isJS ? ".gz" : ""),
+        (error, content) => {
+          if (error)
+            if (error.code === "ENOENT") {
+              console.warn("no such file error", filePathDecoded);
+              fs.readFile("./404.html", (err, errContent) => {
+                response.writeHead(200, { "Content-Type": contentType });
+                response.end(errContent, "utf-8");
+              });
+            } else {
+              console.warn("file read error");
+              response.writeHead(500);
+              response.end(
+                "Sorry, check with the site admin for error: " +
+                  error.code +
+                  " ..\n"
+              );
+              response.end();
+            }
+          else {
+            // console.warn("file read success");
+            const contentEncoding = isJS ? { "Content-Encoding": "gzip" } : {};
+            const head = {
+              "Content-Type": contentType,
+              ...contentEncoding
+            };
+            response.writeHead(200, head);
+
+            // response.writeHead(200, { "Content-Type": "gzip" });
+            response.end(content, "utf-8");
           }
-        else {
-          // console.warn("file read success");
-          response.writeHead(200, { "Content-Type": contentType });
-          response.end(content, "utf-8");
         }
-      });
+      );
     };
 
     switch (requestPath) {

@@ -91,6 +91,8 @@ const SubscriptionBlock = () => {
     });
 
     setEmailSent(true);
+
+    (window as any).gtag_report_conversion("/subscribe");
   };
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {

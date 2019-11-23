@@ -1,7 +1,8 @@
 import './index.scss';
 
+import { detect } from 'detect-browser';
 import Cookies from 'js-cookie';
-import detect from 'mobile-detect';
+import mobileDetect from 'mobile-detect';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { polyfill } from 'smoothscroll-polyfill';
@@ -9,7 +10,9 @@ import { polyfill } from 'smoothscroll-polyfill';
 import App from './App';
 import StyleVariables from './variables.scss';
 
-const os = new detect(window.navigator.userAgent).os();
+const browser = detect();
+
+const os = new mobileDetect(window.navigator.userAgent).os();
 const ios = os === "iOS" || os === "iPadOS";
 
 const mobileVersionMaxWidth = parseFloat(StyleVariables.mobileVersionMaxWidth);
@@ -84,7 +87,16 @@ setTimeout(() => document.body.classList.remove("hidden"), 800);
 //       ', initial-scale=1.0">'
 //   );
 
-ReactDOM.render(<App />, document.body);
+const root =
+  !browser || browser.name === "ie" ? (
+    <h3>
+      IE browser is not supported. Please, use Chrome, Opera, Safari, Edge etc.
+    </h3>
+  ) : (
+    <App />
+  );
+
+ReactDOM.render(root, document.body);
 // ReactDOM.render(<SnapTest />, document.body);
 // ReactDOM.render(<SnapTest />, document.getElementById("root"));
 
