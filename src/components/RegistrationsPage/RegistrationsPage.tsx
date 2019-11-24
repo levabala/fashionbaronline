@@ -127,11 +127,11 @@ const RegistrationsPage = () => {
 
       const dd: DayData[] = daysObj.map(
         ({ subscriptions, registrations, visits, time, id }) => ({
-          subscriptions,
+          id,
           registrations,
+          subscriptions,
           time: new Date(time),
-          visits,
-          id
+          visits
         })
       );
 

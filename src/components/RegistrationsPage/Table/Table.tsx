@@ -3,6 +3,7 @@ import './Table.scss';
 import { format } from 'date-fns';
 import React from 'react';
 
+import Button from '../../Button';
 import { RegistrationData } from '../RegistrationsPage';
 
 const Table = ({ registrations }: { registrations: RegistrationData[] }) => {
@@ -29,6 +30,9 @@ const Table = ({ registrations }: { registrations: RegistrationData[] }) => {
             ) : (
               <div>none</div>
             )}
+            <div className="removeButton">
+              <Button value="Remove" />
+            </div>
           </React.Fragment>
         )
       )}

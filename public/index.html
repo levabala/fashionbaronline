@@ -35,11 +35,7 @@
     In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
     <script>
       function gtag_report_conversion(url) {
-        var callback = function() {
-          if (typeof url != "undefined") {
-            window.location = url;
-          }
-        };
+        var callback = function() {};
         gtag("event", "conversion", {
           send_to: "AW-708724898/7jZQCJKZjLUBEKKR-dEC",
           event_callback: callback
